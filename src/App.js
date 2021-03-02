@@ -1,24 +1,24 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState, useEffect } from "react";
+import WelcomeContainer from "./containers/WelcomeContainer";
+import { AuthProvider } from "./context/AuthContext";
+import { WidthProvider } from "./context/ScreenWidthContext";
+import { BrowserRouter as Router } from "react-router-dom";
+import { QueryClient, QueryClientProvider } from "react-query";
+import "./App.css";
+
+const queryClient = new QueryClient();
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <AuthProvider>
+      <WidthProvider>
+        <QueryClientProvider client={queryClient}>
+          <Router>
+            <WelcomeContainer />
+          </Router>
+        </QueryClientProvider>
+      </WidthProvider>
+    </AuthProvider>
   );
 }
 
