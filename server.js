@@ -38,6 +38,8 @@ app.post("/authenticate", (req, res, next) => {
         if (cookie.key == "_gg_production_session") {
           res.cookie(cookie.key, cookie.value);
           res.send(body);
+        } else {
+          res.send(body);
         }
         console.log(cookie.key, cookie.value, cookie.expires);
       }
@@ -45,6 +47,10 @@ app.post("/authenticate", (req, res, next) => {
       console.log(body);
     }
   );
+});
+
+app.get("*", (req, res) => {
+  res.sendFile(path.resolve(__dirname, "build", "index.html"));
 });
 
 app.listen(process.env.PORT || 8080, function () {
