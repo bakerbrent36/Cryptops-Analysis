@@ -19,14 +19,17 @@ export function AuthProvider({ children }) {
 
   const logIn = (email, password) => {
     const requestOptions = {
-      method: "GET",
-      redirect: "follow",
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        email,
+        password,
+      }),
     };
 
-    fetch(
-      `https://golfgenius.com/api/user?source=ios&password=${password}&product=golfgenius&api_version=2&email=${email}&version=2`,
-      requestOptions
-    )
+    fetch(`/authenticate`, requestOptions)
       .then((response) => response.json())
       .then((result) => {
         console.log(result);

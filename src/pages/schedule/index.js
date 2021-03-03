@@ -6,6 +6,7 @@ import { format, parseISO, sub } from "date-fns";
 import { useWidth } from "../../context/ScreenWidthContext";
 import PlaceHolder from "../../assets/images/course-placeholder.jpg";
 import RoundCard from "../../components/round-card";
+import ScrewHead from "../../assets/images/WHT-screw.png";
 
 const ScheduleContainer = styled.div`
   display: flex;
@@ -38,63 +39,7 @@ const LowerContainer = styled.div`
   align-items: center;
   width: 100%;
   min-height: 100vh;
-`;
-
-const Card = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  background-color: green;
-  background-size: cover;
-  width: 1090px;
-  height: 525px;
-  margin: 15px;
-
-  @media only screen and (max-width: 1200px) {
-    width: 768px;
-    height: 325px;
-  }
-
-  @media only screen and (max-width: 768px) {
-    width: 300px;
-    height: 268px;
-  }
-`;
-
-const CardBottomContainer = styled.div`
-  color: #f3e9d5;
-  text-transform: uppercase;
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  font-family: BebasNeue;
-  padding: 15px;
-  font-size: 50px;
-`;
-
-const RoundPlayLink = styled(Link)`
-  width: 100px;
-  height: 68px;
-  background-color: #be1e2d;
-  text-transform: uppercase;
-  color: #f3e9d5;
-  font-size: 20px;
-  font-family: Raleway;
-  text-decoration: none;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-`;
-
-const Ribbon = styled.div`
-  background-color: #f3e9d5;
-  color: #be1e2d;
-  text-transform: uppercase;
-  padding: 5px;
-  position: relative;
-  top: 10px;
-  right: 15px;
-  width: 150px;
+  background-color: #162e3d;
 `;
 
 const Schedule = () => {
@@ -105,7 +50,12 @@ const Schedule = () => {
     ).then((res) => res.json())
   );
 
-  console.log(data);
+  const eventMonthArray =
+    (data &&
+      data.map(({ round }) =>
+        format(parseISO(round.date), "MMM").toLocaleLowerCase()
+      )) ||
+    [];
 
   const screenWidth = useWidth();
 
@@ -126,8 +76,6 @@ const Schedule = () => {
 
   const mobileMonthArr = ["mar", "apr", "may", "jun", "jul", "aug"];
 
-  console.log(screenWidth);
-
   return (
     <ScheduleContainer>
       <MonthPicker>
@@ -139,6 +87,12 @@ const Schedule = () => {
                 }}
                 onClick={() => setCurrentMonth(mon)}
               >
+                {eventMonthArray.includes(mon) && (
+                  <img
+                    style={{ marginRight: "5px", paddingBottom: "2px" }}
+                    src={ScrewHead}
+                  />
+                )}
                 {mon}
               </MonthTab>
             ))
@@ -149,6 +103,12 @@ const Schedule = () => {
                 }}
                 onClick={() => setCurrentMonth(mon)}
               >
+                {eventMonthArray.includes(mon) && (
+                  <img
+                    style={{ marginRight: "5px", paddingBottom: "2px" }}
+                    src={ScrewHead}
+                  />
+                )}
                 {mon}
               </MonthTab>
             ))}

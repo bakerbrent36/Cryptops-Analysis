@@ -4,6 +4,7 @@ import BallHeader from "../../assets/images/ball-header.jpg";
 import { useWidth } from "../../context/ScreenWidthContext";
 import { Link } from "react-router-dom";
 
+import WHTLogo from "../../assets/images/WHT-logo.png";
 import BeerIcon from "../../assets/icons/WHT_icon_Beer.svg";
 import GolferIcon from "../../assets/icons/WHT_icon_Golfer.svg";
 import ShirtIcon from "../../assets/icons/WHT_icon_Shirt.svg";
@@ -87,7 +88,7 @@ const Header = () => {
   return (
     <HeaderContainer style={{ backgroundImage: `url(${BallHeader})` }}>
       <Link to="/">
-        <Logo src={WorkHorseLogo} />
+        <Logo src={WHTLogo} />
       </Link>
       <NavBar>
         <div>hamburger menu</div>

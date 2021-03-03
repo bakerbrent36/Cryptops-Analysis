@@ -1,14 +1,22 @@
 import styled from "@emotion/styled";
 import { Link } from "react-router-dom";
 import { useQuery } from "react-query";
+import { format, parseISO, sub } from "date-fns";
+
+import { useWidth } from "../../context/ScreenWidthContext";
 import WhiteCal from "../../assets/icons/WHT_icon_Cal-white.svg";
+import RedCal from "../../assets/icons/WHT_icon_Cal-red.svg";
+import RedGolfer from "../../assets/icons/WHT_icon_Golfer-red.svg";
+import RedBeer from "../../assets/icons/WHT_icon_Beer-red.svg";
+import RedTrophy from "../../assets/icons/WHT_icon_Trophy-red.svg";
 
 const Button = styled(Link)`
-  width: 250px;
-  height: 50px;
+  width: 223px;
+  height: 68px;
   background-color: #be1e2d;
   border: none;
   margin: 5px;
+  font-size: 20px;
   text-transform: uppercase;
   text-decoration: none;
   display: flex;
@@ -29,12 +37,15 @@ const WelcomeHeader = styled.div`
   font-size: 76px;
   color: #162e3d;
   text-align: center;
+  padding: 15px;
 `;
 
 const WelcomeBody = styled.div`
   text-align: center;
   max-width: 1090px;
   font-size: 18px;
+  padding: 15px;
+  color: #777777;
 `;
 
 const NextTourBar = styled.div`
@@ -83,6 +94,55 @@ const NextTourListing = styled.div`
   width: 100%;
 `;
 
+const InfoContainer = styled.div`
+  background-color: #162e3d;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+`;
+
+const InnerInfoContainer = styled.div`
+  margin-top: 50px;
+  margin-bottom: 100px;
+  max-width: 1090px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+
+  @media only screen and (max-width: 900px) {
+    flex-direction: column;
+    align-items: center;
+  }
+`;
+
+const InfoCard = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 250px;
+  height: 320px;
+  color: #f3e9d5;
+  text-align: center;
+
+  img {
+    width: 60px;
+    height: 60px;
+  }
+`;
+
+const InfoCardText = styled.div`
+  width: 200px;
+  font-size: 17px;
+`;
+
+const ShortDivider = styled.hr`
+  width: 71px;
+  background-color: #be1e2d;
+  color: #be1e2d;
+  margin-top: 20px;
+  margin-bottom: 20px;
+`;
+
 const Welcome = () => {
   const { isLoading, error, data } = useQuery("eventData", () =>
     fetch(
@@ -90,7 +150,10 @@ const Welcome = () => {
     ).then((res) => res.json())
   );
 
+  const width = useWidth();
+
   console.log(data);
+
   return (
     <WelcomeContainer>
       <WelcomeHeader>Welcome to the Workhorse Tour</WelcomeHeader>
@@ -104,7 +167,9 @@ const Welcome = () => {
         the season-long standings and earn a spot in the Tour Championship.
       </WelcomeBody>
 
-      <Button to="/register">Sign Up</Button>
+      <Button style={{ marginBottom: "30px" }} to="/register">
+        Sign Up
+      </Button>
 
       <NextTourBar>
         <NextTour>
@@ -115,15 +180,71 @@ const Welcome = () => {
           <NextTourListing></NextTourListing>
         </NextTour>
       </NextTourBar>
+      <InfoContainer>
+        <InnerInfoContainer>
+          <InfoCard>
+            <img src={RedCal} />
+            <span style={{ fontSize: "20px", marginTop: "10px" }}>
+              PICK A DAY
+            </span>
+            <ShortDivider />
+            <InfoCardText>
+              Vestibulum ante ipsum primis in faucibus orci luctus et ultrices
+              posuere.Sed aliquam, nisi quis porttitor congue, elit erat euismod
+              orci, ac placerat dolor lectus quis orci.
+            </InfoCardText>
+          </InfoCard>
+          <InfoCard>
+            <img src={RedGolfer} />
+            <span style={{ fontSize: "20px", marginTop: "10px" }}>
+              PLAY YOUR ROUND
+            </span>
+            <ShortDivider />
+            <InfoCardText>
+              Vestibulum ante ipsum primis in faucibus orci luctus et ultrices
+              posuere.Sed aliquam, nisi quis porttitor congue, elit erat euismod
+              orci, ac placerat dolor lectus quis orci.
+            </InfoCardText>
+          </InfoCard>
+          <InfoCard>
+            <img src={RedBeer} />
+            <span style={{ fontSize: "20px", marginTop: "10px" }}>
+              HAVE A BEER
+            </span>
+            <ShortDivider />
+            <InfoCardText>
+              Vestibulum ante ipsum primis in faucibus orci luctus et ultrices
+              posuere.Sed aliquam, nisi quis porttitor congue, elit erat euismod
+              orci, ac placerat dolor lectus quis orci.
+            </InfoCardText>
+          </InfoCard>
+          <InfoCard>
+            <img src={RedTrophy} />
+            <span style={{ fontSize: "20px", marginTop: "10px" }}>
+              CLAIM YOUR TROPHY
+            </span>
+            <ShortDivider />
+            <InfoCardText>
+              Vestibulum ante ipsum primis in faucibus orci luctus et ultrices
+              posuere.Sed aliquam, nisi quis porttitor congue, elit erat euismod
+              orci, ac placerat dolor lectus quis orci.
+            </InfoCardText>
+          </InfoCard>
+        </InnerInfoContainer>
+      </InfoContainer>
 
-      <Button to="/login">Login</Button>
-      <Button to="/register">Sign Up</Button>
-      <Button
-        to="/learn-more"
-        style={{ backgroundColor: "#b4b4b4", color: "black" }}
-      >
-        Learn More
-      </Button>
+      {width < 768 && (
+        <>
+          <Button to="/login">Login</Button>
+          <Button to="/register">Sign Up</Button>
+          <Button
+            to="/learn-more"
+            style={{ backgroundColor: "#b4b4b4", color: "black" }}
+          >
+            Learn More
+          </Button>
+        </>
+      )}
     </WelcomeContainer>
   );
 };

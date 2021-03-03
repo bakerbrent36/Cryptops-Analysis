@@ -6,6 +6,7 @@ import GolferIcon from "../../assets/icons/WHT_icon_Golfer.svg";
 import ShirtIcon from "../../assets/icons/WHT_icon_Shirt.svg";
 import TrophyIcon from "../../assets/icons/WHT_icon_Trophy.svg";
 import CalIcon from "../../assets/icons/WHT_icon_Cal.svg";
+import DriverIcon from "../../assets/icons/WHT_wood_blue_bg.png";
 
 const FooterContainer = styled.div`
   height: 75px;
@@ -15,6 +16,13 @@ const FooterContainer = styled.div`
   width: 100%;
   display: flex;
   justify-content: center;
+  flex-direction: column;
+  align-items: center;
+`;
+
+const FooterIcon = styled.img`
+  position: relative;
+  top: -15px;
 `;
 
 const NavContainer = styled.div`
@@ -22,6 +30,8 @@ const NavContainer = styled.div`
   width: 100%;
   display: flex;
   justify-content: space-between;
+  position: relative;
+  top: -35px;
 `;
 
 const MenuIcon = styled(Link)`
@@ -51,6 +61,7 @@ const Footer = () => {
 
   return (
     <FooterContainer>
+      <FooterIcon src={DriverIcon} />
       <NavContainer>
         <MenuIcon to="/results">
           {width > 1100 ? "Leaderboards" : <img src={TrophyIcon} />}
