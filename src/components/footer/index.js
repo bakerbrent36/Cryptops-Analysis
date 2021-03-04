@@ -61,7 +61,7 @@ const Footer = () => {
 
   return (
     <FooterContainer>
-      <FooterIcon src={DriverIcon} />
+      {width > 1100 && <FooterIcon src={DriverIcon} />}
       <NavContainer>
         <MenuIcon to="/results">
           {width > 1100 ? "Leaderboards" : <img src={TrophyIcon} />}

@@ -32,19 +32,23 @@ app.post("/authenticate", (req, res, next) => {
   request.get(
     `https://golfgenius.com/api/user?source=ios&password=${req.body.password}&product=golfgenius&api_version=2&email=${req.body.email}&version=2`,
     function (err, response, body) {
-      var rawcookies = response.headers["set-cookie"];
-      for (var i in rawcookies) {
-        var cookie = new Cookie(rawcookies[i]);
-        if (cookie.key == "_gg_production_session") {
-          res.cookie(cookie.key, cookie.value);
-          res.send(body);
-        } else {
-          res.send(body);
-        }
-        console.log(cookie.key, cookie.value, cookie.expires);
-      }
+      try {
+        const rawcookies = response.headers["set-cookie"];
 
-      console.log(body);
+        const [ggCookie] = rawcookies.filter((rawCookie) => {
+          const cookie = new Cookie(rawCookie);
+          return cookie.key === "_gg_production_session";
+        });
+
+        if (ggCookie) {
+          const newCookie = new Cookie(ggCookie);
+          res.cookie(newCookie.key, newCookie.value);
+        }
+
+        res.send(body);
+      } catch (e) {
+        console.log(e);
+      }
     }
   );
 });
