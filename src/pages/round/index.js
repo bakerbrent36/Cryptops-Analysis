@@ -13,6 +13,7 @@ const RoundContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  background-color: #162e3d;
 `;
 
 const RoundTitle = styled.div`
@@ -59,7 +60,7 @@ const Round = () => {
       {currentRound.length > 0 && (
         <RoundContainer>
           <button onClick={() => setOpenScore(true)}>ENTER SCORE</button>
-          {openScore && <EnterScore />}
+          {openScore && <EnterScore roundId={roundId} />}
           <RoundTitle>{currentRound[0].round.name}</RoundTitle>
           <RoundDate>
             <img src={CalIcon} />

@@ -12,10 +12,12 @@ app.use(express.json());
 
 app.use(express.static(path.join(__dirname, "build")));
 
-app.get("/get-foursomes", (req, res, next) => {
+app.get("/get-foursomes/:id", (req, res, next) => {
+  console.log(req.params);
+  console.log(req.params.id);
   request(
     {
-      url: "https://golfgenius.com/api/rounds/7195606752899937736/foursomes",
+      url: `https://golfgenius.com/api/rounds/${req.params.id}/foursomes`,
       method: "GET",
       headers: {
         Cookie: `_gg_production_session=${req.cookies["_gg_production_session"]}`,
@@ -25,6 +27,12 @@ app.get("/get-foursomes", (req, res, next) => {
       res.send(body);
     }
   );
+});
+
+app.post("/submit-score", (req, res, next) => {
+  console.log(req.body);
+  console.log(req);
+  res.send(req.body);
 });
 
 app.post("/authenticate", (req, res, next) => {

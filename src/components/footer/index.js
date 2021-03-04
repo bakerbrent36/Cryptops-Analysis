@@ -32,6 +32,10 @@ const NavContainer = styled.div`
   justify-content: space-between;
   position: relative;
   top: -35px;
+
+  @media only screen and (max-width: 1100px) {
+    top: 0px;
+  }
 `;
 
 const MenuIcon = styled(Link)`
@@ -59,25 +63,25 @@ const MenuIcon = styled(Link)`
 const Footer = () => {
   const width = useWidth();
 
+  const isDesktop = width > 1100;
+
   return (
     <FooterContainer>
-      {width > 1100 && <FooterIcon src={DriverIcon} />}
+      {isDesktop && <FooterIcon src={DriverIcon} />}
       <NavContainer>
         <MenuIcon to="/results">
-          {width > 1100 ? "Leaderboards" : <img src={TrophyIcon} />}
+          {isDesktop ? "Leaderboards" : <img src={TrophyIcon} />}
         </MenuIcon>
         <MenuIcon to="/schedule">
-          {width > 1100 ? "Schedule of Events" : <img src={CalIcon} />}
+          {isDesktop ? "Schedule of Events" : <img src={CalIcon} />}
         </MenuIcon>
         <MenuIcon to="/roster">
-          {width > 1100 ? "Player Roster" : <img src={GolferIcon} />}
+          {isDesktop ? "Player Roster" : <img src={GolferIcon} />}
         </MenuIcon>
         <MenuIcon>
-          {width > 1100 ? "Tour Merch" : <img src={ShirtIcon} />}
+          {isDesktop ? "Tour Merch" : <img src={ShirtIcon} />}
         </MenuIcon>
-        <MenuIcon>
-          {width > 1100 ? "Workhorse" : <img src={BeerIcon} />}
-        </MenuIcon>
+        <MenuIcon>{isDesktop ? "Workhorse" : <img src={BeerIcon} />}</MenuIcon>
       </NavContainer>
     </FooterContainer>
   );
