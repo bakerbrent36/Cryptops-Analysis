@@ -1,5 +1,7 @@
 import styled from "@emotion/styled";
 
+import TourResults from "../../components/tour-results";
+
 const MainContainer = styled.div`
   display: flex;
   flex-direction: column;
@@ -80,9 +82,7 @@ const Main = () => {
         </PointsContainer>
       </ScoreContainer>
       <LowerContainer>
-        <Card>
-          <Ribbon>weekly results</Ribbon>
-        </Card>
+        <TourResults />
         <Card>
           <Ribbon>tour standings</Ribbon>
         </Card>

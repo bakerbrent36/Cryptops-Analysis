@@ -106,9 +106,12 @@ const EnterScore = ({ roundId }) => {
 
     fetch(`/submit-score`, {
       method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
       credentials: "include",
       body: JSON.stringify({
-        player_id: "kyle",
+        player_id: data[0].foursome.players[0].id,
         score: scoreCSV,
       }),
     });

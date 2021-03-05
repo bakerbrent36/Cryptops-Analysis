@@ -2,7 +2,7 @@ import styled from "@emotion/styled";
 import WorkHorseLogo from "../../assets/images/WHlogo.png";
 import BallHeader from "../../assets/images/ball-header.jpg";
 import { useWidth } from "../../context/ScreenWidthContext";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 import WHTLogo from "../../assets/images/WHT-logo.png";
 import BeerIcon from "../../assets/icons/WHT_icon_Beer.svg";
@@ -10,6 +10,9 @@ import GolferIcon from "../../assets/icons/WHT_icon_Golfer.svg";
 import ShirtIcon from "../../assets/icons/WHT_icon_Shirt.svg";
 import TrophyIcon from "../../assets/icons/WHT_icon_Trophy.svg";
 import CalIcon from "../../assets/icons/WHT_icon_Cal.svg";
+import TrophyBlue from "../../assets/icons/WHT_icon_Trophy-blue.svg";
+import CalBlue from "../../assets/icons/WHT_icon_Cal-blue.svg";
+import GolferBlue from "../../assets/icons/WHT_icon_Golfer-blue.svg";
 
 const HeaderContainer = styled.div`
   height: 250px;
@@ -68,8 +71,8 @@ const SecondaryNav = styled.div`
 const MenuIcon = styled(Link)`
   height: 75px;
   width: 175px;
-  color: #f3e9d5;
   display: flex;
+  color: #f3e9d5;
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -85,6 +88,8 @@ const MenuIcon = styled(Link)`
 
 const Header = () => {
   const width = useWidth();
+  const location = useLocation();
+
   return (
     <HeaderContainer style={{ backgroundImage: `url(${BallHeader})` }}>
       <Link to="/">
@@ -96,16 +101,35 @@ const Header = () => {
       {width > 1100 && (
         <SecondaryNavBar>
           <SecondaryNav>
-            <MenuIcon to="/results">
-              <img src={TrophyIcon} />
+            <MenuIcon
+              style={{
+                color: location.pathname == "/results" ? "#162E3D" : "#f3e9d5",
+              }}
+              to="/results"
+            >
+              <img
+                src={location.pathname == "/results" ? TrophyBlue : TrophyIcon}
+              />
               Leaderboards
             </MenuIcon>
-            <MenuIcon to="/schedule">
-              <img src={CalIcon} />
+            <MenuIcon
+              style={{
+                color: location.pathname == "/schedule" ? "#162E3D" : "#f3e9d5",
+              }}
+              to="/schedule"
+            >
+              <img src={location.pathname == "/schedule" ? CalBlue : CalIcon} />
               Schedule of Events
             </MenuIcon>
-            <MenuIcon to="/roster">
-              <img src={GolferIcon} />
+            <MenuIcon
+              style={{
+                color: location.pathname == "/roster" ? "#162E3D" : "#f3e9d5",
+              }}
+              to="/roster"
+            >
+              <img
+                src={location.pathname == "/roster" ? GolferBlue : GolferIcon}
+              />
               Player Roster
             </MenuIcon>
             <MenuIcon>

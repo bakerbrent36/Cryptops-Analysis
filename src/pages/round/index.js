@@ -16,17 +16,39 @@ const RoundContainer = styled.div`
   background-color: #162e3d;
 `;
 
-const RoundTitle = styled.div`
-  text-transform: uppercase;
+const InnerContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  max-width: 1100px;
+  width: 100%;
+`;
+
+const RoundImage = styled.div`
+  width: 100%;
+  height: 400px;
+  background-size: cover;
 `;
 
 const RoundDate = styled.div`
   text-transform: uppercase;
+  font-family: BebasNeue;
+  color: #f3e9d5;
+  margin-left: 15px;
 
   img {
     height: 25px;
     width: 25px;
   }
+`;
+
+const HeaderText = styled.div`
+  font-family: BebasNeue;
+  color: #f3e9d5;
+  font-size: 36px;
+  margin-left: 15px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
 `;
 
 const Round = () => {
@@ -51,17 +73,24 @@ const Round = () => {
   console.log(currentRound);
   console.log(currentIndex);
 
-  const enterScore = () => {
-    alert("enter score");
-  };
-
   return (
-    <div>
+    <RoundContainer>
+      {!openScore && (
+        <RoundImage
+          style={{
+            backgroundImage: `linear-gradient(to top, rgba(22, 46, 61, 1), transparent), url(${PlaceHolder})`,
+          }}
+        />
+      )}
       {currentRound.length > 0 && (
-        <RoundContainer>
-          <button onClick={() => setOpenScore(true)}>ENTER SCORE</button>
+        <InnerContainer>
           {openScore && <EnterScore roundId={roundId} />}
-          <RoundTitle>{currentRound[0].round.name}</RoundTitle>
+          <HeaderText>
+            {currentRound[0].round.name}{" "}
+            <button onClick={() => setOpenScore((oldState) => !oldState)}>
+              ENTER SCORE
+            </button>
+          </HeaderText>
           <RoundDate>
             <img src={CalIcon} />
             {format(parseISO(currentRound[0].round.date), "MMM")}{" "}
@@ -73,7 +102,7 @@ const Round = () => {
           </RoundDate>
           {data && data[currentIndex + 1] && (
             <>
-              Next Tournament
+              <HeaderText>Next Tournament</HeaderText>
               <RoundCard
                 backgroundImage={PlaceHolder}
                 date={data && data[currentIndex + 1].round.date}
@@ -85,7 +114,7 @@ const Round = () => {
 
           {data && data[currentIndex - 1] && (
             <>
-              Previous Tournament
+              <HeaderText>Previous Tournament</HeaderText>
               <RoundCard
                 backgroundImage={PlaceHolder}
                 date={data && data[currentIndex - 1].round.date}
@@ -94,9 +123,9 @@ const Round = () => {
               />
             </>
           )}
-        </RoundContainer>
+        </InnerContainer>
       )}
-    </div>
+    </RoundContainer>
   );
 };
 

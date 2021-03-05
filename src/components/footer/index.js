@@ -1,5 +1,7 @@
 import { Link } from "react-router-dom";
 import styled from "@emotion/styled";
+import { useLocation } from "react-router-dom";
+
 import { useWidth } from "../../context/ScreenWidthContext";
 import BeerIcon from "../../assets/icons/WHT_icon_Beer.svg";
 import GolferIcon from "../../assets/icons/WHT_icon_Golfer.svg";
@@ -7,6 +9,9 @@ import ShirtIcon from "../../assets/icons/WHT_icon_Shirt.svg";
 import TrophyIcon from "../../assets/icons/WHT_icon_Trophy.svg";
 import CalIcon from "../../assets/icons/WHT_icon_Cal.svg";
 import DriverIcon from "../../assets/icons/WHT_wood_blue_bg.png";
+import TrophyBlue from "../../assets/icons/WHT_icon_Trophy-blue.svg";
+import CalBlue from "../../assets/icons/WHT_icon_Cal-blue.svg";
+import GolferBlue from "../../assets/icons/WHT_icon_Golfer-blue.svg";
 
 const FooterContainer = styled.div`
   height: 75px;
@@ -41,8 +46,8 @@ const NavContainer = styled.div`
 const MenuIcon = styled(Link)`
   height: 75px;
   width: 175px;
-  color: #f3e9d5;
   display: flex;
+  color: #f3e9d5;
   justify-content: center;
   align-items: center;
   text-transform: uppercase;
@@ -61,22 +66,56 @@ const MenuIcon = styled(Link)`
 `;
 
 const Footer = () => {
+  const location = useLocation();
   const width = useWidth();
 
   const isDesktop = width > 1100;
+
+  console.log(location);
 
   return (
     <FooterContainer>
       {isDesktop && <FooterIcon src={DriverIcon} />}
       <NavContainer>
-        <MenuIcon to="/results">
-          {isDesktop ? "Leaderboards" : <img src={TrophyIcon} />}
+        <MenuIcon
+          style={{
+            color: location.pathname == "/results" ? "#162E3D" : "#f3e9d5",
+          }}
+          to="/results"
+        >
+          {isDesktop ? (
+            "Leaderboards"
+          ) : (
+            <img
+              src={location.pathname == "/results" ? TrophyBlue : TrophyIcon}
+            />
+          )}
         </MenuIcon>
-        <MenuIcon to="/schedule">
-          {isDesktop ? "Schedule of Events" : <img src={CalIcon} />}
+        <MenuIcon
+          style={{
+            color: location.pathname == "/schedule" ? "#162E3D" : "#f3e9d5",
+          }}
+          to="/schedule"
+        >
+          {isDesktop ? (
+            "Schedule of Events"
+          ) : (
+            <img src={location.pathname == "/schedule" ? CalBlue : CalIcon} />
+          )}
         </MenuIcon>
-        <MenuIcon to="/roster">
-          {isDesktop ? "Player Roster" : <img src={GolferIcon} />}
+        <MenuIcon
+          style={{
+            color: location.pathname == "/roster" ? "#162E3D" : "#f3e9d5",
+          }}
+          to="/roster"
+        >
+          {isDesktop ? (
+            "Player Roster"
+          ) : (
+            <img
+              src={location.pathname == "/roster" ? GolferBlue : GolferIcon}
+            />
+          )}
         </MenuIcon>
         <MenuIcon>
           {isDesktop ? "Tour Merch" : <img src={ShirtIcon} />}

@@ -8,17 +8,15 @@ const Card = styled.div`
   justify-content: space-between;
   background-color: green;
   background-size: cover;
-  width: 1090px;
+  width: 100%;
   height: 525px;
   margin: 15px;
 
   @media only screen and (max-width: 1200px) {
-    width: 768px;
     height: 325px;
   }
 
   @media only screen and (max-width: 768px) {
-    width: 300px;
     height: 268px;
   }
 `;
