@@ -11,12 +11,11 @@ COPY yarn.lock ./
 COPY . .
 
 # install deps
-RUN npm install --silent
-
+RUN yarn
 
 
 # build app
-RUN npm run build
+RUN yarn build
 
 #expose express port
 EXPOSE 8080
