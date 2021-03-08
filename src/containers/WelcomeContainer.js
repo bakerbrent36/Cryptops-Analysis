@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Route, Switch } from "react-router-dom";
+import { Route, Switch, Redirect } from "react-router-dom";
 import styled from "@emotion/styled";
 
 import { AuthProvider, useAuth, useAuthUpdate } from "../context/AuthContext";
@@ -53,7 +53,7 @@ const WelcomeContainer = ({ screenWidth }) => {
               screenWidth={screenWidth}
             />
           )}
-          <Route component={Welcome} />
+          <Redirect to="/welcome" />
         </Switch>
       </PageContainer>
       <Footer />
