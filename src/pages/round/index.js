@@ -21,6 +21,21 @@ const InnerContainer = styled.div`
   flex-direction: column;
   max-width: 1100px;
   width: 100%;
+
+  button {
+    width: 223px;
+    height: 68px;
+    background-color: #be1e2d;
+    border: none;
+    margin: 5px;
+    font-size: 20px;
+    text-transform: uppercase;
+    text-decoration: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+  }
 `;
 
 const RoundImage = styled.div`
@@ -33,7 +48,6 @@ const RoundDate = styled.div`
   text-transform: uppercase;
   font-family: BebasNeue;
   color: #f3e9d5;
-  margin-left: 15px;
 
   img {
     height: 25px;
@@ -45,10 +59,10 @@ const HeaderText = styled.div`
   font-family: BebasNeue;
   color: #f3e9d5;
   font-size: 36px;
-  margin-left: 15px;
   width: 100%;
   display: flex;
   justify-content: space-between;
+  padding-left: 15px;
 `;
 
 const Round = () => {
@@ -85,12 +99,10 @@ const Round = () => {
       {currentRound.length > 0 && (
         <InnerContainer>
           {openScore && <EnterScore roundId={roundId} />}
-          <HeaderText>
-            {currentRound[0].round.name}{" "}
-            <button onClick={() => setOpenScore((oldState) => !oldState)}>
-              ENTER SCORE
-            </button>
-          </HeaderText>
+          <HeaderText>{currentRound[0].round.name} </HeaderText>
+          <button onClick={() => setOpenScore((oldState) => !oldState)}>
+            ENTER SCORE
+          </button>
           <RoundDate>
             <img src={CalIcon} />
             {format(parseISO(currentRound[0].round.date), "MMM")}{" "}

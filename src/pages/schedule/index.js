@@ -27,10 +27,18 @@ const MonthTab = styled.div`
   color: #f3e9d5;
   text-transform: uppercase;
   padding: 5px;
-  padding-left: 15px;
-  padding-right: 15px;
+  padding-left: 10px;
+  padding-right: 10px;
   cursor: pointer;
   margin-bottom: -5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  img {
+    width: 10px;
+    height: 10px;
+  }
 `;
 
 const LowerContainer = styled.div`
@@ -40,6 +48,12 @@ const LowerContainer = styled.div`
   width: 100%;
   min-height: 100vh;
   background-color: #162e3d;
+`;
+
+const CardWrapper = styled.div`
+  max-width: 1100px;
+  width: 100%;
+  margin-bottom: 25px;
 `;
 
 const Schedule = () => {
@@ -114,24 +128,26 @@ const Schedule = () => {
             ))}
       </MonthPicker>
       <LowerContainer>
-        {data &&
-          data
-            .filter(({ round }) =>
-              currentMonth
-                ? format(parseISO(round.date), "MMM").toLocaleLowerCase() ==
-                  currentMonth
-                : round
-            )
-            .map(({ round }) => {
-              return (
-                <RoundCard
-                  backgroundImage={PlaceHolder}
-                  date={round.date}
-                  name={round.name}
-                  link={`/round/${round.id}`}
-                />
-              );
-            })}
+        <CardWrapper>
+          {data &&
+            data
+              .filter(({ round }) =>
+                currentMonth
+                  ? format(parseISO(round.date), "MMM").toLocaleLowerCase() ==
+                    currentMonth
+                  : round
+              )
+              .map(({ round }) => {
+                return (
+                  <RoundCard
+                    backgroundImage={PlaceHolder}
+                    date={round.date}
+                    name={round.name}
+                    link={`/round/${round.id}`}
+                  />
+                );
+              })}
+        </CardWrapper>
       </LowerContainer>
     </ScheduleContainer>
   );

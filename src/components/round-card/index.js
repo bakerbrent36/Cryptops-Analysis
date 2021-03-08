@@ -8,9 +8,9 @@ const Card = styled.div`
   justify-content: space-between;
   background-color: green;
   background-size: cover;
-  width: 100%;
-  height: 525px;
   margin: 15px;
+  margin-bottom: 25px;
+  height: 525px;
 
   @media only screen and (max-width: 1200px) {
     height: 325px;
@@ -27,8 +27,8 @@ const CardBottomContainer = styled.div`
   width: 100%;
   display: flex;
   justify-content: space-between;
+  align-items: flex-end;
   font-family: BebasNeue;
-  padding: 15px;
   font-size: 50px;
 `;
 
@@ -44,6 +44,7 @@ const RoundPlayLink = styled(Link)`
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-right: -15px;
 `;
 
 const Ribbon = styled.div`
