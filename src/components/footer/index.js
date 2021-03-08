@@ -76,52 +76,86 @@ const Footer = () => {
   return (
     <FooterContainer>
       {isDesktop && <FooterIcon src={DriverIcon} />}
-      <NavContainer>
-        <MenuIcon
-          style={{
-            color: location.pathname == "/results" ? "#162E3D" : "#f3e9d5",
-          }}
-          to="/results"
-        >
-          {isDesktop ? (
-            "Leaderboards"
-          ) : (
-            <img
-              src={location.pathname == "/results" ? TrophyBlue : TrophyIcon}
-            />
-          )}
-        </MenuIcon>
-        <MenuIcon
-          style={{
-            color: location.pathname == "/schedule" ? "#162E3D" : "#f3e9d5",
-          }}
-          to="/schedule"
-        >
-          {isDesktop ? (
-            "Schedule of Events"
-          ) : (
-            <img src={location.pathname == "/schedule" ? CalBlue : CalIcon} />
-          )}
-        </MenuIcon>
-        <MenuIcon
-          style={{
-            color: location.pathname == "/roster" ? "#162E3D" : "#f3e9d5",
-          }}
-          to="/roster"
-        >
-          {isDesktop ? (
-            "Player Roster"
-          ) : (
-            <img
-              src={location.pathname == "/roster" ? GolferBlue : GolferIcon}
-            />
-          )}
-        </MenuIcon>
-        <MenuIcon>
-          {isDesktop ? "Tour Merch" : <img src={ShirtIcon} />}
-        </MenuIcon>
-        <MenuIcon>{isDesktop ? "Workhorse" : <img src={BeerIcon} />}</MenuIcon>
-      </NavContainer>
+      {location.pathname !== "/welcome" &&
+      location.pathname !== "/login" &&
+      location.pathname !== "/register" &&
+      location.pathname !== "/learn-more" ? (
+        <NavContainer>
+          <MenuIcon
+            style={{
+              color: location.pathname == "/results" ? "#162E3D" : "#f3e9d5",
+            }}
+            to="/results"
+          >
+            {isDesktop ? (
+              "Leaderboards"
+            ) : (
+              <img
+                src={location.pathname == "/results" ? TrophyBlue : TrophyIcon}
+              />
+            )}
+          </MenuIcon>
+          <MenuIcon
+            style={{
+              color: location.pathname == "/schedule" ? "#162E3D" : "#f3e9d5",
+            }}
+            to="/schedule"
+          >
+            {isDesktop ? (
+              "Schedule of Events"
+            ) : (
+              <img src={location.pathname == "/schedule" ? CalBlue : CalIcon} />
+            )}
+          </MenuIcon>
+          <MenuIcon
+            style={{
+              color: location.pathname == "/roster" ? "#162E3D" : "#f3e9d5",
+            }}
+            to="/roster"
+          >
+            {isDesktop ? (
+              "Player Roster"
+            ) : (
+              <img
+                src={location.pathname == "/roster" ? GolferBlue : GolferIcon}
+              />
+            )}
+          </MenuIcon>
+          <MenuIcon>
+            {isDesktop ? "Tour Merch" : <img src={ShirtIcon} />}
+          </MenuIcon>
+          <MenuIcon>
+            {isDesktop ? "Workhorse" : <img src={BeerIcon} />}
+          </MenuIcon>
+        </NavContainer>
+      ) : (
+        <NavContainer style={{ maxWidth: "500px" }}>
+          <MenuIcon
+            style={{
+              color: location.pathname == "/login" ? "#162E3D" : "#f3e9d5",
+            }}
+            to="/login"
+          >
+            Login
+          </MenuIcon>
+          <MenuIcon
+            style={{
+              color: location.pathname == "/register" ? "#162E3D" : "#f3e9d5",
+            }}
+            to="/register"
+          >
+            Sign Up
+          </MenuIcon>
+          <MenuIcon
+            style={{
+              color: location.pathname == "/learn-more" ? "#162E3D" : "#f3e9d5",
+            }}
+            to="/learn-more"
+          >
+            Learn More
+          </MenuIcon>
+        </NavContainer>
+      )}
     </FooterContainer>
   );
 };

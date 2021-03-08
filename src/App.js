@@ -9,10 +9,12 @@ import "./App.css";
 const queryClient = new QueryClient();
 
 function App() {
+  const [installPrompt, setInstallPrompt] = useState(false);
   useEffect(() => {
     window.addEventListener("beforeinstallprompt", (e) => {
       console.log("BEFORE");
       console.log(e);
+      setInstallPrompt(true);
     });
   }, []);
 
@@ -21,6 +23,7 @@ function App() {
       <WidthProvider>
         <QueryClientProvider client={queryClient}>
           <Router>
+            {installPrompt && <h1>INSTALL PRMOT</h1>}
             <WelcomeContainer />
           </Router>
         </QueryClientProvider>
