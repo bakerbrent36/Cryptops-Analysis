@@ -2,7 +2,7 @@
 FROM node:12.16.2
 
 # copy package.json
-COPY package.json ./
+COPY package*.json ./
 COPY yarn.lock ./
 
 # copy app files
