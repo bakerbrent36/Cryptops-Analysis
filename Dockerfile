@@ -6,7 +6,7 @@ COPY package.json ./
 COPY yarn.lock ./
 
 # install deps
-RUN npm install
+RUN npm install --silent
 
 # copy app files
 COPY . .
