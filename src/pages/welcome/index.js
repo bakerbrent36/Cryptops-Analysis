@@ -10,6 +10,8 @@ import RedGolfer from "../../assets/icons/WHT_icon_Golfer-red.svg";
 import RedBeer from "../../assets/icons/WHT_icon_Beer-red.svg";
 import RedTrophy from "../../assets/icons/WHT_icon_Trophy-red.svg";
 
+import NextTour from "../../components/next-tour";
+
 const Button = styled(Link)`
   width: 223px;
   height: 68px;
@@ -48,51 +50,51 @@ const WelcomeBody = styled.div`
   color: #777777;
 `;
 
-const NextTourBar = styled.div`
-  width: 100%;
-  background-color: #be1e2d;
-  height: 118px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-`;
+// const NextTourBar = styled.div`
+//   width: 100%;
+//   background-color: #be1e2d;
+//   height: 118px;
+//   display: flex;
+//   justify-content: center;
+//   align-items: center;
+// `;
 
-const NextTour = styled.div`
-  max-width: 1090px;
-  width: 100%;
-  height: 68px;
-  display: flex;
-`;
+// const NextTour = styled.div`
+//   max-width: 1090px;
+//   width: 100%;
+//   height: 68px;
+//   display: flex;
+// `;
 
-const NextTourIcon = styled.div`
-  background-color: #162e3d;
-  height: 68px;
-  width: 73px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+// const NextTourIcon = styled.div`
+//   background-color: #162e3d;
+//   height: 68px;
+//   width: 73px;
+//   display: flex;
+//   justify-content: center;
+//   align-items: center;
 
-  img {
-    height: 30px;
-    width: 30px;
-  }
-`;
+//   img {
+//     height: 30px;
+//     width: 30px;
+//   }
+// `;
 
-const NextTourText = styled.div`
-  background-color: #f3e9d5;
-  color: #be1e2d;
-  text-transform: uppercase;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 15px;
-`;
+// const NextTourText = styled.div`
+//   background-color: #f3e9d5;
+//   color: #be1e2d;
+//   text-transform: uppercase;
+//   display: flex;
+//   justify-content: center;
+//   align-items: center;
+//   padding: 15px;
+// `;
 
-const NextTourListing = styled.div`
-  background-color: #ffffff;
-  height: 68px;
-  width: 100%;
-`;
+// const NextTourListing = styled.div`
+//   background-color: #ffffff;
+//   height: 68px;
+//   width: 100%;
+// `;
 
 const InfoContainer = styled.div`
   background-color: #162e3d;
@@ -171,15 +173,8 @@ const Welcome = () => {
         Sign Up
       </Button>
 
-      <NextTourBar>
-        <NextTour>
-          <NextTourIcon>
-            <img src={WhiteCal} />
-          </NextTourIcon>
-          <NextTourText>Next Tournament</NextTourText>
-          <NextTourListing></NextTourListing>
-        </NextTour>
-      </NextTourBar>
+      <NextTour />
+
       <InfoContainer>
         <InnerInfoContainer>
           <InfoCard>
