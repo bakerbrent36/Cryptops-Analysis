@@ -5,11 +5,13 @@ FROM node:12.16.2
 COPY package.json ./
 COPY yarn.lock ./
 
+# copy app files
+COPY . .
+
 # install deps
 RUN npm install --silent
 
-# copy app files
-COPY . .
+
 
 # build app
 RUN npm run build
