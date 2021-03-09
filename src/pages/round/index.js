@@ -67,13 +67,33 @@ const HeaderText = styled.div`
 
 const Round = () => {
   const [openScore, setOpenScore] = useState(false);
+  let { roundId } = useParams();
   const { isLoading, error, data } = useQuery("eventData", () =>
     fetch(
       `${process.env.REACT_APP_API_URL}${process.env.REACT_APP_API_KEY}/events/${process.env.REACT_APP_EVENT_ID}/rounds`
     ).then((res) => res.json())
   );
 
-  let { roundId } = useParams();
+  const teeSheets = useQuery("teeSheetData", () =>
+    fetch(
+      `${process.env.REACT_APP_API_URL}${process.env.REACT_APP_API_KEY}/events/${process.env.REACT_APP_EVENT_ID}/rounds/${roundId}/tee_sheet`
+    ).then((res) => res.json())
+  );
+
+  const courseData = useQuery("courseData", () =>
+    fetch(
+      `${process.env.REACT_APP_API_URL}${process.env.REACT_APP_API_KEY}/events/${process.env.REACT_APP_EVENT_ID}/courses`
+    ).then((res) => res.json())
+  );
+
+  const courseId =
+    teeSheets.data &&
+    teeSheets?.data[0]?.pairing_group?.players[0]?.tee?.course_id;
+
+  const currentCourse =
+    courseData.data &&
+    courseData.data?.courses.filter((course) => course.id === courseId);
+
   console.log(roundId);
 
   console.log(data);
@@ -84,8 +104,9 @@ const Round = () => {
   const currentIndex =
     (data && data.findIndex(({ round }) => round.id === roundId)) || 0;
 
-  console.log(currentRound);
-  console.log(currentIndex);
+  console.log("TEE SHEETS", teeSheets);
+  console.log("COURSE ID", courseId);
+  console.log("CURRENT COURSE", currentCourse);
 
   return (
     <RoundContainer>

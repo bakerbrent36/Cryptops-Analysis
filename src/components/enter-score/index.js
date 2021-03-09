@@ -6,6 +6,10 @@ const ScoreContainer = styled.div`
   display: flex;
   justify-content: center;
   width: 100%;
+
+  form {
+    width: 100%;
+  }
 `;
 
 const ScoreCardContainer = styled.div`
@@ -147,6 +151,11 @@ const EnterScore = ({ roundId }) => {
                   </ScoreCardFooter>
                 </ScoreCardItem>
               ))}
+              <ScoreCardItem>
+                <ScoreCardHeader style={{ backgroundColor: "#F3E9D5" }} />
+                <ScoreCardCenter style={{ backgroundColor: "#F3E9D5" }} />
+                <ScoreCardFooter style={{ backgroundColor: "#F3E9D5" }} />
+              </ScoreCardItem>
             </ScoreCardRow>
             <ScoreCardRow>
               <ScoreCardItem>

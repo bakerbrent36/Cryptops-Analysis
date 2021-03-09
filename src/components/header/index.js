@@ -3,6 +3,7 @@ import styled from "@emotion/styled";
 import WorkHorseLogo from "../../assets/images/WHlogo.png";
 import BallHeader from "../../assets/images/ball-header.jpg";
 import { useWidth } from "../../context/ScreenWidthContext";
+import { useAuth } from "../../context/AuthContext";
 import { Link, useLocation } from "react-router-dom";
 
 import WHTLogo from "../../assets/images/WHT-logo.png";
@@ -160,6 +161,7 @@ const Menu = styled.div`
 const Header = () => {
   const width = useWidth();
   const location = useLocation();
+  const user = useAuth();
 
   const [openMenu, setOpenMenu] = useState(false);
 
@@ -175,7 +177,8 @@ const Header = () => {
       location.pathname !== "/welcome" &&
       location.pathname !== "/login" &&
       location.pathname !== "/register" &&
-      location.pathname !== "/learn-more" ? (
+      location.pathname !== "/learn-more" &&
+      user ? (
         <NavBar>
           <div
             style={{ position: "absolute", zIndex: 501 }}
@@ -200,7 +203,8 @@ const Header = () => {
         location.pathname !== "/welcome" &&
         location.pathname !== "/login" &&
         location.pathname !== "/register" &&
-        location.pathname !== "/learn-more" && (
+        location.pathname !== "/learn-more" &&
+        user && (
           <SecondaryNavBar>
             <SecondaryNav>
               <MenuIcon

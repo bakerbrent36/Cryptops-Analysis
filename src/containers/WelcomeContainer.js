@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import { Route, Switch, Redirect } from "react-router-dom";
+import { Route, Switch } from "react-router-dom";
 import styled from "@emotion/styled";
 
-import { AuthProvider, useAuth, useAuthUpdate } from "../context/AuthContext";
+import { useAuth } from "../context/AuthContext";
 import Welcome from "../pages/welcome";
 import LearnMore from "../pages/learn-more";
 import MainContainer from "../containers/MainContainer";
@@ -53,7 +53,7 @@ const WelcomeContainer = ({ screenWidth }) => {
               screenWidth={screenWidth}
             />
           )}
-          <Redirect to="/welcome" />
+          <Route component={Welcome} />
         </Switch>
       </PageContainer>
       <Footer />

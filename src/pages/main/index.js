@@ -1,6 +1,7 @@
 import styled from "@emotion/styled";
 
 import TourResults from "../../components/tour-results";
+import NextTour from "../../components/next-tour";
 
 const MainContainer = styled.div`
   display: flex;
@@ -46,7 +47,6 @@ const LowerContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 15px;
 `;
 
 const Card = styled.div`
@@ -81,6 +81,7 @@ const Main = () => {
           <Points>187</Points>
         </PointsContainer>
       </ScoreContainer>
+      <NextTour />
       <LowerContainer>
         <TourResults />
         <Card>

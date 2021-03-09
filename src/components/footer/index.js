@@ -3,6 +3,8 @@ import styled from "@emotion/styled";
 import { useLocation } from "react-router-dom";
 
 import { useWidth } from "../../context/ScreenWidthContext";
+import { useAuth } from "../../context/AuthContext";
+
 import BeerIcon from "../../assets/icons/WHT_icon_Beer.svg";
 import GolferIcon from "../../assets/icons/WHT_icon_Golfer.svg";
 import ShirtIcon from "../../assets/icons/WHT_icon_Shirt.svg";
@@ -68,6 +70,7 @@ const MenuIcon = styled(Link)`
 const Footer = () => {
   const location = useLocation();
   const width = useWidth();
+  const user = useAuth();
 
   const isDesktop = width > 1100;
 
@@ -79,7 +82,8 @@ const Footer = () => {
       {location.pathname !== "/welcome" &&
       location.pathname !== "/login" &&
       location.pathname !== "/register" &&
-      location.pathname !== "/learn-more" ? (
+      location.pathname !== "/learn-more" &&
+      user ? (
         <NavContainer>
           <MenuIcon
             style={{
