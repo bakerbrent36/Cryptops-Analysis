@@ -62,6 +62,16 @@ const NavBar = styled.div`
   @media only screen and (max-width: 1100px) {
     height: 98px;
   }
+
+  .hamburger-inner::before {
+    background-color: #f3e9d5;
+  }
+  .hamburger-inner {
+    background-color: #f3e9d5;
+  }
+  .hamburger-inner::after {
+    background-color: #f3e9d5;
+  }
 `;
 
 const SecondaryNavBar = styled.div`
@@ -174,7 +184,7 @@ const Header = () => {
             type="button"
           >
             <span className="hamburger-box">
-              <span classNAme="hamburger-inner"></span>
+              <span className="hamburger-inner"></span>
             </span>
           </button>
         </NavBar>
