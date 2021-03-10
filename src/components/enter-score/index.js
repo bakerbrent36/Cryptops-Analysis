@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useQuery } from "react-query";
 import styled from "@emotion/styled";
 
@@ -73,6 +73,8 @@ const ScoreCardItem = styled.div`
 `;
 
 const EnterScore = ({ roundId }) => {
+  const [total, setTotal] = useState();
+
   const { isLoading, error, data } = useQuery("roundFoursome", () =>
     fetch(`/get-foursomes/${roundId}`, {
       method: "GET",
@@ -121,13 +123,15 @@ const EnterScore = ({ roundId }) => {
     });
   };
 
+  const handleChange = (e) => {};
+
   console.log(holeLabels);
   console.log(parData);
   console.log(holeData);
   return (
     <ScoreContainer>
       {holeData && (
-        <form onSubmit={submitScore}>
+        <form onChange={handleChange} onSubmit={submitScore}>
           <ScoreCardContainer>
             <ScoreCardRow>
               <ScoreCardItem>
@@ -179,6 +183,11 @@ const EnterScore = ({ roundId }) => {
                   </ScoreCardFooter>
                 </ScoreCardItem>
               ))}
+              <ScoreCardItem>
+                <ScoreCardHeader>Total</ScoreCardHeader>
+                <ScoreCardCenter>numbers</ScoreCardCenter>
+                <ScoreCardFooter></ScoreCardFooter>
+              </ScoreCardItem>
             </ScoreCardRow>
           </ScoreCardContainer>
           <button type="submit">submit</button>

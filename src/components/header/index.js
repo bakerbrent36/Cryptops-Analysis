@@ -16,6 +16,8 @@ import TrophyBlue from "../../assets/icons/WHT_icon_Trophy-blue.svg";
 import CalBlue from "../../assets/icons/WHT_icon_Cal-blue.svg";
 import GolferBlue from "../../assets/icons/WHT_icon_Golfer-blue.svg";
 
+import "./hamburger.css";
+
 const HeaderContainer = styled.div`
   height: 411px;
   background-color: #be1e2d;
@@ -118,44 +120,26 @@ const HeaderButtonsContainer = styled.div`
   left: 150px;
 `;
 
-const MenuWrapper = styled.div`
-  .active {
-    animation: formFade 2s;
-    z-index: 500;
-
-    @keyframes formFade {
-      from {
-        opacity: 0;
-      }
-      to {
-        opacity: 1;
-      }
-    }
-  }
-
-  .not-active {
-    animation: formFade 2s;
-
-    @keyframes formFade {
-      from {
-        opacity: 1;
-        display: flex;
-      }
-      to {
-        opacity: 0;
-        display: none;
-      }
-    }
-  }
-`;
-
 const Menu = styled.div`
-  height: 100vh;
-  width: 100%;
   position: absolute;
-  z-index: -500;
+  top: 0;
+  left: 0;
+  z-index: 500;
+  width: ${({ show }) => (show ? "100%" : "0")};
+  height: ${({ show }) => (show ? "100vh" : "0")};
   background-color: #162e3d;
   color: #f3e9d5;
+  transition: opacity 0.5s;
+  opacity: ${({ show }) => (show ? "1" : "0")};
+  padding: 50px;
+  display: flex;
+  flex-direction: column;
+`;
+
+const MenuLink = styled(Link)`
+  text-decoration: none;
+  color: #f3e9d5;
+  text-transform: uppercase;
 `;
 
 const Header = () => {
@@ -173,19 +157,26 @@ const Header = () => {
         <Logo src={WHTLogo} />
       </Link>
 
-      {width > 1100 &&
-      location.pathname !== "/welcome" &&
+      {location.pathname !== "/welcome" &&
       location.pathname !== "/login" &&
       location.pathname !== "/register" &&
       location.pathname !== "/learn-more" &&
       user ? (
         <NavBar>
-          <div
+          <button
             style={{ position: "absolute", zIndex: 501 }}
             onClick={() => setOpenMenu((oldState) => !oldState)}
+            className={
+              openMenu
+                ? "is-active hamburger hamburger--collapse"
+                : "hamburger hamburger--collapse"
+            }
+            type="button"
           >
-            hamburger menu
-          </div>
+            <span className="hamburger-box">
+              <span classNAme="hamburger-inner"></span>
+            </span>
+          </button>
         </NavBar>
       ) : (
         <NavBar style={{ justifyContent: "center" }}>
@@ -255,9 +246,11 @@ const Header = () => {
             </SecondaryNav>
           </SecondaryNavBar>
         )}
-      {/* <MenuWrapper>
-        <Menu className={openMenu ? "active" : "not-active"}>RESULTS</Menu>
-      </MenuWrapper> */}
+      <Menu show={openMenu}>
+        <MenuLink to="/results">Results</MenuLink>
+        <MenuLink to="/schedule">Schedule</MenuLink>
+        <MenuLink to="/roster">Player Roster</MenuLink>
+      </Menu>
     </HeaderContainer>
   );
 };
