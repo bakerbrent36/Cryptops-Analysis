@@ -125,14 +125,13 @@ const Menu = styled.div`
   top: 0;
   left: 0;
   z-index: 500;
-  width: 100vw;
+  width: 100%;
   height: ${({ show }) => (show ? "100vh" : "0")};
   background-color: #162e3d;
   color: #f3e9d5;
   transition: visibility 0s, opacity 0.5s, height 0.5s;
   opacity: ${({ show }) => (show ? "1" : "0")};
   visibility: ${({ show }) => (show ? "visible" : "hidden")};
-  padding: 50px;
   display: flex;
   flex-direction: column;
 `;
@@ -259,15 +258,17 @@ const Header = () => {
           </SecondaryNavBar>
         )}
       <Menu show={openMenu}>
-        <MenuLink onClick={() => setOpenMenu(false)} to="/results">
-          Results
-        </MenuLink>
-        <MenuLink onClick={() => setOpenMenu(false)} to="/schedule">
-          Schedule
-        </MenuLink>
-        <MenuLink onClick={() => setOpenMenu(false)} to="/roster">
-          Player Roster
-        </MenuLink>
+        <div style={{ marginLeft: "50px", marginTop: "50px" }}>
+          <MenuLink onClick={() => setOpenMenu(false)} to="/results">
+            Results
+          </MenuLink>
+          <MenuLink onClick={() => setOpenMenu(false)} to="/schedule">
+            Schedule
+          </MenuLink>
+          <MenuLink onClick={() => setOpenMenu(false)} to="/roster">
+            Player Roster
+          </MenuLink>
+        </div>
       </Menu>
     </HeaderContainer>
   );
