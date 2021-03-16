@@ -159,6 +159,18 @@ const Welcome = () => {
   return (
     <WelcomeContainer>
       <WelcomeHeader>Welcome to the Workhorse Tour</WelcomeHeader>
+      {width < 768 && (
+        <div style={{ paddingTop: "15px", paddingBottom: "15px" }}>
+          <Button to="/login">Login</Button>
+          <Button to="/register">Sign Up</Button>
+          <Button
+            to="/learn-more"
+            style={{ backgroundColor: "#b4b4b4", color: "black" }}
+          >
+            Learn More
+          </Button>
+        </div>
+      )}
       <WelcomeBody>
         The Workhorse Tour brings the competitive spirit and tournament format
         of professional golf to recreational players in Greater Philadelphia,
@@ -227,19 +239,6 @@ const Welcome = () => {
           </InfoCard>
         </InnerInfoContainer>
       </InfoContainer>
-
-      {width < 768 && (
-        <>
-          <Button to="/login">Login</Button>
-          <Button to="/register">Sign Up</Button>
-          <Button
-            to="/learn-more"
-            style={{ backgroundColor: "#b4b4b4", color: "black" }}
-          >
-            Learn More
-          </Button>
-        </>
-      )}
     </WelcomeContainer>
   );
 };
