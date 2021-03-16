@@ -77,10 +77,11 @@ const InputRow = styled.div`
     color: #ffffff;
     margin-right: 5px;
     padding-left: 5px;
+    font-size: 18px;
   }
 
   select {
-    padding-right: 5px;
+    margin-right: 5px;
     font-size: 18px;
   }
 `;
@@ -100,35 +101,47 @@ const SubmitButton = styled.input`
   color: white;
 `;
 
-const handleSubmit = (e) => {
-  e.preventDefault();
-
-  const formData = new FormData(e.target);
-
-  fetch(`/get-ghin`, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({
-      first_name: formData.get("first_name"),
-      last_name: formData.get("last_name"),
-      gender: formData.get("gender"),
-      email: formData.get("email"),
-      street_1: formData.get("street_1"),
-      state: formData.get("state"),
-      country: "USA",
-      city: formData.get("city"),
-      zip: formData.get("zip"),
-    }),
-  });
-};
-
 const Register = () => {
   const [showModal, setShowModal] = useState(false);
+  const [GHIN, setGHIN] = useState();
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    const formData = new FormData(e.target);
+
+    fetch(`/get-ghin`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        first_name: formData.get("first_name"),
+        last_name: formData.get("last_name"),
+        gender: formData.get("gender"),
+        email: formData.get("email"),
+        street_1: formData.get("street_1"),
+        state: formData.get("state"),
+        country: "USA",
+        city: formData.get("city"),
+        zip: formData.get("zip"),
+      }),
+    })
+      .then((res) => {
+        setShowModal(false);
+        return res.json();
+      })
+      .then((data) => setGHIN(data));
+  };
+
+  console.log(GHIN);
   return (
     <RegisterContainer>
-      <Button onClick={() => setShowModal(true)}>Need a GHIN?</Button>
+      {GHIN?.golfers?.id ? (
+        <div>{GHIN.golfers.id}</div>
+      ) : (
+        <Button onClick={() => setShowModal(true)}>Need a GHIN?</Button>
+      )}
       {showModal && (
         <FormModal>
           <FormContainer>
@@ -208,7 +221,9 @@ const Register = () => {
                 </select>
                 <Input required name="zip" placeholder="Zip" />
               </InputRow>
-              <InputRow style={{ justifyContent: "flex-end" }}>
+              <InputRow
+                style={{ justifyContent: "flex-end", paddingTop: "15px" }}
+              >
                 <SubmitButton type="submit" value="SUBMIT" />
               </InputRow>
             </GHINForm>

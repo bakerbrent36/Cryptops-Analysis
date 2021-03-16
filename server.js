@@ -30,21 +30,52 @@ app.post("/get-ghin", (req, res, next) => {
     (error, response, body) => {
       let { token } = JSON.parse(body);
 
-      console.log(req.body);
-
       console.log(token);
-      // request(
-      //   {
-      //     url: `${process.env.GHIN_API_REGISTER_URL}`,
-      //     method: "GET",
-      //     headers: {
-      //       Authorization: `Bearer ${token}`,
-      //     },
-      //   },
-      //   (error, response, body) => {
-      //     res.send(body);
-      //   }
-      // );
+
+      let {
+        first_name,
+        last_name,
+        gender,
+        email,
+        street_1,
+        country,
+        state,
+        city,
+        zip,
+      } = req.body;
+      console.log(first_name);
+
+      if (token) {
+        request(
+          {
+            url: `${process.env.GHIN_API_REGISTER_URL}`,
+            method: "POST",
+            headers: {
+              Authorization: `Bearer ${token}`,
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              golfer: {
+                first_name,
+                last_name,
+                gender,
+                email,
+              },
+              primary_address: {
+                street_1,
+                country,
+                state,
+                city,
+                zip,
+              },
+            }),
+          },
+          (error, response, body) => {
+            console.log(body);
+            res.send(body);
+          }
+        );
+      }
     }
   );
 });
