@@ -196,9 +196,9 @@ const Welcome = () => {
             </span>
             <ShortDivider />
             <InfoCardText>
-              Vestibulum ante ipsum primis in faucibus orci luctus et ultrices
-              posuere.Sed aliquam, nisi quis porttitor congue, elit erat euismod
-              orci, ac placerat dolor lectus quis orci.
+              Play tournament golf on your schedule. Book any available tee time
+              during the week of the event and you’re in it to win it. It’s that
+              simple.
             </InfoCardText>
           </InfoCard>
           <InfoCard>
@@ -208,9 +208,8 @@ const Welcome = () => {
             </span>
             <ShortDivider />
             <InfoCardText>
-              Vestibulum ante ipsum primis in faucibus orci luctus et ultrices
-              posuere.Sed aliquam, nisi quis porttitor congue, elit erat euismod
-              orci, ac placerat dolor lectus quis orci.
+              Tee it up and let it fly! Sign up for every tournament or play at
+              your convenience, but remember, every stroke counts!
             </InfoCardText>
           </InfoCard>
           <InfoCard>
@@ -220,21 +219,20 @@ const Welcome = () => {
             </span>
             <ShortDivider />
             <InfoCardText>
-              Vestibulum ante ipsum primis in faucibus orci luctus et ultrices
-              posuere.Sed aliquam, nisi quis porttitor congue, elit erat euismod
-              orci, ac placerat dolor lectus quis orci.
+              Enjoy an ice cold Blonde Ale at the 19th hole, brewed exclusively
+              and available only at partner courses on Tour.
             </InfoCardText>
           </InfoCard>
           <InfoCard>
             <img src={RedTrophy} />
             <span style={{ fontSize: "20px", marginTop: "10px" }}>
-              CLAIM YOUR TROPHY
+              CLIMB THE LEADERBOARD
             </span>
             <ShortDivider />
             <InfoCardText>
-              Vestibulum ante ipsum primis in faucibus orci luctus et ultrices
-              posuere.Sed aliquam, nisi quis porttitor congue, elit erat euismod
-              orci, ac placerat dolor lectus quis orci.
+              Check out our real-time standings for each tournament, as well as
+              our season-long standings, to see where you stack up against the
+              competition.
             </InfoCardText>
           </InfoCard>
         </InnerInfoContainer>
