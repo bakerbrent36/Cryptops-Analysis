@@ -159,9 +159,8 @@ const Register = () => {
                 </select>
                 <Input required name="email" placeholder="Email Address" />
               </InputRow>
-              <span>Golfer's Address</span>
               <InputRow>
-                <Input required name="street_1" placeholder="Street" />
+                <Input required name="street_1" placeholder="Street Address" />
               </InputRow>
               <InputRow>
                 <Input required name="city" placeholder="City" />

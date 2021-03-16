@@ -125,7 +125,7 @@ const Menu = styled.div`
   top: 0;
   left: 0;
   z-index: 500;
-  width: 100%;
+  width: 100vw;
   height: ${({ show }) => (show ? "100vh" : "0")};
   background-color: #162e3d;
   color: #f3e9d5;
