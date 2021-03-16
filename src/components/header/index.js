@@ -140,6 +140,7 @@ const MenuLink = styled(Link)`
   text-decoration: none;
   color: #f3e9d5;
   text-transform: uppercase;
+  margin-top: 5px;
 `;
 
 const HamburgerContainer = styled.div`
@@ -258,7 +259,14 @@ const Header = () => {
           </SecondaryNavBar>
         )}
       <Menu show={openMenu}>
-        <div style={{ marginLeft: "50px", marginTop: "50px" }}>
+        <div
+          style={{
+            marginLeft: "50px",
+            marginTop: "50px",
+            display: "flex",
+            flexDirection: "column",
+          }}
+        >
           <MenuLink onClick={() => setOpenMenu(false)} to="/results">
             Results
           </MenuLink>
