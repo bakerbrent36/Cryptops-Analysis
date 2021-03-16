@@ -54,7 +54,7 @@ const NavBar = styled.div`
   color: #bf1e2e;
   height: 149px;
   display: flex;
-  justify-content: flex-end;
+  justify-content: center;
   align-items: center;
   position: absolute;
   top: 0;
@@ -125,12 +125,13 @@ const Menu = styled.div`
   top: 0;
   left: 0;
   z-index: 500;
-  width: ${({ show }) => (show ? "100%" : "0")};
+  width: 100%;
   height: ${({ show }) => (show ? "100vh" : "0")};
   background-color: #162e3d;
   color: #f3e9d5;
-  transition: opacity 0.5s;
+  transition: visibility 0s, opacity 0.5s, height 0.5s;
   opacity: ${({ show }) => (show ? "1" : "0")};
+  visibility: ${({ show }) => (show ? "visible" : "hidden")};
   padding: 50px;
   display: flex;
   flex-direction: column;
@@ -140,6 +141,15 @@ const MenuLink = styled(Link)`
   text-decoration: none;
   color: #f3e9d5;
   text-transform: uppercase;
+`;
+
+const HamburgerContainer = styled.div`
+  max-width: 1100px;
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  height: 100%;
 `;
 
 const Header = () => {
@@ -163,20 +173,22 @@ const Header = () => {
       location.pathname !== "/learn-more" &&
       user ? (
         <NavBar>
-          <button
-            style={{ position: "absolute", zIndex: 501 }}
-            onClick={() => setOpenMenu((oldState) => !oldState)}
-            className={
-              openMenu
-                ? "is-active hamburger hamburger--collapse"
-                : "hamburger hamburger--collapse"
-            }
-            type="button"
-          >
-            <span className="hamburger-box">
-              <span className="hamburger-inner"></span>
-            </span>
-          </button>
+          <HamburgerContainer>
+            <button
+              style={{ position: "absolute", zIndex: 501 }}
+              onClick={() => setOpenMenu((oldState) => !oldState)}
+              className={
+                openMenu
+                  ? "is-active hamburger hamburger--collapse"
+                  : "hamburger hamburger--collapse"
+              }
+              type="button"
+            >
+              <span className="hamburger-box">
+                <span className="hamburger-inner"></span>
+              </span>
+            </button>
+          </HamburgerContainer>
         </NavBar>
       ) : (
         <NavBar style={{ justifyContent: "center" }}>
@@ -247,9 +259,15 @@ const Header = () => {
           </SecondaryNavBar>
         )}
       <Menu show={openMenu}>
-        <MenuLink to="/results">Results</MenuLink>
-        <MenuLink to="/schedule">Schedule</MenuLink>
-        <MenuLink to="/roster">Player Roster</MenuLink>
+        <MenuLink onClick={() => setOpenMenu(false)} to="/results">
+          Results
+        </MenuLink>
+        <MenuLink onClick={() => setOpenMenu(false)} to="/schedule">
+          Schedule
+        </MenuLink>
+        <MenuLink onClick={() => setOpenMenu(false)} to="/roster">
+          Player Roster
+        </MenuLink>
       </Menu>
     </HeaderContainer>
   );

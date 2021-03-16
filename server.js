@@ -1,9 +1,10 @@
 const express = require("express");
 const cookieParser = require("cookie-parser");
-const https = require("https");
 const request = require("request");
 const path = require("path");
 const Cookie = require("request-cookies").Cookie;
+const nodemailer = require("nodemailer");
+require("dotenv").config();
 
 const app = express();
 
@@ -11,6 +12,42 @@ app.use(cookieParser());
 app.use(express.json());
 
 app.use(express.static(path.join(__dirname, "build")));
+
+app.post("/get-ghin", (req, res, next) => {
+  request(
+    {
+      url: `${process.env.GHIN_API_LOGIN_URL}`,
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        user: {
+          email: process.env.GHIN_API_USER,
+          password: process.env.GHIN_API_PASS,
+          remember_me: "true",
+        },
+      }),
+    },
+    (error, response, body) => {
+      let { token } = JSON.parse(body);
+
+      console.log(req.body);
+
+      console.log(token);
+      // request(
+      //   {
+      //     url: `${process.env.GHIN_API_REGISTER_URL}`,
+      //     method: "GET",
+      //     headers: {
+      //       Authorization: `Bearer ${token}`,
+      //     },
+      //   },
+      //   (error, response, body) => {
+      //     res.send(body);
+      //   }
+      // );
+    }
+  );
+});
 
 app.get("/get-foursomes/:id", (req, res, next) => {
   console.log(req.params);
@@ -40,10 +77,8 @@ app.post("/submit-score", (req, res, next) => {
       },
       body: JSON.stringify({
         id: 1,
-        player_ids: [7195608657449498000],
-        scores: [
-          "9,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1",
-        ],
+        player_ids: [7227377422402893000],
+        scores: ["1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18"],
       }),
     },
     (error, response, body) => {
