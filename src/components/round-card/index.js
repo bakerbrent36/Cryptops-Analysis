@@ -33,8 +33,7 @@ const CardBottomContainer = styled.div`
 `;
 
 const RoundPlayLink = styled(Link)`
-  width: 100px;
-  height: 68px;
+  padding: 15px 25px;
   background-color: #be1e2d;
   text-transform: uppercase;
   color: #f3e9d5;

@@ -26,8 +26,7 @@ const InnerContainer = styled.div`
   width: 100%;
 
   button {
-    width: 223px;
-    height: 68px;
+    padding: 15px 25px;
     background-color: #be1e2d;
     border: none;
     margin: 5px;
