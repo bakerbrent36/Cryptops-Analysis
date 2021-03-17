@@ -7,6 +7,7 @@ import { useWidth } from "../../context/ScreenWidthContext";
 import PlaceHolder from "../../assets/images/course-placeholder.jpg";
 import RoundCard from "../../components/round-card";
 import ScrewHead from "../../assets/images/WHT-screw.png";
+import courseData from "../../courseInfo.json";
 
 const ScheduleContainer = styled.div`
   display: flex;
@@ -90,6 +91,16 @@ const Schedule = () => {
 
   const mobileMonthArr = ["mar", "apr", "may", "jun", "jul", "aug"];
 
+  const roundInfo =
+    (data &&
+      data.map(({ round }, i) => ({
+        ...round,
+        course_data: courseData[i],
+      }))) ||
+    [];
+
+  console.log(roundInfo);
+
   return (
     <ScheduleContainer>
       <MonthPicker>
@@ -129,21 +140,21 @@ const Schedule = () => {
       </MonthPicker>
       <LowerContainer>
         <CardWrapper>
-          {data &&
-            data
-              .filter(({ round }) =>
+          {roundInfo &&
+            roundInfo
+              .filter((round) =>
                 currentMonth
                   ? format(parseISO(round.date), "MMM").toLocaleLowerCase() ==
                     currentMonth
                   : round
               )
-              .map(({ round }) => {
+              .map((round) => {
                 return (
                   <RoundCard
-                    backgroundImage={PlaceHolder}
-                    date={round.date}
-                    name={round.name}
-                    link={`/round/${round.id}`}
+                    backgroundImage={round?.course_data?.images[0]}
+                    date={round?.date}
+                    name={round?.name}
+                    link={`/round/${round?.id}`}
                   />
                 );
               })}

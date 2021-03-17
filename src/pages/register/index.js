@@ -134,7 +134,6 @@ const Register = () => {
       .then((data) => setGHIN(data));
   };
 
-  console.log(GHIN);
   return (
     <RegisterContainer>
       {GHIN?.golfers?.id ? (

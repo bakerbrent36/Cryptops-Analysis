@@ -4,7 +4,12 @@ const request = require("request");
 const path = require("path");
 const Cookie = require("request-cookies").Cookie;
 const nodemailer = require("nodemailer");
+const { GoogleSpreadsheet } = require("google-spreadsheet");
 require("dotenv").config();
+
+const doc = new GoogleSpreadsheet(
+  "1OAiKSmyIB9ZsvpgtFSDvaMJIlDQeRtyVzTX-7Naurtg"
+);
 
 const app = express();
 
@@ -12,6 +17,24 @@ app.use(cookieParser());
 app.use(express.json());
 
 app.use(express.static(path.join(__dirname, "build")));
+
+app.post("/update-sheet", async (req, res, next) => {
+  const { name, email, tee_time } = req.body;
+  await doc.useServiceAccountAuth({
+    client_email: process.env.GOOGLE_SERVICE_ACCOUNT_EMAIL,
+    private_key: process.env.GOOGLE_PRIVATE_KEY.replace(/\\n/g, "\n"),
+  });
+
+  await doc.loadInfo();
+  const sheet = doc.sheetsByIndex[0];
+  sheet
+    .addRow({
+      Name: name,
+      Email: email,
+      "Tee Time": tee_time,
+    })
+    .then(() => res.send("success"));
+});
 
 app.post("/get-ghin", (req, res, next) => {
   request(
@@ -30,8 +53,6 @@ app.post("/get-ghin", (req, res, next) => {
     (error, response, body) => {
       let { token } = JSON.parse(body);
 
-      console.log(token);
-
       let {
         first_name,
         last_name,
@@ -43,7 +64,6 @@ app.post("/get-ghin", (req, res, next) => {
         city,
         zip,
       } = req.body;
-      console.log(first_name);
 
       if (token) {
         request(
