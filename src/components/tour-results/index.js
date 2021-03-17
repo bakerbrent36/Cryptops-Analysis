@@ -170,7 +170,7 @@ const TourResults = () => {
             </thead>
             <tbody>
               {tourResults &&
-                tourResults.event.scopes[0].aggregates.map((line) => (
+                tourResults?.event?.scopes[0]?.aggregates.map((line) => (
                   <tr>
                     <td>{line.position}</td>
                     <td>{line.name}</td>
