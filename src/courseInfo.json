@@ -1,5 +1,16 @@
 [
   {
+    "course_name": "Test Round",
+    "main_image": "link-to-image",
+    "images": [
+      "http://www.myphillygolf.com/uploads/bausch/RavensClaw/mediafiles/l8.jpg",
+      "http://www.myphillygolf.com/uploads/bausch/RavensClaw/mediafiles/l9.jpg",
+      "http://www.myphillygolf.com/uploads/bausch/RavensClaw/mediafiles/l9.jpg"
+    ],
+    "description": "blah blah blah blah blah blah blah blah blah blah blah blah blah blah",
+    "tee_time_link": "https://ravensclawgc.teesnap.net/"
+  },
+  {
     "course_name": "Raven's Claw",
     "main_image": "link-to-image",
     "images": [
@@ -7,7 +18,9 @@
       "http://www.myphillygolf.com/uploads/bausch/RavensClaw/mediafiles/l9.jpg",
       "http://www.myphillygolf.com/uploads/bausch/RavensClaw/mediafiles/l9.jpg"
     ],
-    "description": "blah blah blah blah blah blah blah blah blah blah blah blah blah blah"
+    "description": "blah blah blah blah blah blah blah blah blah blah blah blah blah blah",
+    "tee_time_link": "https://ravensclawgc.teesnap.net/",
+    "gg_course_id": "7195613714035291331"
   },
   {
     "course_name": "Turtle Creek",
@@ -17,7 +30,9 @@
       "http://www.myphillygolf.com/uploads/bausch/RavensClaw/mediafiles/l9.jpg",
       "http://www.myphillygolf.com/uploads/bausch/RavensClaw/mediafiles/l9.jpg"
     ],
-    "description": "blah blah blah blah blah blah blah blah blah blah blah blah blah blah"
+    "description": "blah blah blah blah blah blah blah blah blah blah blah blah blah blah",
+    "tee_time_link": "https://www.turtlecreekgolf.com/tee-times",
+    "gg_course_id": "7195632995552769220"
   },
   {
     "course_name": "Turtle Creek",

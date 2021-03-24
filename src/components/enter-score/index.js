@@ -185,7 +185,7 @@ const EnterScore = ({ roundId }) => {
               ))}
               <ScoreCardItem>
                 <ScoreCardHeader>Total</ScoreCardHeader>
-                <ScoreCardCenter>numbers</ScoreCardCenter>
+                <ScoreCardCenter>15</ScoreCardCenter>
                 <ScoreCardFooter></ScoreCardFooter>
               </ScoreCardItem>
             </ScoreCardRow>

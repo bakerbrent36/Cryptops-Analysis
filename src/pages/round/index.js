@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useQuery } from "react-query";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import styled from "@emotion/styled";
 import { format, parseISO, sub } from "date-fns";
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
@@ -25,6 +25,7 @@ const InnerContainer = styled.div`
   max-width: 1100px;
   width: 100%;
 
+  a,
   button {
     padding: 15px 25px;
     background-color: #be1e2d;
@@ -211,6 +212,32 @@ const ShortDivider = styled.hr`
   margin-right: 5px;
 `;
 
+const CourseInfoContainer = styled.div`
+  table {
+    background-color: #ffffff;
+    border-collapse: collapse;
+    width: 100%;
+    text-align: center;
+    color: #162e3d;
+  }
+
+  td {
+    border: 1px solid black;
+    font-family: BebasNeue;
+    font-size: 22px;
+    padding: 5px 0px;
+  }
+
+  th {
+    border: 1px solid black;
+    font-family: BebasNeue;
+  }
+`;
+
+const TableContainer = styled.div`
+  overflow-x: auto;
+`;
+
 const Round = () => {
   const [openScore, setOpenScore] = useState(false);
   const [showModal, setShowModal] = useState(false);
@@ -234,19 +261,18 @@ const Round = () => {
     ).then((res) => res.json())
   );
 
-  const courseId =
-    teeSheets.data &&
-    teeSheets?.data[0]?.pairing_group?.players[0]?.tee?.course_id;
-
-  const currentCourse =
-    courseData.data &&
-    courseData.data?.courses.filter((course) => course.id === courseId);
-
   const currentRound =
     (data && data.filter(({ round }) => round.id === roundId)) || [];
 
   const currentIndex =
     (data && data.findIndex(({ round }) => round.id === roundId)) || 0;
+
+  const currentCourse =
+    (courseInfo[currentIndex]?.gg_course_id &&
+      courseData.data?.courses?.filter(
+        (course) => course.id === courseInfo[currentIndex].gg_course_id
+      )) ||
+    [];
 
   const submitTeeTime = (e) => {
     e.preventDefault();
@@ -267,6 +293,8 @@ const Round = () => {
       setShowModal(false);
     });
   };
+
+  console.log(currentCourse);
 
   return (
     <RoundContainer>
@@ -303,6 +331,120 @@ const Round = () => {
             )}{" "}
             - {format(parseISO(currentRound[0].round.date), "d")}
           </RoundDate>
+          <CourseInfoContainer>
+            <HeaderText>Course Info</HeaderText>
+
+            <span>FRONT 9</span>
+            <TableContainer>
+              <table style={{ minWidth: "800px" }}>
+                <tr style={{ backgroundColor: "#f3e9d5" }}>
+                  <td>HOLE</td>
+                  <td>1</td>
+                  <td>2</td>
+                  <td>3</td>
+                  <td>4</td>
+                  <td>5</td>
+                  <td>6</td>
+                  <td>7</td>
+                  <td>8</td>
+                  <td>9</td>
+                </tr>
+                {currentCourse &&
+                  currentCourse[0]?.tees.map((tee) => (
+                    <tr>
+                      <td>{tee.name}</td>
+                      {tee.hole_data.yardage.slice(0, 9).map((hole) => (
+                        <td style={{ color: "#BE1E2D", fontSize: "32px" }}>
+                          {hole}
+                        </td>
+                      ))}
+                    </tr>
+                  ))}
+                <tr style={{ backgroundColor: "#f3e9d5" }}>
+                  <td style={{ color: "#BE1E2D" }}>PAR</td>
+                  {currentCourse[0]?.tees[0].hole_data.par
+                    .slice(0, 9)
+                    .map((hole) => (
+                      <td>{hole}</td>
+                    ))}
+                </tr>
+                <tr style={{ backgroundColor: "#f3e9d5" }}>
+                  <td style={{ color: "#BE1E2D" }}>HANDICAP</td>
+                  {currentCourse[0]?.tees[0].hole_data.handicap
+                    .slice(0, 9)
+                    .map((hole) => (
+                      <td>{hole}</td>
+                    ))}
+                </tr>
+              </table>
+            </TableContainer>
+            <span>BACK 9</span>
+            <TableContainer>
+              <table style={{ minWidth: "800px" }}>
+                <tr style={{ backgroundColor: "#f3e9d5" }}>
+                  <td>HOLE</td>
+                  <td>10</td>
+                  <td>11</td>
+                  <td>12</td>
+                  <td>13</td>
+                  <td>14</td>
+                  <td>15</td>
+                  <td>16</td>
+                  <td>17</td>
+                  <td>18</td>
+                </tr>
+                {currentCourse &&
+                  currentCourse[0]?.tees.map((tee) => (
+                    <tr>
+                      <td>{tee.name}</td>
+                      {tee.hole_data.yardage.slice(9, 18).map((hole) => (
+                        <td style={{ color: "#BE1E2D", fontSize: "32px" }}>
+                          {hole}
+                        </td>
+                      ))}
+                    </tr>
+                  ))}
+                <tr style={{ backgroundColor: "#f3e9d5" }}>
+                  <td style={{ color: "#BE1E2D" }}>PAR</td>
+                  {currentCourse[0]?.tees[0].hole_data.par
+                    .slice(9, 18)
+                    .map((hole) => (
+                      <td>{hole}</td>
+                    ))}
+                </tr>
+                <tr style={{ backgroundColor: "#f3e9d5" }}>
+                  <td style={{ color: "#BE1E2D" }}>HANDICAP</td>
+                  {currentCourse[0]?.tees[0].hole_data.handicap
+                    .slice(9, 18)
+                    .map((hole) => (
+                      <td>{hole}</td>
+                    ))}
+                </tr>
+              </table>
+            </TableContainer>
+            <span>Rating & Slope</span>
+            <TableContainer>
+              <table style={{ width: "50%" }}>
+                <tr style={{ backgroundColor: "#f3e9d5" }}>
+                  <td></td>
+                  <td>RATING</td>
+                  <td>SLOPE</td>
+                </tr>
+                {currentCourse &&
+                  currentCourse[0]?.tees.map((tee) => (
+                    <tr>
+                      <td>{tee.name}</td>
+                      <td style={{ color: "#BE1E2D", fontSize: "32px" }}>
+                        {tee.slope_and_rating.all18.rating}
+                      </td>
+                      <td style={{ color: "#BE1E2D", fontSize: "32px" }}>
+                        {tee.slope_and_rating.all18.slope}
+                      </td>
+                    </tr>
+                  ))}
+              </table>
+            </TableContainer>
+          </CourseInfoContainer>
           {data && data[currentIndex + 1] && (
             <>
               <HeaderText>Next Tournament</HeaderText>
@@ -343,7 +485,12 @@ const Round = () => {
                     Instructions on registering. schedule tee time, return here
                     and enter your info.
                   </ModalText>
-                  <button>set tee time</button>
+                  <a
+                    target="_blank"
+                    href={courseInfo[currentIndex].tee_time_link}
+                  >
+                    set tee time
+                  </a>
                   <ShortDivider />
                   <InputRow>
                     <Input required name="name" placeholder="Name" />
