@@ -1,7 +1,9 @@
 import styled from "@emotion/styled";
+import { useQuery } from "react-query";
 
 import TourResults from "../../components/tour-results";
 import NextTour from "../../components/next-tour";
+import WhiteCal from "../../assets/icons/WHT_icon_Cal-white.svg";
 
 const MainContainer = styled.div`
   display: flex;
@@ -67,7 +69,42 @@ const Ribbon = styled.div`
   width: 150px;
 `;
 
+const CalIconBox = styled.div`
+  background-color: #162e3d;
+  height: 68px;
+  width: 73px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  img {
+    height: 30px;
+    width: 30px;
+  }
+`;
+
+const YourTournamentsContainer = styled.div`
+  display: flex;
+  justify-content: center;
+
+  table {
+    width: 100%;
+    max-width: 1100px;
+  }
+`;
+
 const Main = () => {
+  const { isLoading, error, data } = useQuery("eventData", () =>
+    fetch(
+      `${process.env.REACT_APP_API_URL}${process.env.REACT_APP_API_KEY}/events/${process.env.REACT_APP_EVENT_ID}/rounds`
+    ).then((res) => res.json())
+  );
+
+  const completedRounds =
+    data && data.filter(({ round }) => round.status === "completed");
+
+  console.log(completedRounds);
+
   return (
     <MainContainer>
       <YourResults>Your Results</YourResults>
@@ -81,6 +118,26 @@ const Main = () => {
           <Points>187</Points>
         </PointsContainer>
       </ScoreContainer>
+      <YourTournamentsContainer>
+        <table>
+          <tr>
+            <td>
+              <CalIconBox>
+                <img src={WhiteCal} />
+              </CalIconBox>
+            </td>
+            <td>your tournaments</td>
+            <td>score</td>
+            <td>place</td>
+          </tr>
+          <tr>
+            <td>date</td>
+            <td>name</td>
+            <td>score</td>
+            <td>2nd</td>
+          </tr>
+        </table>
+      </YourTournamentsContainer>
       <NextTour />
       <LowerContainer>
         <TourResults />
