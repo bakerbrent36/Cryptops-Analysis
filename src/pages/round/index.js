@@ -225,7 +225,7 @@ const CourseInfoContainer = styled.div`
     border: 1px solid black;
     font-family: BebasNeue;
     font-size: 22px;
-    padding: 5px 0px;
+    padding: 5px;
   }
 
   th {
@@ -235,7 +235,26 @@ const CourseInfoContainer = styled.div`
 `;
 
 const TableContainer = styled.div`
-  overflow-x: auto;
+  display: flex;
+
+  td {
+    white-space: nowrap;
+  }
+
+  /* table {
+    margin-left: 8em;
+  }
+
+  td:first-child {
+    position: absolute;
+    width: 8em;
+    margin-left: -8em;
+    background: #ccc;
+  }
+
+  td {
+    white-space: nowrap;
+  } */
 `;
 
 const Round = () => {
@@ -336,91 +355,121 @@ const Round = () => {
 
             <span>FRONT 9</span>
             <TableContainer>
-              <table style={{ minWidth: "800px" }}>
-                <tr style={{ backgroundColor: "#f3e9d5" }}>
+              <table style={{ width: "auto" }}>
+                <tr style={{ backgroundColor: "#f3e9d5", height: "38px" }}>
                   <td>HOLE</td>
-                  <td>1</td>
-                  <td>2</td>
-                  <td>3</td>
-                  <td>4</td>
-                  <td>5</td>
-                  <td>6</td>
-                  <td>7</td>
-                  <td>8</td>
-                  <td>9</td>
                 </tr>
                 {currentCourse &&
                   currentCourse[0]?.tees.map((tee) => (
-                    <tr>
+                    <tr style={{ height: "50px" }}>
                       <td>{tee.name}</td>
-                      {tee.hole_data.yardage.slice(0, 9).map((hole) => (
-                        <td style={{ color: "#BE1E2D", fontSize: "32px" }}>
-                          {hole}
-                        </td>
-                      ))}
                     </tr>
                   ))}
-                <tr style={{ backgroundColor: "#f3e9d5" }}>
+                <tr style={{ backgroundColor: "#f3e9d5", height: "38px" }}>
                   <td style={{ color: "#BE1E2D" }}>PAR</td>
-                  {currentCourse[0]?.tees[0].hole_data.par
-                    .slice(0, 9)
-                    .map((hole) => (
-                      <td>{hole}</td>
-                    ))}
                 </tr>
-                <tr style={{ backgroundColor: "#f3e9d5" }}>
+                <tr style={{ backgroundColor: "#f3e9d5", height: "38px" }}>
                   <td style={{ color: "#BE1E2D" }}>HANDICAP</td>
-                  {currentCourse[0]?.tees[0].hole_data.handicap
-                    .slice(0, 9)
-                    .map((hole) => (
-                      <td>{hole}</td>
-                    ))}
                 </tr>
               </table>
+              <div style={{ overflowX: "auto", width: "100%" }}>
+                <table style={{ minWidth: "800px" }}>
+                  <tr style={{ backgroundColor: "#f3e9d5" }}>
+                    <td>1</td>
+                    <td>2</td>
+                    <td>3</td>
+                    <td>4</td>
+                    <td>5</td>
+                    <td>6</td>
+                    <td>7</td>
+                    <td>8</td>
+                    <td>9</td>
+                  </tr>
+                  {currentCourse &&
+                    currentCourse[0]?.tees.map((tee) => (
+                      <tr>
+                        {tee.hole_data.yardage.slice(0, 9).map((hole) => (
+                          <td style={{ color: "#BE1E2D", fontSize: "32px" }}>
+                            {hole}
+                          </td>
+                        ))}
+                      </tr>
+                    ))}
+                  <tr style={{ backgroundColor: "#f3e9d5" }}>
+                    {currentCourse[0]?.tees[0].hole_data.par
+                      .slice(0, 9)
+                      .map((hole) => (
+                        <td>{hole}</td>
+                      ))}
+                  </tr>
+                  <tr style={{ backgroundColor: "#f3e9d5" }}>
+                    {currentCourse[0]?.tees[0].hole_data.handicap
+                      .slice(0, 9)
+                      .map((hole) => (
+                        <td>{hole}</td>
+                      ))}
+                  </tr>
+                </table>
+              </div>
             </TableContainer>
             <span>BACK 9</span>
             <TableContainer>
-              <table style={{ minWidth: "800px" }}>
-                <tr style={{ backgroundColor: "#f3e9d5" }}>
+              <table style={{ width: "auto" }}>
+                <tr style={{ backgroundColor: "#f3e9d5", height: "38px" }}>
                   <td>HOLE</td>
-                  <td>10</td>
-                  <td>11</td>
-                  <td>12</td>
-                  <td>13</td>
-                  <td>14</td>
-                  <td>15</td>
-                  <td>16</td>
-                  <td>17</td>
-                  <td>18</td>
                 </tr>
                 {currentCourse &&
                   currentCourse[0]?.tees.map((tee) => (
-                    <tr>
+                    <tr style={{ height: "50px" }}>
                       <td>{tee.name}</td>
-                      {tee.hole_data.yardage.slice(9, 18).map((hole) => (
-                        <td style={{ color: "#BE1E2D", fontSize: "32px" }}>
-                          {hole}
-                        </td>
-                      ))}
                     </tr>
                   ))}
-                <tr style={{ backgroundColor: "#f3e9d5" }}>
+                <tr style={{ backgroundColor: "#f3e9d5", height: "38px" }}>
                   <td style={{ color: "#BE1E2D" }}>PAR</td>
-                  {currentCourse[0]?.tees[0].hole_data.par
-                    .slice(9, 18)
-                    .map((hole) => (
-                      <td>{hole}</td>
-                    ))}
                 </tr>
-                <tr style={{ backgroundColor: "#f3e9d5" }}>
+                <tr style={{ backgroundColor: "#f3e9d5", height: "38px" }}>
                   <td style={{ color: "#BE1E2D" }}>HANDICAP</td>
-                  {currentCourse[0]?.tees[0].hole_data.handicap
-                    .slice(9, 18)
-                    .map((hole) => (
-                      <td>{hole}</td>
-                    ))}
                 </tr>
               </table>
+              <div style={{ overflowX: "auto", width: "100%" }}>
+                <table style={{ minWidth: "800px" }}>
+                  <tr style={{ backgroundColor: "#f3e9d5" }}>
+                    <td>10</td>
+                    <td>11</td>
+                    <td>12</td>
+                    <td>13</td>
+                    <td>14</td>
+                    <td>15</td>
+                    <td>16</td>
+                    <td>17</td>
+                    <td>18</td>
+                  </tr>
+                  {currentCourse &&
+                    currentCourse[0]?.tees.map((tee) => (
+                      <tr>
+                        {tee.hole_data.yardage.slice(9, 18).map((hole) => (
+                          <td style={{ color: "#BE1E2D", fontSize: "32px" }}>
+                            {hole}
+                          </td>
+                        ))}
+                      </tr>
+                    ))}
+                  <tr style={{ backgroundColor: "#f3e9d5" }}>
+                    {currentCourse[0]?.tees[0].hole_data.par
+                      .slice(9, 18)
+                      .map((hole) => (
+                        <td>{hole}</td>
+                      ))}
+                  </tr>
+                  <tr style={{ backgroundColor: "#f3e9d5" }}>
+                    {currentCourse[0]?.tees[0].hole_data.handicap
+                      .slice(9, 18)
+                      .map((hole) => (
+                        <td>{hole}</td>
+                      ))}
+                  </tr>
+                </table>
+              </div>
             </TableContainer>
             <span>Rating & Slope</span>
             <TableContainer>

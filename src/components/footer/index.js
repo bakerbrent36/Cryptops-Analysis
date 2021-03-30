@@ -10,7 +10,7 @@ import GolferIcon from "../../assets/icons/WHT_icon_Golfer.svg";
 import ShirtIcon from "../../assets/icons/WHT_icon_Shirt.svg";
 import TrophyIcon from "../../assets/icons/WHT_icon_Trophy.svg";
 import CalIcon from "../../assets/icons/WHT_icon_Cal.svg";
-import DriverIcon from "../../assets/icons/WHT_wood_blue_bg.png";
+import DriverIcon from "../../assets/icons/WHT_club_new.png";
 import TrophyBlue from "../../assets/icons/WHT_icon_Trophy-blue.svg";
 import CalBlue from "../../assets/icons/WHT_icon_Cal-blue.svg";
 import GolferBlue from "../../assets/icons/WHT_icon_Golfer-blue.svg";

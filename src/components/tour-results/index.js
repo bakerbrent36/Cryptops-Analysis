@@ -95,20 +95,35 @@ const TourResults = () => {
     if (currentRound) {
       fetch(
         `${process.env.REACT_APP_API_URL}${process.env.REACT_APP_API_KEY}/events/${process.env.REACT_APP_EVENT_ID}/rounds/${currentRound}/tournaments`
-      ).then((res) =>
-        res.json().then((data) => {
+      )
+        .then((res) => res.json())
+        .then((data) => {
           setRoundTours(data);
           if (data[0]) {
             setCurrentTour(data[0].event.id);
+          } else {
+            setCurrentTour();
+            setTourResults();
           }
-        })
-      );
+        });
     }
 
     if (currentTour) {
       fetch(
         `${process.env.REACT_APP_API_URL}${process.env.REACT_APP_API_KEY}/events/${process.env.REACT_APP_EVENT_ID}/rounds/${currentRound}/tournaments/${currentTour}.json`
-      ).then((res) => res.json().then((data) => setTourResults(data)));
+      )
+        .then((res) => {
+          return res.json();
+        })
+        .then((data) => {
+          console.log("WTF", data);
+          if (data.event) {
+            setTourResults(data);
+          } else {
+            console.log("NO TOURNAMENT DATA");
+            setTourResults();
+          }
+        });
     }
   }, [currentRound, currentTour]);
 
@@ -158,27 +173,32 @@ const TourResults = () => {
           )}
         </DropdownContainer>
         <Ribbon>Weekly Results</Ribbon>
-        <TableContainer>
-          <Table>
-            <thead>
-              <tr>
-                <th>position</th>
-                <th>name</th>
 
-                <th>score</th>
-              </tr>
-            </thead>
-            <tbody>
-              {tourResults &&
-                tourResults?.event?.scopes[0]?.aggregates.map((line) => (
-                  <tr>
-                    <td>{line.position}</td>
-                    <td>{line.name}</td>
-                    <td>{line.score}</td>
-                  </tr>
-                ))}
-            </tbody>
-          </Table>
+        <TableContainer>
+          {tourResults && roundTours ? (
+            <Table>
+              <thead>
+                <tr>
+                  <th>position</th>
+                  <th>name</th>
+
+                  <th>score</th>
+                </tr>
+              </thead>
+              <tbody>
+                {tourResults &&
+                  tourResults?.event?.scopes[0]?.aggregates.map((line) => (
+                    <tr>
+                      <td>{line.position}</td>
+                      <td>{line.name}</td>
+                      <td>{line.score}</td>
+                    </tr>
+                  ))}
+              </tbody>
+            </Table>
+          ) : (
+            <span>There are no results posted for this tournament</span>
+          )}
         </TableContainer>
       </Card>
     </CardWrapper>
