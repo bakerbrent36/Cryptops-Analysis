@@ -213,6 +213,14 @@ const ShortDivider = styled.hr`
 `;
 
 const CourseInfoContainer = styled.div`
+  padding-left: 15px;
+
+  .table-label {
+    color: #f3e9d5;
+    margin-bottom: 10px;
+    margin-top: 15px;
+  }
+
   table {
     background-color: #ffffff;
     border-collapse: collapse;
@@ -353,7 +361,7 @@ const Round = () => {
           <CourseInfoContainer>
             <HeaderText>Course Info</HeaderText>
 
-            <span>FRONT 9</span>
+            <div className="table-label">FRONT 9</div>
             <TableContainer>
               <table style={{ width: "auto" }}>
                 <tr style={{ backgroundColor: "#f3e9d5", height: "38px" }}>
@@ -361,8 +369,12 @@ const Round = () => {
                 </tr>
                 {currentCourse &&
                   currentCourse[0]?.tees.map((tee) => (
-                    <tr style={{ height: "50px" }}>
-                      <td>{tee.name}</td>
+                    <tr style={{ height: "50px", backgroundColor: tee.color }}>
+                      <td
+                        style={{ color: tee.color !== "" ? "#fff" : "#162E3D" }}
+                      >
+                        {tee.name}
+                      </td>
                     </tr>
                   ))}
                 <tr style={{ backgroundColor: "#f3e9d5", height: "38px" }}>
@@ -386,8 +398,10 @@ const Round = () => {
                     <td>9</td>
                   </tr>
                   {currentCourse &&
-                    currentCourse[0]?.tees.map((tee) => (
-                      <tr>
+                    currentCourse[0]?.tees.map((tee, i) => (
+                      <tr
+                        style={{ backgroundColor: i % 2 ? "#D6D6D6" : "#fff" }}
+                      >
                         {tee.hole_data.yardage.slice(0, 9).map((hole) => (
                           <td style={{ color: "#BE1E2D", fontSize: "32px" }}>
                             {hole}
@@ -412,7 +426,7 @@ const Round = () => {
                 </table>
               </div>
             </TableContainer>
-            <span>BACK 9</span>
+            <div className="table-label">BACK 9</div>
             <TableContainer>
               <table style={{ width: "auto" }}>
                 <tr style={{ backgroundColor: "#f3e9d5", height: "38px" }}>
@@ -420,8 +434,12 @@ const Round = () => {
                 </tr>
                 {currentCourse &&
                   currentCourse[0]?.tees.map((tee) => (
-                    <tr style={{ height: "50px" }}>
-                      <td>{tee.name}</td>
+                    <tr style={{ height: "50px", backgroundColor: tee.color }}>
+                      <td
+                        style={{ color: tee.color !== "" ? "#fff" : "#162E3D" }}
+                      >
+                        {tee.name}
+                      </td>
                     </tr>
                   ))}
                 <tr style={{ backgroundColor: "#f3e9d5", height: "38px" }}>
@@ -445,10 +463,17 @@ const Round = () => {
                     <td>18</td>
                   </tr>
                   {currentCourse &&
-                    currentCourse[0]?.tees.map((tee) => (
-                      <tr>
+                    currentCourse[0]?.tees.map((tee, i) => (
+                      <tr
+                        style={{ backgroundColor: i % 2 ? "#D6D6D6" : "#fff" }}
+                      >
                         {tee.hole_data.yardage.slice(9, 18).map((hole) => (
-                          <td style={{ color: "#BE1E2D", fontSize: "32px" }}>
+                          <td
+                            style={{
+                              color: "#BE1E2D",
+                              fontSize: "32px",
+                            }}
+                          >
                             {hole}
                           </td>
                         ))}
@@ -471,7 +496,7 @@ const Round = () => {
                 </table>
               </div>
             </TableContainer>
-            <span>Rating & Slope</span>
+            <div className="table-label">RATING & SLOPE</div>
             <TableContainer>
               <table style={{ width: "50%" }}>
                 <tr style={{ backgroundColor: "#f3e9d5" }}>
