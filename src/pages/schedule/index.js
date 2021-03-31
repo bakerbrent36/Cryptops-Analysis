@@ -103,41 +103,26 @@ const Schedule = () => {
 
   return (
     <ScheduleContainer>
-      <MonthPicker>
-        {screenWidth > 768
-          ? monthArr.map((mon) => (
-              <MonthTab
-                style={{
-                  backgroundColor: currentMonth == mon && "#162E3D",
-                }}
-                onClick={() => setCurrentMonth(mon)}
-              >
-                {eventMonthArray.includes(mon) && (
-                  <img
-                    style={{ marginRight: "5px", paddingBottom: "2px" }}
-                    src={ScrewHead}
-                  />
-                )}
-                {mon}
-              </MonthTab>
-            ))
-          : mobileMonthArr.map((mon) => (
-              <MonthTab
-                style={{
-                  backgroundColor: currentMonth == mon && "#162E3D",
-                }}
-                onClick={() => setCurrentMonth(mon)}
-              >
-                {eventMonthArray.includes(mon) && (
-                  <img
-                    style={{ marginRight: "5px", paddingBottom: "2px" }}
-                    src={ScrewHead}
-                  />
-                )}
-                {mon}
-              </MonthTab>
-            ))}
-      </MonthPicker>
+      <div>
+        <MonthPicker>
+          {monthArr.map((mon) => (
+            <MonthTab
+              style={{
+                backgroundColor: currentMonth == mon && "#162E3D",
+              }}
+              onClick={() => setCurrentMonth(mon)}
+            >
+              {eventMonthArray.includes(mon) && (
+                <img
+                  style={{ marginRight: "5px", paddingBottom: "2px" }}
+                  src={ScrewHead}
+                />
+              )}
+              {mon}
+            </MonthTab>
+          ))}
+        </MonthPicker>
+      </div>
       <LowerContainer>
         <CardWrapper>
           {roundInfo &&
