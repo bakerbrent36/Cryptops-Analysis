@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import styled from "@emotion/styled";
 
 const RegisterContainer = styled.div`
@@ -104,6 +104,9 @@ const SubmitButton = styled.input`
 const Register = () => {
   const [showModal, setShowModal] = useState(false);
   const [GHIN, setGHIN] = useState();
+  const [loading, setLoading] = useState(true);
+
+  const formRef = useRef(null);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -134,6 +137,25 @@ const Register = () => {
       .then((data) => setGHIN(data));
   };
 
+  useEffect(() => {
+    function handleClickOutside(event) {
+      if (
+        showModal &&
+        formRef.current &&
+        !formRef.current.contains(event.target)
+      ) {
+        setShowModal(false);
+      }
+    }
+
+    // Bind the event listener
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      // Unbind the event listener on clean up
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [showModal]);
+
   return (
     <RegisterContainer>
       {GHIN?.golfers?.id ? (
@@ -143,7 +165,7 @@ const Register = () => {
       )}
       {showModal && (
         <FormModal>
-          <FormContainer>
+          <FormContainer ref={formRef}>
             <GHINForm onSubmit={handleSubmit}>
               <span>Golfer Information</span>
               <InputRow>
@@ -229,10 +251,12 @@ const Register = () => {
         </FormModal>
       )}
 
+      {loading && <div>Loading</div>}
       <iframe
         src={`${process.env.REACT_APP_REGISTER_URL}`}
         frameborder="0"
         scroll="none"
+        onLoad={() => setLoading(false)}
       />
     </RegisterContainer>
   );

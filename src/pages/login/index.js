@@ -24,15 +24,23 @@ const Input = styled.input`
   width: 250px;
   height: 50px;
   margin: 5px;
+  font-size: 18px;
 `;
 
 const Submit = styled.button`
-  width: 250px;
-  height: 50px;
-  background-color: #b4b4b4;
-  border: none;
   text-transform: uppercase;
   cursor: pointer;
+  width: 223px;
+  height: 68px;
+  background-color: #be1e2d;
+  border: none;
+  margin: 5px;
+  font-size: 20px;
+  text-decoration: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
 `;
 
 const Login = () => {

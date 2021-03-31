@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useQuery } from "react-query";
 import { useParams, Link } from "react-router-dom";
 import styled from "@emotion/styled";
@@ -269,6 +269,8 @@ const Round = () => {
   const [openScore, setOpenScore] = useState(false);
   const [showModal, setShowModal] = useState(false);
 
+  const formRef = useRef(null);
+
   let { roundId } = useParams();
   const { isLoading, error, data } = useQuery("eventData", () =>
     fetch(
@@ -322,6 +324,25 @@ const Round = () => {
   };
 
   console.log(currentCourse);
+
+  useEffect(() => {
+    function handleClickOutside(event) {
+      if (
+        showModal &&
+        formRef.current &&
+        !formRef.current.contains(event.target)
+      ) {
+        setShowModal(false);
+      }
+    }
+
+    // Bind the event listener
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      // Unbind the event listener on clean up
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [showModal]);
 
   return (
     <RoundContainer>
@@ -543,7 +564,7 @@ const Round = () => {
           )}
           {showModal && (
             <FormModal>
-              <FormContainer>
+              <FormContainer ref={formRef}>
                 <GHINForm onSubmit={submitTeeTime}>
                   <span> {currentRound[0]?.round?.name}</span>
                   <RoundDate>

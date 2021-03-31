@@ -40,6 +40,10 @@ const WelcomeHeader = styled.div`
   color: #162e3d;
   text-align: center;
   padding: 15px;
+
+  @media only screen and (max-width: 768px) {
+    font-size: 35px;
+  }
 `;
 
 const WelcomeBody = styled.div`
@@ -49,52 +53,6 @@ const WelcomeBody = styled.div`
   padding: 15px;
   color: #777777;
 `;
-
-// const NextTourBar = styled.div`
-//   width: 100%;
-//   background-color: #be1e2d;
-//   height: 118px;
-//   display: flex;
-//   justify-content: center;
-//   align-items: center;
-// `;
-
-// const NextTour = styled.div`
-//   max-width: 1090px;
-//   width: 100%;
-//   height: 68px;
-//   display: flex;
-// `;
-
-// const NextTourIcon = styled.div`
-//   background-color: #162e3d;
-//   height: 68px;
-//   width: 73px;
-//   display: flex;
-//   justify-content: center;
-//   align-items: center;
-
-//   img {
-//     height: 30px;
-//     width: 30px;
-//   }
-// `;
-
-// const NextTourText = styled.div`
-//   background-color: #f3e9d5;
-//   color: #be1e2d;
-//   text-transform: uppercase;
-//   display: flex;
-//   justify-content: center;
-//   align-items: center;
-//   padding: 15px;
-// `;
-
-// const NextTourListing = styled.div`
-//   background-color: #ffffff;
-//   height: 68px;
-//   width: 100%;
-// `;
 
 const InfoContainer = styled.div`
   background-color: #162e3d;
@@ -163,12 +121,7 @@ const Welcome = () => {
         <div style={{ paddingTop: "15px", paddingBottom: "15px" }}>
           <Button to="/login">Login</Button>
           <Button to="/register">Sign Up</Button>
-          <Button
-            to="/learn-more"
-            style={{ backgroundColor: "#b4b4b4", color: "black" }}
-          >
-            Learn More
-          </Button>
+          <Button to="/learn-more">Learn More</Button>
         </div>
       )}
       <WelcomeBody>
@@ -185,7 +138,9 @@ const Welcome = () => {
         Sign Up
       </Button>
 
-      <NextTour />
+      <InfoContainer>
+        <NextTour />
+      </InfoContainer>
 
       <InfoContainer>
         <InnerInfoContainer>

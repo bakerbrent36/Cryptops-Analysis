@@ -2,15 +2,20 @@ import styled from "@emotion/styled";
 import { useQuery } from "react-query";
 import { Link } from "react-router-dom";
 
+import { useWidth } from "../../context/ScreenWidthContext";
 import WhiteCal from "../../assets/icons/WHT_icon_Cal-white.svg";
 
 const NextTourBar = styled.div`
   width: 100%;
   background-color: #be1e2d;
-  height: 118px;
+  padding: 25px;
   display: flex;
   justify-content: center;
   align-items: center;
+
+  @media only screen and (max-width: 768px) {
+    flex-direction: column;
+  }
 `;
 
 const NextTourInner = styled.div`
@@ -42,6 +47,10 @@ const NextTourText = styled.div`
   justify-content: center;
   align-items: center;
   padding: 15px;
+
+  @media only screen and (max-width: 768px) {
+    width: 100%;
+  }
 `;
 
 const NextTourListing = styled.div`
@@ -74,6 +83,8 @@ const NextTour = () => {
     ).then((res) => res.json())
   );
 
+  const screenWidth = useWidth();
+
   console.log(data);
 
   const nextTour =
@@ -83,18 +94,37 @@ const NextTour = () => {
 
   return (
     <NextTourBar>
-      <NextTourInner>
-        <NextTourIcon>
-          <img src={WhiteCal} />
-        </NextTourIcon>
-        <NextTourText>Next Tournament</NextTourText>
-        {nextTour && nextTour.round && (
-          <>
-            <NextTourListing>{nextTour.round.name}</NextTourListing>
+      {screenWidth > 768 ? (
+        <NextTourInner>
+          <NextTourIcon>
+            <img src={WhiteCal} />
+          </NextTourIcon>
+          <NextTourText>Next Tournament</NextTourText>
+          {nextTour && nextTour.round && (
+            <>
+              <NextTourListing>{nextTour.round.name}</NextTourListing>
+              <PlayButton to={`/round/${nextTour.round.id}`}>Play</PlayButton>
+            </>
+          )}
+        </NextTourInner>
+      ) : (
+        <>
+          <NextTourInner>
+            <NextTourIcon>
+              <img src={WhiteCal} />
+            </NextTourIcon>
+            <NextTourText>Next Tournament</NextTourText>
             <PlayButton to={`/round/${nextTour.round.id}`}>Play</PlayButton>
-          </>
-        )}
-      </NextTourInner>
+          </NextTourInner>
+          <NextTourInner>
+            {nextTour && nextTour.round && (
+              <>
+                <NextTourListing>{nextTour.round.name}</NextTourListing>
+              </>
+            )}
+          </NextTourInner>
+        </>
+      )}
     </NextTourBar>
   );
 };
