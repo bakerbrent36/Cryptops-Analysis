@@ -114,7 +114,11 @@ const NextTour = () => {
               <img src={WhiteCal} />
             </NextTourIcon>
             <NextTourText>Next Tournament</NextTourText>
-            <PlayButton to={`/round/${nextTour.round.id}`}>Play</PlayButton>
+            <PlayButton
+              to={nextTour && nextTour.round && `/round/${nextTour.round.id}`}
+            >
+              Play
+            </PlayButton>
           </NextTourInner>
           <NextTourInner>
             {nextTour && nextTour.round && (
