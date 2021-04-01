@@ -5,7 +5,9 @@ import styled from "@emotion/styled";
 import { format, parseISO, sub } from "date-fns";
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import { Carousel } from "react-responsive-carousel";
+import * as _ from "lodash";
 
+import { useAuth } from "../../context/AuthContext";
 import CalIcon from "../../assets/icons/WHT_icon_Cal.svg";
 import RoundCard from "../../components/round-card";
 import PlaceHolder from "../../assets/images/course-placeholder.jpg";
@@ -270,6 +272,7 @@ const Round = () => {
   const [showModal, setShowModal] = useState(false);
 
   const formRef = useRef(null);
+  const { user } = useAuth();
 
   let { roundId } = useParams();
   const { isLoading, error, data } = useQuery("eventData", () =>
@@ -290,6 +293,12 @@ const Round = () => {
     ).then((res) => res.json())
   );
 
+  const eventRoster = useQuery("eventRoster", () =>
+    fetch(
+      `${process.env.REACT_APP_API_URL}${process.env.REACT_APP_API_KEY}/events/${process.env.REACT_APP_EVENT_ID}/roster`
+    ).then((res) => res.json())
+  );
+
   const currentRound =
     (data && data.filter(({ round }) => round.id === roundId)) || [];
 
@@ -302,6 +311,21 @@ const Round = () => {
         (course) => course.id === courseInfo[currentIndex].gg_course_id
       )) ||
     [];
+
+  const userRosterObj =
+    eventRoster &&
+    eventRoster.data?.find(({ member }) => {
+      if (member.email == user.email) {
+        return member.id;
+      }
+    });
+
+  const userFoursomeObj =
+    teeSheets &&
+    teeSheets.data
+      ?.flatMap((o) => o.pairing_group)
+      .flatMap((p) => p.players)
+      .find((player) => player.player_roster_id === userRosterObj.member.id);
 
   const submitTeeTime = (e) => {
     e.preventDefault();
@@ -323,8 +347,6 @@ const Round = () => {
     });
   };
 
-  console.log(currentCourse);
-
   useEffect(() => {
     function handleClickOutside(event) {
       if (
@@ -344,6 +366,8 @@ const Round = () => {
     };
   }, [showModal]);
 
+  console.log("ROSTER ID", userRosterObj);
+
   return (
     <RoundContainer>
       {!openScore && (
@@ -359,7 +383,9 @@ const Round = () => {
       )}
       {currentRound.length > 0 && (
         <InnerContainer>
-          {openScore && <EnterScore roundId={roundId} />}
+          {openScore && (
+            <EnterScore roundId={roundId} userFoursomeObj={userFoursomeObj} />
+          )}
           <HeaderText>
             {currentRound[0].round.name}{" "}
             <div style={{ display: "flex" }}>

@@ -72,23 +72,15 @@ const ScoreCardItem = styled.div`
   border-left: 1px solid #162e3d;
 `;
 
-const EnterScore = ({ roundId }) => {
+const EnterScore = ({ roundId, userFoursomeObj }) => {
   const [total, setTotal] = useState();
 
-  const { isLoading, error, data } = useQuery("roundFoursome", () =>
-    fetch(`/get-foursomes/${roundId}`, {
-      method: "GET",
-      credentials: "include",
-    }).then((res) => res.json())
-  );
-
-  console.log(data);
+  console.log(userFoursomeObj);
 
   const holeLabels =
-    (data && data[0]?.foursome?.tee?.hole_labels?.map((label) => label)) || [];
+    userFoursomeObj?.tee?.hole_labels?.map((label) => label) || [];
 
-  const parData =
-    (data && data[0]?.foursome?.tee?.par?.map((par) => par)) || [];
+  const parData = userFoursomeObj?.tee?.par?.map((par) => par) || [];
 
   const holeData = holeLabels.map((hole, i) => ({
     holeLabel: hole,
@@ -117,7 +109,7 @@ const EnterScore = ({ roundId }) => {
       },
       credentials: "include",
       body: JSON.stringify({
-        player_id: data[0].foursome.players[0].id,
+        player_id: userFoursomeObj.player_round_id,
         score: scoreCSV,
       }),
     });

@@ -120,17 +120,12 @@ app.get("/get-foursomes/:id", (req, res, next) => {
 app.post("/submit-score", (req, res, next) => {
   request(
     {
-      url: `https://golfgenius.com/api/scores`,
+      url: `https://www.golfgenius.com/api/scores?id=1&player_ids[]=${req.body.player_id}&scores[]=${req.body.score}`,
       method: "POST",
       headers: {
         Cookie: `_gg_production_session=${req.cookies["_gg_production_session"]}`,
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({
-        id: 1,
-        player_ids: [7227377422402893000],
-        scores: ["1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18"],
-      }),
     },
     (error, response, body) => {
       console.log(body);
