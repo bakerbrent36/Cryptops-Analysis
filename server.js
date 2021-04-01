@@ -136,10 +136,10 @@ app.post("/submit-score", (req, res, next) => {
 
 app.post("/authenticate", (req, res, next) => {
   console.log(req.body);
-  request.get(
-    `https://golfgenius.com/api/user?source=ios&password=${req.body.password}&product=golfgenius&api_version=2&email=${req.body.email}&version=2`,
-    function (err, response, body) {
-      try {
+  try {
+    request.get(
+      `https://golfgenius.com/api/user?source=ios&password=${req.body.password}&product=golfgenius&api_version=2&email=${req.body.email}&version=2`,
+      function (err, response, body) {
         const rawcookies = response.headers["set-cookie"];
 
         const [ggCookie] = rawcookies.filter((rawCookie) => {
@@ -153,15 +153,20 @@ app.post("/authenticate", (req, res, next) => {
         }
 
         res.send(body);
-      } catch (e) {
-        console.log(e);
       }
-    }
-  );
+    );
+  } catch (e) {
+    next(e);
+  }
 });
 
 app.get("*", (req, res) => {
   res.sendFile(path.resolve(__dirname, "build", "index.html"));
+});
+
+app.use((err, req, res, next) => {
+  res.status(500);
+  res.json({ message: err.message });
 });
 
 app.listen(process.env.PORT || 8080, function () {
