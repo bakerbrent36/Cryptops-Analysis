@@ -22,16 +22,20 @@ const MonthPicker = styled.div`
   width: 100%;
   max-width: 1090px;
   justify-content: space-around;
+
+  @media only screen and (max-width: 768px) {
+    justify-content: flex-start;
+  }
 `;
 
 const MonthTab = styled.div`
   color: #f3e9d5;
   text-transform: uppercase;
   padding: 5px;
+  padding-bottom: 0px;
   padding-left: 10px;
   padding-right: 10px;
   cursor: pointer;
-  margin-bottom: -5px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -89,8 +93,6 @@ const Schedule = () => {
     "dec",
   ];
 
-  const mobileMonthArr = ["mar", "apr", "may", "jun", "jul", "aug"];
-
   const roundInfo =
     (data &&
       data.map(({ round }, i) => ({
@@ -103,7 +105,7 @@ const Schedule = () => {
 
   return (
     <ScheduleContainer>
-      <div>
+      <div style={{ width: "100%", maxWidth: "1090px", overflowX: "auto" }}>
         <MonthPicker>
           {monthArr.map((mon) => (
             <MonthTab
