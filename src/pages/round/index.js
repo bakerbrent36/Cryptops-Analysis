@@ -270,20 +270,16 @@ const TableContainer = styled.div`
 const Round = () => {
   const [openScore, setOpenScore] = useState(false);
   const [showModal, setShowModal] = useState(false);
+  const [teeSheets, setTeeSheets] = useState([]);
 
   const formRef = useRef(null);
   const { user } = useAuth();
 
   let { roundId } = useParams();
+
   const { isLoading, error, data } = useQuery("eventData", () =>
     fetch(
       `${process.env.REACT_APP_API_URL}${process.env.REACT_APP_API_KEY}/events/${process.env.REACT_APP_EVENT_ID}/rounds`
-    ).then((res) => res.json())
-  );
-
-  const teeSheets = useQuery("teeSheetData", () =>
-    fetch(
-      `${process.env.REACT_APP_API_URL}${process.env.REACT_APP_API_KEY}/events/${process.env.REACT_APP_EVENT_ID}/rounds/${roundId}/tee_sheet`
     ).then((res) => res.json())
   );
 
@@ -305,12 +301,12 @@ const Round = () => {
   const currentIndex =
     (data && data.findIndex(({ round }) => round.id === roundId)) || 0;
 
-  const currentCourse =
-    (courseInfo[currentIndex]?.gg_course_id &&
-      courseData.data?.courses?.filter(
-        (course) => course.id === courseInfo[currentIndex].gg_course_id
-      )) ||
-    [];
+  // const currentCourse =
+  //   (courseInfo[currentIndex]?.gg_course_id &&
+  //     courseData.data?.courses?.filter(
+  //       (course) => course.id === courseInfo[currentIndex].gg_course_id
+  //     )) ||
+  //   [];
 
   const userRosterObj =
     eventRoster &&
@@ -322,10 +318,17 @@ const Round = () => {
 
   const userFoursomeObj =
     teeSheets &&
-    teeSheets.data
+    teeSheets
       ?.flatMap((o) => o.pairing_group)
       .flatMap((p) => p.players)
       .find((player) => player.player_roster_id === userRosterObj.member.id);
+
+  const currentCourse =
+    (userFoursomeObj &&
+      courseData.data?.courses?.filter(
+        (course) => course.id === userFoursomeObj.tee.course_id
+      )) ||
+    [];
 
   const submitTeeTime = (e) => {
     e.preventDefault();
@@ -366,7 +369,18 @@ const Round = () => {
     };
   }, [showModal]);
 
+  useEffect(() => {
+    console.log("fired");
+    fetch(
+      `${process.env.REACT_APP_API_URL}${process.env.REACT_APP_API_KEY}/events/${process.env.REACT_APP_EVENT_ID}/rounds/${roundId}/tee_sheet`
+    )
+      .then((res) => res.json())
+      .then((data) => setTeeSheets(data));
+  }, [roundId]);
+
   console.log("ROSTER ID", userRosterObj);
+  console.log("FOURSOMEOBJ", userFoursomeObj);
+  console.log("CURRENT COURSE", currentCourse);
 
   return (
     <RoundContainer>
@@ -433,7 +447,7 @@ const Round = () => {
               </table>
               <div style={{ overflowX: "auto", width: "100%" }}>
                 <table style={{ minWidth: "800px" }}>
-                  <tr style={{ backgroundColor: "#f3e9d5" }}>
+                  <tr style={{ backgroundColor: "#f3e9d5", height: "38px" }}>
                     <td>1</td>
                     <td>2</td>
                     <td>3</td>
@@ -447,7 +461,10 @@ const Round = () => {
                   {currentCourse &&
                     currentCourse[0]?.tees.map((tee, i) => (
                       <tr
-                        style={{ backgroundColor: i % 2 ? "#D6D6D6" : "#fff" }}
+                        style={{
+                          backgroundColor: i % 2 ? "#D6D6D6" : "#fff",
+                          height: "50px",
+                        }}
                       >
                         {tee.hole_data.yardage.slice(0, 9).map((hole) => (
                           <td style={{ color: "#BE1E2D", fontSize: "32px" }}>
@@ -456,14 +473,14 @@ const Round = () => {
                         ))}
                       </tr>
                     ))}
-                  <tr style={{ backgroundColor: "#f3e9d5" }}>
+                  <tr style={{ backgroundColor: "#f3e9d5", height: "38px" }}>
                     {currentCourse[0]?.tees[0].hole_data.par
                       .slice(0, 9)
                       .map((hole) => (
                         <td>{hole}</td>
                       ))}
                   </tr>
-                  <tr style={{ backgroundColor: "#f3e9d5" }}>
+                  <tr style={{ backgroundColor: "#f3e9d5", height: "38px" }}>
                     {currentCourse[0]?.tees[0].hole_data.handicap
                       .slice(0, 9)
                       .map((hole) => (
@@ -498,7 +515,7 @@ const Round = () => {
               </table>
               <div style={{ overflowX: "auto", width: "100%" }}>
                 <table style={{ minWidth: "800px" }}>
-                  <tr style={{ backgroundColor: "#f3e9d5" }}>
+                  <tr style={{ backgroundColor: "#f3e9d5", height: "38px" }}>
                     <td>10</td>
                     <td>11</td>
                     <td>12</td>
@@ -512,7 +529,10 @@ const Round = () => {
                   {currentCourse &&
                     currentCourse[0]?.tees.map((tee, i) => (
                       <tr
-                        style={{ backgroundColor: i % 2 ? "#D6D6D6" : "#fff" }}
+                        style={{
+                          backgroundColor: i % 2 ? "#D6D6D6" : "#fff",
+                          height: "50px",
+                        }}
                       >
                         {tee.hole_data.yardage.slice(9, 18).map((hole) => (
                           <td
@@ -526,14 +546,14 @@ const Round = () => {
                         ))}
                       </tr>
                     ))}
-                  <tr style={{ backgroundColor: "#f3e9d5" }}>
+                  <tr style={{ backgroundColor: "#f3e9d5", height: "38px" }}>
                     {currentCourse[0]?.tees[0].hole_data.par
                       .slice(9, 18)
                       .map((hole) => (
                         <td>{hole}</td>
                       ))}
                   </tr>
-                  <tr style={{ backgroundColor: "#f3e9d5" }}>
+                  <tr style={{ backgroundColor: "#f3e9d5", height: "38px" }}>
                     {currentCourse[0]?.tees[0].hole_data.handicap
                       .slice(9, 18)
                       .map((hole) => (

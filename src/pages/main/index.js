@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import styled from "@emotion/styled";
 import { useQuery } from "react-query";
 
@@ -94,6 +95,7 @@ const YourTournamentsContainer = styled.div`
 `;
 
 const Main = () => {
+  const [completedScores, setCompletedScores] = useState([]);
   const { isLoading, error, data } = useQuery("eventData", () =>
     fetch(
       `${process.env.REACT_APP_API_URL}${process.env.REACT_APP_API_KEY}/events/${process.env.REACT_APP_EVENT_ID}/rounds`
@@ -103,7 +105,75 @@ const Main = () => {
   const completedRounds =
     data && data.filter(({ round }) => round.status === "completed");
 
-  console.log(completedRounds);
+  const getRoundScore = (roundId) => {
+    fetch(
+      `${process.env.REACT_APP_API_URL}${process.env.REACT_APP_API_KEY}/events/${process.env.REACT_APP_EVENT_ID}/rounds/${roundId}/tee_sheet`
+    ).then((res) => res.json());
+  };
+
+  // const promises =
+  //   completedRounds &&
+  //   completedRounds.map(({ round }) => {
+  //     return fetch(
+  //       `${process.env.REACT_APP_API_URL}${process.env.REACT_APP_API_KEY}/events/${process.env.REACT_APP_EVENT_ID}/rounds/${round.id}/tee_sheet`
+  //     ).then((res) => res.json().then((data) => data.data));
+  //   });
+
+  const roundScores = () =>
+    completedRounds &&
+    completedRounds.map(
+      async ({ round }) =>
+        await fetch(
+          `${process.env.REACT_APP_API_URL}${process.env.REACT_APP_API_KEY}/events/${process.env.REACT_APP_EVENT_ID}/rounds/${round.id}/tee_sheet`
+        ).then((res) => res.json().then((data) => data))
+    );
+
+  const getCompletedRoundScores = () => {
+    completedRounds.map(({ round }) =>
+      setCompletedScores((prevState) => [...prevState, getRoundScore(round.id)])
+    );
+  };
+
+  // const getScores = async () => {
+  //   completedRounds.forEach(async ({ round }) => {
+  //     await fetch(
+  //       `${process.env.REACT_APP_API_URL}${process.env.REACT_APP_API_KEY}/events/${process.env.REACT_APP_EVENT_ID}/rounds/${round.id}/tee_sheet`
+  //     ).then((res) =>
+  //       setCompletedScores((prevState) => [...prevState, res.json()])
+  //     );
+  //   });
+  // };
+
+  // useEffect(() => {
+  //   if (completedRounds?.length > 0 && completedScores?.length === 0) {
+  //     getScores();
+  //   }
+  // }, [completedRounds]);
+
+  // useEffect(() => {
+  //   if (completedRounds?.length > 0) {
+  //     getCompletedRoundScores();
+  //   }
+  // }, []);
+
+  useEffect(async () => {
+    if (completedRounds?.length > 0 && completedScores?.length == 0) {
+      console.log("INSIDE IFELSE", completedRounds);
+      const promises =
+        completedRounds &&
+        completedRounds.map(({ round }) => {
+          return fetch(
+            `${process.env.REACT_APP_API_URL}${process.env.REACT_APP_API_KEY}/events/${process.env.REACT_APP_EVENT_ID}/rounds/${round.id}/tee_sheet`
+          ).then((res) => res.json().then((data) => data));
+        });
+
+      const results = await Promise.all(promises);
+
+      setCompletedScores(results);
+    }
+  }, [completedScores, completedRounds]);
+
+  console.log("COMPLETED SCORES", completedScores);
 
   return (
     <MainContainer>

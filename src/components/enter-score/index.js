@@ -75,8 +75,6 @@ const ScoreCardItem = styled.div`
 const EnterScore = ({ roundId, userFoursomeObj }) => {
   const [total, setTotal] = useState();
 
-  console.log(userFoursomeObj);
-
   const holeLabels =
     userFoursomeObj?.tee?.hole_labels?.map((label) => label) || [];
 
@@ -96,9 +94,13 @@ const EnterScore = ({ roundId, userFoursomeObj }) => {
 
     for (let pair of formData.entries()) {
       console.log(pair[0], pair[1]);
-      scoreLine.push(pair[1]);
+      if (pair[1] == "") {
+        scoreLine.push("-1");
+      } else {
+        scoreLine.push(pair[1]);
+      }
     }
-
+    console.log(scoreLine);
     const scoreCSV = scoreLine.join(",");
     console.log(scoreCSV);
 
@@ -116,10 +118,7 @@ const EnterScore = ({ roundId, userFoursomeObj }) => {
   };
 
   const handleChange = (e) => {};
-
-  console.log(holeLabels);
-  console.log(parData);
-  console.log(holeData);
+  console.log("foursomeOBJ", userFoursomeObj);
   return (
     <ScoreContainer>
       {holeData && (
@@ -131,27 +130,31 @@ const EnterScore = ({ roundId, userFoursomeObj }) => {
                 <ScoreCardCenter>score</ScoreCardCenter>
                 <ScoreCardFooter>par</ScoreCardFooter>
               </ScoreCardItem>
-              {holeData.slice(0, 9).map((hole) => (
+              <div style={{ overflowX: "auto", width: "100%" }}>
+                {holeData.slice(0, 9).map((hole, i) => (
+                  <ScoreCardItem>
+                    <ScoreCardHeader>{hole.holeLabel}</ScoreCardHeader>
+                    <ScoreCardCenter>
+                      <input
+                        name={`hole-${hole.holeLabel}`}
+                        style={{ color: "#BE1E2D" }}
+                        defaultValue={
+                          userFoursomeObj.score_array.slice(0, 9)[i] || ""
+                        }
+                        type="text"
+                      />
+                    </ScoreCardCenter>
+                    <ScoreCardFooter style={{ color: "#162E3D" }}>
+                      {hole.par}
+                    </ScoreCardFooter>
+                  </ScoreCardItem>
+                ))}
                 <ScoreCardItem>
-                  <ScoreCardHeader>{hole.holeLabel}</ScoreCardHeader>
-                  <ScoreCardCenter>
-                    <input
-                      name={`hole-${hole.holeLabel}`}
-                      style={{ color: "#BE1E2D" }}
-                      type="text"
-                      required
-                    ></input>
-                  </ScoreCardCenter>
-                  <ScoreCardFooter style={{ color: "#162E3D" }}>
-                    {hole.par}
-                  </ScoreCardFooter>
+                  <ScoreCardHeader style={{ backgroundColor: "#F3E9D5" }} />
+                  <ScoreCardCenter style={{ backgroundColor: "#F3E9D5" }} />
+                  <ScoreCardFooter style={{ backgroundColor: "#F3E9D5" }} />
                 </ScoreCardItem>
-              ))}
-              <ScoreCardItem>
-                <ScoreCardHeader style={{ backgroundColor: "#F3E9D5" }} />
-                <ScoreCardCenter style={{ backgroundColor: "#F3E9D5" }} />
-                <ScoreCardFooter style={{ backgroundColor: "#F3E9D5" }} />
-              </ScoreCardItem>
+              </div>
             </ScoreCardRow>
             <ScoreCardRow>
               <ScoreCardItem>
@@ -159,7 +162,7 @@ const EnterScore = ({ roundId, userFoursomeObj }) => {
                 <ScoreCardCenter>score</ScoreCardCenter>
                 <ScoreCardFooter>par</ScoreCardFooter>
               </ScoreCardItem>
-              {holeData.slice(9, 18).map((hole) => (
+              {holeData.slice(9, 18).map((hole, i) => (
                 <ScoreCardItem>
                   <ScoreCardHeader>{hole.holeLabel}</ScoreCardHeader>
                   <ScoreCardCenter>
@@ -167,8 +170,10 @@ const EnterScore = ({ roundId, userFoursomeObj }) => {
                       name={`hole-${hole.holeLabel}`}
                       style={{ color: "#BE1E2D" }}
                       type="text"
-                      required
-                    ></input>
+                      defaultValue={
+                        userFoursomeObj.score_array.slice(9, 18)[i] || ""
+                      }
+                    />
                   </ScoreCardCenter>
                   <ScoreCardFooter style={{ color: "#162E3D" }}>
                     {hole.par}

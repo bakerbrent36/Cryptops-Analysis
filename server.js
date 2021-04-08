@@ -4,6 +4,7 @@ const request = require("request");
 const path = require("path");
 const Cookie = require("request-cookies").Cookie;
 const nodemailer = require("nodemailer");
+const AWS = require("aws-sdk");
 const { GoogleSpreadsheet } = require("google-spreadsheet");
 require("dotenv").config();
 
@@ -12,6 +13,13 @@ const doc = new GoogleSpreadsheet(
 );
 
 const app = express();
+
+const SESConfig = {
+  apiVersion: "2010-12-01",
+  accessKeyId: process.env.AWS_SES_ACCESS_KEY_ID,
+  secretAccessKey: process.env.AWS_SES_SECRET_KEY,
+  region: process.env.AWS_SES_REGION,
+};
 
 app.use(cookieParser());
 app.use(express.json());
@@ -65,6 +73,9 @@ app.post("/get-ghin", (req, res, next) => {
         zip,
       } = req.body;
 
+      console.log(first_name);
+      console.log(last_name);
+
       if (token) {
         request(
           {
@@ -88,10 +99,41 @@ app.post("/get-ghin", (req, res, next) => {
                 city,
                 zip,
               },
+              force: true,
             }),
           },
           (error, response, body) => {
             console.log(body);
+
+            const parsedBody = JSON.parse(body);
+
+            if (!parsedBody.errors) {
+              const params = {
+                Source: "dev@gobigwheel.com",
+                Destination: {
+                  ToAddresses: [`${email}`],
+                },
+                ReplyToAddresses: ["dev@gobigwheel.com"],
+                Message: {
+                  Body: {
+                    Html: {
+                      Charset: "UTF-8",
+                      Data: `Your GHIN is ${parsedBody.golfers.id}`,
+                    },
+                  },
+                  Subject: {
+                    Charset: "UTF-8",
+                    Data: "You have successfully registered for a GHIN",
+                  },
+                },
+              };
+
+              new AWS.SES(SESConfig)
+                .sendEmail(params)
+                .promise()
+                .then((response) => console.log(response));
+            }
+
             res.send(body);
           }
         );
@@ -118,6 +160,9 @@ app.get("/get-foursomes/:id", (req, res, next) => {
 });
 
 app.post("/submit-score", (req, res, next) => {
+  console.log(
+    `https://www.golfgenius.com/api/scores?id=1&player_ids[]=${req.body.player_id}&scores[]=${req.body.score}`
+  );
   request(
     {
       url: `https://www.golfgenius.com/api/scores?id=1&player_ids[]=${req.body.player_id}&scores[]=${req.body.score}`,
