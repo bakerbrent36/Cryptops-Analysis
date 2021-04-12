@@ -3,7 +3,7 @@ import styled from "@emotion/styled";
 
 const RegisterContainer = styled.div`
   width: 100%;
-  height: 1800px;
+  height: 1000px;
   display: flex;
   flex-direction: column;
   align-items: center;

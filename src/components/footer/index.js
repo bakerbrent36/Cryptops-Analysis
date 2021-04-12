@@ -128,7 +128,7 @@ const Footer = () => {
           <MenuIcon>
             {isDesktop ? "Tour Merch" : <img src={ShirtIcon} />}
           </MenuIcon>
-          <MenuIcon>
+          <MenuIcon to="https://shop.workhorsebrewing.com">
             {isDesktop ? "Workhorse" : <img src={BeerIcon} />}
           </MenuIcon>
         </NavContainer>

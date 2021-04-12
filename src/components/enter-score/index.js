@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { useQuery } from "react-query";
 import styled from "@emotion/styled";
 
@@ -65,7 +65,7 @@ const ScoreCardCenter = styled.div`
 
 const ScoreCardItem = styled.div`
   height: 146px;
-  width: 98px;
+  min-width: 98px;
   font-family: BebasNeue;
   display: flex;
   flex-direction: column;
@@ -74,6 +74,8 @@ const ScoreCardItem = styled.div`
 
 const EnterScore = ({ roundId, userFoursomeObj }) => {
   const [total, setTotal] = useState();
+
+  const formRef = useRef(null);
 
   const holeLabels =
     userFoursomeObj?.tee?.hole_labels?.map((label) => label) || [];
@@ -117,12 +119,28 @@ const EnterScore = ({ roundId, userFoursomeObj }) => {
     });
   };
 
-  const handleChange = (e) => {};
+  const handleChange = (e) => {
+    console.log("fired");
+
+    const formData = new FormData(formRef.current);
+
+    let totalNum = 0;
+
+    for (let pair of formData.entries()) {
+      if (pair[1] !== "") {
+        totalNum = totalNum + Number(pair[1]);
+      }
+    }
+
+    setTotal(totalNum);
+  };
   console.log("foursomeOBJ", userFoursomeObj);
+  console.log(total);
+  console.log(formRef);
   return (
     <ScoreContainer>
       {holeData && (
-        <form onChange={handleChange} onSubmit={submitScore}>
+        <form ref={formRef} onChange={handleChange} onSubmit={submitScore}>
           <ScoreCardContainer>
             <ScoreCardRow>
               <ScoreCardItem>
@@ -164,29 +182,42 @@ const EnterScore = ({ roundId, userFoursomeObj }) => {
                 <ScoreCardCenter>score</ScoreCardCenter>
                 <ScoreCardFooter>par</ScoreCardFooter>
               </ScoreCardItem>
-              {holeData.slice(9, 18).map((hole, i) => (
+              <div
+                style={{ overflowX: "auto", width: "100%", display: "flex" }}
+              >
+                {holeData.slice(9, 18).map((hole, i) => (
+                  <ScoreCardItem>
+                    <ScoreCardHeader>{hole.holeLabel}</ScoreCardHeader>
+                    <ScoreCardCenter>
+                      <input
+                        name={`hole-${hole.holeLabel}`}
+                        style={{ color: "#BE1E2D" }}
+                        type="text"
+                        defaultValue={
+                          userFoursomeObj?.score_array.slice(9, 18)[i] || ""
+                        }
+                      />
+                    </ScoreCardCenter>
+                    <ScoreCardFooter style={{ color: "#162E3D" }}>
+                      {hole.par}
+                    </ScoreCardFooter>
+                  </ScoreCardItem>
+                ))}
                 <ScoreCardItem>
-                  <ScoreCardHeader>{hole.holeLabel}</ScoreCardHeader>
-                  <ScoreCardCenter>
-                    <input
-                      name={`hole-${hole.holeLabel}`}
-                      style={{ color: "#BE1E2D" }}
-                      type="text"
-                      defaultValue={
-                        userFoursomeObj.score_array.slice(9, 18)[i] || ""
-                      }
-                    />
+                  <ScoreCardHeader>Total</ScoreCardHeader>
+                  <ScoreCardCenter
+                    style={{ color: "#BE1E2D", fontSize: "36px" }}
+                  >
+                    {total ||
+                      (userFoursomeObj &&
+                        userFoursomeObj?.score_array.reduce(
+                          (a, b) => Number(a) + Number(b),
+                          0
+                        ))}
                   </ScoreCardCenter>
-                  <ScoreCardFooter style={{ color: "#162E3D" }}>
-                    {hole.par}
-                  </ScoreCardFooter>
+                  <ScoreCardFooter></ScoreCardFooter>
                 </ScoreCardItem>
-              ))}
-              <ScoreCardItem>
-                <ScoreCardHeader>Total</ScoreCardHeader>
-                <ScoreCardCenter>15</ScoreCardCenter>
-                <ScoreCardFooter></ScoreCardFooter>
-              </ScoreCardItem>
+              </div>
             </ScoreCardRow>
           </ScoreCardContainer>
           <button type="submit">submit</button>

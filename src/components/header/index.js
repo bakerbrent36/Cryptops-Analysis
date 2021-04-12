@@ -251,7 +251,7 @@ const Header = () => {
                 <img src={ShirtIcon} />
                 Tour Merch
               </MenuIcon>
-              <MenuIcon>
+              <MenuIcon to="https://shop.workhorsebrewing.com">
                 <img src={BeerIcon} />
                 Workhorse
               </MenuIcon>

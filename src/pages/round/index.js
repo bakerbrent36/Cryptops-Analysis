@@ -321,7 +321,11 @@ const Round = () => {
     teeSheets
       ?.flatMap((o) => o.pairing_group)
       .flatMap((p) => p.players)
-      .find((player) => player.player_roster_id === userRosterObj.member.id);
+      .find(
+        (player) =>
+          player.player_roster_id ===
+          (userRosterObj && userRosterObj?.member?.id)
+      );
 
   const currentCourse =
     (userFoursomeObj &&
