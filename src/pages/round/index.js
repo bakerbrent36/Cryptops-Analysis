@@ -14,6 +14,8 @@ import PlaceHolder from "../../assets/images/course-placeholder.jpg";
 import EnterScore from "../../components/enter-score";
 import courseInfo from "../../courseInfo.json";
 
+import TestImage from "../../assets/images/test.png";
+
 const RoundContainer = styled.div`
   display: flex;
   flex-direction: column;
@@ -45,8 +47,6 @@ const InnerContainer = styled.div`
 
 const RoundImage = styled.div`
   width: 100%;
-  height: 400px;
-  background-size: cover;
 `;
 
 const RoundDate = styled.div`
@@ -386,12 +386,21 @@ const Round = () => {
     <RoundContainer>
       {!openScore && (
         <Slider showStatus={false} showIndicators={false} dynamicHeight={true}>
+          <RoundImage
+            style={{
+              backgroundImage: `linear-gradient(to top, rgba(22, 46, 61, 1), transparent)`,
+            }}
+          >
+            <img src={TestImage} />
+          </RoundImage>
           {courseInfo[currentIndex]?.images.map((img) => (
             <RoundImage
               style={{
-                backgroundImage: `linear-gradient(to top, rgba(22, 46, 61, 1), transparent), url(${img})`,
+                backgroundImage: `linear-gradient(to top, rgba(22, 46, 61, 1), transparent)`,
               }}
-            />
+            >
+              <img src={img} />
+            </RoundImage>
           ))}
         </Slider>
       )}

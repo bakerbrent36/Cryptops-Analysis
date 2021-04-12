@@ -159,7 +159,10 @@ const Register = () => {
   return (
     <RegisterContainer>
       {GHIN?.golfers?.id ? (
-        <div>{GHIN.golfers.id}</div>
+        <div>
+          Your GHIN is {GHIN.golfers.id}. Use this number to complete the tour
+          registration below.
+        </div>
       ) : (
         <Button onClick={() => setShowModal(true)}>Need a GHIN?</Button>
       )}

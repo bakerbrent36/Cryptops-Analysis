@@ -130,7 +130,9 @@ const EnterScore = ({ roundId, userFoursomeObj }) => {
                 <ScoreCardCenter>score</ScoreCardCenter>
                 <ScoreCardFooter>par</ScoreCardFooter>
               </ScoreCardItem>
-              <div style={{ overflowX: "auto", width: "100%" }}>
+              <div
+                style={{ overflowX: "auto", width: "100%", display: "flex" }}
+              >
                 {holeData.slice(0, 9).map((hole, i) => (
                   <ScoreCardItem>
                     <ScoreCardHeader>{hole.holeLabel}</ScoreCardHeader>

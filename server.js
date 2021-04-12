@@ -118,7 +118,21 @@ app.post("/get-ghin", (req, res, next) => {
                   Body: {
                     Html: {
                       Charset: "UTF-8",
-                      Data: `Your GHIN is ${parsedBody.golfers.id}`,
+                      Data: `
+                          <div style="margin: 0 auto">
+                          <img src="https://custom.ageverify.co/workhorsebrewing/AVlogo.png"/>
+                          <p>
+                            Welcome to the Workhorse Tour! Your GHIN is <strong>${parsedBody.golfers.id}</strong>
+                          </p>
+                          <p>
+                            Please return to the app and use your GHIN to complete registration for the Workhorse Tour.
+                          </p>
+                            <p>
+                            If you have any questsions, please email us at golf@workhorsebrewing.com
+                          </p>
+                        
+                        </div>
+                            `,
                     },
                   },
                   Subject: {
