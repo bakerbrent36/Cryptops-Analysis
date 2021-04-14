@@ -116,11 +116,9 @@ const TourResults = () => {
           return res.json();
         })
         .then((data) => {
-          console.log("WTF", data);
           if (data.event) {
             setTourResults(data);
           } else {
-            console.log("NO TOURNAMENT DATA");
             setTourResults();
           }
         });
@@ -139,12 +137,6 @@ const TourResults = () => {
         }
       });
   }, []);
-
-  console.log(eventRounds);
-  console.log(tourResults);
-  console.log(roundTours);
-  console.log(currentRound);
-  console.log(currentTour);
 
   return (
     <CardWrapper>

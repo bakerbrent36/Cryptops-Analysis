@@ -85,12 +85,8 @@ const NextTour = () => {
 
   const screenWidth = useWidth();
 
-  console.log(data);
-
   const nextTour =
     (data && data.find(({ round }) => round.status === "not started")) || [];
-
-  console.log("NEXT TOUR", nextTour);
 
   return (
     <NextTourBar>

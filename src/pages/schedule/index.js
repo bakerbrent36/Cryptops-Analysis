@@ -101,8 +101,6 @@ const Schedule = () => {
       }))) ||
     [];
 
-  console.log(roundInfo);
-
   return (
     <ScheduleContainer>
       <div style={{ width: "100%", maxWidth: "1090px", overflowX: "auto" }}>

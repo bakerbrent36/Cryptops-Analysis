@@ -2,12 +2,14 @@ import styled from "@emotion/styled";
 import { Link } from "react-router-dom";
 import { format, parseISO, sub } from "date-fns";
 
-const Card = styled.div`
+const Card = styled(Link)`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  background-color: green;
+  background-color: #162e3d;
   background-size: cover;
+  background-repeat: no-repeat;
+  text-decoration: none;
   margin: 15px;
   margin-bottom: 25px;
   height: 525px;
@@ -18,6 +20,10 @@ const Card = styled.div`
 
   @media only screen and (max-width: 768px) {
     height: 268px;
+  }
+
+  @media only screen and (max-width: 500px) {
+    background-size: contain;
   }
 `;
 
@@ -32,7 +38,7 @@ const CardBottomContainer = styled.div`
   font-size: 50px;
 `;
 
-const RoundPlayLink = styled(Link)`
+const RoundPlayLink = styled.div`
   padding: 15px 25px;
   background-color: #be1e2d;
   text-transform: uppercase;
@@ -50,11 +56,13 @@ const Ribbon = styled.div`
   background-color: #f3e9d5;
   color: #be1e2d;
   text-transform: uppercase;
-  padding: 5px;
+  padding: 15px;
   position: relative;
   top: 10px;
   right: 15px;
-  width: 150px;
+  width: 100px;
+  display: flex;
+  justify-content: center;
 `;
 
 const RoundCard = ({ backgroundImage, date, name, link }) => {
@@ -63,6 +71,7 @@ const RoundCard = ({ backgroundImage, date, name, link }) => {
       style={{
         backgroundImage: `linear-gradient(to top, rgba(22, 46, 61, 1), transparent), url(${backgroundImage})`,
       }}
+      to={link}
     >
       <Ribbon>
         {format(parseISO(date), "MMM")}{" "}
@@ -71,7 +80,7 @@ const RoundCard = ({ backgroundImage, date, name, link }) => {
       </Ribbon>
       <CardBottomContainer>
         {name}
-        <RoundPlayLink to={link}>Play</RoundPlayLink>
+        <RoundPlayLink>Play</RoundPlayLink>
       </CardBottomContainer>
     </Card>
   );

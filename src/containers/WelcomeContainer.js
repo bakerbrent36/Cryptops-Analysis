@@ -33,8 +33,6 @@ const WelcomeContainer = ({ screenWidth }) => {
     );
   };
 
-  console.log(user);
-
   return (
     <React.Fragment>
       <Header screenWidth={screenWidth} />

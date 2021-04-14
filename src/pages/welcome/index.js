@@ -112,8 +112,6 @@ const Welcome = () => {
 
   const width = useWidth();
 
-  console.log(data);
-
   return (
     <WelcomeContainer>
       <WelcomeHeader>Welcome to the Workhorse Tour</WelcomeHeader>

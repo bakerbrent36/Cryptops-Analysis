@@ -32,7 +32,6 @@ export function AuthProvider({ children }) {
     fetch(`/authenticate`, requestOptions)
       .then((response) => response.json())
       .then((result) => {
-        console.log(result);
         setUser(result);
         if (result.user) {
           setCookie("gg_user", JSON.stringify(result), {
@@ -45,7 +44,6 @@ export function AuthProvider({ children }) {
   };
 
   useEffect(() => {
-    console.log(cookies["gg_user"]);
     if (cookies["gg_user"]) {
       setUser(cookies["gg_user"]);
     }

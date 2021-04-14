@@ -12,8 +12,6 @@ function App() {
   const [installPrompt, setInstallPrompt] = useState(false);
   useEffect(() => {
     window.addEventListener("beforeinstallprompt", (e) => {
-      console.log("BEFORE");
-      console.log(e);
       setInstallPrompt(true);
     });
   }, []);

@@ -29,7 +29,7 @@ const InnerContainer = styled.div`
   max-width: 1100px;
   width: 100%;
 
-  a,
+  .tee-time,
   button {
     padding: 15px 25px;
     background-color: #be1e2d;
@@ -47,6 +47,11 @@ const InnerContainer = styled.div`
 
 const RoundImage = styled.div`
   width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  position: absolute;
+  top: 0px;
 `;
 
 const RoundDate = styled.div`
@@ -55,10 +60,12 @@ const RoundDate = styled.div`
   color: #f3e9d5;
   display: flex;
   align-items: center;
+  font-size: 28px;
+  padding-left: 15px;
 
   img {
-    height: 25px;
-    width: 25px;
+    height: 30px;
+    width: 30px;
   }
 `;
 
@@ -70,6 +77,11 @@ const HeaderText = styled.div`
   justify-content: space-between;
   padding-left: 15px;
   flex-wrap: wrap;
+`;
+
+const Divider = styled.hr`
+  width: 100%;
+  color: #f3e9d5;
 `;
 
 const Slider = styled(Carousel)`
@@ -216,6 +228,7 @@ const ShortDivider = styled.hr`
 
 const CourseInfoContainer = styled.div`
   padding-left: 15px;
+  padding-right: 15px;
 
   .table-label {
     color: #f3e9d5;
@@ -374,7 +387,6 @@ const Round = () => {
   }, [showModal]);
 
   useEffect(() => {
-    console.log("fired");
     fetch(
       `${process.env.REACT_APP_API_URL}${process.env.REACT_APP_API_KEY}/events/${process.env.REACT_APP_EVENT_ID}/rounds/${roundId}/tee_sheet`
     )
@@ -382,29 +394,27 @@ const Round = () => {
       .then((data) => setTeeSheets(data));
   }, [roundId]);
 
-  console.log("ROSTER ID", userRosterObj);
-  console.log("FOURSOMEOBJ", userFoursomeObj);
-  console.log("CURRENT COURSE", currentCourse);
-
   return (
     <RoundContainer>
       {!openScore && (
         <Slider showStatus={false} showIndicators={false} dynamicHeight={true}>
-          <RoundImage
-            style={{
-              backgroundImage: `linear-gradient(to top, rgba(22, 46, 61, 1), transparent)`,
-            }}
-          >
+          <>
             <img src={TestImage} />
-          </RoundImage>
-          {courseInfo[currentIndex]?.images.map((img) => (
             <RoundImage
               style={{
                 backgroundImage: `linear-gradient(to top, rgba(22, 46, 61, 1), transparent)`,
               }}
-            >
+            />
+          </>
+          {courseInfo[currentIndex]?.images.map((img) => (
+            <>
               <img src={img} />
-            </RoundImage>
+              <RoundImage
+                style={{
+                  backgroundImage: `linear-gradient(to top, rgba(22, 46, 61, 1), transparent)`,
+                }}
+              />
+            </>
           ))}
         </Slider>
       )}
@@ -433,7 +443,9 @@ const Round = () => {
             - {format(parseISO(currentRound[0].round.date), "d")}
           </RoundDate>
           <CourseInfoContainer>
-            <HeaderText>Course Info</HeaderText>
+            <HeaderText style={{ paddingLeft: "0px" }}>Course Info</HeaderText>
+            <Divider />
+            <Divider />
 
             <div className="table-label">FRONT 9</div>
             <TableContainer>
@@ -598,21 +610,27 @@ const Round = () => {
                   ))}
               </table>
             </TableContainer>
+            <Divider style={{ marginBottom: "30px", marginTop: "40px" }} />
           </CourseInfoContainer>
           {data && data[currentIndex + 1] && (
             <>
-              <HeaderText>Next Tournament</HeaderText>
+              <HeaderText style={{ marginBottom: "25px" }}>
+                Next Tournament
+              </HeaderText>
               <RoundCard
                 backgroundImage={PlaceHolder}
                 date={data && data[currentIndex + 1].round.date}
                 name={data && data[currentIndex + 1].round.name}
                 link={data && `${data[currentIndex + 1].round.id}`}
+                style={{ marginBottom: "50px" }}
               />
             </>
           )}
           {data && data[currentIndex - 1] && (
             <>
-              <HeaderText>Previous Tournament</HeaderText>
+              <HeaderText style={{ marginBottom: "25px" }}>
+                Previous Tournament
+              </HeaderText>
               <RoundCard
                 backgroundImage={PlaceHolder}
                 date={data && data[currentIndex - 1].round.date}
@@ -640,6 +658,7 @@ const Round = () => {
                     and enter your info.
                   </ModalText>
                   <a
+                    class="tee-time"
                     target="_blank"
                     href={courseInfo[currentIndex].tee_time_link}
                   >

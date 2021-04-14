@@ -95,16 +95,14 @@ const EnterScore = ({ roundId, userFoursomeObj }) => {
     const scoreLine = [];
 
     for (let pair of formData.entries()) {
-      console.log(pair[0], pair[1]);
       if (pair[1] == "") {
         scoreLine.push("-1");
       } else {
         scoreLine.push(pair[1]);
       }
     }
-    console.log(scoreLine);
+
     const scoreCSV = scoreLine.join(",");
-    console.log(scoreCSV);
 
     fetch(`/submit-score`, {
       method: "POST",
@@ -119,9 +117,7 @@ const EnterScore = ({ roundId, userFoursomeObj }) => {
     });
   };
 
-  const handleChange = (e) => {
-    console.log("fired");
-
+  const handleChange = () => {
     const formData = new FormData(formRef.current);
 
     let totalNum = 0;
@@ -134,9 +130,7 @@ const EnterScore = ({ roundId, userFoursomeObj }) => {
 
     setTotal(totalNum);
   };
-  console.log("foursomeOBJ", userFoursomeObj);
-  console.log(total);
-  console.log(formRef);
+
   return (
     <ScoreContainer>
       {holeData && (

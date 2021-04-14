@@ -71,7 +71,6 @@ const Roster = () => {
     ).then((res) => res.json())
   );
 
-  console.log(data);
   return (
     <RosterContainer>
       <CardWrapper>

@@ -12,6 +12,7 @@
     "cookie-parser": "^1.4.5",
     "date-fns": "^2.18.0",
     "dotenv": "^8.2.0",
+    "get-lookup": "^1.1.2",
     "google-spreadsheet": "^3.1.15",
     "nodemailer": "^6.5.0",
     "react": "^17.0.1",

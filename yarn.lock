@@ -5427,6 +5427,11 @@ get-intrinsic@^1.0.1, get-intrinsic@^1.0.2, get-intrinsic@^1.1.0:
     has "^1.0.3"
     has-symbols "^1.0.1"
 
+get-lookup@^1.1.2:
+  version "1.1.2"
+  resolved "https://registry.yarnpkg.com/get-lookup/-/get-lookup-1.1.2.tgz#95bb16eebb7ee25afa1c2e9558842167312d73b4"
+  integrity sha512-apDwbonBKHNp/9T1YbaynVp7VMNT9X9I4dwUjpm4EU9c8q2q4lPdmwggn08KxARPSS7kekKxMx6klVbpTpGUEg==
+
 get-own-enumerable-property-symbols@^3.0.0:
   version "3.0.2"
   resolved "https://registry.yarnpkg.com/get-own-enumerable-property-symbols/-/get-own-enumerable-property-symbols-3.0.2.tgz#b5fde77f22cbe35f390b4e089922c50bce6ef664"

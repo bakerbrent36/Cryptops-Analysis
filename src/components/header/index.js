@@ -159,8 +159,6 @@ const Header = () => {
 
   const [openMenu, setOpenMenu] = useState(false);
 
-  console.log(openMenu);
-
   return (
     <HeaderContainer style={{ backgroundImage: `url(${BallHeader})` }}>
       <Link to="/">

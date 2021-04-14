@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import styled from "@emotion/styled";
 import { useQuery } from "react-query";
+import { useAuth } from "../../context/AuthContext";
+import get from "get-lookup";
 
 import TourResults from "../../components/tour-results";
 import NextTour from "../../components/next-tour";
@@ -54,7 +56,6 @@ const LowerContainer = styled.div`
 
 const Card = styled.div`
   background-color: #ffffff;
-  width: 300px;
   height: 500px;
   margin: 15px;
 `;
@@ -96,69 +97,35 @@ const YourTournamentsContainer = styled.div`
 
 const Main = () => {
   const [completedScores, setCompletedScores] = useState([]);
+  const [recentScore, setRecentScore] = useState();
+
+  const user = useAuth();
+
   const { isLoading, error, data } = useQuery("eventData", () =>
     fetch(
       `${process.env.REACT_APP_API_URL}${process.env.REACT_APP_API_KEY}/events/${process.env.REACT_APP_EVENT_ID}/rounds`
     ).then((res) => res.json())
   );
 
+  const eventRoster = useQuery("eventRoster", () =>
+    fetch(
+      `${process.env.REACT_APP_API_URL}${process.env.REACT_APP_API_KEY}/events/${process.env.REACT_APP_EVENT_ID}/roster`
+    ).then((res) => res.json())
+  );
+
   const completedRounds =
     data && data.filter(({ round }) => round.status === "completed");
 
-  const getRoundScore = (roundId) => {
-    fetch(
-      `${process.env.REACT_APP_API_URL}${process.env.REACT_APP_API_KEY}/events/${process.env.REACT_APP_EVENT_ID}/rounds/${roundId}/tee_sheet`
-    ).then((res) => res.json());
-  };
-
-  // const promises =
-  //   completedRounds &&
-  //   completedRounds.map(({ round }) => {
-  //     return fetch(
-  //       `${process.env.REACT_APP_API_URL}${process.env.REACT_APP_API_KEY}/events/${process.env.REACT_APP_EVENT_ID}/rounds/${round.id}/tee_sheet`
-  //     ).then((res) => res.json().then((data) => data.data));
-  //   });
-
-  const roundScores = () =>
-    completedRounds &&
-    completedRounds.map(
-      async ({ round }) =>
-        await fetch(
-          `${process.env.REACT_APP_API_URL}${process.env.REACT_APP_API_KEY}/events/${process.env.REACT_APP_EVENT_ID}/rounds/${round.id}/tee_sheet`
-        ).then((res) => res.json().then((data) => data))
-    );
-
-  const getCompletedRoundScores = () => {
-    completedRounds.map(({ round }) =>
-      setCompletedScores((prevState) => [...prevState, getRoundScore(round.id)])
-    );
-  };
-
-  // const getScores = async () => {
-  //   completedRounds.forEach(async ({ round }) => {
-  //     await fetch(
-  //       `${process.env.REACT_APP_API_URL}${process.env.REACT_APP_API_KEY}/events/${process.env.REACT_APP_EVENT_ID}/rounds/${round.id}/tee_sheet`
-  //     ).then((res) =>
-  //       setCompletedScores((prevState) => [...prevState, res.json()])
-  //     );
-  //   });
-  // };
-
-  // useEffect(() => {
-  //   if (completedRounds?.length > 0 && completedScores?.length === 0) {
-  //     getScores();
-  //   }
-  // }, [completedRounds]);
-
-  // useEffect(() => {
-  //   if (completedRounds?.length > 0) {
-  //     getCompletedRoundScores();
-  //   }
-  // }, []);
+  const userRosterObj =
+    eventRoster &&
+    eventRoster.data?.find(({ member }) => {
+      if (member.email == user.email) {
+        return member.id;
+      }
+    });
 
   useEffect(async () => {
     if (completedRounds?.length > 0 && completedScores?.length == 0) {
-      console.log("INSIDE IFELSE", completedRounds);
       const promises =
         completedRounds &&
         completedRounds.map(({ round }) => {
@@ -170,10 +137,19 @@ const Main = () => {
       const results = await Promise.all(promises);
 
       setCompletedScores(results);
+
+      setRecentScore();
     }
   }, [completedScores, completedRounds]);
 
-  console.log("COMPLETED SCORES", completedScores);
+  console.log(
+    completedScores.length > 0 &&
+      completedScores[completedScores.length - 1]?.filter(({ pairing_group }) =>
+        pairing_group.players.some(
+          (player) => player.player_roster_id === "7227377308787586523"
+        )
+      )
+  );
 
   return (
     <MainContainer>
@@ -182,10 +158,6 @@ const Main = () => {
         <PointsContainer>
           recent round
           <Points>72</Points>
-        </PointsContainer>
-        <PointsContainer>
-          overall points
-          <Points>187</Points>
         </PointsContainer>
       </ScoreContainer>
       <YourTournamentsContainer>
@@ -213,9 +185,19 @@ const Main = () => {
         <TourResults />
         <Card>
           <Ribbon>tour standings</Ribbon>
-        </Card>
-        <Card>
-          <Ribbon>previous events</Ribbon>
+          <div id="scroller" style={{ overflow: "auto" }}>
+            <iframe
+              class=""
+              frameBorder="0"
+              height="580"
+              mozallowfullscreen
+              name="page_iframe"
+              scrolling="auto"
+              src="https://www.golfgenius.com/leagues/7195604310506386799/widgets/season_points_v2?page_id=7195661585237456273"
+              webkitallowfullscreen="true"
+              width="730"
+            />
+          </div>
         </Card>
       </LowerContainer>
     </MainContainer>

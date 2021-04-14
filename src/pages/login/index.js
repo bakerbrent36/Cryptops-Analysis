@@ -53,7 +53,6 @@ const Login = () => {
 
   useEffect(() => {
     if (user && user.user) {
-      console.log("redirect");
       history.push("/");
     } else if (user && user.error) {
       console.log("error");

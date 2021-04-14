@@ -74,8 +74,6 @@ const Footer = () => {
 
   const isDesktop = width > 1100;
 
-  console.log(location);
-
   return (
     <FooterContainer>
       {isDesktop && <FooterIcon src={DriverIcon} />}
