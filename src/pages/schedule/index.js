@@ -93,14 +93,25 @@ const Schedule = () => {
     "dec",
   ];
 
+  const courseInfo = Object.entries(courseData);
+
+  const courseId = (roundId) =>
+    Object.entries(courseData).filter(([key, value]) => {
+      return value.round_id.includes(roundId.toString());
+    });
+
   const roundInfo =
     (data &&
       data.map(({ round }, i) => ({
         ...round,
-        course_data: courseData[i],
+        course_info:
+          courseData[courseId(round.id)[0] && courseId(round.id)[0][0]],
       }))) ||
     [];
-
+  console.log(courseId("7323270116395758911"));
+  console.log(courseId("7323270116395758911")[0][0]);
+  console.log(courseData[courseId("7323270116395758911")[0][0]]);
+  console.log(roundInfo);
   return (
     <ScheduleContainer>
       <div style={{ width: "100%", maxWidth: "1090px", overflowX: "auto" }}>
@@ -136,7 +147,7 @@ const Schedule = () => {
               .map((round) => {
                 return (
                   <RoundCard
-                    backgroundImage={round?.course_data?.images[0]}
+                    backgroundImage={round?.course_info?.main_image || ""}
                     date={round?.date}
                     name={round?.name}
                     link={`/round/${round?.id}`}

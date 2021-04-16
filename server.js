@@ -27,21 +27,26 @@ app.use(express.json());
 app.use(express.static(path.join(__dirname, "build")));
 
 app.post("/update-sheet", async (req, res, next) => {
-  const { name, email, tee_time } = req.body;
-  await doc.useServiceAccountAuth({
-    client_email: process.env.GOOGLE_SERVICE_ACCOUNT_EMAIL,
-    private_key: process.env.GOOGLE_PRIVATE_KEY.replace(/\\n/g, "\n"),
-  });
+  try {
+    const { name, email, tee_time, golfers } = req.body;
+    await doc.useServiceAccountAuth({
+      client_email: process.env.GOOGLE_SERVICE_ACCOUNT_EMAIL,
+      private_key: process.env.GOOGLE_PRIVATE_KEY.replace(/\\n/g, "\n"),
+    });
 
-  await doc.loadInfo();
-  const sheet = doc.sheetsByIndex[0];
-  sheet
-    .addRow({
-      Name: name,
-      Email: email,
-      "Tee Time": tee_time,
-    })
-    .then(() => res.send("success"));
+    await doc.loadInfo();
+    const sheet = doc.sheetsByIndex[0];
+    sheet
+      .addRow({
+        Name: name,
+        Email: email,
+        "Tee Time": tee_time,
+        "Number of Golfers": golfers,
+      })
+      .then(() => res.send("success"));
+  } catch (e) {
+    next(e);
+  }
 });
 
 app.post("/get-ghin", (req, res, next) => {

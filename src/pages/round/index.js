@@ -361,6 +361,7 @@ const Round = () => {
         name: formData.get("name"),
         email: formData.get("email"),
         tee_time: formData.get("tee_time"),
+        golfers: formData.get("golfers"),
       }),
     }).then((res) => {
       setShowModal(false);
@@ -393,20 +394,25 @@ const Round = () => {
       .then((res) => res.json())
       .then((data) => setTeeSheets(data));
   }, [roundId]);
-
+  console.log("CURRENT COURSE", currentCourse);
   return (
     <RoundContainer>
       {!openScore && (
-        <Slider showStatus={false} showIndicators={false} dynamicHeight={true}>
+        <Slider
+          showStatus={false}
+          showIndicators={false}
+          dynamicHeight={true}
+          showThumbs={false}
+        >
           <>
-            <img src={TestImage} />
+            <img src={courseInfo[currentCourse[0]?.id]?.main_image} />
             <RoundImage
               style={{
                 backgroundImage: `linear-gradient(to top, rgba(22, 46, 61, 1), transparent)`,
               }}
             />
           </>
-          {courseInfo[currentIndex]?.images.map((img) => (
+          {courseInfo[currentCourse[0]?.id]?.images.map((img) => (
             <>
               <img src={img} />
               <RoundImage
@@ -418,6 +424,7 @@ const Round = () => {
           ))}
         </Slider>
       )}
+      Photos courtesy of the Bausch Collection at MyPhillyGolf.com
       {currentRound.length > 0 && (
         <InnerContainer>
           {openScore && (
@@ -445,6 +452,10 @@ const Round = () => {
           <CourseInfoContainer>
             <HeaderText style={{ paddingLeft: "0px" }}>Course Info</HeaderText>
             <Divider />
+            <div style={{ color: "#f3e9d5" }}>
+              {courseInfo[currentIndex]?.description}
+            </div>
+
             <Divider />
 
             <div className="table-label">FRONT 9</div>
@@ -673,6 +684,15 @@ const Round = () => {
                   </InputRow>
                   <InputRow>
                     <Input required name="tee_time" placeholder="Tee Time" />
+                  </InputRow>
+                  <InputRow>
+                    <label>Number of Tour Golfers</label>
+                    <select name="golfers">
+                      <option value={1}>1</option>
+                      <option value={2}>2</option>
+                      <option value={3}>3</option>
+                      <option value={4}>4</option>
+                    </select>
                   </InputRow>
                   <InputRow
                     style={{ justifyContent: "flex-end", paddingTop: "15px" }}
