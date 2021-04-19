@@ -15,6 +15,7 @@
     "get-lookup": "^1.1.2",
     "google-spreadsheet": "^3.1.15",
     "nodemailer": "^6.5.0",
+    "obj-traverse": "^1.0.0",
     "react": "^17.0.1",
     "react-cookie": "^4.0.3",
     "react-dom": "^17.0.1",
