@@ -3,6 +3,7 @@ import styled from "@emotion/styled";
 import { useQuery } from "react-query";
 import { useAuth } from "../../context/AuthContext";
 import get from "get-lookup";
+import * as objTraverse from "obj-traverse/lib/obj-traverse";
 
 import TourResults from "../../components/tour-results";
 import NextTour from "../../components/next-tour";
@@ -139,26 +140,64 @@ const Main = () => {
 
       setCompletedScores(results);
 
-      setRecentScore();
+      // if (completedScores) {
+      //   const testthing =
+      //     completedScores.length > 0 &&
+      //     completedScores[completedScores.length - 1]
+      //       ?.filter(({ pairing_group }) =>
+      //         pairing_group.players.some(
+      //           (player) =>
+      //             player.player_roster_id ===
+      //             (userRosterObj && userRosterObj?.member?.id)
+      //         )
+      //       )
+      //       .map(({ pairing_group }) => {
+      //         let newElt = Object.assign({}, pairing_group);
+      //         return newElt.players.filter(
+      //           (player) =>
+      //             player.player_roster_id ===
+      //             (userRosterObj && userRosterObj?.member?.id)
+      //         );
+      //       });
+
+      //   setRecentScore(testthing);
+      // }
     }
   }, [completedScores, completedRounds]);
 
-  console.log(
-    completedScores.length > 0 &&
-      completedScores[completedScores.length - 1]?.filter(({ pairing_group }) =>
-        pairing_group.players.some(
-          (player) =>
-            player.player_roster_id === userRosterObj &&
-            userRosterObj?.member?.id
-        )
-      )
-  );
-
   console.log(userRosterObj);
   console.log(user);
+  console.log(recentScore);
 
   console.log(completedScores);
   console.log(completedRounds);
+
+  const testthing =
+    completedScores.length > 0 &&
+    completedScores[completedScores.length - 1]
+      ?.filter(({ pairing_group }) =>
+        pairing_group.players.some(
+          (player) =>
+            player.player_roster_id ===
+            (userRosterObj && userRosterObj?.member?.id)
+        )
+      )
+      .map(({ pairing_group }) => {
+        let newElt = Object.assign({}, pairing_group);
+        return newElt.players.filter(
+          (player) =>
+            player.player_roster_id ===
+            (userRosterObj && userRosterObj?.member?.id)
+        );
+      });
+
+  console.log(testthing);
+  console.log(
+    testthing &&
+      testthing[0] &&
+      testthing[0][0] &&
+      testthing[0][0]?.score_array.reduce((a, b) => a + b, 0)
+  );
 
   return (
     <MainContainer>
@@ -166,7 +205,7 @@ const Main = () => {
       <ScoreContainer>
         <PointsContainer>
           recent round
-          <Points>72</Points>
+          <Points>0</Points>
         </PointsContainer>
       </ScoreContainer>
       <YourTournamentsContainer>
