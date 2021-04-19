@@ -394,7 +394,23 @@ const Round = () => {
       .then((res) => res.json())
       .then((data) => setTeeSheets(data));
   }, [roundId]);
-  console.log("CURRENT COURSE", currentCourse);
+
+  const courseId = (roundId) =>
+    Object.entries(courseInfo).filter(([key, value]) => {
+      return value.round_id.includes(roundId.toString());
+    });
+
+  const roundInfo =
+    (data &&
+      data.map(({ round }, i) => ({
+        ...round,
+        course_info:
+          courseInfo[courseId(round.id)[0] && courseId(round.id)[0][0]],
+      }))) ||
+    [];
+
+  console.log("ROUND INFO", roundInfo);
+
   return (
     <RoundContainer>
       {!openScore && (
@@ -424,7 +440,9 @@ const Round = () => {
           ))}
         </Slider>
       )}
-      Photos courtesy of the Bausch Collection at MyPhillyGolf.com
+      <div style={{ color: "#be1e2d" }}>
+        Photos courtesy of the Bausch Collection at MyPhillyGolf.com
+      </div>
       {currentRound.length > 0 && (
         <InnerContainer>
           {openScore && (
@@ -453,7 +471,7 @@ const Round = () => {
             <HeaderText style={{ paddingLeft: "0px" }}>Course Info</HeaderText>
             <Divider />
             <div style={{ color: "#f3e9d5" }}>
-              {courseInfo[currentIndex]?.description}
+              {courseInfo[currentCourse[0]?.id]?.description}
             </div>
 
             <Divider />
@@ -629,7 +647,11 @@ const Round = () => {
                 Next Tournament
               </HeaderText>
               <RoundCard
-                backgroundImage={PlaceHolder}
+                backgroundImage={
+                  (roundInfo &&
+                    roundInfo[currentIndex + 1]?.course_info.main_image) ||
+                  PlaceHolder
+                }
                 date={data && data[currentIndex + 1].round.date}
                 name={data && data[currentIndex + 1].round.name}
                 link={data && `${data[currentIndex + 1].round.id}`}
@@ -643,7 +665,11 @@ const Round = () => {
                 Previous Tournament
               </HeaderText>
               <RoundCard
-                backgroundImage={PlaceHolder}
+                backgroundImage={
+                  (roundInfo &&
+                    roundInfo[currentIndex - 1].course_info.main_image) ||
+                  PlaceHolder
+                }
                 date={data && data[currentIndex - 1].round.date}
                 name={data && data[currentIndex - 1].round.name}
                 link={data && `${data[currentIndex - 1].round.id}`}

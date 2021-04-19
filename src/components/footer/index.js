@@ -40,6 +40,28 @@ const NavContainer = styled.div`
   position: relative;
   top: -35px;
 
+  a {
+    height: 75px;
+    width: 175px;
+    display: flex;
+    color: #f3e9d5;
+    justify-content: center;
+    align-items: center;
+    text-transform: uppercase;
+    font-size: 14px;
+
+    @media only screen and (max-width: 1100px) {
+      left: 0px;
+      width: 150px;
+      height: 100px;
+    }
+
+    img {
+      height: 50px;
+      width: 50px;
+    }
+  }
+
   @media only screen and (max-width: 1100px) {
     top: 0px;
   }
@@ -126,9 +148,13 @@ const Footer = () => {
           <MenuIcon>
             {isDesktop ? "Tour Merch" : <img src={ShirtIcon} />}
           </MenuIcon>
-          <MenuIcon to="https://shop.workhorsebrewing.com">
+          <a
+            href="https://shop.workhorsebrewing.com"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             {isDesktop ? "Workhorse" : <img src={BeerIcon} />}
-          </MenuIcon>
+          </a>
         </NavContainer>
       ) : (
         <NavContainer style={{ maxWidth: "500px" }}>

@@ -79,6 +79,24 @@ const SecondaryNav = styled.div`
   display: flex;
   position: relative;
   left: 175px;
+
+  a {
+    height: 75px;
+    width: 175px;
+    display: flex;
+    color: #f3e9d5;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-transform: uppercase;
+    text-decoration: none;
+    font-size: 14px;
+
+    img {
+      height: 25px;
+      width: 25px;
+    }
+  }
 `;
 
 const MenuIcon = styled(Link)`
@@ -249,10 +267,14 @@ const Header = () => {
                 <img src={ShirtIcon} />
                 Tour Merch
               </MenuIcon>
-              <MenuIcon to="https://shop.workhorsebrewing.com">
+              <a
+                rel="noopener noreferrer"
+                href="https://shop.workhorsebrewing.com"
+                target="_blank"
+              >
                 <img src={BeerIcon} />
                 Workhorse
-              </MenuIcon>
+              </a>
             </SecondaryNav>
           </SecondaryNavBar>
         )}
