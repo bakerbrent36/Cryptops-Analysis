@@ -56,8 +56,9 @@ const LowerContainer = styled.div`
 
 const Card = styled.div`
   background-color: #ffffff;
-  height: 500px;
   margin: 15px;
+  width: 100%;
+  max-width: 1070px;
 `;
 
 const Ribbon = styled.div`
@@ -99,7 +100,7 @@ const Main = () => {
   const [completedScores, setCompletedScores] = useState([]);
   const [recentScore, setRecentScore] = useState();
 
-  const user = useAuth();
+  const { user } = useAuth();
 
   const { isLoading, error, data } = useQuery("eventData", () =>
     fetch(
@@ -146,10 +147,18 @@ const Main = () => {
     completedScores.length > 0 &&
       completedScores[completedScores.length - 1]?.filter(({ pairing_group }) =>
         pairing_group.players.some(
-          (player) => player.player_roster_id === "7227377308787586523"
+          (player) =>
+            player.player_roster_id === userRosterObj &&
+            userRosterObj?.member?.id
         )
       )
   );
+
+  console.log(userRosterObj);
+  console.log(user);
+
+  console.log(completedScores);
+  console.log(completedRounds);
 
   return (
     <MainContainer>
@@ -183,22 +192,30 @@ const Main = () => {
       <NextTour />
       <LowerContainer>
         <TourResults />
-        <Card>
-          <Ribbon>tour standings</Ribbon>
-          <div id="scroller" style={{ overflow: "auto" }}>
-            <iframe
-              class=""
-              frameBorder="0"
-              height="580"
-              mozallowfullscreen
-              name="page_iframe"
-              scrolling="auto"
-              src="https://www.golfgenius.com/leagues/7195604310506386799/widgets/season_points_v2?page_id=7195661585237456273"
-              webkitallowfullscreen="true"
-              width="730"
-            />
-          </div>
-        </Card>
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            width: "100%",
+          }}
+        >
+          <Card>
+            <Ribbon>tour standings</Ribbon>
+            <div id="scroller" style={{ overflow: "auto" }}>
+              <iframe
+                class=""
+                frameBorder="0"
+                height="580"
+                mozallowfullscreen
+                name="page_iframe"
+                scrolling="auto"
+                src={process.env.REACT_APP_STANDINGS_URL}
+                webkitallowfullscreen="true"
+                width="100%"
+              />
+            </div>
+          </Card>
+        </div>
       </LowerContainer>
     </MainContainer>
   );

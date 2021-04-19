@@ -6,7 +6,6 @@ import { useWidth } from "../../context/ScreenWidthContext";
 import WhiteCal from "../../assets/icons/WHT_icon_Cal-white.svg";
 
 const NextTourBar = styled.div`
-  width: 100%;
   background-color: #be1e2d;
   padding: 25px;
   display: flex;
