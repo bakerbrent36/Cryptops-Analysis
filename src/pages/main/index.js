@@ -2,8 +2,7 @@ import { useEffect, useState } from "react";
 import styled from "@emotion/styled";
 import { useQuery } from "react-query";
 import { useAuth } from "../../context/AuthContext";
-import get from "get-lookup";
-import * as objTraverse from "obj-traverse/lib/obj-traverse";
+import { format, parseISO, sub } from "date-fns";
 
 import TourResults from "../../components/tour-results";
 import NextTour from "../../components/next-tour";
@@ -28,6 +27,7 @@ const YourResults = styled.div`
 
 const ScoreContainer = styled.div`
   display: flex;
+  justify-content: center;
 `;
 
 const PointsContainer = styled.div`
@@ -37,15 +37,18 @@ const PointsContainer = styled.div`
   align-items: center;
   flex-direction: column;
   text-transform: uppercase;
+  font-family: BebasNeue;
+  font-size: 38px;
 `;
 
 const Points = styled.div`
-  padding: 15px;
+  padding: 5px 15px;
   border: 3px #162e3d solid;
   color: #be1e2d;
-  font-size: 32px;
   width: 75px;
   text-align: center;
+  font-family: inherit;
+  font-size: 56px;
 `;
 
 const LowerContainer = styled.div`
@@ -90,10 +93,13 @@ const CalIconBox = styled.div`
 const YourTournamentsContainer = styled.div`
   display: flex;
   justify-content: center;
+  margin-top: 50px;
+  margin-bottom: 50px;
 
   table {
     width: 100%;
     max-width: 1100px;
+    border-collapse: collapse;
   }
 `;
 
@@ -139,40 +145,10 @@ const Main = () => {
       const results = await Promise.all(promises);
 
       setCompletedScores(results);
-
-      // if (completedScores) {
-      //   const testthing =
-      //     completedScores.length > 0 &&
-      //     completedScores[completedScores.length - 1]
-      //       ?.filter(({ pairing_group }) =>
-      //         pairing_group.players.some(
-      //           (player) =>
-      //             player.player_roster_id ===
-      //             (userRosterObj && userRosterObj?.member?.id)
-      //         )
-      //       )
-      //       .map(({ pairing_group }) => {
-      //         let newElt = Object.assign({}, pairing_group);
-      //         return newElt.players.filter(
-      //           (player) =>
-      //             player.player_roster_id ===
-      //             (userRosterObj && userRosterObj?.member?.id)
-      //         );
-      //       });
-
-      //   setRecentScore(testthing);
-      // }
     }
   }, [completedScores, completedRounds]);
 
-  console.log(userRosterObj);
-  console.log(user);
-  console.log(recentScore);
-
-  console.log(completedScores);
-  console.log(completedRounds);
-
-  const testthing =
+  const latestScore =
     completedScores.length > 0 &&
     completedScores[completedScores.length - 1]
       ?.filter(({ pairing_group }) =>
@@ -191,13 +167,37 @@ const Main = () => {
         );
       });
 
-  console.log(testthing);
-  console.log(
-    testthing &&
-      testthing[0] &&
-      testthing[0][0] &&
-      testthing[0][0]?.score_array.reduce((a, b) => a + b, 0)
-  );
+  const completedRoundInfo =
+    completedRounds?.length > 0 &&
+    completedRounds?.map(({ round }, i) => ({
+      ...round,
+      score:
+        completedScores.length > 0 &&
+        completedScores[i]
+          ?.filter(({ pairing_group }) =>
+            pairing_group.players.some(
+              (player) =>
+                player.player_roster_id ===
+                (userRosterObj && userRosterObj?.member?.id)
+            )
+          )
+          .map(({ pairing_group }) => {
+            let newElt = Object.assign({}, pairing_group);
+            return newElt.players.filter(
+              (player) =>
+                player.player_roster_id ===
+                (userRosterObj && userRosterObj?.member?.id)
+            );
+          }),
+    }));
+
+  console.log(userRosterObj);
+  console.log(user);
+  console.log(recentScore);
+
+  console.log(completedScores);
+  console.log(completedRounds);
+  console.log(completedRoundInfo);
 
   return (
     <MainContainer>
@@ -205,27 +205,45 @@ const Main = () => {
       <ScoreContainer>
         <PointsContainer>
           recent round
-          <Points>0</Points>
+          <Points>
+            {latestScore &&
+              latestScore[0] &&
+              latestScore[0][0] &&
+              latestScore[0][0]?.score_array.reduce((a, b) => a + b, 0)}
+          </Points>
         </PointsContainer>
       </ScoreContainer>
       <YourTournamentsContainer>
         <table>
-          <tr>
-            <td>
+          <tr
+            style={{
+              backgroundColor: "#F3E9D5",
+              textTransform: "uppercase",
+              color: "#BE1E2D",
+            }}
+          >
+            <td style={{ width: "15%" }}>
               <CalIconBox>
                 <img src={WhiteCal} />
               </CalIconBox>
             </td>
             <td>your tournaments</td>
             <td>score</td>
-            <td>place</td>
           </tr>
-          <tr>
-            <td>date</td>
-            <td>name</td>
-            <td>score</td>
-            <td>2nd</td>
-          </tr>
+          {completedRoundInfo.length > 0 &&
+            completedRoundInfo?.map((round) => (
+              <tr style={{ border: "2px solid #F3E9D5" }}>
+                <td style={{ padding: "15px", color: "#BE1E2D" }}>
+                  {format(parseISO(round.date), "MM/dd/yyyy")}
+                </td>
+                <td>{round.name}</td>
+                <td>
+                  {round.score[0] &&
+                    round.score[0][0] &&
+                    round.score[0][0]?.score_array.reduce((a, b) => a + b, 0)}
+                </td>
+              </tr>
+            ))}
         </table>
       </YourTournamentsContainer>
       <NextTour />

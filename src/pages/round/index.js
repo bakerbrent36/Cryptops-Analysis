@@ -649,12 +649,12 @@ const Round = () => {
               <RoundCard
                 backgroundImage={
                   (roundInfo &&
-                    roundInfo[currentIndex + 1]?.course_info.main_image) ||
+                    roundInfo[currentIndex + 1]?.course_info?.main_image) ||
                   PlaceHolder
                 }
-                date={data && data[currentIndex + 1].round.date}
-                name={data && data[currentIndex + 1].round.name}
-                link={data && `${data[currentIndex + 1].round.id}`}
+                date={data && data[currentIndex + 1]?.round?.date}
+                name={data && data[currentIndex + 1]?.round?.name}
+                link={data && `${data[currentIndex + 1].round?.id}`}
                 style={{ marginBottom: "50px" }}
               />
             </>
@@ -667,12 +667,12 @@ const Round = () => {
               <RoundCard
                 backgroundImage={
                   (roundInfo &&
-                    roundInfo[currentIndex - 1].course_info.main_image) ||
+                    roundInfo[currentIndex - 1]?.course_info?.main_image) ||
                   PlaceHolder
                 }
-                date={data && data[currentIndex - 1].round.date}
-                name={data && data[currentIndex - 1].round.name}
-                link={data && `${data[currentIndex - 1].round.id}`}
+                date={data && data[currentIndex - 1]?.round?.date}
+                name={data && data[currentIndex - 1]?.round?.name}
+                link={data && `${data[currentIndex - 1]?.round?.id}`}
               />
             </>
           )}

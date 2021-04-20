@@ -147,7 +147,9 @@ const Schedule = () => {
               .map((round) => {
                 return (
                   <RoundCard
-                    backgroundImage={round?.course_info?.main_image || ""}
+                    backgroundImage={
+                      round?.course_info?.main_image || PlaceHolder
+                    }
                     date={round?.date}
                     name={round?.name}
                     link={`/round/${round?.id}`}
