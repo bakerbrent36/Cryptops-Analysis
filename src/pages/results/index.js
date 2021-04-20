@@ -36,22 +36,30 @@ const Results = () => {
     <div>
       <LowerContainer>
         <TourResults />
-        <Card>
-          <Ribbon>tour standings</Ribbon>
-          <div id="scroller" style={{ overflow: "auto" }}>
-            <iframe
-              class=""
-              frameBorder="0"
-              height="580"
-              mozallowfullscreen
-              name="page_iframe"
-              scrolling="auto"
-              src={process.env.REACT_APP_STANDINGS_URL}
-              webkitallowfullscreen="true"
-              width="100%"
-            />
-          </div>
-        </Card>
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            width: "100%",
+          }}
+        >
+          <Card>
+            <Ribbon>tour standings</Ribbon>
+            <div id="scroller" style={{ overflow: "auto" }}>
+              <iframe
+                class=""
+                frameBorder="0"
+                height="580"
+                mozallowfullscreen
+                name="page_iframe"
+                scrolling="auto"
+                src={process.env.REACT_APP_STANDINGS_URL}
+                webkitallowfullscreen="true"
+                width="100%"
+              />
+            </div>
+          </Card>
+        </div>
       </LowerContainer>
     </div>
   );

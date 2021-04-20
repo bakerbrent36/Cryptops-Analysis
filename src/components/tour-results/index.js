@@ -67,11 +67,10 @@ const Table = styled.table`
 const DropdownContainer = styled.div`
   display: flex;
   flex-direction: column;
-  width: 100%;
   align-items: flex-end;
   text-transform: uppercase;
   color: #162e3d;
-  margin: 10px;
+  padding: 15px;
 
   label {
     padding-right: 15px;

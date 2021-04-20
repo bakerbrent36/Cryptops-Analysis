@@ -440,7 +440,7 @@ const Round = () => {
           ))}
         </Slider>
       )}
-      <div style={{ color: "#be1e2d" }}>
+      <div style={{ color: "#F3E9D5" }}>
         Photos courtesy of the Bausch Collection at MyPhillyGolf.com
       </div>
       {currentRound.length > 0 && (
@@ -479,15 +479,26 @@ const Round = () => {
             <div className="table-label">FRONT 9</div>
             <TableContainer>
               <table style={{ width: "auto" }}>
-                <tr style={{ backgroundColor: "#f3e9d5", height: "38px" }}>
+                <tr
+                  style={{
+                    backgroundColor: "#f3e9d5",
+                    height: "38px",
+                    color: "#162E3D",
+                  }}
+                >
                   <td>HOLE</td>
                 </tr>
                 {currentCourse &&
-                  currentCourse[0]?.tees.map((tee) => (
-                    <tr style={{ height: "50px", backgroundColor: tee.color }}>
-                      <td
-                        style={{ color: tee.color !== "" ? "#fff" : "#162E3D" }}
-                      >
+                  currentCourse[0]?.tees.map((tee, i) => (
+                    <tr
+                      style={{
+                        height: "50px",
+                        background: `linear-gradient(to right, ${
+                          tee.color
+                        } 10%, ${i % 2 ? "#D6D6D6" : "#fff"} 10%)`,
+                      }}
+                    >
+                      <td style={{ color: "#162E3D", padding: "0px 15px" }}>
                         {tee.name}
                       </td>
                     </tr>
@@ -551,11 +562,16 @@ const Round = () => {
                   <td>HOLE</td>
                 </tr>
                 {currentCourse &&
-                  currentCourse[0]?.tees.map((tee) => (
-                    <tr style={{ height: "50px", backgroundColor: tee.color }}>
-                      <td
-                        style={{ color: tee.color !== "" ? "#fff" : "#162E3D" }}
-                      >
+                  currentCourse[0]?.tees.map((tee, i) => (
+                    <tr
+                      style={{
+                        height: "50px",
+                        background: `linear-gradient(to right, ${
+                          tee.color
+                        } 10%, ${i % 2 ? "#D6D6D6" : "#fff"} 10%)`,
+                      }}
+                    >
+                      <td style={{ color: "#162E3D", padding: "0px 15px" }}>
                         {tee.name}
                       </td>
                     </tr>
@@ -619,20 +635,41 @@ const Round = () => {
             </TableContainer>
             <div className="table-label">RATING & SLOPE</div>
             <TableContainer>
-              <table style={{ width: "50%" }}>
+              <table style={{ width: "auto" }}>
                 <tr style={{ backgroundColor: "#f3e9d5" }}>
                   <td></td>
-                  <td>RATING</td>
-                  <td>SLOPE</td>
+                  <td style={{ padding: "5px 15px" }}>RATING</td>
+                  <td style={{ padding: "5px 15px" }}>SLOPE</td>
                 </tr>
                 {currentCourse &&
-                  currentCourse[0]?.tees.map((tee) => (
+                  currentCourse[0]?.tees.map((tee, i) => (
                     <tr>
-                      <td>{tee.name}</td>
-                      <td style={{ color: "#BE1E2D", fontSize: "32px" }}>
+                      <td
+                        style={{
+                          padding: "5px 15px",
+                          background: `linear-gradient(to right, ${
+                            tee.color
+                          } 10%, ${i % 2 ? "#D6D6D6" : "#fff"} 10%)`,
+                        }}
+                      >
+                        {tee.name}
+                      </td>
+                      <td
+                        style={{
+                          color: "#BE1E2D",
+                          fontSize: "32px",
+                          backgroundColor: i % 2 ? "#D6D6D6" : "#fff",
+                        }}
+                      >
                         {tee.slope_and_rating.all18.rating}
                       </td>
-                      <td style={{ color: "#BE1E2D", fontSize: "32px" }}>
+                      <td
+                        style={{
+                          color: "#BE1E2D",
+                          fontSize: "32px",
+                          backgroundColor: i % 2 ? "#D6D6D6" : "#fff",
+                        }}
+                      >
                         {tee.slope_and_rating.all18.slope}
                       </td>
                     </tr>
