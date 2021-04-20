@@ -9,6 +9,7 @@ import Schedule from "../pages/schedule";
 import Results from "../pages/results";
 import EnterScore from "../pages/enter-score";
 import Round from "../pages/round";
+import Logout from "../pages/logout";
 
 const MainContainer = () => {
   return (
@@ -20,6 +21,7 @@ const MainContainer = () => {
         <Route path="/round/:roundId" component={Round} />
         <Route path="/results" component={Results} />
         <Route path="/enter-score" component={EnterScore} />
+        <Route path="/logout" component={Logout} />
         <Redirect to="/main" />
       </Switch>
     </React.Fragment>

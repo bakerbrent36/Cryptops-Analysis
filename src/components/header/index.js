@@ -296,6 +296,9 @@ const Header = () => {
           <MenuLink onClick={() => setOpenMenu(false)} to="/roster">
             Player Roster
           </MenuLink>
+          <MenuLink onClick={() => setOpenMenu(false)} to="/logout">
+            Logout
+          </MenuLink>
         </div>
       </Menu>
     </HeaderContainer>
