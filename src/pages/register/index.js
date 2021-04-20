@@ -29,7 +29,7 @@ const Button = styled.div`
 `;
 
 const FormModal = styled.div`
-  position: absolute;
+  position: fixed;
   background-color: rgba(22, 46, 61, 0.9);
   top: 0;
   width: 100%;

@@ -134,7 +134,7 @@ const Slider = styled(Carousel)`
 `;
 
 const FormModal = styled.div`
-  position: absolute;
+  position: fixed;
   background-color: rgba(22, 46, 61, 0.9);
   top: 0;
   left: 0;
@@ -194,7 +194,7 @@ const InputRow = styled.div`
 
 const SubmitButton = styled.input`
   width: 134px;
-  height: 68px;
+  height: 54px;
   background-color: #be1e2d;
   border: none;
   margin: 5px;
@@ -734,7 +734,7 @@ const Round = () => {
                   <a
                     class="tee-time"
                     target="_blank"
-                    href={courseInfo[currentIndex].tee_time_link}
+                    href={courseInfo[currentCourse[0]?.id]?.tee_time_link}
                   >
                     set tee time
                   </a>
@@ -760,6 +760,8 @@ const Round = () => {
                   <InputRow
                     style={{ justifyContent: "flex-end", paddingTop: "15px" }}
                   >
+                    <button onClick={() => setShowModal(false)}>CANCEL</button>
+
                     <SubmitButton type="submit" value="FINISHED" />
                   </InputRow>
                 </GHINForm>

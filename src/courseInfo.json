@@ -1,6 +1,7 @@
 {
   "7323257898052662520": {
     "name": "Sweet Water Golf Course",
+    "tee_time_link": "https://www.golfnow.com/tee-times/facility/11095-sweet-water-golf-course/search?utm_source=golfadvisor&utm_medium=partnerships&utm_campaign=11095#sortby=Date&view=Grouping&holes=3&timeperiod=3&timemax=42&timemin=10&players=0&pricemax=10000&pricemin=0",
     "main_image": "https://workhorsetour.com/images/Sweet%20Water/SweetWater_No2.jpg",
     "images": [
       "https://workhorsetour.com/images/Sweet%20Water/SweetWater_No3.jpg",
@@ -13,6 +14,7 @@
   },
   "7323237965612758263": {
     "name": "Radnor Valley Country Club",
+    "tee_time_link": "https://www.golflink.com/golf-courses/pa/villanova/radnor-valley-country-club-975445/rates-tee-times",
     "main_image": "https://workhorsetour.com/images/Radnor%20Valley/RadnorValley_No13.jpg",
     "images": [
       "https://workhorsetour.com/images/Radnor%20Valley/RadnorValley_No16.jpg",
@@ -24,6 +26,7 @@
   },
   "7323236350033966326": {
     "name": "Makefield Highlands Golf Club",
+    "tee_time_link": "https://foreupsoftware.com/index.php/booking/20708/5491#/teetimes",
     "main_image": "https://workhorsetour.com/images/Makefield%20Highlands/MakefieldHighlands_No14.jpg",
     "images": [
       "https://workhorsetour.com/images/Makefield%20Highlands/MakefieldHighlands_No14a.jpg",
@@ -36,6 +39,7 @@
   },
   "7323229778096469237": {
     "name": "Honeybrook Golf Club",
+    "tee_time_link": "https://www.honeybrookgolf.com/book-a-tee-time",
     "main_image": "https://workhorsetour.com/images/Honeybrook/HoneyB1.jpg",
     "images": [
       "https://workhorsetour.com/images/Honeybrook/HoneyB5.jpg",
@@ -48,6 +52,7 @@
   },
   "7323227096694699252": {
     "name": "The 1912 Club",
+    "tee_time_link": "https://www.golfnow.com/tee-times/facility/16641-the-1912-club/search#sortby=Date&view=Grouping&holes=3&timeperiod=3&timemax=42&timemin=10&players=0&pricemax=10000&pricemin=0",
     "main_image": "https://workhorsetour.com/images/1912%20Club/1912_No14.jpg",
     "images": [
       "https://workhorsetour.com/images/1912%20Club/1912_No18.jpg",
@@ -59,6 +64,7 @@
   },
   "7323222344380495091": {
     "name": "Gilbertsville Golf Club (Red/White)",
+    "tee_time_link": "https://www.golfgilbertsvillegc.com/tee-times/",
     "main_image": "https://workhorsetour.com/images/Gilbertsville/Gilbertsville_Blue_No4.jpg",
     "images": [
       "https://workhorsetour.com/images/Gilbertsville/Gilbertsville_White_No1.jpg",
@@ -70,6 +76,7 @@
   },
   "7323217916269212914": {
     "name": "Hickory Valley (Presidential)",
+    "tee_time_link": "https://www.hickoryvalley.com/tee-times-presidential/",
     "main_image": "https://workhorsetour.com/images/Hickory%20Valley/Presidential/HV_Presidential_No14.jpg",
     "images": [
       "https://workhorsetour.com/images/Hickory%20Valley/Presidential/HV_Presidential_No2.jpg",
@@ -82,6 +89,7 @@
   "7323216705658860785": {
     "name": "Hickory Valley (Ambassador)",
     "main_image": "https://workhorsetour.com/images/Hickory%20Valley/Ambassador/HV_Ambassador_No10.jpg",
+    "tee_time_link": "https://www.hickoryvalley.com/tee-times-ambassador/",
     "images": [
       "https://workhorsetour.com/images/Hickory%20Valley/Ambassador/HV_Ambassador_No11.jpg",
       "https://workhorsetour.com/images/Hickory%20Valley/Ambassador/HV_Ambassador_No15.jpg",
@@ -92,6 +100,7 @@
   },
   "7323215202185426160": {
     "name": "Talamore Country Club",
+    "tee_time_link": "https://www.golflink.com/golf-courses/pa/ambler/talamore-country-club-969345/rates-tee-times",
     "main_image": "https://workhorsetour.com/images/Talamore/IMG_1158.JPG",
     "images": [
       "https://workhorsetour.com/images/Talamore/TAL18%20Painting.jpg",
@@ -105,6 +114,7 @@
   },
   "7323213672338207983": {
     "name": "Jeffersonville Golf Club",
+    "tee_time_link": "https://jeffersonville-golf-club.book.teeitup.golf/?course=54f14d8b0c8ad60378b03ea0&date=2021-04-20",
     "main_image": "https://workhorsetour.com/images/Jeffersonville/Jeff10.jpg",
     "images": [
       "https://workhorsetour.com/images/Jeffersonville/Jeff11.jpg",
@@ -116,6 +126,7 @@
   },
   "7323212739424335086": {
     "name": "Kimberton Golf Club",
+    "tee_time_link": "https://www.kimbertongolfclub.com/teetimes/",
     "main_image": "https://workhorsetour.com/images/Kimberton/2ndHoleGreen.jpg",
     "images": [
       "https://workhorsetour.com/images/Kimberton/IMG_4626.JPG",
@@ -127,6 +138,7 @@
   },
   "7323210812091315437": {
     "name": "Spring Hollow Golf Club",
+    "tee_time_link": "https://springhollowpp.ezlinksgolf.com/index.html#/search",
     "main_image": "https://workhorsetour.com/images/Spring%20Hollow/SpringHollow_No14.jpg",
     "images": [
       "https://workhorsetour.com/images/Spring%20Hollow/SpringHollow_No15.jpg",
@@ -139,6 +151,7 @@
   },
   "7323181876795978988": {
     "name": "Coeur D'Alene Golf Club",
+    "tee_time_link": "https://foreupsoftware.com/index.php/booking/19798/2483#/teetimes",
     "main_image": "blah",
     "images": ["blah"],
     "description": "blah blah",
@@ -146,6 +159,7 @@
   },
   "7323168754932692203": {
     "name": "Five Ponds Golf Club",
+    "tee_time_link": "https://foreupsoftware.com/index.php/booking/20724/5576#/teetimes",
     "main_image": "https://workhorsetour.com/images/Five%20Ponds/FivePonds_No1.jpg",
     "images": [
       "https://workhorsetour.com/images/Five%20Ponds/FivePonds_No18.jpg",
@@ -157,6 +171,7 @@
   },
   "7195613714035291331": {
     "name": "Raven's Claw Golf Club",
+    "tee_time_link": "https://ravensclawgc.teesnap.net/",
     "main_image": "https://workhorsetour.com/images/Raven_s%20Claw/Ravens%20Claw.jpg",
     "images": [
       "https://workhorsetour.com/images/Raven_s%20Claw/RavensClaw_No11.jpg",
@@ -169,6 +184,7 @@
   },
   "7323158365977228522": {
     "name": "Macoby Run Golf Course",
+    "tee_time_link": "https://www.macobyrun.com/teetimes/",
     "main_image": "https://workhorsetour.com/images/Macoby%20Run/Macoby%20Run.jpg",
     "images": [
       "https://workhorsetour.com/images/Macoby%20Run/MacobyRun_No15.jpg",
@@ -181,6 +197,7 @@
   },
   "7195632995552769220": {
     "name": "Turtle Creek Golf Course",
+    "tee_time_link": "https://www.turtlecreekgolf.com/tee-times",
     "main_image": "https://workhorsetour.com/images/Turtle%20Creek/TurtleCreek_No1.jpg",
     "images": [
       "https://workhorsetour.com/images/Turtle%20Creek/TurtleCreek_No16.jpg",
@@ -192,6 +209,7 @@
   },
   "7195634105365607621": {
     "name": "Worcester Golf Club",
+    "tee_time_link": "https://www.worcestergolfclub.com/teetimes/",
     "main_image": "https://workhorsetour.com/images/Worcester/Worcester_No2.jpg",
     "images": [
       "https://workhorsetour.com/images/Worcester/Worcester_No7.jpg",
@@ -203,6 +221,7 @@
   },
   "7195634781118313670": {
     "name": "Landis Creek Golf Club",
+    "tee_time_link": "https://www.landiscreekgolfclub.com/tee-times",
     "main_image": "https://workhorsetour.com/images/Landis%20Creek/Landis%20Creek.jpg",
     "images": [
       "https://workhorsetour.com/images/Landis%20Creek/LandisCreek_No1.jpg",
@@ -215,6 +234,7 @@
   },
   "7195635573372007623": {
     "name": "Lederach Golf Club",
+    "tee_time_link": "https://golfback.com/#/course/b8717fb6-56b1-4672-b9b6-056c18d8b3ef",
     "main_image": "https://workhorsetour.com/images/Lederach/Lederach1.jpg",
     "images": [
       "https://workhorsetour.com/images/Lederach/Lederach4.jpg",
@@ -225,6 +245,7 @@
   },
   "7195638802516325577": {
     "name": "Linfield National Golf Club",
+    "tee_time_link": "https://www.linfieldnational.com/teetimes/",
     "main_image": "https://workhorsetour.com/images/Linfield%20National/LinfieldNational_No18.jpg",
     "images": [
       "https://workhorsetour.com/images/Linfield%20National/LinfieldNational_No2.jpg",
