@@ -43,6 +43,10 @@ export function AuthProvider({ children }) {
       .catch((error) => console.log("error", error));
   };
 
+  const logOut = () => {
+    setUser(null);
+  };
+
   useEffect(() => {
     if (cookies["gg_user"]) {
       setUser(cookies["gg_user"]);
@@ -51,7 +55,7 @@ export function AuthProvider({ children }) {
 
   return (
     <AuthContext.Provider value={user}>
-      <AuthUpdateContext.Provider value={logIn}>
+      <AuthUpdateContext.Provider value={{ logIn: logIn, logOut: logOut }}>
         {children}
       </AuthUpdateContext.Provider>
     </AuthContext.Provider>

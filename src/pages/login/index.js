@@ -44,7 +44,7 @@ const Submit = styled.button`
 `;
 
 const Login = () => {
-  const logIn = useAuthUpdate();
+  const { logIn } = useAuthUpdate();
   const user = useAuth();
   const history = useHistory();
 
