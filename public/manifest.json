@@ -3,7 +3,7 @@
   "name": "Workhorse Tour",
   "icons": [
     {
-      "src": "WHT-192.png",
+      "src": "app-192.png",
       "type": "image/png",
       "sizes": "192x192"
     }
