@@ -17,9 +17,7 @@ const Logout = () => {
     setHasDispatched(true);
   }, [hasDispatched]);
 
-  hasDispatched && <Redirect to="/" />;
-
-  return null;
+  return (hasDispatched && <Redirect to="/welcome" />) || null;
 };
 
 export default Logout;

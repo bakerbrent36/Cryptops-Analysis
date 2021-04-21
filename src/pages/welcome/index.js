@@ -136,7 +136,7 @@ const Welcome = () => {
         Sign Up
       </Button>
 
-      <InfoContainer>
+      <InfoContainer style={{ flexDirection: "column" }}>
         <NextTour />
       </InfoContainer>
 

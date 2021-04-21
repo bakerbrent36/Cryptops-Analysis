@@ -9,6 +9,7 @@ const Card = styled(Link)`
   background-color: #162e3d;
   background-size: cover;
   background-repeat: no-repeat;
+  background-position: center center;
   text-decoration: none;
   margin: 15px;
   margin-bottom: 25px;
@@ -20,10 +21,6 @@ const Card = styled(Link)`
 
   @media only screen and (max-width: 768px) {
     height: 268px;
-  }
-
-  @media only screen and (max-width: 500px) {
-    background-size: contain;
   }
 `;
 

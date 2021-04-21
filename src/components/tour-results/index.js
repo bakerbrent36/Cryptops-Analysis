@@ -155,10 +155,13 @@ const TourResults = () => {
             <div>
               <label>Tournament</label>
               <select onChange={(e) => setCurrentTour(e.target.value)}>
-                {roundTours.length > 0 &&
+                {roundTours.length > 0 ? (
                   roundTours.map(({ event }) => (
                     <option value={`${event.id}`}>{event.name}</option>
-                  ))}
+                  ))
+                ) : (
+                  <option>No Tournaments</option>
+                )}
               </select>
             </div>
           )}
