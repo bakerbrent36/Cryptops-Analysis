@@ -139,7 +139,7 @@ const HeaderButtonsContainer = styled.div`
 `;
 
 const Menu = styled.div`
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   z-index: 500;
@@ -191,7 +191,7 @@ const Header = () => {
         <NavBar>
           <HamburgerContainer>
             <button
-              style={{ position: "absolute", zIndex: 501 }}
+              style={{ position: openMenu ? "fixed" : "absolute", zIndex: 501 }}
               onClick={() => setOpenMenu((oldState) => !oldState)}
               className={
                 openMenu
