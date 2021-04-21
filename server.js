@@ -193,7 +193,7 @@ app.post("/submit-score", (req, res, next) => {
     },
     (error, response, body) => {
       console.log(body);
-      res.send(body);
+      res.json(body);
     }
   );
 });

@@ -74,6 +74,9 @@ const ScoreCardItem = styled.div`
 
 const EnterScore = ({ roundId, userFoursomeObj }) => {
   const [total, setTotal] = useState();
+  const [loader, setLoader] = useState(false);
+  const [success, setSuccess] = useState(false);
+  const [error, setError] = useState(false);
 
   const formRef = useRef(null);
 
@@ -88,6 +91,7 @@ const EnterScore = ({ roundId, userFoursomeObj }) => {
   }));
 
   const submitScore = (e) => {
+    setLoader(true);
     e.preventDefault();
 
     const formData = new FormData(e.target);
@@ -114,7 +118,16 @@ const EnterScore = ({ roundId, userFoursomeObj }) => {
         player_id: userFoursomeObj.player_round_id,
         score: scoreCSV,
       }),
-    });
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        setLoader(false);
+        if (data === "OK") {
+          setSuccess(true);
+        } else {
+          setError(true);
+        }
+      });
   };
 
   const handleChange = () => {
@@ -214,7 +227,15 @@ const EnterScore = ({ roundId, userFoursomeObj }) => {
               </div>
             </ScoreCardRow>
           </ScoreCardContainer>
-          <button type="submit">submit</button>
+          {loader ? (
+            <span>Submitting score...</span>
+          ) : (
+            <button type="submit">submit</button>
+          )}
+          {success && <span>Scores were submitted successfully!</span>}
+          {error && (
+            <span>Scores could not be submitted. Please try again</span>
+          )}
         </form>
       )}
     </ScoreContainer>
