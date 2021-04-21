@@ -26,6 +26,7 @@ const Button = styled.div`
   justify-content: center;
   align-items: center;
   color: white;
+  cursor: pointer;
 `;
 
 const FormModal = styled.div`
@@ -99,6 +100,7 @@ const SubmitButton = styled.input`
   justify-content: center;
   align-items: center;
   color: white;
+  cursor: pointer;
 `;
 
 const Register = () => {
@@ -247,6 +249,7 @@ const Register = () => {
               <InputRow
                 style={{ justifyContent: "flex-end", paddingTop: "15px" }}
               >
+                <Button onClick={() => setShowModal(false)}>CANCEL</Button>
                 <SubmitButton type="submit" value="SUBMIT" />
               </InputRow>
             </GHINForm>

@@ -125,7 +125,7 @@ app.post("/get-ghin", (req, res, next) => {
                       Charset: "UTF-8",
                       Data: `
                           <div style="margin: 0 auto">
-                          <img src="https://custom.ageverify.co/workhorsebrewing/AVlogo.png"/>
+                          <img style="width: 300px; height: 200px;" src="https://workhorsetour.com/images/Logos/Workhorse-Tour-logo-01.png"/>
                           <p>
                             Welcome to the Workhorse Tour! Your GHIN is <strong>${parsedBody.golfers.id}</strong>
                           </p>
