@@ -395,6 +395,10 @@ const Round = () => {
       .then((data) => setTeeSheets(data));
   }, [roundId]);
 
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   const courseId = (roundId) =>
     Object.entries(courseInfo).filter(([key, value]) => {
       return value.round_id.includes(roundId.toString());
@@ -440,7 +444,7 @@ const Round = () => {
               </>
             ))}
           </Slider>
-          <div style={{ color: "#F3E9D5" }}>
+          <div style={{ color: "#F3E9D5", textAlign: "center" }}>
             Photos courtesy of the Bausch Collection at MyPhillyGolf.com
           </div>
         </>
@@ -685,7 +689,10 @@ const Round = () => {
             <Divider style={{ marginBottom: "30px", marginTop: "40px" }} />
           </CourseInfoContainer>
           {data && data[currentIndex + 1] && (
-            <>
+            <div
+              style={{ marginBottom: "50px" }}
+              onClick={() => window.scrollTo(0, 0)}
+            >
               <HeaderText style={{ marginBottom: "25px" }}>
                 Next Tournament
               </HeaderText>
@@ -698,12 +705,11 @@ const Round = () => {
                 date={data && data[currentIndex + 1]?.round?.date}
                 name={data && data[currentIndex + 1]?.round?.name}
                 link={data && `${data[currentIndex + 1].round?.id}`}
-                style={{ marginBottom: "50px" }}
               />
-            </>
+            </div>
           )}
           {data && data[currentIndex - 1] && (
-            <>
+            <div onClick={() => window.scrollTo(0, 0)}>
               <HeaderText style={{ marginBottom: "25px" }}>
                 Previous Tournament
               </HeaderText>
@@ -717,7 +723,7 @@ const Round = () => {
                 name={data && data[currentIndex - 1]?.round?.name}
                 link={data && `${data[currentIndex - 1]?.round?.id}`}
               />
-            </>
+            </div>
           )}
           {showModal && (
             <FormModal>

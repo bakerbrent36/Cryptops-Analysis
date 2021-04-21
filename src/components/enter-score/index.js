@@ -136,6 +136,7 @@ const EnterScore = ({ roundId, userFoursomeObj, opened }) => {
     let totalNum = 0;
 
     for (let pair of formData.entries()) {
+      console.log(pair);
       if (pair[1] !== "") {
         totalNum = totalNum + Number(pair[1]);
       }
@@ -168,7 +169,7 @@ const EnterScore = ({ roundId, userFoursomeObj, opened }) => {
                         defaultValue={
                           userFoursomeObj.score_array.slice(0, 9)[i] || ""
                         }
-                        type="text"
+                        type="number"
                       />
                     </ScoreCardCenter>
                     <ScoreCardFooter style={{ color: "#162E3D" }}>
@@ -199,7 +200,7 @@ const EnterScore = ({ roundId, userFoursomeObj, opened }) => {
                       <input
                         name={`hole-${hole.holeLabel}`}
                         style={{ color: "#BE1E2D" }}
-                        type="text"
+                        type="number"
                         defaultValue={
                           userFoursomeObj?.score_array.slice(9, 18)[i] || ""
                         }
