@@ -414,40 +414,46 @@ const Round = () => {
   return (
     <RoundContainer>
       {!openScore && (
-        <Slider
-          showStatus={false}
-          showIndicators={false}
-          dynamicHeight={true}
-          showThumbs={false}
-        >
-          <>
-            <img src={courseInfo[currentCourse[0]?.id]?.main_image} />
-            <RoundImage
-              style={{
-                backgroundImage: `linear-gradient(to top, rgba(22, 46, 61, 1), transparent)`,
-              }}
-            />
-          </>
-          {courseInfo[currentCourse[0]?.id]?.images.map((img) => (
+        <>
+          <Slider
+            showStatus={false}
+            showIndicators={false}
+            dynamicHeight={true}
+            showThumbs={false}
+          >
             <>
-              <img src={img} />
+              <img src={courseInfo[currentCourse[0]?.id]?.main_image} />
               <RoundImage
                 style={{
                   backgroundImage: `linear-gradient(to top, rgba(22, 46, 61, 1), transparent)`,
                 }}
               />
             </>
-          ))}
-        </Slider>
+            {courseInfo[currentCourse[0]?.id]?.images.map((img) => (
+              <>
+                <img src={img} />
+                <RoundImage
+                  style={{
+                    backgroundImage: `linear-gradient(to top, rgba(22, 46, 61, 1), transparent)`,
+                  }}
+                />
+              </>
+            ))}
+          </Slider>
+          <div style={{ color: "#F3E9D5" }}>
+            Photos courtesy of the Bausch Collection at MyPhillyGolf.com
+          </div>
+        </>
       )}
-      <div style={{ color: "#F3E9D5" }}>
-        Photos courtesy of the Bausch Collection at MyPhillyGolf.com
-      </div>
+
       {currentRound.length > 0 && (
         <InnerContainer>
-          {openScore && (
-            <EnterScore roundId={roundId} userFoursomeObj={userFoursomeObj} />
-          )}
+          <EnterScore
+            opened={openScore}
+            roundId={roundId}
+            userFoursomeObj={userFoursomeObj}
+          />
+
           <HeaderText>
             {currentRound[0].round.name}{" "}
             <div style={{ display: "flex" }}>

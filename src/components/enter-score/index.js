@@ -72,7 +72,7 @@ const ScoreCardItem = styled.div`
   border-left: 1px solid #162e3d;
 `;
 
-const EnterScore = ({ roundId, userFoursomeObj }) => {
+const EnterScore = ({ roundId, userFoursomeObj, opened }) => {
   const [total, setTotal] = useState();
   const [loader, setLoader] = useState(false);
   const [success, setSuccess] = useState(false);
@@ -145,7 +145,7 @@ const EnterScore = ({ roundId, userFoursomeObj }) => {
   };
 
   return (
-    <ScoreContainer>
+    <ScoreContainer style={{ display: opened ? "flex" : "none" }}>
       {holeData && (
         <form ref={formRef} onChange={handleChange} onSubmit={submitScore}>
           <ScoreCardContainer>
@@ -227,14 +227,20 @@ const EnterScore = ({ roundId, userFoursomeObj }) => {
               </div>
             </ScoreCardRow>
           </ScoreCardContainer>
-          {loader ? (
-            <span>Submitting score...</span>
-          ) : (
-            <button type="submit">submit</button>
+
+          <button type="submit">submit</button>
+          {loader && (
+            <span style={{ color: "#f3e9d5" }}>Submitting score...</span>
           )}
-          {success && <span>Scores were submitted successfully!</span>}
+          {success && (
+            <span style={{ color: "#f3e9d5" }}>
+              Scores were submitted successfully!
+            </span>
+          )}
           {error && (
-            <span>Scores could not be submitted. Please try again</span>
+            <span style={{ color: "#f3e9d5" }}>
+              Scores could not be submitted. Please try again
+            </span>
           )}
         </form>
       )}
