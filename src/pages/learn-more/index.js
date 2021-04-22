@@ -39,10 +39,32 @@ const Content = styled.div`
   }
 `;
 
+const HeaderText = styled.div`
+  font-family: BebasNeue;
+  color: #f3e9d5;
+  font-size: 36px;
+  display: flex;
+  justify-content: space-between;
+  padding-left: 15px;
+  flex-wrap: wrap;
+  width: 100%;
+  max-width: 1100px;
+`;
+
 const LearnMore = () => {
   const width = useWidth();
   return (
     <LearnMoreContainer>
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          width: "100%",
+          padding: "15px 0px",
+        }}
+      >
+        <HeaderText>Make your round count</HeaderText>
+      </div>
       <Content>
         <img src={width > 600 ? DesktopImg : MobileImg} />
       </Content>
