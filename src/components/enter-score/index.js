@@ -5,6 +5,7 @@ import styled from "@emotion/styled";
 const ScoreContainer = styled.div`
   display: flex;
   justify-content: center;
+  flex-direction: column;
   width: 100%;
 
   form {
@@ -65,11 +66,27 @@ const ScoreCardCenter = styled.div`
 
 const ScoreCardItem = styled.div`
   height: 146px;
-  min-width: 98px;
+  min-width: 96px;
   font-family: BebasNeue;
   display: flex;
   flex-direction: column;
   border-left: 1px solid #162e3d;
+`;
+
+const HeaderText = styled.div`
+  font-family: BebasNeue;
+  color: #f3e9d5;
+  font-size: 36px;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  padding: 15px 0px;
+`;
+
+const Divider = styled.hr`
+  width: 100%;
+  color: #f3e9d5;
+  margin: 40px 0px;
 `;
 
 const EnterScore = ({ roundId, userFoursomeObj, opened }) => {
@@ -147,6 +164,7 @@ const EnterScore = ({ roundId, userFoursomeObj, opened }) => {
 
   return (
     <ScoreContainer style={{ display: opened ? "flex" : "none" }}>
+      <HeaderText>Enter Score</HeaderText>
       {holeData && (
         <form ref={formRef} onChange={handleChange} onSubmit={submitScore}>
           <ScoreCardContainer>
@@ -228,23 +246,41 @@ const EnterScore = ({ roundId, userFoursomeObj, opened }) => {
               </div>
             </ScoreCardRow>
           </ScoreCardContainer>
-
-          <button type="submit">submit</button>
-          {loader && (
-            <span style={{ color: "#f3e9d5" }}>Submitting score...</span>
-          )}
-          {success && (
-            <span style={{ color: "#f3e9d5" }}>
-              Scores were submitted successfully!
-            </span>
-          )}
-          {error && (
-            <span style={{ color: "#f3e9d5" }}>
-              Scores could not be submitted. Please try again
-            </span>
-          )}
+          <div
+            style={{
+              height: "40px",
+              textAlign: "center",
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+            }}
+          >
+            {loader && (
+              <span style={{ color: "#f3e9d5" }}>Submitting score...</span>
+            )}
+            {success && (
+              <span style={{ color: "#f3e9d5" }}>
+                Scores were submitted successfully!
+              </span>
+            )}
+            {error && (
+              <span style={{ color: "#f3e9d5" }}>
+                Scores could not be submitted. Please try again
+              </span>
+            )}
+          </div>
+          <div
+            style={{
+              display: "flex",
+              width: "100%",
+              justifyContent: "flex-end",
+            }}
+          >
+            <button type="submit">submit</button>
+          </div>
         </form>
       )}
+      <Divider />
     </ScoreContainer>
   );
 };

@@ -16,7 +16,7 @@ import CalBlue from "../../assets/icons/WHT_icon_Cal-blue.svg";
 import GolferBlue from "../../assets/icons/WHT_icon_Golfer-blue.svg";
 
 const FooterContainer = styled.div`
-  height: 75px;
+  height: 150px;
   background-color: #be1e2d;
   position: fixed;
   bottom: 0;
@@ -25,11 +25,19 @@ const FooterContainer = styled.div`
   justify-content: center;
   flex-direction: column;
   align-items: center;
+
+  @media only screen and (max-width: 1100px) {
+    height: 80px;
+  }
 `;
 
 const FooterIcon = styled.img`
   position: relative;
-  top: -15px;
+  top: -50px;
+
+  @media only screen and (max-width: 1100px) {
+    top: -15px;
+  }
 `;
 
 const NavContainer = styled.div`

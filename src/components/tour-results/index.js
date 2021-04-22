@@ -26,7 +26,7 @@ const Ribbon = styled.div`
   background-color: #f3e9d5;
   color: #be1e2d;
   text-transform: uppercase;
-  padding: 5px;
+  padding: 15px;
   position: relative;
   top: 10px;
   right: 15px;
@@ -141,7 +141,13 @@ const TourResults = () => {
     <CardWrapper>
       <Card>
         <DropdownContainer>
-          <div>
+          <div
+            style={{
+              display: "flex",
+              flexWrap: "wrap",
+              justifyContent: "flex-end",
+            }}
+          >
             <label>Round Name</label>
             <select onChange={(e) => setCurrentRound(e.target.value)}>
               {eventRounds &&
@@ -152,7 +158,13 @@ const TourResults = () => {
             </select>
           </div>
           {roundTours && (
-            <div>
+            <div
+              style={{
+                display: "flex",
+                flexWrap: "wrap",
+                justifyContent: "flex-end",
+              }}
+            >
               <label>Tournament</label>
               <select onChange={(e) => setCurrentTour(e.target.value)}>
                 {roundTours.length > 0 ? (

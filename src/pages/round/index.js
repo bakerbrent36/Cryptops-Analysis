@@ -82,6 +82,7 @@ const HeaderText = styled.div`
 const Divider = styled.hr`
   width: 100%;
   color: #f3e9d5;
+  margin: 40px 0px;
 `;
 
 const Slider = styled(Carousel)`
@@ -130,6 +131,7 @@ const Slider = styled(Carousel)`
 
   .carousel img {
     pointer-events: auto;
+    max-height: 625px;
   }
 `;
 
@@ -444,20 +446,18 @@ const Round = () => {
               </>
             ))}
           </Slider>
-          <div style={{ color: "#F3E9D5", textAlign: "center" }}>
-            Photos courtesy of the Bausch Collection at MyPhillyGolf.com
-          </div>
         </>
       )}
 
       {currentRound.length > 0 && (
         <InnerContainer>
-          <EnterScore
-            opened={openScore}
-            roundId={roundId}
-            userFoursomeObj={userFoursomeObj}
-          />
-
+          <div style={{ padding: "0px 15px" }}>
+            <EnterScore
+              opened={openScore}
+              roundId={roundId}
+              userFoursomeObj={userFoursomeObj}
+            />
+          </div>
           <HeaderText>
             {currentRound[0].round.name}{" "}
             <div style={{ display: "flex" }}>
@@ -482,6 +482,10 @@ const Round = () => {
             <Divider />
             <div style={{ color: "#f3e9d5" }}>
               {courseInfo[currentCourse[0]?.id]?.description}
+            </div>
+            <br></br>
+            <div style={{ color: "#F3E9D5" }}>
+              Photos courtesy of the Bausch Collection at MyPhillyGolf.com
             </div>
 
             <Divider />

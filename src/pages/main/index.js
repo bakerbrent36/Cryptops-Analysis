@@ -69,7 +69,7 @@ const Ribbon = styled.div`
   background-color: #f3e9d5;
   color: #be1e2d;
   text-transform: uppercase;
-  padding: 5px;
+  padding: 15px;
   position: relative;
   top: 10px;
   right: 15px;
@@ -191,25 +191,17 @@ const Main = () => {
           }),
     }));
 
-  console.log(userRosterObj);
-  console.log(user);
-  console.log(recentScore);
-
-  console.log(completedScores);
-  console.log(completedRounds);
-  console.log(completedRoundInfo);
-
   return (
     <MainContainer>
-      <YourResults>Your Results</YourResults>
       <ScoreContainer>
         <PointsContainer>
           recent round
           <Points>
-            {latestScore &&
+            {(latestScore &&
               latestScore[0] &&
               latestScore[0][0] &&
-              latestScore[0][0]?.score_array.reduce((a, b) => a + b, 0)}
+              latestScore[0][0]?.score_array.reduce((a, b) => a + b, 0)) ||
+              0}
           </Points>
         </PointsContainer>
       </ScoreContainer>
@@ -230,7 +222,8 @@ const Main = () => {
             <td>your tournaments</td>
             <td>score</td>
           </tr>
-          {completedRoundInfo.length > 0 &&
+
+          {completedRoundInfo.length > 0 ? (
             completedRoundInfo?.map((round) => (
               <tr style={{ border: "2px solid #F3E9D5" }}>
                 <td style={{ padding: "15px", color: "#BE1E2D" }}>
@@ -238,12 +231,19 @@ const Main = () => {
                 </td>
                 <td>{round.name}</td>
                 <td>
-                  {round.score[0] &&
+                  {(round.score[0] &&
                     round.score[0][0] &&
-                    round.score[0][0]?.score_array.reduce((a, b) => a + b, 0)}
+                    round.score[0][0]?.score_array.reduce(
+                      (a, b) => a + b,
+                      0
+                    )) ||
+                    0}
                 </td>
               </tr>
-            ))}
+            ))
+          ) : (
+            <div style={{ color: "#BE1E2D" }}>No completed tournaments</div>
+          )}
         </table>
       </YourTournamentsContainer>
       <NextTour />

@@ -114,11 +114,11 @@ app.post("/get-ghin", (req, res, next) => {
 
             if (!parsedBody.errors) {
               const params = {
-                Source: "dev@gobigwheel.com",
+                Source: "golf@workhorsebrewing.com",
                 Destination: {
                   ToAddresses: [`${email}`],
                 },
-                ReplyToAddresses: ["dev@gobigwheel.com"],
+                ReplyToAddresses: ["golf@workhorsebrewing.com"],
                 Message: {
                   Body: {
                     Html: {
@@ -142,7 +142,7 @@ app.post("/get-ghin", (req, res, next) => {
                   },
                   Subject: {
                     Charset: "UTF-8",
-                    Data: "You have successfully registered for a GHIN",
+                    Data: "Your GHIN is here!",
                   },
                 },
               };

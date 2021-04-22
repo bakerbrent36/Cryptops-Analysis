@@ -12,7 +12,11 @@ import Header from "../components/header";
 import Footer from "../components/footer";
 
 const PageContainer = styled.div`
-  margin-bottom: 75px;
+  margin-bottom: 150px;
+
+  @media only screen and (max-width: 1100px) {
+    margin-bottom: 80px;
+  }
 `;
 
 const WelcomeContainer = ({ screenWidth }) => {

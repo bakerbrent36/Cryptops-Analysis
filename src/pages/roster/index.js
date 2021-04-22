@@ -26,7 +26,7 @@ const Ribbon = styled.div`
   background-color: #f3e9d5;
   color: #be1e2d;
   text-transform: uppercase;
-  padding: 5px;
+  padding: 15px;
   position: relative;
   top: 10px;
   right: 15px;
