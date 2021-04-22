@@ -32,7 +32,7 @@ const CardBottomContainer = styled.div`
   justify-content: space-between;
   align-items: flex-end;
   font-family: BebasNeue;
-  font-size: 50px;
+  font-size: 35px;
 `;
 
 const RoundPlayLink = styled.div`
