@@ -137,7 +137,7 @@ const Welcome = () => {
       </Button>
 
       <InfoContainer style={{ flexDirection: "column" }}>
-        <NextTour />
+        <NextTour welcome={true} />
       </InfoContainer>
 
       <InfoContainer>

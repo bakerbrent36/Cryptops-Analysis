@@ -75,7 +75,7 @@ const PlayButton = styled(Link)`
   text-decoration: none;
 `;
 
-const NextTour = () => {
+const NextTour = ({ welcome = false }) => {
   const { isLoading, error, data } = useQuery("eventData", () =>
     fetch(
       `${process.env.REACT_APP_API_URL}${process.env.REACT_APP_API_KEY}/events/${process.env.REACT_APP_EVENT_ID}/rounds`
@@ -86,6 +86,8 @@ const NextTour = () => {
 
   const nextTour =
     (data && data.find(({ round }) => round.status === "not started")) || [];
+
+  console.log(welcome);
 
   return (
     <NextTourBar>
@@ -98,7 +100,17 @@ const NextTour = () => {
           {nextTour && nextTour.round && (
             <>
               <NextTourListing>{nextTour.round.name}</NextTourListing>
-              <PlayButton to={`/round/${nextTour.round.id}`}>Play</PlayButton>
+              <PlayButton
+                to={
+                  welcome
+                    ? "/login"
+                    : nextTour &&
+                      nextTour.round &&
+                      `/round/${nextTour.round.id}`
+                }
+              >
+                Play
+              </PlayButton>
             </>
           )}
         </NextTourInner>
@@ -110,7 +122,11 @@ const NextTour = () => {
             </NextTourIcon>
             <NextTourText>Next Tournament</NextTourText>
             <PlayButton
-              to={nextTour && nextTour.round && `/round/${nextTour.round.id}`}
+              to={
+                welcome
+                  ? "/login"
+                  : nextTour && nextTour.round && `/round/${nextTour.round.id}`
+              }
             >
               Play
             </PlayButton>
