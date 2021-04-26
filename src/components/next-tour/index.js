@@ -107,7 +107,7 @@ const NextTour = ({ welcome = false }) => {
                       `/round/${nextTour.round.id}`
                 }
               >
-                &nbsp;
+                {welcome ? <>&nbsp;</> : "PLAY"}
               </PlayButton>
             </>
           )}
@@ -126,7 +126,7 @@ const NextTour = ({ welcome = false }) => {
                   : nextTour && nextTour.round && `/round/${nextTour.round.id}`
               }
             >
-              Play
+               {welcome ? <>&nbsp;</> : "PLAY"}
             </PlayButton>
           </NextTourInner>
           <NextTourInner>
