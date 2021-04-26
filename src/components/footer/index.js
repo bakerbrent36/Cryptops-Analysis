@@ -132,7 +132,7 @@ const Footer = () => {
             to="/schedule"
           >
             {isDesktop ? (
-              "Schedule of Events"
+              "Event Schedule"
             ) : (
               <img src={location.pathname == "/schedule" ? CalBlue : CalIcon} />
             )}

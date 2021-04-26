@@ -476,8 +476,8 @@ const Round = () => {
             - {format(parseISO(currentRound[0].round.date), "d")}
           </RoundDate>
           <CourseInfoContainer>
-            <HeaderText style={{ paddingLeft: "0px" }}>Course Info</HeaderText>
             <Divider />
+            <HeaderText style={{ paddingLeft: "0px" }}>Course Info</HeaderText>
             <div style={{ color: "#f3e9d5" }}>
               {courseInfo[currentCourse[0]?.id]?.description}
             </div>

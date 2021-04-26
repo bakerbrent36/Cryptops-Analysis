@@ -250,7 +250,7 @@ const Header = () => {
                 <img
                   src={location.pathname == "/schedule" ? CalBlue : CalIcon}
                 />
-                Schedule of Events
+                Event Schedule
               </MenuIcon>
               <MenuIcon
                 style={{
@@ -291,7 +291,7 @@ const Header = () => {
             Results
           </MenuLink>
           <MenuLink onClick={() => setOpenMenu(false)} to="/schedule">
-            Schedule
+            Event Schedule
           </MenuLink>
           <MenuLink onClick={() => setOpenMenu(false)} to="/roster">
             Player Roster

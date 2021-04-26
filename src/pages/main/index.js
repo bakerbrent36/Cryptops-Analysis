@@ -201,7 +201,7 @@ const Main = () => {
               latestScore[0] &&
               latestScore[0][0] &&
               latestScore[0][0]?.score_array.reduce((a, b) => a + b, 0)) ||
-              0}
+              "N/A"}
           </Points>
         </PointsContainer>
       </ScoreContainer>
@@ -237,7 +237,7 @@ const Main = () => {
                       (a, b) => a + b,
                       0
                     )) ||
-                    0}
+                    "N/A"}
                 </td>
               </tr>
             ))
