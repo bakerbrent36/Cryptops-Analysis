@@ -100,7 +100,7 @@ const EnterScore = ({ roundId, userFoursomeObj, opened }) => {
   const holeLabels =
     userFoursomeObj?.tee?.hole_labels?.map((label) => label) || [];
 
-  const parData = userFoursomeObj?.tee?.par?.map((par) => par) || [];
+  const parData = userFoursomeObj?.tee?.hole_data?.par?.map((par) => par) || [];
 
   const holeData = holeLabels.map((hole, i) => ({
     holeLabel: hole,
@@ -162,6 +162,10 @@ const EnterScore = ({ roundId, userFoursomeObj, opened }) => {
     setTotal(totalNum);
   };
 
+  console.log(parData)
+  console.log(holeData)
+  console.log(userFoursomeObj)
+
   return (
     <ScoreContainer style={{ display: opened ? "flex" : "none" }}>
       <HeaderText>Enter Score</HeaderText>
@@ -198,7 +202,7 @@ const EnterScore = ({ roundId, userFoursomeObj, opened }) => {
                 <ScoreCardItem>
                   <ScoreCardHeader style={{ backgroundColor: "#F3E9D5" }} />
                   <ScoreCardCenter style={{ backgroundColor: "#F3E9D5" }} />
-                  <ScoreCardFooter style={{ backgroundColor: "#F3E9D5" }} />
+                  <ScoreCardFooter style={{ backgroundColor: "#F3E9D5", color: "#162e3d" }} >{parData.length > 1 && parData.slice(0, 9).reduce((a, b) => a + b, 0)}</ScoreCardFooter>
                 </ScoreCardItem>
               </div>
             </ScoreCardRow>
@@ -241,7 +245,7 @@ const EnterScore = ({ roundId, userFoursomeObj, opened }) => {
                           0
                         ))}
                   </ScoreCardCenter>
-                  <ScoreCardFooter></ScoreCardFooter>
+                   <ScoreCardFooter style={{ backgroundColor: "#F3E9D5", color: "#162e3d" }} >{parData.length > 1 && parData.slice(9, 18).reduce((a, b) => a + b, 0)}</ScoreCardFooter>
                 </ScoreCardItem>
               </div>
             </ScoreCardRow>

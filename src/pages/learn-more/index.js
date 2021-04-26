@@ -2,8 +2,8 @@ import styled from "@emotion/styled";
 import { Link } from "react-router-dom";
 import { useWidth } from "../../context/ScreenWidthContext";
 
-import DesktopImg from "../../assets/images/info_desktop.png";
-import MobileImg from "../../assets/images/info_mobile.png";
+import DesktopImg from "../../assets/images/learn-more-desk.png";
+import MobileImg from "../../assets/images/learn-more-mobile.png";
 
 const LearnMoreContainer = styled.div`
   display: flex;

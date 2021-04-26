@@ -37,6 +37,7 @@ const TableContainer = styled.div`
   background-color: #f8f8f8;
   padding: 25px;
   margin: 10px;
+  text-align: center;
 `;
 
 const Table = styled.table`
@@ -71,12 +72,15 @@ const Roster = () => {
     ).then((res) => res.json())
   );
 
+  console.log(data);
+
   return (
     <RosterContainer>
       <CardWrapper>
         <Card>
           <Ribbon>Player Roster</Ribbon>
           <TableContainer>
+          <div style={{ paddingTop: "25px", paddingBottom: "25px"}}>The following golfers are members on Tour. Don't see your friends? Invite them to join!</div>
             <Table>
               <thead>
                 <tr>

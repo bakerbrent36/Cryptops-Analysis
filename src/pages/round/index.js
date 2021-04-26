@@ -13,6 +13,7 @@ import RoundCard from "../../components/round-card";
 import PlaceHolder from "../../assets/images/course-placeholder.jpg";
 import EnterScore from "../../components/enter-score";
 import courseInfo from "../../courseInfo.json";
+import Arrow from "../../assets/icons/WHT-arrow.svg";
 
 import TestImage from "../../assets/images/test.png";
 
@@ -423,7 +424,46 @@ const Round = () => {
             showIndicators={false}
             dynamicHeight={true}
             showThumbs={false}
-          >
+            renderArrowPrev={(onClickHandler, hasPrev, label) =>
+                hasPrev && (
+                  <button
+                    type="button"
+                    aria-label="previous slide / item"
+                    class="control-arrow control-prev"
+                    onClick={onClickHandler}
+                    title={label}
+                  >
+                    <img
+                      style={{
+                        width: '30px',
+                        height: '30px',
+                        transform: 'rotate(180deg)'
+                      }}
+                      src={Arrow}
+                    />
+                  </button>
+                )
+              }
+            renderArrowNext={(onClickHandler, hasNext, label) =>
+                hasNext && (
+                  <button
+                    type="button"
+                    aria-label="next slide / item"
+                    class="control-arrow control-next"
+                    onClick={onClickHandler}
+                    title={label}
+                  >
+                    <img
+                      style={{
+                        width: '30px',
+                        height: '30px'
+                      }}
+                      src={Arrow}
+                    />
+                  </button>
+                )
+              }
+          > 
             <>
               <img src={courseInfo[currentCourse[0]?.id]?.main_image} />
               <RoundImage

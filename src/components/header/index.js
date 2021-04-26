@@ -16,10 +16,16 @@ import TrophyBlue from "../../assets/icons/WHT_icon_Trophy-blue.svg";
 import CalBlue from "../../assets/icons/WHT_icon_Cal-blue.svg";
 import GolferBlue from "../../assets/icons/WHT_icon_Golfer-blue.svg";
 
+import LoginHeader from "../../assets/images/WHT-header-1-login.jpg";
+import MainHeader from "../../assets/images/WHT-header-2-main.jpg";
+import LeaderHeader from "../../assets/images/WHT-header-3-leaderboards.jpg";
+import EventHeader from "../../assets/images/WHT-header-4-events.jpg";
+import RosterHeader from "../../assets/images/WHT-header-5-roster.jpg";
+
 import "./hamburger.css";
 
 const HeaderContainer = styled.div`
-  height: 411px;
+  height: ${({ isRound }) => isRound == "round" ? "224px" : "411px"};
   background-color: #be1e2d;
   width: 100%;
   display: flex;
@@ -29,7 +35,7 @@ const HeaderContainer = styled.div`
   background-size: cover;
 
   @media only screen and (max-width: 1100px) {
-    height: 250px;
+    height: ${({ isRound }) => isRound == "round" ? "98px" : "250px"};
   }
 `;
 
@@ -170,6 +176,15 @@ const HamburgerContainer = styled.div`
   height: 100%;
 `;
 
+const HeaderLink = styled(Link)`
+  height: 225px;
+
+  @media only screen and (max-width: 1100px) {
+    height: 95px;
+  }
+
+`
+
 const Header = () => {
   const width = useWidth();
   const location = useLocation();
@@ -177,11 +192,15 @@ const Header = () => {
 
   const [openMenu, setOpenMenu] = useState(false);
 
+  console.log(location)
+
+  console.log(location.pathname.split('/')[1])
+
   return (
-    <HeaderContainer style={{ backgroundImage: `url(${BallHeader})` }}>
-      <Link to="/">
+    <HeaderContainer isRound={location.pathname.split('/')[1]} >
+      <HeaderLink to="/">
         <Logo src={WHTLogo} />
-      </Link>
+      </HeaderLink>
 
       {location.pathname !== "/welcome" &&
       location.pathname !== "/login" &&
@@ -278,6 +297,14 @@ const Header = () => {
             </SecondaryNav>
           </SecondaryNavBar>
         )}
+        <div style={{ width: "100%", backgroundSize: "cover", backgroundPosition: "center center", height: "100%", backgroundImage: `url(
+      ${(location.pathname == "/" || location.pathname == "/login" || location.pathname == "/register" || location.pathname == "/learn-more") ? LoginHeader 
+      : location.pathname == "/main" ? MainHeader 
+      : location.pathname == "/results" ? LeaderHeader 
+      : location.pathname == "/schedule" ? BallHeader
+      : location.pathname == "/roster" ? RosterHeader 
+      : BallHeader}
+      )` }}></div>
       <Menu show={openMenu}>
         <div
           style={{
@@ -288,7 +315,7 @@ const Header = () => {
           }}
         >
           <MenuLink onClick={() => setOpenMenu(false)} to="/results">
-            Results
+            Leaderboards
           </MenuLink>
           <MenuLink onClick={() => setOpenMenu(false)} to="/schedule">
             Event Schedule
