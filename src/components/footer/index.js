@@ -46,7 +46,6 @@ const NavContainer = styled.div`
   display: flex;
   justify-content: space-between;
   position: relative;
-  top: -35px;
 
   a {
     height: 75px;
@@ -106,7 +105,6 @@ const Footer = () => {
 
   return (
     <FooterContainer>
-      {isDesktop && <FooterIcon src={DriverIcon} />}
       {location.pathname !== "/welcome" &&
       location.pathname !== "/login" &&
       location.pathname !== "/register" &&

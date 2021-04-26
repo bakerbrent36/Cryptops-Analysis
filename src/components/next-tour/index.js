@@ -87,8 +87,6 @@ const NextTour = ({ welcome = false }) => {
   const nextTour =
     (data && data.find(({ round }) => round.status === "not started")) || [];
 
-  console.log(welcome);
-
   return (
     <NextTourBar>
       {screenWidth > 768 ? (
@@ -109,7 +107,7 @@ const NextTour = ({ welcome = false }) => {
                       `/round/${nextTour.round.id}`
                 }
               >
-                Play
+                &nbsp;
               </PlayButton>
             </>
           )}

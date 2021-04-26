@@ -415,8 +415,6 @@ const Round = () => {
       }))) ||
     [];
 
-  console.log("ROUND INFO", roundInfo);
-
   return (
     <RoundContainer>
       {!openScore && (

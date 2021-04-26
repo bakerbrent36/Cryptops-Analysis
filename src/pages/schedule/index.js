@@ -108,10 +108,7 @@ const Schedule = () => {
           courseData[courseId(round.id)[0] && courseId(round.id)[0][0]],
       }))) ||
     [];
-  console.log(courseId("7323270116395758911"));
-  console.log(courseId("7323270116395758911")[0][0]);
-  console.log(courseData[courseId("7323270116395758911")[0][0]]);
-  console.log(roundInfo);
+
   return (
     <ScheduleContainer>
       <div style={{ width: "100%", maxWidth: "1090px", overflowX: "auto" }}>

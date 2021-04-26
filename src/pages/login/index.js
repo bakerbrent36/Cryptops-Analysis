@@ -2,11 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 import styled from "@emotion/styled";
 
-import {
-  AuthProvider,
-  useAuth,
-  useAuthUpdate,
-} from "../../context/AuthContext";
+import { useAuth, useAuthUpdate } from "../../context/AuthContext";
 
 const LoginContainer = styled.div`
   display: flex;

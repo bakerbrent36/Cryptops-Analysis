@@ -178,7 +178,13 @@ const Welcome = () => {
           </InfoCard>
           <InfoCard>
             <img src={RedTrophy} />
-            <span style={{ fontSize: "20px", marginTop: "10px" }}>
+            <span
+              style={{
+                fontSize: "20px",
+                marginTop: "10px",
+                whiteSpace: width > 900 ? "nowrap" : "normal",
+              }}
+            >
               CLIMB THE LEADERBOARD
             </span>
             <ShortDivider />
