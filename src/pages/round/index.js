@@ -250,7 +250,6 @@ const CourseInfoContainer = styled.div`
     border: 1px solid black;
     font-family: BebasNeue;
     font-size: 22px;
-    padding: 5px;
   }
 
   th {
@@ -477,7 +476,7 @@ const Round = () => {
           </RoundDate>
           <CourseInfoContainer>
             <Divider />
-            <HeaderText style={{ paddingLeft: "0px" }}>Course Info</HeaderText>
+            <HeaderText style={{ paddingLeft: "0px", paddingBottom: "25px" }}>Course Info</HeaderText>
             <div style={{ color: "#f3e9d5" }}>
               {courseInfo[currentCourse[0]?.id]?.description}
             </div>
@@ -742,8 +741,7 @@ const Round = () => {
                     - {format(parseISO(currentRound[0].round.date), "d")}
                   </RoundDate>
                   <ModalText>
-                    Instructions on registering. schedule tee time, return here
-                    and enter your info.
+                    Click the button below to book your tee time directly at the host course. Upon completion, please return to this page and provide your tee time information below so that we can be ready for your arrival that day. If you are booking for multiple Workhorse Tour members, please indicate in the drop-down below.
                   </ModalText>
                   <a
                     class="tee-time"

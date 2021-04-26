@@ -273,7 +273,7 @@ const Header = () => {
                 target="_blank"
               >
                 <img src={BeerIcon} />
-                Workhorse
+                Order Beer
               </a>
             </SecondaryNav>
           </SecondaryNavBar>

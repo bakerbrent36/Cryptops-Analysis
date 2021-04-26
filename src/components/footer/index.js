@@ -159,7 +159,7 @@ const Footer = () => {
             target="_blank"
             rel="noopener noreferrer"
           >
-            {isDesktop ? "Workhorse" : <img src={BeerIcon} />}
+            {isDesktop ? "Order Beer" : <img src={BeerIcon} />}
           </a>
         </NavContainer>
       ) : (
