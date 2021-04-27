@@ -425,45 +425,45 @@ const Round = () => {
             dynamicHeight={true}
             showThumbs={false}
             renderArrowPrev={(onClickHandler, hasPrev, label) =>
-                hasPrev && (
-                  <button
-                    type="button"
-                    aria-label="previous slide / item"
-                    class="control-arrow control-prev"
-                    onClick={onClickHandler}
-                    title={label}
-                  >
-                    <img
-                      style={{
-                        width: '30px',
-                        height: '30px',
-                        transform: 'rotate(180deg)'
-                      }}
-                      src={Arrow}
-                    />
-                  </button>
-                )
-              }
+              hasPrev && (
+                <button
+                  type="button"
+                  aria-label="previous slide / item"
+                  class="control-arrow control-prev"
+                  onClick={onClickHandler}
+                  title={label}
+                >
+                  <img
+                    style={{
+                      width: "30px",
+                      height: "30px",
+                      transform: "rotate(180deg)",
+                    }}
+                    src={Arrow}
+                  />
+                </button>
+              )
+            }
             renderArrowNext={(onClickHandler, hasNext, label) =>
-                hasNext && (
-                  <button
-                    type="button"
-                    aria-label="next slide / item"
-                    class="control-arrow control-next"
-                    onClick={onClickHandler}
-                    title={label}
-                  >
-                    <img
-                      style={{
-                        width: '30px',
-                        height: '30px'
-                      }}
-                      src={Arrow}
-                    />
-                  </button>
-                )
-              }
-          > 
+              hasNext && (
+                <button
+                  type="button"
+                  aria-label="next slide / item"
+                  class="control-arrow control-next"
+                  onClick={onClickHandler}
+                  title={label}
+                >
+                  <img
+                    style={{
+                      width: "30px",
+                      height: "30px",
+                    }}
+                    src={Arrow}
+                  />
+                </button>
+              )
+            }
+          >
             <>
               <img src={courseInfo[currentCourse[0]?.id]?.main_image} />
               <RoundImage
@@ -516,7 +516,9 @@ const Round = () => {
           </RoundDate>
           <CourseInfoContainer>
             <Divider />
-            <HeaderText style={{ paddingLeft: "0px", paddingBottom: "25px" }}>Course Info</HeaderText>
+            <HeaderText style={{ paddingLeft: "0px", paddingBottom: "25px" }}>
+              Course Info
+            </HeaderText>
             <div style={{ color: "#f3e9d5" }}>
               {courseInfo[currentCourse[0]?.id]?.description}
             </div>
@@ -781,7 +783,12 @@ const Round = () => {
                     - {format(parseISO(currentRound[0].round.date), "d")}
                   </RoundDate>
                   <ModalText>
-                    Click the button below to book your tee time directly at the host course. Upon completion, please return to this page and provide your tee time information below so that we can be ready for your arrival that day. If you are booking for multiple Workhorse Tour members, please indicate in the drop-down below.
+                    Click the button below to book your tee time directly at the
+                    host course. Upon completion, please return to this page and
+                    provide your tee time information below so that we can be
+                    ready for your arrival that day. If you are booking for
+                    multiple Workhorse Tour members, please indicate in the
+                    drop-down below.
                   </ModalText>
                   <a
                     class="tee-time"

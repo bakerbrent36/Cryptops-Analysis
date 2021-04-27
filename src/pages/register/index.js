@@ -166,7 +166,20 @@ const Register = () => {
           registration below.
         </div>
       ) : (
-        <Button onClick={() => setShowModal(true)}>Need a GHIN?</Button>
+        <>
+          <Button onClick={() => setShowModal(true)}>Need a GHIN?</Button>
+          <div style={{ padding: "15px" }}>
+            <div
+              style={{ textAlign: "center", width: "100%", maxWidth: "1100px" }}
+            >
+              All Tour golfers are required to have a GHIN ("Golf Handicap and
+              Information Network") number to participate. If you do not
+              currently have a GHIN number, please click the button above to
+              generate one before completing registration. The fee for the GHIN
+              number is included in your $25 Tour Membership fee.
+            </div>
+          </div>
+        </>
       )}
       {showModal && (
         <FormModal>

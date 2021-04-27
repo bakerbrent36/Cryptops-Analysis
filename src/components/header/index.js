@@ -25,7 +25,7 @@ import RosterHeader from "../../assets/images/WHT-header-5-roster.jpg";
 import "./hamburger.css";
 
 const HeaderContainer = styled.div`
-  height: ${({ isRound }) => isRound == "round" ? "224px" : "411px"};
+  height: ${({ isRound }) => (isRound == "round" ? "224px" : "411px")};
   background-color: #be1e2d;
   width: 100%;
   display: flex;
@@ -35,7 +35,7 @@ const HeaderContainer = styled.div`
   background-size: cover;
 
   @media only screen and (max-width: 1100px) {
-    height: ${({ isRound }) => isRound == "round" ? "98px" : "250px"};
+    height: ${({ isRound }) => (isRound == "round" ? "98px" : "250px")};
   }
 `;
 
@@ -50,7 +50,7 @@ const Logo = styled.img`
   @media only screen and (max-width: 1100px) {
     left: 0px;
     width: 150px;
-    height: 100px;
+    height: 111px;
   }
 `;
 
@@ -174,6 +174,8 @@ const HamburgerContainer = styled.div`
   justify-content: flex-end;
   align-items: center;
   height: 100%;
+  border-bottom: ${({ isRound }) =>
+    isRound == "round" ? "15px solid #be1e2d" : "none"};
 `;
 
 const HeaderLink = styled(Link)`
@@ -182,8 +184,7 @@ const HeaderLink = styled(Link)`
   @media only screen and (max-width: 1100px) {
     height: 95px;
   }
-
-`
+`;
 
 const Header = () => {
   const width = useWidth();
@@ -192,12 +193,12 @@ const Header = () => {
 
   const [openMenu, setOpenMenu] = useState(false);
 
-  console.log(location)
+  console.log(location);
 
-  console.log(location.pathname.split('/')[1])
+  console.log(location.pathname.split("/")[1]);
 
   return (
-    <HeaderContainer isRound={location.pathname.split('/')[1]} >
+    <HeaderContainer isRound={location.pathname.split("/")[1]}>
       <HeaderLink to="/">
         <Logo src={WHTLogo} />
       </HeaderLink>
@@ -208,7 +209,7 @@ const Header = () => {
       location.pathname !== "/learn-more" &&
       user ? (
         <NavBar>
-          <HamburgerContainer>
+          <HamburgerContainer isRound={location.pathname.split("/")[1]}>
             <button
               style={{ position: openMenu ? "fixed" : "absolute", zIndex: 501 }}
               onClick={() => setOpenMenu((oldState) => !oldState)}
@@ -297,14 +298,32 @@ const Header = () => {
             </SecondaryNav>
           </SecondaryNavBar>
         )}
-        <div style={{ width: "100%", backgroundSize: "cover", backgroundPosition: "center center", height: "100%", backgroundImage: `url(
-      ${(location.pathname == "/" || location.pathname == "/login" || location.pathname == "/register" || location.pathname == "/learn-more") ? LoginHeader 
-      : location.pathname == "/main" ? MainHeader 
-      : location.pathname == "/results" ? LeaderHeader 
-      : location.pathname == "/schedule" ? BallHeader
-      : location.pathname == "/roster" ? RosterHeader 
-      : BallHeader}
-      )` }}></div>
+      <div
+        style={{
+          width: "100%",
+          backgroundSize: "cover",
+          backgroundPosition: "center center",
+          height: "100%",
+          backgroundImage: `url(
+      ${
+        location.pathname == "/" ||
+        location.pathname == "/login" ||
+        location.pathname == "/register" ||
+        location.pathname == "/learn-more"
+          ? LoginHeader
+          : location.pathname == "/main"
+          ? MainHeader
+          : location.pathname == "/results"
+          ? LeaderHeader
+          : location.pathname == "/schedule"
+          ? BallHeader
+          : location.pathname == "/roster"
+          ? RosterHeader
+          : BallHeader
+      }
+      )`,
+        }}
+      ></div>
       <Menu show={openMenu}>
         <div
           style={{
