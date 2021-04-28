@@ -13,6 +13,9 @@ import CalIcon from "../../assets/icons/WHT_icon_Cal.svg";
 import TrophyBlue from "../../assets/icons/WHT_icon_Trophy-blue.svg";
 import CalBlue from "../../assets/icons/WHT_icon_Cal-blue.svg";
 import GolferBlue from "../../assets/icons/WHT_icon_Golfer-blue.svg";
+import QuestionIcon from "../../assets/icons/WHT-icon-question.svg";
+
+import FAQ from "../../assets/pdfs/WH-FAQ.pdf";
 
 const FooterContainer = styled.div`
   height: 80px;
@@ -141,9 +144,9 @@ const Footer = () => {
               />
             )}
           </MenuIcon>
-          <MenuIcon>
-            {isDesktop ? "Tour Merch" : <img src={ShirtIcon} />}
-          </MenuIcon>
+          <a rel="noopener noreferrer" href={FAQ} target="_blank">
+            {isDesktop ? "FAQ" : <img src={QuestionIcon} />}
+          </a>
           <a
             href="https://shop.workhorsebrewing.com"
             target="_blank"

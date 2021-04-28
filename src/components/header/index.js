@@ -15,12 +15,15 @@ import CalIcon from "../../assets/icons/WHT_icon_Cal.svg";
 import TrophyBlue from "../../assets/icons/WHT_icon_Trophy-blue.svg";
 import CalBlue from "../../assets/icons/WHT_icon_Cal-blue.svg";
 import GolferBlue from "../../assets/icons/WHT_icon_Golfer-blue.svg";
+import QuestionIcon from "../../assets/icons/WHT-icon-question.svg";
 
 import LoginHeader from "../../assets/images/WHT-header-1-login.jpg";
 import MainHeader from "../../assets/images/WHT-header-2-main.jpg";
 import LeaderHeader from "../../assets/images/WHT-header-3-leaderboards.jpg";
 import EventHeader from "../../assets/images/WHT-header-4-events.jpg";
 import RosterHeader from "../../assets/images/WHT-header-5-roster.jpg";
+
+import FAQ from "../../assets/pdfs/WH-FAQ.pdf";
 
 import "./hamburger.css";
 
@@ -84,7 +87,7 @@ const SecondaryNavBar = styled.div`
 const SecondaryNav = styled.div`
   display: flex;
   position: relative;
-  left: 175px;
+  left: 150px;
 
   a {
     height: 75px;
@@ -158,6 +161,13 @@ const Menu = styled.div`
   visibility: ${({ show }) => (show ? "visible" : "hidden")};
   display: flex;
   flex-direction: column;
+
+  a {
+    color: #f3e9d5;
+    text-transform: uppercase;
+    text-decoration: none;
+    margin-top: 5px;
+  }
 `;
 
 const MenuLink = styled(Link)`
@@ -283,10 +293,16 @@ const Header = () => {
                 />
                 Player Roster
               </MenuIcon>
-              <MenuIcon>
-                <img src={ShirtIcon} />
-                Tour Merch
-              </MenuIcon>
+
+              <a
+                style={{ width: "100px" }}
+                rel="noopener noreferrer"
+                href={FAQ}
+                target="_blank"
+              >
+                <img src={QuestionIcon} />
+                FAQ
+              </a>
               <a
                 rel="noopener noreferrer"
                 href="https://shop.workhorsebrewing.com"
@@ -342,6 +358,14 @@ const Header = () => {
           <MenuLink onClick={() => setOpenMenu(false)} to="/roster">
             Player Roster
           </MenuLink>
+          <a
+            onClick={() => setOpenMenu(false)}
+            rel="noopener noreferrer"
+            href={FAQ}
+            target="_blank"
+          >
+            FAQ
+          </a>
           <MenuLink onClick={() => setOpenMenu(false)} to="/logout">
             Logout
           </MenuLink>

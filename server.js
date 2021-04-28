@@ -28,7 +28,7 @@ app.use(express.static(path.join(__dirname, "build")));
 
 app.post("/update-sheet", async (req, res, next) => {
   try {
-    const { name, email, tee_time, golfers } = req.body;
+    const { name, email, tee_time, golfers, round } = req.body;
     await doc.useServiceAccountAuth({
       client_email: process.env.GOOGLE_SERVICE_ACCOUNT_EMAIL,
       private_key: process.env.GOOGLE_PRIVATE_KEY.replace(/\\n/g, "\n"),
@@ -42,6 +42,7 @@ app.post("/update-sheet", async (req, res, next) => {
         Email: email,
         "Tee Time": tee_time,
         "Number of Golfers": golfers,
+        Round: round,
       })
       .then(() => {
         res.send("success");
@@ -60,7 +61,7 @@ app.post("/update-sheet", async (req, res, next) => {
                           <div style="margin: 0 auto">
                           <img style="width: 300px; height: 200px;" src="https://workhorsetour.com/images/Logos/Workhorse-Tour-logo-01.png"/>
                           <p>
-                            Welcome to the Workhorse Tour! Your GHIN is <strong>${parsedBody.golfers.id}</strong>
+                            You have confirmed your tee</strong>
                           </p>
                           <p>
                             Please return to the app and use your GHIN to complete registration for the Workhorse Tour.

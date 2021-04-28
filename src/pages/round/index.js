@@ -368,6 +368,7 @@ const Round = () => {
         email: formData.get("email"),
         tee_time: formData.get("tee_time"),
         golfers: formData.get("golfers"),
+        round: currentRound[0]?.round?.name,
       }),
     }).then((res) => {
       setShowModal(false);
