@@ -184,8 +184,11 @@ const HamburgerContainer = styled.div`
   justify-content: flex-end;
   align-items: center;
   height: 100%;
-  border-bottom: ${({ isRound }) =>
-    isRound == "round" ? "15px solid #be1e2d" : "none"};
+
+  @media only screen and (max-width: 1100px) {
+    border-bottom: ${({ isRound }) =>
+      isRound == "round" ? "15px solid #be1e2d" : "none"};
+  }
 `;
 
 const HeaderLink = styled(Link)`

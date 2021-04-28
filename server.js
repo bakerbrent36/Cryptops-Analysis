@@ -61,10 +61,7 @@ app.post("/update-sheet", async (req, res, next) => {
                           <div style="margin: 0 auto">
                           <img style="width: 300px; height: 200px;" src="https://workhorsetour.com/images/Logos/Workhorse-Tour-logo-01.png"/>
                           <p>
-                            You have confirmed your tee</strong>
-                          </p>
-                          <p>
-                            Please return to the app and use your GHIN to complete registration for the Workhorse Tour.
+                            You have confirmed your tee time for ${tee_time} at ${round}</strong>
                           </p>
                             <p>
                             If you have any questsions, please email us at golf@workhorsebrewing.com

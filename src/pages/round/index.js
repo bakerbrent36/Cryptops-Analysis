@@ -582,6 +582,7 @@ const Round = () => {
                     <td>7</td>
                     <td>8</td>
                     <td>9</td>
+                    <td>TOTAL</td>
                   </tr>
                   {currentCourse &&
                     currentCourse[0]?.tees.map((tee, i) => (
@@ -596,6 +597,11 @@ const Round = () => {
                             {hole}
                           </td>
                         ))}
+                        <td style={{ color: "#BE1E2D", fontSize: "32px" }}>
+                          {tee.hole_data.yardage
+                            .slice(0, 9)
+                            .reduce((a, b) => a + b, 0)}
+                        </td>
                       </tr>
                     ))}
                   <tr style={{ backgroundColor: "#f3e9d5", height: "38px" }}>
@@ -604,6 +610,11 @@ const Round = () => {
                       .map((hole) => (
                         <td>{hole}</td>
                       ))}
+                    <td>
+                      {currentCourse[0]?.tees[0].hole_data.par
+                        .slice(0, 9)
+                        .reduce((a, b) => a + b, 0)}
+                    </td>
                   </tr>
                   <tr style={{ backgroundColor: "#f3e9d5", height: "38px" }}>
                     {currentCourse[0]?.tees[0].hole_data.handicap
@@ -655,6 +666,7 @@ const Round = () => {
                     <td>16</td>
                     <td>17</td>
                     <td>18</td>
+                    <td>TOTAL</td>
                   </tr>
                   {currentCourse &&
                     currentCourse[0]?.tees.map((tee, i) => (
@@ -674,6 +686,11 @@ const Round = () => {
                             {hole}
                           </td>
                         ))}
+                        <td style={{ color: "#BE1E2D", fontSize: "32px" }}>
+                          {tee.hole_data.yardage
+                            .slice(9, 18)
+                            .reduce((a, b) => a + b, 0)}
+                        </td>
                       </tr>
                     ))}
                   <tr style={{ backgroundColor: "#f3e9d5", height: "38px" }}>
@@ -682,6 +699,11 @@ const Round = () => {
                       .map((hole) => (
                         <td>{hole}</td>
                       ))}
+                    <td>
+                      {currentCourse[0]?.tees[0].hole_data.par
+                        .slice(0, 9)
+                        .reduce((a, b) => a + b, 0)}
+                    </td>
                   </tr>
                   <tr style={{ backgroundColor: "#f3e9d5", height: "38px" }}>
                     {currentCourse[0]?.tees[0].hole_data.handicap
