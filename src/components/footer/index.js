@@ -13,7 +13,7 @@ import CalIcon from "../../assets/icons/WHT_icon_Cal.svg";
 import TrophyBlue from "../../assets/icons/WHT_icon_Trophy-blue.svg";
 import CalBlue from "../../assets/icons/WHT_icon_Cal-blue.svg";
 import GolferBlue from "../../assets/icons/WHT_icon_Golfer-blue.svg";
-import QuestionIcon from "../../assets/icons/WHT-icon-question.svg";
+import QuestionIcon from "../../assets/icons/WHT-icon-Question.svg";
 
 import FAQ from "../../assets/pdfs/WH-FAQ.pdf";
 
