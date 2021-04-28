@@ -16,9 +16,9 @@ import CalBlue from "../../assets/icons/WHT_icon_Cal-blue.svg";
 import GolferBlue from "../../assets/icons/WHT_icon_Golfer-blue.svg";
 
 const FooterContainer = styled.div`
-  height: 150px;
+  height: 80px;
   background-color: #be1e2d;
-  position: fixed;
+  position: initial;
   bottom: 0;
   width: 100%;
   display: flex;
@@ -27,7 +27,7 @@ const FooterContainer = styled.div`
   align-items: center;
 
   @media only screen and (max-width: 1100px) {
-    height: 80px;
+    position: fixed;
   }
 `;
 

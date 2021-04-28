@@ -438,6 +438,7 @@ const Round = () => {
                       width: "30px",
                       height: "30px",
                       transform: "rotate(180deg)",
+                      opacity: "0.8",
                     }}
                     src={Arrow}
                   />
@@ -457,6 +458,7 @@ const Round = () => {
                     style={{
                       width: "30px",
                       height: "30px",
+                      opacity: "0.8",
                     }}
                     src={Arrow}
                   />

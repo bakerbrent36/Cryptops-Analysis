@@ -80,12 +80,16 @@ const Roster = () => {
         <Card>
           <Ribbon>Player Roster</Ribbon>
           <TableContainer>
-          <div style={{ paddingTop: "25px", paddingBottom: "25px"}}>The following golfers are members on Tour. Don't see your friends? Invite them to join!</div>
+            <div style={{ paddingTop: "25px", paddingBottom: "25px" }}>
+              The following golfers are members on Tour. Don't see your friends?
+              Invite them to join!
+            </div>
             <Table>
               <thead>
                 <tr>
                   <th>first name</th>
                   <th>last name</th>
+                  <th>handicap index</th>
                 </tr>
               </thead>
               <tbody>
@@ -94,6 +98,7 @@ const Roster = () => {
                     <tr>
                       <td>{member.first_name}</td>
                       <td>{member.last_name}</td>
+                      <td>{member?.handicap?.handicap_index || "N/A"}</td>
                     </tr>
                   ))}
               </tbody>
