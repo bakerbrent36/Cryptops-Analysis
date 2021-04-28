@@ -10,7 +10,6 @@ import GolferIcon from "../../assets/icons/WHT_icon_Golfer.svg";
 import ShirtIcon from "../../assets/icons/WHT_icon_Shirt.svg";
 import TrophyIcon from "../../assets/icons/WHT_icon_Trophy.svg";
 import CalIcon from "../../assets/icons/WHT_icon_Cal.svg";
-import DriverIcon from "../../assets/icons/WHT_club_new.png";
 import TrophyBlue from "../../assets/icons/WHT_icon_Trophy-blue.svg";
 import CalBlue from "../../assets/icons/WHT_icon_Cal-blue.svg";
 import GolferBlue from "../../assets/icons/WHT_icon_Golfer-blue.svg";
@@ -28,15 +27,6 @@ const FooterContainer = styled.div`
 
   @media only screen and (max-width: 1100px) {
     position: fixed;
-  }
-`;
-
-const FooterIcon = styled.img`
-  position: relative;
-  top: -50px;
-
-  @media only screen and (max-width: 1100px) {
-    top: -15px;
   }
 `;
 

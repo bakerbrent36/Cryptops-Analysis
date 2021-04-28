@@ -43,7 +43,48 @@ app.post("/update-sheet", async (req, res, next) => {
         "Tee Time": tee_time,
         "Number of Golfers": golfers,
       })
-      .then(() => res.send("success"));
+      .then(() => {
+        res.send("success");
+
+        const params = {
+          Source: "golf@workhorsebrewing.com",
+          Destination: {
+            ToAddresses: [`${email}`],
+          },
+          ReplyToAddresses: ["golf@workhorsebrewing.com"],
+          Message: {
+            Body: {
+              Html: {
+                Charset: "UTF-8",
+                Data: `
+                          <div style="margin: 0 auto">
+                          <img style="width: 300px; height: 200px;" src="https://workhorsetour.com/images/Logos/Workhorse-Tour-logo-01.png"/>
+                          <p>
+                            Welcome to the Workhorse Tour! Your GHIN is <strong>${parsedBody.golfers.id}</strong>
+                          </p>
+                          <p>
+                            Please return to the app and use your GHIN to complete registration for the Workhorse Tour.
+                          </p>
+                            <p>
+                            If you have any questsions, please email us at golf@workhorsebrewing.com
+                          </p>
+                        
+                        </div>
+                            `,
+              },
+            },
+            Subject: {
+              Charset: "UTF-8",
+              Data: "Your Tee Time has been confirmed!",
+            },
+          },
+        };
+
+        new AWS.SES(SESConfig)
+          .sendEmail(params)
+          .promise()
+          .then((response) => console.log(response));
+      });
   } catch (e) {
     next(e);
   }

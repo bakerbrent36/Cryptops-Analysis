@@ -212,10 +212,14 @@ const SubmitButton = styled.input`
 
 const ModalText = styled.div`
   color: #ffffff;
-  text-transform: uppercase;
   margin-top: 15px;
   margin-bottom: 15px;
-  font-size: 28px;
+  font-size: 24px;
+  padding: 5px;
+
+  @media only screen and (max-width: 1100px) {
+    font-size: 16px;
+  }
 `;
 
 const ShortDivider = styled.hr`
