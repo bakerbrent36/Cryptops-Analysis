@@ -369,6 +369,14 @@ const Header = () => {
           >
             FAQ
           </a>
+          <a
+            onClick={() => setOpenMenu(false)}
+            rel="noopener noreferrer"
+            href="https://shop.workhorsebrewing.com"
+            target="_blank"
+          >
+            Order Beer
+          </a>
           <MenuLink onClick={() => setOpenMenu(false)} to="/logout">
             Logout
           </MenuLink>

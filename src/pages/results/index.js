@@ -3,6 +3,7 @@ import { useQuery } from "react-query";
 import styled from "@emotion/styled";
 
 import TourResults from "../../components/tour-results";
+import PointsImage from "../../assets/images/WHT-points.png";
 
 const LowerContainer = styled.div`
   background-color: #162e3d;
@@ -59,6 +60,16 @@ const Results = () => {
               />
             </div>
           </Card>
+        </div>
+        <div
+          style={{
+            width: "100%",
+            maxWidth: "746px",
+            padding: "15px",
+            boxSizing: "border-box",
+          }}
+        >
+          <img style={{ width: "100%", height: "auto" }} src={PointsImage} />
         </div>
       </LowerContainer>
     </div>
