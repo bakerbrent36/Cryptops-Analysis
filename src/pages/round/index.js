@@ -622,6 +622,11 @@ const Round = () => {
                       .map((hole) => (
                         <td>{hole}</td>
                       ))}
+                    <td>
+                      {currentCourse[0]?.tees[0].hole_data.handicap
+                        .slice(0, 9)
+                        .reduce((a, b) => a + b, 0)}
+                    </td>
                   </tr>
                 </table>
               </div>
@@ -711,6 +716,11 @@ const Round = () => {
                       .map((hole) => (
                         <td>{hole}</td>
                       ))}
+                    <td>
+                      {currentCourse[0]?.tees[0].hole_data.handicap
+                        .slice(9, 18)
+                        .reduce((a, b) => a + b, 0)}
+                    </td>
                   </tr>
                 </table>
               </div>

@@ -23,7 +23,7 @@ import LeaderHeader from "../../assets/images/WHT-header-3-leaderboards.jpg";
 import EventHeader from "../../assets/images/WHT-header-4-events.jpg";
 import RosterHeader from "../../assets/images/WHT-header-5-roster.jpg";
 
-import FAQ from "../../assets/pdfs/WH-FAQ.pdf";
+import FAQ from "../../assets/pdfs/WHT-FAQs.pdf";
 
 import "./hamburger.css";
 
