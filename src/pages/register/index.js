@@ -39,7 +39,7 @@ const FormModal = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  overflow: scroll;
+  overflow: auto;
 `;
 
 const GHINForm = styled.form`
