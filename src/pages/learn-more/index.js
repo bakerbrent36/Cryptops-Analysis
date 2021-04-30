@@ -2,6 +2,8 @@ import styled from "@emotion/styled";
 import { Link } from "react-router-dom";
 import { useWidth } from "../../context/ScreenWidthContext";
 
+import FAQ from "../../assets/pdfs/WHT-FAQs.pdf";
+
 import DesktopImg from "../../assets/images/learn-more-desk.png";
 import MobileImg from "../../assets/images/learn-more-mobile.png";
 
@@ -15,6 +17,20 @@ const LearnMoreContainer = styled.div`
 `;
 
 const Button = styled(Link)`
+  width: 250px;
+  height: 50px;
+  background-color: #be1e2d;
+  border: none;
+  margin: 5px;
+  text-transform: uppercase;
+  text-decoration: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+`;
+
+const FAQLink = styled.a`
   width: 250px;
   height: 50px;
   background-color: #be1e2d;
@@ -68,7 +84,9 @@ const LearnMore = () => {
       <Content>
         <img src={width > 600 ? DesktopImg : MobileImg} />
       </Content>
-      <Button>FAQS</Button>
+      <FAQLink rel="noopener noreferrer" href={FAQ} target="_blank">
+        FAQ
+      </FAQLink>
       <Button to="/register">Sign Up</Button>
     </LearnMoreContainer>
   );

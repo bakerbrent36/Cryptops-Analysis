@@ -272,6 +272,6 @@ app.use((err, req, res, next) => {
   res.json({ message: err.message });
 });
 
-app.listen(process.env.PORT || 8080, function () {
+app.listen(443, function () {
   console.log("Server listening");
 });
