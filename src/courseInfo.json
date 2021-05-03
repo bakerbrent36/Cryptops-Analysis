@@ -152,9 +152,13 @@
   "7323181876795978988": {
     "name": "Coeur D'Alene Golf Club",
     "tee_time_link": "https://foreupsoftware.com/index.php/booking/19798/2483#/teetimes",
-    "main_image": "blah",
-    "images": ["blah"],
-    "description": "blah blah",
+    "main_image": "https://workhorsetour.com/images/XGolf/CD1.jpg",
+    "images": [
+      "https://workhorsetour.com/images/XGolf/CD2.png",
+      "https://workhorsetour.com/images/XGolf/XG1.jpg",
+      "https://workhorsetour.com/images/XGolf/XG2.png"
+    ],
+    "description": "One of two virtual golf partners featured on the Workhorse Tour schedule, XGolf Garnet Valley’s state of the art indoor golf simulators offer players unparalleled accuracy and realism through a combination of camera systems, infrared lasers, impacts sensors, and advanced gaming software. XGolf’s relaxed, welcoming atmosphere makes it perfect for players of all ages and all skill levels. Don’t miss our in-season tournament “taking place” at The Coeur d'Alene Resort Golf Course featuring its iconic floating green, or our off-season calendar of events once the weather turns cold.",
     "round_id": ["7323425464054232412"]
   },
   "7323168754932692203": {
