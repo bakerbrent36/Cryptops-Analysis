@@ -63,6 +63,9 @@ const Ribbon = styled.div`
 `;
 
 const RoundCard = ({ backgroundImage, date, name, link }) => {
+  const endDate = parseISO(date);
+  const startDate = sub(parseISO(date), { days: 6 });
+
   return (
     <Card
       style={{
@@ -71,8 +74,10 @@ const RoundCard = ({ backgroundImage, date, name, link }) => {
       to={link}
     >
       <Ribbon>
-        {format(parseISO(date), "MMM")}{" "}
-        {format(sub(parseISO(date), { days: 6 }), "d")} -{" "}
+        {format(startDate, "MMM")} {format(startDate, "d")} -{" "}
+        {format(startDate, "MMM") !== format(endDate, "MMM") &&
+          format(endDate, "MMM")}
+        {format(startDate, "MMM") !== format(endDate, "MMM") && " "}
         {format(parseISO(date), "d")}
       </Ribbon>
       <CardBottomContainer>

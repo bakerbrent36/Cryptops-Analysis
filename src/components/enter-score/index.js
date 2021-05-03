@@ -7,6 +7,7 @@ const ScoreContainer = styled.div`
   justify-content: center;
   flex-direction: column;
   width: 100%;
+  padding-top: 35px;
 
   form {
     width: 100%;
@@ -162,9 +163,9 @@ const EnterScore = ({ roundId, userFoursomeObj, opened }) => {
     setTotal(totalNum);
   };
 
-  console.log(parData)
-  console.log(holeData)
-  console.log(userFoursomeObj)
+  console.log(parData);
+  console.log(holeData);
+  console.log(userFoursomeObj);
 
   return (
     <ScoreContainer style={{ display: opened ? "flex" : "none" }}>
@@ -202,7 +203,12 @@ const EnterScore = ({ roundId, userFoursomeObj, opened }) => {
                 <ScoreCardItem>
                   <ScoreCardHeader style={{ backgroundColor: "#F3E9D5" }} />
                   <ScoreCardCenter style={{ backgroundColor: "#F3E9D5" }} />
-                  <ScoreCardFooter style={{ backgroundColor: "#F3E9D5", color: "#162e3d" }} >{parData.length > 1 && parData.slice(0, 9).reduce((a, b) => a + b, 0)}</ScoreCardFooter>
+                  <ScoreCardFooter
+                    style={{ backgroundColor: "#F3E9D5", color: "#162e3d" }}
+                  >
+                    {parData.length > 1 &&
+                      parData.slice(0, 9).reduce((a, b) => a + b, 0)}
+                  </ScoreCardFooter>
                 </ScoreCardItem>
               </div>
             </ScoreCardRow>
@@ -245,7 +251,12 @@ const EnterScore = ({ roundId, userFoursomeObj, opened }) => {
                           0
                         ))}
                   </ScoreCardCenter>
-                   <ScoreCardFooter style={{ backgroundColor: "#F3E9D5", color: "#162e3d" }} >{parData.length > 1 && parData.slice(9, 18).reduce((a, b) => a + b, 0)}</ScoreCardFooter>
+                  <ScoreCardFooter
+                    style={{ backgroundColor: "#F3E9D5", color: "#162e3d" }}
+                  >
+                    {parData.length > 1 &&
+                      parData.slice(9, 18).reduce((a, b) => a + b, 0)}
+                  </ScoreCardFooter>
                 </ScoreCardItem>
               </div>
             </ScoreCardRow>

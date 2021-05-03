@@ -421,6 +421,15 @@ const Round = () => {
       }))) ||
     [];
 
+  const startDate =
+    sub(parseISO(currentRound[0]?.round?.date), { days: 6 }) ||
+    parseISO(new Date());
+  const endDate =
+    parseISO(currentRound[0]?.round?.date) || parseISO(new Date());
+
+  console.log(endDate);
+  console.log(startDate);
+
   return (
     <RoundContainer>
       {!openScore && (
@@ -515,12 +524,11 @@ const Round = () => {
 
           <RoundDate>
             <img src={CalIcon} />
-            {format(parseISO(currentRound[0].round.date), "MMM")}{" "}
-            {format(
-              sub(parseISO(currentRound[0].round.date), { days: 6 }),
-              "d"
-            )}{" "}
-            - {format(parseISO(currentRound[0].round.date), "d")}
+            {format(startDate, "MMM")} {format(startDate, "d")} -{" "}
+            {format(startDate, "MMM") !== format(endDate, "MMM") &&
+              format(endDate, "MMM")}
+            {format(startDate, "MMM") !== format(endDate, "MMM") && " "}
+            {format(endDate, "d")}
           </RoundDate>
           <CourseInfoContainer>
             <Divider />
@@ -815,12 +823,17 @@ const Round = () => {
                   <span> {currentRound[0]?.round?.name}</span>
                   <RoundDate>
                     <img src={CalIcon} />
-                    {format(parseISO(currentRound[0].round.date), "MMM")}{" "}
-                    {format(
-                      sub(parseISO(currentRound[0].round.date), { days: 6 }),
-                      "d"
-                    )}{" "}
-                    - {format(parseISO(currentRound[0].round.date), "d")}
+                    {startDate && endDate && format(startDate, "MMM")}{" "}
+                    {startDate && endDate && format(startDate, "d")} -{" "}
+                    {startDate &&
+                      endDate &&
+                      format(startDate, "MMM") !== format(endDate, "MMM") &&
+                      format(endDate, "MMM")}
+                    {startDate &&
+                      endDate &&
+                      format(startDate, "MMM") !== format(endDate, "MMM") &&
+                      " "}
+                    {startDate && endDate && format(endDate, "d")}
                   </RoundDate>
                   <ModalText>
                     Click the button below to book your tee time directly at the

@@ -9,6 +9,7 @@ import RedCal from "../../assets/icons/WHT_icon_Cal-red.svg";
 import RedGolfer from "../../assets/icons/WHT_icon_Golfer-red.svg";
 import RedBeer from "../../assets/icons/WHT_icon_Beer-red.svg";
 import RedTrophy from "../../assets/icons/WHT_icon_Trophy-red.svg";
+import TourSched from "../../assets/images/WHT-tour-schedule.jpg";
 
 import NextTour from "../../components/next-tour";
 
@@ -196,6 +197,7 @@ const Welcome = () => {
           </InfoCard>
         </InnerInfoContainer>
       </InfoContainer>
+      <img src={TourSched} />
     </WelcomeContainer>
   );
 };
