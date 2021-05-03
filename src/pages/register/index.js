@@ -178,6 +178,22 @@ const Register = () => {
               currently have a GHIN number, please click the button above to
               generate one before completing registration. The fee for the GHIN
               number is included in your $25 Tour Membership fee.
+              <br></br>
+              Once you've completed your Workhorse Tour registration and
+              received your GHIN number,{" "}
+              <a target="_blank" href="https://www.ghin.com/create-profile">
+                please visit the GHIN site
+              </a>
+              and follow the prompts to create your Handicap Index. After you
+              have your Index number, please return to your account page and
+              <a
+                target="_blank"
+                href="https://www.golfgenius.com/register?league_id=7319785228384384201"
+              >
+                enter your information here.
+              </a>
+              If you already have an index number, you can simply input it at
+              the time registration.
             </div>
           </div>
         </>

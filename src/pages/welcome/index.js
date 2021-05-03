@@ -197,7 +197,24 @@ const Welcome = () => {
           </InfoCard>
         </InnerInfoContainer>
       </InfoContainer>
-      <img src={TourSched} />
+      <div
+        style={{
+          backgroundColor: "#162e3d",
+          width: "100%",
+          display: "flex",
+          justifyContent: "center",
+        }}
+      >
+        <img
+          style={{
+            width: "100%",
+            maxWidth: "1100px",
+            height: "auto",
+            padding: "5px",
+          }}
+          src={TourSched}
+        />
+      </div>
     </WelcomeContainer>
   );
 };
