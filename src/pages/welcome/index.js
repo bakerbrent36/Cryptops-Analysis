@@ -203,6 +203,8 @@ const Welcome = () => {
           width: "100%",
           display: "flex",
           justifyContent: "center",
+          boxSizing: "border-box",
+          padding: "5px",
         }}
       >
         <img
