@@ -213,6 +213,7 @@ const Welcome = () => {
             maxWidth: "1100px",
             height: "auto",
             padding: "5px",
+            alignItems: "flex-start",
           }}
           src={TourSched}
         />

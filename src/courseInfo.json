@@ -257,5 +257,17 @@
     ],
     "description": "Linfield National Golf Club is a traditional course featuring a top-tier layout, gorgeous natural scenery and the luxurious amenities expected from long-time purveyors of this classic game. The biggest draw for Linfield National Golf Club is the unique layout which combines the elements of a links-style course with the traditional characteristics of water, trees and changing elevations. Play at Linfield National spans 6,164 yards, but the multiple sets of tees make this a great round for a wide range of players, from the novice right on up to the seasoned pro.",
     "round_id": ["7323425490327352683"]
+  },
+  "7384499074101196052": {
+    "name": "Golf Course at Glen Mills",
+    "tee_time_link": "https://secure.east.prophetservices.com/GlenMillsV3",
+    "main_image": "https://workhorsetour.com/images/Glen%20Mills/GlenMills_No18.jpeg",
+    "images": [
+      "https://workhorsetour.com/images/Glen%20Mills/GlenMills_No2.jpeg",
+      "https://workhorsetour.com/images/Glen%20Mills/GlenMills_No3.jpeg",
+      "https://workhorsetour.com/images/Glen%20Mills/GlenMills_No8.jpeg"
+    ],
+    "description": "Consistently ranked as one of the top public courses in Pennsylvania, the award-winning track at Glen Mills is a must-play event on the Workhorse Tour. Having hosted both a US Amateur Qualifier and a US Open Qualifier, this challenging course features more than 150 sand hazards, providing a stern test for even the most accomplished golfer. The course topography highlights a variety of unique and interesting holes, all of which are supremely well-maintained.",
+    "round_id": ["7384530775120590313"]
   }
 }

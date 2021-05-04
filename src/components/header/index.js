@@ -377,6 +377,14 @@ const Header = () => {
           >
             Order Beer
           </a>
+          <a
+            onClick={() => setOpenMenu(false)}
+            rel="noopener noreferrer"
+            href="https://www.golfgenius.com/register?league_id=7319785228384384201"
+            target="_blank"
+          >
+            Edit Registration
+          </a>
           <MenuLink onClick={() => setOpenMenu(false)} to="/logout">
             Logout
           </MenuLink>

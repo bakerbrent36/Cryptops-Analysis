@@ -149,7 +149,10 @@ const TourResults = () => {
             }}
           >
             <label>Round Name</label>
-            <select onChange={(e) => setCurrentRound(e.target.value)}>
+            <select
+              style={{ maxWidth: "200px" }}
+              onChange={(e) => setCurrentRound(e.target.value)}
+            >
               {eventRounds &&
                 eventRounds.length > 0 &&
                 eventRounds.map(({ round }) => (
