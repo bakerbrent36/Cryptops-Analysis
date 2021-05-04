@@ -205,6 +205,7 @@ const Welcome = () => {
           justifyContent: "center",
           boxSizing: "border-box",
           padding: "5px",
+          alignItems: "flex-start",
         }}
       >
         <img
@@ -213,7 +214,6 @@ const Welcome = () => {
             maxWidth: "1100px",
             height: "auto",
             padding: "5px",
-            alignItems: "flex-start",
           }}
           src={TourSched}
         />
