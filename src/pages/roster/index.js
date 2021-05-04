@@ -94,13 +94,15 @@ const Roster = () => {
               </thead>
               <tbody>
                 {data &&
-                  data.map(({ member }) => (
-                    <tr>
-                      <td>{member.first_name}</td>
-                      <td>{member.last_name}</td>
-                      <td>{member?.handicap?.handicap_index || "N/A"}</td>
-                    </tr>
-                  ))}
+                  data
+                    .filter(({ member }) => !member.deleted)
+                    .map(({ member }) => (
+                      <tr>
+                        <td>{member.first_name}</td>
+                        <td>{member.last_name}</td>
+                        <td>{member?.handicap?.handicap_index || "N/A"}</td>
+                      </tr>
+                    ))}
               </tbody>
             </Table>
           </TableContainer>
