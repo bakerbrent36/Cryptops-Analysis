@@ -10,6 +10,7 @@ import Login from "../pages/login";
 import Register from "../pages/register";
 import Header from "../components/header";
 import Footer from "../components/footer";
+import Sponsors from "../pages/sponsors";
 
 const PageContainer = styled.div`
   margin-bottom: 0px;
@@ -46,6 +47,7 @@ const WelcomeContainer = ({ screenWidth }) => {
           <Route path="/learn-more" component={LearnMore} />
           <Route path="/login" component={Login} />
           <Route path="/register" component={Register} />
+          <Route path="/sponsors" component={Sponsors} />
           {user && (
             <ProtectedRoute
               path="/"

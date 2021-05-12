@@ -377,9 +377,9 @@ const Header = () => {
           >
             Order Beer
           </a>
-          {/* <MenuLink onClick={() => setOpenMenu(false)} to="/sponsors">
+          <MenuLink onClick={() => setOpenMenu(false)} to="/sponsors">
             Sponsors
-          </MenuLink> */}
+          </MenuLink>
           <a
             onClick={() => setOpenMenu(false)}
             rel="noopener noreferrer"
