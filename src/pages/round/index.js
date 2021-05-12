@@ -858,7 +858,11 @@ const Round = () => {
                     <Input required name="email" placeholder="Email" />
                   </InputRow>
                   <InputRow>
-                    <Input required name="tee_time" placeholder="Tee Time" />
+                    <Input
+                      required
+                      name="tee_time"
+                      placeholder="Tee Time (MM/DD/YY, HH:MM AM/PM)"
+                    />
                   </InputRow>
                   <InputRow>
                     <label>Number of Tour Golfers</label>
