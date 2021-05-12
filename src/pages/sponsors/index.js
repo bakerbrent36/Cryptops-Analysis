@@ -11,7 +11,7 @@ const MainContainer = styled.div`
 const Sponsors = () => {
   return (
     <MainContainer>
-      <iframe src="http://www.ov3r.com/workhorsetoursponsors/sponsors.html" />
+      <iframe src="https://workhorsetour.com/sponsors.html" />
     </MainContainer>
   );
 };
