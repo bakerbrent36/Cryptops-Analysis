@@ -3,14 +3,16 @@ import { Route, Switch } from "react-router-dom";
 import styled from "@emotion/styled";
 
 import { useAuth } from "../context/AuthContext";
-import Welcome from "../pages/welcome";
+import Home from "../pages/home";
 import LearnMore from "../pages/learn-more";
+import Portfolio from "../pages/portfolio";
+import SinglePortfolio from "../pages/single-portfolio";
 import MainContainer from "../containers/MainContainer";
-import Login from "../pages/login";
-import Register from "../pages/register";
 import Header from "../components/header";
 import Footer from "../components/footer";
-import Sponsors from "../pages/sponsors";
+import PortfolioPage from "../pages/single-portfolio";
+import Contact from "../pages/contact";
+import FourOhFour from "../pages/404";
 
 const PageContainer = styled.div`
   margin-bottom: 0px;
@@ -32,7 +34,7 @@ const WelcomeContainer = ({ screenWidth }) => {
           if (true) {
             return <Component {...props} />;
           }
-          return <Welcome {...props} />;
+          return <Home{...props} />;
         }}
       />
     );
@@ -43,21 +45,11 @@ const WelcomeContainer = ({ screenWidth }) => {
       <Header screenWidth={screenWidth} />
       <PageContainer>
         <Switch>
-          <Route path="/welcome" component={Welcome} />
           <Route path="/learn-more" component={LearnMore} />
-          <Route path="/login" component={Login} />
-          <Route path="/register" component={Register} />
-          <Route path="/sponsors" component={Sponsors} />
-          {user && (
-            <ProtectedRoute
-              path="/"
-              name="Main"
-              user={user}
-              component={MainContainer}
-              screenWidth={screenWidth}
-            />
-          )}
-          <Route component={Welcome} />
+          <Route path="/portfolio" component={Portfolio} />
+          <Route path="/person/:portfolioId" component={PortfolioPage} />
+          <Route path="/contact" component={Contact} />
+          <Route component={Home} />
         </Switch>
       </PageContainer>
       <Footer />

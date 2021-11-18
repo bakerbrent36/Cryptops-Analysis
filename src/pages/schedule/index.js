@@ -1,13 +1,15 @@
 import { useEffect, useState } from "react";
-import styled from "@emotion/styled";
 import { useQuery } from "react-query";
-import { Link } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
+import styled from "@emotion/styled";
 import { format, parseISO, sub } from "date-fns";
 import { useWidth } from "../../context/ScreenWidthContext";
 import PlaceHolder from "../../assets/images/course-placeholder.jpg";
 import RoundCard from "../../components/round-card";
 import ScrewHead from "../../assets/images/WHT-screw.png";
 import courseData from "../../courseInfo.json";
+
+
 
 const ScheduleContainer = styled.div`
   display: flex;
@@ -109,17 +111,37 @@ const Schedule = () => {
       }))) ||
     [];
 
+  const currentRound = roundInfo.filter((round) =>
+    currentMonth
+      ? format(parseISO(round.date), "MMM").toLocaleLowerCase() ==
+        currentMonth
+      : round
+  )
+
+  const test = currentRound.map((round) => (
+    round.id
+  ));
+
+
+  const currentDate = new Date();
+  const month = currentDate.toLocaleString('default', { month: 'short' }).toLocaleLowerCase()
+
+
   return (
+
     <ScheduleContainer>
-      <div style={{ width: "100%", maxWidth: "1090px", overflowX: "auto" }}>
+      <LowerContainer>
+      <div class="monthpicker" style={{ width: "100%", maxWidth: "1090px", overflowX: "auto" , margin: "5% 0 2rem 0"}}>
         <MonthPicker>
           {monthArr.map((mon) => (
             <MonthTab
               style={{
                 backgroundColor: currentMonth == mon && "#162E3D",
               }}
+              onLoad={() => setCurrentMonth(month)}
               onClick={() => setCurrentMonth(mon)}
             >
+              {console.log(currentMonth)}
               {eventMonthArray.includes(mon) && (
                 <img
                   style={{ marginRight: "5px", paddingBottom: "2px" }}
@@ -131,7 +153,6 @@ const Schedule = () => {
           ))}
         </MonthPicker>
       </div>
-      <LowerContainer>
         <CardWrapper>
           {roundInfo &&
             roundInfo
@@ -142,11 +163,11 @@ const Schedule = () => {
                   : round
               )
               .map((round) => {
+                // const localPath = require('../../assets/images/rounds/' + round.id + round?.course_info?.main_image);
+                // console.log("localPath", localPath.default);
                 return (
                   <RoundCard
-                    backgroundImage={
-                      round?.course_info?.main_image || PlaceHolder
-                    }
+                    backgroundImage={round?.course_info?.main_image || PlaceHolder}
                     date={round?.date}
                     name={round?.name}
                     link={`/round/${round?.id}`}

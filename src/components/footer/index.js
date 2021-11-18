@@ -14,12 +14,14 @@ import TrophyBlue from "../../assets/icons/WHT_icon_Trophy-blue.svg";
 import CalBlue from "../../assets/icons/WHT_icon_Cal-blue.svg";
 import GolferBlue from "../../assets/icons/WHT_icon_Golfer-blue.svg";
 import QuestionIcon from "../../assets/icons/WHT-icon-Question.svg";
+import OneDayIcon from "../../assets/icons/WHT_Icon_OneDay.svg";
+import OneDayIconBlue from "../../assets/icons/WHT_Icon_OneDayBlue.svg";
 
-import FAQ from "../../assets/pdfs/WHT-FAQs.pdf";
+import FAQ from "../../assets/pdfs/WHT-FAQs-NEW.pdf";
 
 const FooterContainer = styled.div`
-  height: 80px;
-  background-color: #be1e2d;
+  height: auto;
+  background-color: transparent;
   position: initial;
   bottom: 0;
   width: 100%;
@@ -31,6 +33,13 @@ const FooterContainer = styled.div`
   @media only screen and (max-width: 1100px) {
     position: fixed;
   }
+`;
+
+const SubFooter = styled.div`
+  width: 100%;
+  text-align: center;
+  margin: 0.5rem 0;
+  font-size: 0.7rem;
 `;
 
 const NavContainer = styled.div`
@@ -99,7 +108,7 @@ const Footer = () => {
   return (
     <FooterContainer>
       {location.pathname !== "/welcome" &&
-      location.pathname !== "/login" &&
+      location.pathname !== "/client-portal" &&
       location.pathname !== "/register" &&
       location.pathname !== "/learn-more" &&
       user ? (
@@ -144,9 +153,20 @@ const Footer = () => {
               />
             )}
           </MenuIcon>
-          <a rel="noopener noreferrer" href={FAQ} target="_blank">
-            {isDesktop ? "FAQ" : <img src={QuestionIcon} />}
-          </a>
+          <MenuIcon
+            style={{
+              color: location.pathname == "/one-day" ? "#162E3D" : "#f3e9d5",
+            }}
+            to="/one-day"
+          >
+            {isDesktop ? (
+              "One Day"
+            ) : (
+              <img
+                src={location.pathname == "/one-day" ? OneDayIconBlue : OneDayIcon}
+              />
+            )}
+          </MenuIcon>
           <a
             href="https://shop.workhorsebrewing.com"
             target="_blank"
@@ -159,30 +179,36 @@ const Footer = () => {
         <NavContainer style={{ maxWidth: "500px" }}>
           <MenuIcon
             style={{
-              color: location.pathname == "/login" ? "#162E3D" : "#f3e9d5",
+              color: location.pathname == "/client-portal" ? "#162E3D" : "#f3e9d5",
             }}
-            to="/login"
+            to="/client-portal"
           >
-            Login
+            Client Portal
           </MenuIcon>
           <MenuIcon
             style={{
-              color: location.pathname == "/register" ? "#162E3D" : "#f3e9d5",
+              color: location.pathname == "/contact" ? "#162E3D" : "#f3e9d5",
             }}
             to="/register"
           >
-            Sign Up
+            Contact Me
           </MenuIcon>
           <MenuIcon
             style={{
-              color: location.pathname == "/learn-more" ? "#162E3D" : "#f3e9d5",
+              color: location.pathname == "/resources" ? "#162E3D" : "#f3e9d5",
             }}
-            to="/learn-more"
+            to="/resources"
           >
-            Learn More
+            Resources
           </MenuIcon>
         </NavContainer>
+        
       )}
+
+      <SubFooter>
+        <div><span>Copyright Brent Baker All Rights Reserved © 2021 & Beyond | Built With <a href="https://reactjs.org/" target="_blank">React</a></span></div>
+      </SubFooter>
+
     </FooterContainer>
   );
 };

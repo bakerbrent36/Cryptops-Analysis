@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import { useRef, useState, useEffect } from "react";
 import styled from "@emotion/styled";
 import { useQuery } from "react-query";
 
@@ -20,6 +20,27 @@ const Card = styled.div`
   background-color: #ffffff;
   min-height: 400px;
   margin: 15px;
+  padding-bottom: 1rem;
+  button{
+    width: 134px;
+    height: 54px;
+    background-color: #be1e2d;
+    border: none;
+    margin: 5px;
+    font-size: 20px;
+    text-transform: uppercase;
+    text-decoration: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    margin: 2rem auto;
+  :hover{
+    opacity:0.7;
+    transition:0.2s ease-in-out;
+    cursor:pointer;
+  }
+  }
 `;
 
 const Ribbon = styled.div`
@@ -66,13 +87,41 @@ const Table = styled.table`
 `;
 
 const Roster = () => {
-  const { isLoading, error, data } = useQuery("eventRoster", () =>
-    fetch(
-      `${process.env.REACT_APP_API_URL}${process.env.REACT_APP_API_KEY}/events/${process.env.REACT_APP_EVENT_ID}/roster`
-    ).then((res) => res.json())
-  );
+  const [roster, setRoster] = useState([])
+  const [pageNumber, setPageNumber] = useState(1)
+  const [loading, setLoading] = useState(true)
 
-  console.log(data);
+  const getPlayers = (pageNum = 1) => {
+    console.log("PAGE NUMBER", pageNum)
+    fetch(
+      `${process.env.REACT_APP_API_URL}${process.env.REACT_APP_API_KEY}/events/${process.env.REACT_APP_EVENT_ID}/roster?page=${pageNum}`
+    ).then((res) => res.json()).then(data => {
+      if (data.length != 0) {
+        setRoster(oldState => [...oldState, ...data])
+      } else {
+        setLoading(false)
+      }
+    })
+      
+      
+  }
+
+  function loadMore(){
+    setPageNumber(oldState => {
+      getPlayers(oldState + 1)
+      return oldState + 1
+    })
+
+  }
+
+  console.log(pageNumber)
+  // console.log(newPlayers || 'blah')
+
+  useEffect(() => {
+    getPlayers()
+  }, [])
+
+  console.log(roster)
 
   return (
     <RosterContainer>
@@ -93,8 +142,8 @@ const Roster = () => {
                 </tr>
               </thead>
               <tbody>
-                {data &&
-                  data
+                {roster &&
+                  roster
                     .filter(({ member }) => !member.deleted)
                     .map(({ member }) => (
                       <tr>
@@ -106,6 +155,7 @@ const Roster = () => {
               </tbody>
             </Table>
           </TableContainer>
+          {loading && <button onClick={loadMore}>LOAD MORE</button>}
         </Card>
       </CardWrapper>
     </RosterContainer>

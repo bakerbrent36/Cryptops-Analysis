@@ -1,94 +1,65 @@
 import styled from "@emotion/styled";
-import { Link } from "react-router-dom";
-import { useWidth } from "../../context/ScreenWidthContext";
+import { Link, BrowserRouter as Router, Route } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { useQuery } from "react-query";
 
-import FAQ from "../../assets/pdfs/WHT-FAQs.pdf";
+// Components
+import Skills from "../../components/skills";
 
-import DesktopImg from "../../assets/images/learn-more-desk.png";
-import MobileImg from "../../assets/images/learn-more-mobile.png";
-
-const LearnMoreContainer = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  background-color: #172e3e;
-  padding-bottom: 50px;
-`;
-
-const Button = styled(Link)`
-  width: 250px;
-  height: 50px;
-  background-color: #be1e2d;
-  border: none;
-  margin: 5px;
-  text-transform: uppercase;
-  text-decoration: none;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: white;
-`;
-
-const FAQLink = styled.a`
-  width: 250px;
-  height: 50px;
-  background-color: #be1e2d;
-  border: none;
-  margin: 5px;
-  text-transform: uppercase;
-  text-decoration: none;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: white;
-`;
-
-const Content = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 15px;
-  text-align: center;
-  img {
-    width: 100%;
-  }
-`;
-
-const HeaderText = styled.div`
-  font-family: BebasNeue;
-  color: #f3e9d5;
-  font-size: 36px;
-  display: flex;
-  justify-content: space-between;
-  padding-left: 15px;
-  flex-wrap: wrap;
-  width: 100%;
-  max-width: 1100px;
+const AboutContainer = styled.div`
+    width: 89%;
+    margin: 6rem auto;
+    display: flex;
+    flex-wrap:wrap;
+    h1{
+      margin:1rem 0;
+      z-index: 2222;
+      position: relative;
+      text-shadow: 0 0 10px #87c76326, 0 0 25px #87c76326, 0 0 35px #87c76326, 0 0 45px #87c76326, 0 0 55px #87c76326, 0 0 65px #87c76326, 0 0 75px #87c76326;
+    }
+    .top{
+      width:100%;
+      margin-bottom:1rem;
+    }
+    h4{
+      background: #8bef4a;
+      padding: 1rem;
+      color: #577f3b;
+      margin:0 0 1rem 0;
+      font-famiy: "Classic Console";
+      box-shadow: 0 0 10px #87c76361, 0 0 25px #87c7634d, 0 0 35px #87c7634d, 0 0 45px #87c76312, 0 0 55px #87c76312, 0 0 65px #87c76312, 0 0 75px #87c76312;
+    }
 `;
 
 const LearnMore = () => {
-  const width = useWidth();
+
+  const [isLoading, setIsLoading] = useState(true);
+  const [data, setData] = useState();
+
+  // useEffect(() => {
+  //   fetch("https://swapi.dev/api/people/", {})
+  //     .then((res) => res.json())
+  //     .then((response) => {
+  //       setData(response.results);
+  //       setIsLoading(false);
+  //     })
+  //     .catch((error) => console.log(error));
+  // }, []);
+
   return (
-    <LearnMoreContainer>
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "center",
-          width: "100%",
-          padding: "15px 0px",
-        }}
-      >
-        <HeaderText>Make your round count</HeaderText>
-      </div>
-      <Content>
-        <img src={width > 600 ? DesktopImg : MobileImg} />
-      </Content>
-      <FAQLink rel="noopener noreferrer" href={FAQ} target="_blank">
-        FAQ
-      </FAQLink>
-      <Button to="/register">Sign Up</Button>
-    </LearnMoreContainer>
+    <>
+    <AboutContainer>
+      <Skills></Skills>
+    </AboutContainer>
+      {/* {!isLoading &&
+        data.map((person, index) => {
+          return (
+            <h5 key={index}>
+              <Link to={`/person/${index + 1}`}>{person.name}'s Page</Link>
+            </h5>
+          );
+        })} */}
+    </>
   );
 };
 

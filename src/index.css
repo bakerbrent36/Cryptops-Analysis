@@ -1,28 +1,320 @@
+html {
+    font-size: 18px;
+    -webkit-transform: translateZ(0);
+    -webkit-transform: translate3d(0,0,0);
+}
+
 body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Classic Console", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    line-height:1.4;
+}
+
+body:after{
 }
 
 * {
-  font-family: "Raleway";
+    font-family: 'Inconsolata', monospace;
+	  font-weight: 700;
+    color: #8bef4a;
 }
+
+a:hover {
+  opacity:0.8;
+  transition:0.2s ease-in-out;
+  cursor: pointer;
+}
+
+
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: "Radwave";
+}
+
+h1 {
+    font-size: clamp(3.822rem, 6vw, 6.888rem);
+    /* text-shadow: 0 0 10px #87c76326, 0 0 25px #87c76326, 0 0 35px #87c76326, 0 0 45px #87c76326, 0 0 55px #87c76326, 0 0 65px #87c76326, 0 0 75px #87c76326; */
+}
+
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-    monospace;
+    font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
 }
 
-@font-face {
-  font-family: "Raleway";
-  src: local("Raleway"), url(./assets/fonts/Raleway-Bold.ttf) format("truetype");
+/* Buttons */
+
+button{
+  margin: 1rem;
+  font-weight: 700;
+  color: #8bef4a;
+  background:transparent;
+  border: 0;
+  font-size: 1rem;
+}
+button:hover{
+  cursor:pointer;
+  border: 2px solid #86bf55;
 }
 
+.sq{
+  height: 0;
+  width: 0;
+  background: #8bef4a;
+  -webkit-box-shadow: 0px -4px 3px #86bf5540;
+  -moz-box-shadow: 0px -4px 3px #86bf5540;
+  box-shadow: 0px -4px 3px #86bf5540;
+  opacity:0;
+}
+
+a:hover .sq{
+  transition:0.2s ease-in-out;
+  width: 0.5rem;
+  height:0.5rem;
+  opacity:1;
+  margin-right: 0.4rem;
+}
+
+button:hover .sq{
+  transition:0.2s ease-in-out;
+  width: 0.5rem;
+  height:0.5rem;
+  opacity:1;
+  margin-right: 0.4rem;
+}
+
+.buttons button:hover .sq{
+  transition:0.2s ease-in-out;
+  width: 0.5rem;
+  height:0.5rem;
+  opacity:1;
+  margin-right: 0.4rem;
+}
+
+/* Icons */
+
+.ico {
+  --size: 70px;
+  display: inline-block;
+  width: var(--size);
+  height: var(--size);
+  -webkit-mask-size: 100%;
+  mask-size: 100%;
+  -webkit-mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+}
+
+.skateboard-ico {
+  background: #8bef4a;
+  -webkit-mask-image: url(./assets/icons/skateboard.svg);
+  mask-image: url(./assets/icons/skateboard.svg);
+}
+
+.camera-ico {
+  background: #8bef4a;
+  -webkit-mask-image: url(./assets/icons/camera.svg);
+  mask-image: url(./assets/icons/camera.svg);
+}
+
+.house-ico {
+  background: #8bef4a;
+  -webkit-mask-image: url(./assets/icons/house-ico.svg);
+  mask-image: url(./assets/icons/house-ico.svg);
+  width:3rem;
+}
+
+.typography-ico {
+  background: #8bef4a;
+  -webkit-mask-image: url(./assets/icons/typography-ico.svg);
+  mask-image: url(./assets/icons/typography-ico.svg);
+  width:3rem;
+}
+
+.github-ico {
+  background: #8bef4a;
+  -webkit-mask-image: url(./assets/icons/github-ico.svg);
+  mask-image: url(./assets/icons/github-ico.svg);
+}
+
+.ig-ico {
+  background: #8bef4a;
+  -webkit-mask-image: url(./assets/icons/ig-ico.svg);
+  mask-image: url(./assets/icons/ig-ico.svg);
+}
+
+.fb-ico {
+  background: #8bef4a;
+  -webkit-mask-image: url(./assets/icons/fb-ico.svg);
+  mask-image: url(./assets/icons/fb-ico.svg);
+}
+
+.linkedin-ico {
+  background: #8bef4a;
+  -webkit-mask-image: url(./assets/icons/linkedin-ico.svg);
+  mask-image: url(./assets/icons/linkedin-ico.svg);
+}
+
+/* Scanlines */
+
+@-webkit-keyframes scan{
+  from { top: -50%;
+  left: 0;
+  }
+  
+  to {
+  top: 100%;
+  left: 0;
+  }
+  }
+  
+  
+  @keyframes scan{
+  from { top: -50%;
+  left: 0;
+  }
+  
+  to {
+  top: 100%;
+  left: 0;
+  }
+  }
+
+@-webkit-keyframes glow {
+    from {
+        text-shadow: 0 0 10px #87c763, 0 0 20px #87c763, 0 0 30px #87c763, 0 0 40px #87c763, 0 0 50px #87c763, 0 0 60px #87c763, 0 0 70px #87c763;
+    }
+    to {
+        text-shadow: 0 0 20px #87c763, 0 0 30px #87c763, 0 0 40px #87c763, 0 0 50px #87c763, 0 0 60px #87c763, 0 0 70px #87c763, 0 0 80px #87c763;
+    }
+}
+
+@keyframes glow {
+    from {
+        text-shadow: 0 0 10px #87c7634d, 0 0 20px #87c7634d, 0 0 30px #87c7634d, 0 0 40px #87c7634d, 0 0 50px #87c7634d, 0 0 60px #87c7634d, 0 0 70px #87c7634d;
+    }
+    to {
+        text-shadow: 0 0 15px #87c7634d, 0 0 25px #87c7634d, 0 0 35px #87c7634d, 0 0 45px #87c7634d, 0 0 60px #87c7634d, 0 0 70px #87c7634d, 0 0 80px #87c7634d;
+    }
+}
+
+@keyframes typing {
+    from {
+      width: 0
+    }
+  }
+      
+  @keyframes blink {
+    50% {
+      border-color: transparent
+    }
+  }
+
+  @keyframes flicker {
+    0% {
+      opacity: .86139
+    }
+    5% {
+      opacity: .12793
+    }
+    10% {
+      opacity: .36759
+    }
+    15% {
+      opacity: .9766
+    }
+    20% {
+      opacity: .61364
+    }
+    25% {
+      opacity: .94477
+    }
+    30% {
+      opacity: .57811
+    }
+    35% {
+      opacity: .03416
+    }
+    40% {
+      opacity: .21835
+    }
+    45% {
+      opacity: .62054
+    }
+    50% {
+      opacity: .89452
+    }
+    55% {
+      opacity: .89997
+    }
+    60% {
+      opacity: .37872
+    }
+    65% {
+      opacity: .04929
+    }
+    70% {
+      opacity: .14477
+    }
+    75% {
+      opacity: .27512
+    }
+    80% {
+      opacity: .84701
+    }
+    85% {
+      opacity: .85952
+    }
+    90% {
+      opacity: .76553
+    }
+    95% {
+      opacity: .91372
+    }
+    100% {
+      opacity: .05536
+    }
+  }
+  
+  @-webkit-keyframes steady {
+    from {
+      background: rgba(255, 230, 230, .1)
+    }
+    to {
+      background: rgba(49, 45, 45, .1)
+    }
+  }
+  
+  @keyframes steady {
+    from {
+      background: rgba(255, 230, 230, .1)
+    }
+    to {
+      background: rgba(49, 45, 45, .1)
+    }
+  }
+/* Primary Body Font */
+@import url('https://fonts.googleapis.com/css?family=Inconsolata:400,700');
+
+/* Primary Display Font */
 @font-face {
-  font-family: "BebasNeue";
-  src: local("BebasNeue"),
-    url(./assets/fonts/BebasNeue-Regular.ttf) format("truetype");
+    font-family: "Radwave";
+    src: local("Radwave"), url(./assets/fonts/radwave.otf) format("opentype");
+}
+
+/* Secondary Body Font */
+@font-face {
+    font-family: "Monofonto";
+    src: local("Monofonto"), url(./assets/fonts/monofonto.otf) format("opentype");
+}
+
+/* Thurdary Body Font */
+@font-face {
+    font-family: "Classic Console";
+    src: local("Classic Console"), url(./assets/fonts/clacon.ttf) format("truetype");
 }

@@ -9,13 +9,17 @@ import "./App.css";
 
 const queryClient = new QueryClient();
 
+
 function App() {
+  
   const [installPrompt, setInstallPrompt] = useState(false);
   useEffect(() => {
     window.addEventListener("beforeinstallprompt", (e) => {
       setInstallPrompt(true);
     });
+
   }, []);
+
 
   return (
     <AuthProvider>

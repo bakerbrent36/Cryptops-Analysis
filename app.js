@@ -128,6 +128,9 @@ app.post("/get-ghin", (req, res, next) => {
             headers: {
               Authorization: `Bearer ${token}`,
               "Content-Type": "application/json",
+              "Cache-Control": "no-cache",
+              "Pragma": "no-cache",
+              "Expires": "0"
             },
             body: JSON.stringify({
               golfer: {

@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { useQuery } from "react-query";
 import styled from "@emotion/styled";
+import { format, parseISO, sub } from "date-fns";
 
 const LowerContainer = styled.div`
   background-color: #162e3d;
@@ -131,11 +132,16 @@ const TourResults = () => {
       .then((res) => res.json())
       .then((data) => {
         setEventRounds(data);
+        console.log(data)
         if (data.length > 0) {
-          setCurrentRound(data[0].round.id);
+          const cRound = data.find(({round})=> round.status == "in progress")
+          setCurrentRound(cRound.round.id || data[0].round.id);
+          console.log(cRound)
         }
       });
   }, []);
+
+  console.log(currentRound)
 
   return (
     <CardWrapper>
@@ -149,10 +155,7 @@ const TourResults = () => {
             }}
           >
             <label>Round Name</label>
-            <select
-              style={{ maxWidth: "200px" }}
-              onChange={(e) => setCurrentRound(e.target.value)}
-            >
+            <select style={{ maxWidth: "200px" }} onChange={(e) => setCurrentRound(e.target.value)} value={currentRound} >
               {eventRounds &&
                 eventRounds.length > 0 &&
                 eventRounds.map(({ round }) => (

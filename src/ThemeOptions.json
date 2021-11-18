@@ -1,0 +1,22 @@
+{
+    "Contact": [
+        {
+        "Phone": "269-910-1643",
+        "Email": "bakerbrent36@gmail.com"
+        }
+    ],
+    "Social": [
+        {
+        "Facebook": "Jason Ross",
+        "Instagram": "Jason Ross",
+        "LinkedIn": "Jason Ross",
+        "Github": "Jason Ross",
+        "Medium": "Jason Ross"
+        }
+    ],
+    "Resume": [
+        {
+        "Resume": "https://s3.us-east-2.amazonaws.com/bakerbrent.com/assets/brent-baker-dev-ui-ux-9-23-20.pdf"
+        }
+    ]
+}

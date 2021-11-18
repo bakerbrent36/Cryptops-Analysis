@@ -65,6 +65,22 @@ const Ribbon = styled.div`
 const RoundCard = ({ backgroundImage, date, name, link }) => {
   const endDate = parseISO(date);
   const startDate = sub(parseISO(date), { days: 6 });
+  const currentDate = new Date();
+  const fakeDate = new Date();
+  currentDate.setHours(0,0,0,0);
+  // fakeDate.setDate(fakeDate.getDate()-10);
+
+  function checkDate() {
+    if( startDate < currentDate && endDate > currentDate){
+      return (<RoundPlayLink>Play</RoundPlayLink>)
+    } else if (startDate > currentDate && endDate > currentDate || currentDate == endDate) {
+      return(<RoundPlayLink>Play</RoundPlayLink>)
+    } else if (startDate < currentDate & endDate < currentDate ) {
+      return(<RoundPlayLink>Complete</RoundPlayLink>)
+    } else {
+      return (<RoundPlayLink>Play</RoundPlayLink>)
+    }
+  }
 
   return (
     <Card
@@ -82,7 +98,7 @@ const RoundCard = ({ backgroundImage, date, name, link }) => {
       </Ribbon>
       <CardBottomContainer>
         {name}
-        <RoundPlayLink>Play</RoundPlayLink>
+        {checkDate()}
       </CardBottomContainer>
     </Card>
   );
