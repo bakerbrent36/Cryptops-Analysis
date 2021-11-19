@@ -29,8 +29,46 @@ const PortfolioContainer = styled.div`
     }
 `;
 
+const FilterItem = styled(Link) `
+  font-weight: 700;
+  color: #8bef4a;
+  background:transparent;
+  border: 0;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  padding: 0.5rem 0.9rem;
+  width: 60%;
+  text-decoration:none;
+`;
+
 const CategoryFilter = styled.div`
     width:25%;
+    .filter{
+      margin:0.4rem 0;
+      width: 80%;
+    }
+    .filter.active{
+      border: 2px solid #86bf55;
+      cursor:pointer;
+      -webkit-box-shadow: 10px 10px 15px #86bf5540;
+      -moz-box-shadow: 10px 5px 15px #86bf5540;
+      box-shadow: 0px 0px 15px #86bf5540;
+    }
+    .filter:hover{
+      border: 2px solid #86bf55;
+      cursor:pointer;
+      -webkit-box-shadow: 10px 10px 15px #86bf5540;
+      -moz-box-shadow: 10px 5px 15px #86bf5540;
+      box-shadow: 0px 0px 15px #86bf5540;
+    }
+    .filter.active .sq{
+      transition:0.2s ease-in-out;
+      width: 0.5rem;
+      height:0.5rem;
+      opacity:1;
+      margin-right: 0.4rem;
+    }
     button{
       font-weight: 700;
       color: #8bef4a;
@@ -56,6 +94,9 @@ const Feed = styled.div`
     flex-wrap:wrap;
     justify-content: space-between;
     height: fit-content;
+    .current{
+      width:100%;
+    }
 `;
 
 const Button = styled(Link) `
@@ -125,15 +166,6 @@ const ItemContent = `
   width:100%;
 `;
 
-const Tag = styled.div`
-
-`;
-
-function activeFilter() {
-  
-}
-
-// const show = this.style.opacity = "1";
 
 const PortfolioFeed = () => {
   const [currentCategory, setCurrentCategory] = useState("App Development");
@@ -142,28 +174,43 @@ const PortfolioFeed = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [data, setData] = useState();
 
+  let filterSidebar = Array.from(document.querySelectorAll('.filter'));
+
+  const defaultFilter = () => {
+    let defaultFilter = document.getElementById(currentCategory);
+    defaultFilter.parentElement.classList.add('active');
+  }
+
+  useEffect(() => {
+    defaultFilter();
+  },[]);
+
+  const activeFilter = (e) => {
+    let item = e.target.parentElement;
+
+    filterSidebar.forEach(node => {
+      node.classList.remove('active');
+    });
+
+    item.classList.add('active');
+  }
+
   return(
     <PortfolioContainer>
-
-  {/* {Portfolio.ParentCategories.map((cat, index) => (
-                <h5 key={index}>
-                <Link to={`/portfolio/${index + 1}`}>{cat.Category}'s Page</Link>
-                </h5>
-            ))} */}
 
             <div class="top">
               <h1>Portfolio</h1>
             </div>
 
-            <CategoryFilter>
+            <CategoryFilter className="filter-sidebar">
                 {
                   Portfolio.ParentCategories.map((item) => {
                     return (
-                      <div>
-                        <button onClick={() => setCurrentCategory(item)}>
+                      <div class="filter" onClick={(e)=>activeFilter(e)}>
+                        <FilterItem onClick={() => setCurrentCategory(item)} id={item}>
                           <div class="sq"></div>
                           {item}
-                        </button>
+                        </FilterItem>
                       </div>
                     );
                   })
@@ -171,16 +218,20 @@ const PortfolioFeed = () => {
             </CategoryFilter>
 
             <Feed>
+                {/* <div class="current">
+                  <h5>{currentCategory}</h5>
+                </div> */}
+
                 {Portfolio.Items.filter(Cat => 
                   Cat.Category.includes(currentCategory)).map((filteredItem, id) => (
                     <PortfolioItem 
                       onMouseEnter={() => ContentShown(true)}
                       onMouseLeave={() => ContentShown(false)}
                       style={{ backgroundImage: `url(${filteredItem.FeaturedImage})`}}
-                      link={`/portfolio/${filteredItem.Name}`}
+                      link={`/work/${filteredItem.Name}`}
                       // onMouseOver={changeBackground}
                     >
-                      <Link to={`/person/${filteredItem.Id}`}>
+                      <Link to={`/work/${filteredItem.Id}`}>
                       <div class="item-content" id={`${id}`}>
                         <div><h4>{filteredItem.Name}</h4></div>
 
@@ -197,20 +248,7 @@ const PortfolioFeed = () => {
                       </Link>
                     </PortfolioItem>
                 ))}
-                {/* {
-                  Object.keys(templates).map(template_name => {
-                    return (
-                      <div>
-                        <div>{template_name}</div>
-                        {
-                          templates[template_name].items.map(item => {
-                            return(<div>{item}</div>)
-                          })
-                        }
-                      </div>
-                    )
-                  })
-                } */}
+
             </Feed>
     </PortfolioContainer>
   );

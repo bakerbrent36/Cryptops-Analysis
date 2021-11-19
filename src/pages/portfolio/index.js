@@ -6,12 +6,16 @@ import styled from "@emotion/styled";
 import PortfolioFeed from "../../components/portfolio";
 import Portfolio from "../../Portfolio.json";
 
+const PortfolioContainer = styled.div`
+  margin:12rem 0;
+`;
+
 const PortfolioPage = () => {
 
   return(
-    
-    <PortfolioFeed></PortfolioFeed>
-
+    <PortfolioContainer>
+      <PortfolioFeed></PortfolioFeed>
+    </PortfolioContainer>
   );
 
 };

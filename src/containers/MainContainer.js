@@ -2,7 +2,7 @@ import React from "react";
 import { Link, Redirect, Switch, BrowserRouter as Router, Route } from "react-router-dom";
 import Main from "../pages/main";
 import Blog from "../pages/blog";
-import PortfolioPage from "../pages/person";
+import PortfolioPage from "../pages/portfolio";
 import Portfolio from "../pages/portfolio";
 import Contact from "../pages/contact";
 import SinglePortfolio from "../pages/single-portfolio";

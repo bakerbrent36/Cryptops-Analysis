@@ -31,11 +31,13 @@
     "react-responsive-carousel": "^3.2.22",
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.2",
+    "react-sticky": "^6.0.3",
     "request": "^2.88.2",
     "request-cookies": "^1.1.0",
     "semantic-ui-react": "^2.0.4",
     "simple-react-lightbox": "^3.6.9-0",
     "sweetalert2": "^11.1.8",
+    "use-local-storage": "^2.2.5",
     "web-vitals": "^1.0.1"
   },
   "scripts": {

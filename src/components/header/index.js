@@ -25,6 +25,8 @@ import LeaderHeader from "../../assets/images/WHT-header-3-leaderboards.jpg";
 import EventHeader from "../../assets/images/WHT-header-4-events.jpg";
 import RosterHeader from "../../assets/images/WHT-header-5-roster.jpg";
 
+import useLocalStorage from 'use-local-storage';
+
 import FAQ from "../../assets/pdfs/WHT-FAQs-NEW.pdf";
 
 // Backgrounds
@@ -248,6 +250,8 @@ const ColorCircles = styled.div `
   }
   .dots {
     z-index: 2222;
+    position: absolute;
+    top: 1rem;
 }
   span.dot {
       width: 0.8rem;
@@ -282,9 +286,14 @@ const Header = () => {
 
   const [openMenu, setOpenMenu] = useState(false);
 
-  // console.log(location);
+  const defaultDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+  const [theme, setTheme] = useLocalStorage('theme', defaultDark ? 'dark' : 'light');
 
-  // console.log(location.pathname.split("/")[1]);
+  const switchTheme = () => {
+    const newTheme = theme === 'light' ? 'dark' : 'light';
+    setTheme(newTheme);
+  }
+
 
   return (
     <HeaderContainer>
@@ -319,14 +328,15 @@ const Header = () => {
         </NavBar>
       ) : (
         <NavBar style={{ justifyContent: "center" }}>
-          <ColorCircles>
+          {/* <ColorCircles>
             <div class="dots">
               <span class="dot"></span>
               <span class="dot"></span>
               <span class="dot"></span>
               <span class="dot"></span>
             </div>
-          </ColorCircles>
+
+          </ColorCircles> */}
           {width > 1100 && (
             <HeaderButtonsContainer>
               <Button exact={true} activeClassName='is-active' to="/"><div class="sq"></div>Home</Button>

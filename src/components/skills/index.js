@@ -184,7 +184,7 @@ const location = useLocation();
         </div>
         <div id="framework">
             <h3>Frameworks - Libraries - Environments</h3>
-            <span>React - Native React</span>
+            <span>React</span>
             <span>Material UI</span>
             <span>Redux</span>
             <span>Node.js</span>

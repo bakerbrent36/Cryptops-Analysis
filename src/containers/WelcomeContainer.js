@@ -47,7 +47,7 @@ const WelcomeContainer = ({ screenWidth }) => {
         <Switch>
           <Route path="/learn-more" component={LearnMore} />
           <Route path="/portfolio" component={Portfolio} />
-          <Route path="/person/:portfolioId" component={PortfolioPage} />
+          <Route path="/work/:portfolioId" component={PortfolioPage} />
           <Route path="/contact" component={Contact} />
           <Route component={Home} />
         </Switch>

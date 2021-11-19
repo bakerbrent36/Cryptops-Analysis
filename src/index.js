@@ -26,14 +26,13 @@ const Root = styled.div`
   }
 `;
 
-
 ReactDOM.render(
   <React.StrictMode>
-    <Router>
-      <App />
-      <Root style={{ backgroundImage: ` url(${Dust4}), url(${Grid}), radial-gradient(circle, rgb(255 255 255 / 35%) 8%, rgba(214, 214, 214, 0) 100%)`}}>
-      </Root>
-    </Router>
+      <Router>
+        <App />
+          <Root style={{ backgroundImage: ` url(${Dust4}), url(${Grid}), radial-gradient(circle, rgb(255 255 255 / 35%) 8%, rgba(214, 214, 214, 0) 100%)`}}>
+          </Root>
+      </Router>
   </React.StrictMode>,
   document.getElementById("root")
 );

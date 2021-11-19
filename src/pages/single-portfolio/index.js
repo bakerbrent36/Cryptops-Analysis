@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useQuery } from "react-query";
-import { Link, BrowserRouter as Router, Route } from "react-router-dom";
+import { Link, BrowserRouter as Router, Route, useLocation } from "react-router-dom";
 import styled from "@emotion/styled";
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import { Carousel } from 'react-responsive-carousel';
@@ -61,6 +61,27 @@ const PortfolioContent = styled.div `
   p{
     color:#f6f6f6;
   }
+  a.button{
+    padding:1rem 1.2rem;
+    border:3px solid #f6f6f6;
+    border-radius:3px;
+    font-family:'Classic Console';
+    text-decoration:none;
+    text-transform:uppercase;
+    font-size: clamp(1rem, 4vw, 1.2rem);
+    width: 15%;
+    margin:3rem 0;
+    text-align:center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color:#f6f6f6;
+    :hover{
+      cursor:pointer;
+      transition:0.2s ease-in-out;
+      // box-shadow: inset 0px 0px 20px #87c763a3, 0 0 10px #87c76361, 0 0 25px #87c7634d, 0 0 35px #87c7634d, 0 0 45px #87c76312, 0 0 55px #87c76312, 0 0 65px #87c76312, 0 0 75px #87c76312;
+    }
+  }
 `;
 
 const Tags = styled.div `
@@ -102,27 +123,27 @@ const Tag = styled(Link) `
   }
 `;
 
-const Button = styled(Link) `
-  padding:1rem 1.2rem;
-  border:3px solid #f6f6f6;
-  border-radius:3px;
-  font-family:'Classic Console';
-  text-decoration:none;
-  text-transform:uppercase;
-  font-size: clamp(1rem, 4vw, 1.2rem);
-  width: 15%;
-  margin:3rem 0;
-  text-align:center;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color:#f6f6f6;
-  :hover{
-    cursor:pointer;
-    transition:0.2s ease-in-out;
-    // box-shadow: inset 0px 0px 20px #87c763a3, 0 0 10px #87c76361, 0 0 25px #87c7634d, 0 0 35px #87c7634d, 0 0 45px #87c76312, 0 0 55px #87c76312, 0 0 65px #87c76312, 0 0 75px #87c76312;
-  }
-`;
+// const Button = styled(Link) `
+//   padding:1rem 1.2rem;
+//   border:3px solid #f6f6f6;
+//   border-radius:3px;
+//   font-family:'Classic Console';
+//   text-decoration:none;
+//   text-transform:uppercase;
+//   font-size: clamp(1rem, 4vw, 1.2rem);
+//   width: 15%;
+//   margin:3rem 0;
+//   text-align:center;
+//   display: flex;
+//   align-items: center;
+//   justify-content: center;
+//   color:#f6f6f6;
+//   :hover{
+//     cursor:pointer;
+//     transition:0.2s ease-in-out;
+//     // box-shadow: inset 0px 0px 20px #87c763a3, 0 0 10px #87c76361, 0 0 25px #87c7634d, 0 0 35px #87c7634d, 0 0 45px #87c76312, 0 0 55px #87c76312, 0 0 65px #87c76312, 0 0 75px #87c76312;
+//   }
+// `;
 
 const PortfolioItem = styled.div`
   width:47%;
@@ -190,11 +211,16 @@ const RelatedProjects = styled.div`
 const Previews = styled.div`
   display:flex;
   flex-wrap:wrap;
-  align-items:flex-start;
+  align-items:center;
   justify-content:space-around;
+  flex-direction:column;
   width:100%;
+  img.log {
+    width: 30%;
+    margin: 5rem auto;
+}
   a {
-    width: 45%;
+    width: 60%;
     height:fit-content;
     z-index:222;
     position:relative;
@@ -205,8 +231,9 @@ const Previews = styled.div`
   }
 `;
 
-
 const SinglePortfolioPage = ({ match }) => {
+  const location = useLocation();
+
   const {
     params: { portfolioId },
   } = match;
@@ -217,6 +244,18 @@ const SinglePortfolioPage = ({ match }) => {
 
   const [currentCategory, setCurrentCategory] = useState(currentItem.Category);
   const [isShown, ContentShown] = useState(false);
+
+  function preview(){
+    return(
+      <iframe src={currentItem.Preview} title={currentItem.Name} class="iframe"></iframe>
+    )    
+  }
+
+  function liveSite(){
+    return(
+      <a href={currentItem.LiveSite } rel="noopener" target="_blank" class="button">View Site</a>
+    )    
+  }
 
   return (
     <>
@@ -230,9 +269,13 @@ const SinglePortfolioPage = ({ match }) => {
             <h1>{currentItem.Name}</h1>
             <p>{currentItem.Description}</p>
 
-            <Button>View Site</Button>
+            {currentItem.LiveSite && liveSite()}
 
             <Previews>
+
+                <img src={currentItem.Logo} class="log" alt=""/>  
+                
+                {currentItem.Preview && preview()}
 
                 {currentItem.Slides.map((slide) => {
                   return <a href={slide}>
@@ -267,10 +310,10 @@ const SinglePortfolioPage = ({ match }) => {
                   onMouseEnter={() => ContentShown(true)}
                   onMouseLeave={() => ContentShown(false)}
                   style={{ backgroundImage: `url(${filteredItem.FeaturedImage})`}}
-                  link={`/portfolio/${filteredItem.Name}`}
+                  link={`/work/${filteredItem.Name}`}
                   // onMouseOver={changeBackground}
                 >
-                  <Link to={`/person/${filteredItem.Id}`}>
+                  <Link to={`/work/${filteredItem.Id}`}>
                   <div class="item-content" id={`${id}`}>
                     <div><h4>{filteredItem.Name}</h4></div>
 

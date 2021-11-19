@@ -2,6 +2,7 @@ import styled from "@emotion/styled";
 import { Link, useLocation } from "react-router-dom";
 import { useQuery } from "react-query";
 import { format, parseISO, sub } from "date-fns";
+import useLocalStorage from 'use-local-storage';
 
 import { useWidth } from "../../context/ScreenWidthContext";
 
@@ -11,9 +12,8 @@ import PortfolioFeed from "../../components/portfolio";
 import BlogFeed from "../../components/blog";
 import Testimonials from "../../components/testimonials";
 import Skills from "../../components/skills";
+import Globe from "../../components/globe";
 
-// Icons
-import Skateboard from "../../assets/icons/skateboard.svg"; 
 
 // Backgrounds
 import RadialFade from "../../assets/images/bgs/radial-fade.png";
@@ -33,6 +33,45 @@ import ProfileImage from "../../assets/images/new/bb-profile.jpg";
 //   window.addEventListener("scroll", callbackFunc);
 // })();
 
+const ThemeMode = styled.div`
+  position: -webkit-sticky;
+  position: sticky;
+  width: 1rem;
+  top:1rem;
+  right:1rem;
+  left:1rem;
+  bottom:0;
+  align-self:flex-end;
+  .dots {
+      z-index: 2222;
+      display:flex;
+      flex-direction:column;
+  }
+  span.dot {
+      width: 0.8rem;
+      height: 0.8rem;
+      border-radius: 50%;
+      display: inline-block;
+      margin:0.1rem 0.2rem;
+  }
+  span.dot:first-child{
+    background: #f6f6f6;
+  }
+  span.dot:nth-child(2){
+    background: #8ac652;
+  }
+  span.dot:nth-child(3){
+    background: #88d0c6;
+  }
+  span.dot:nth-child(4){
+    background: #fcb017;
+  }
+  span.dot:hover{
+    cursor:pointer;
+    opacity:0.7;
+    transition:0.2s ease-in-out;
+  }
+`;
 
 const HomeContainer = styled.div `
   display: flex;
@@ -280,23 +319,48 @@ const Home = () => {
     const width = useWidth();
     const location = useLocation();
 
-    return ( <HomeContainer>
+    const defaultDark = window.matchMedia('(prefers-color-scheme: green)').matches;
+        const [theme, setTheme] = useLocalStorage('theme', defaultDark ? 'green' : 'light');
+
+        const switchTheme = () => {
+          const newTheme = theme === 'light' ? 'green' : 'light';
+          setTheme(newTheme);
+        }
+
+        const light = () => {
+          const newTheme = theme === 'light';
+          setTheme(newTheme);
+        }
+
+    return ( 
+  <>
+
+  <ThemeMode style={{ position: `sticky`}}>
+    <div class="dots">
+        <span class="dot" onClick={switchTheme}>{theme === 'light'}</span>
+        <span class="dot" onClick={switchTheme}>{theme === 'green'}</span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+      </div>
+  </ThemeMode>
+
+    <HomeContainer data-theme={theme}>
 
               <Intro>
 
-                <h1><span>&lt;</span> Hello World <span>/&gt;</span></h1>
+              <h1><span>&lt;</span> Hello World <span>/&gt;</span></h1>
 
               </Intro>
 
               <About>
-
+                
                 <Brent>
 
                 <div class="social">
-                  <div><a href="https://www.facebook.com/bakerbrenton/" target="_blank"><i class="ico fb-ico"></i></a></div>
-                  <div><a href="https://www.instagram.com/standardstealth/" target="_blank"><i class="ico ig-ico"></i></a></div>
                   <div><a href="https://www.linkedin.com/in/bbweb/" target="_blank"><i class="ico linkedin-ico"></i></a></div>
                   <div><a href="https://github.com/bakerbrent36" target="_blank"><i class="ico github-ico"></i></a></div>
+                  <div><a href="https://www.instagram.com/standardstealth/" target="_blank"><i class="ico ig-ico"></i></a></div>
+                  <div><a href="https://www.facebook.com/bakerbrenton/" target="_blank"><i class="ico fb-ico"></i></a></div>
                 </div>
 
                 <h1>Brent Baker</h1>
@@ -308,7 +372,7 @@ const Home = () => {
                     <h4>About</h4>
                     <p>An experienced business web developer with a ferocious appetite for visual storytelling.</p>
                     <p>As a creative, I focus on one common goal: creating personalized solutions for the partners and clients I work with. Offering a wide range of web and branding solutions, I have worked with small and large business owners of many genres. Whether it’s branding, building a web empire, or documenting and collaborating on an urban adventure. I love to inspire with creative and passionate people around the world.</p>
-                    <p>When I’m not at my desk there is a good chance you will find me outside exploring some dilapidated building or working on my car.</p>
+                    <p>When I’m not at my desk there is a good chance you will find me outside exploring a dilapidated building or working on my car.</p>
                     <div class="buttons">
                       <Button style={{color:location.pathname == "/results" ? "#162E3D" : "#f3e9d5"}} to="/results">
                         <div class="sq"></div>View Resume
@@ -319,7 +383,7 @@ const Home = () => {
                       </Button>
                     </div>
                   </div>
-
+                  
                   <div class="col" style={{ backgroundImage: `url(${ProfileImage})`}}>
 
                       <div class="overlay"  style={{ backgroundColor: '#87c763'}}>
@@ -345,7 +409,7 @@ const Home = () => {
                           <h4>BigWheel | Mar 2019 - Present</h4>
                           <span>Front-End Developer | <a href="https://www.gobigwheel.com" target="_blank">www.gobigwheel.com</a></span>
                           <p>My duties at BigWheel involved everything from WooCommerce custom theme development to regenerating keys for an EC2 instance and developing custom apps in React Js. A high standard and collaborative work environment that requires a keen eye for detail. This position consisted of everything under the sun in web devevelopment. Utilizing languages such as PHP, Javascript, SASS, CSS, HTML, and Ruby.</p>
-                          <p>Some additional aspects involved working in Sketch, Illustrator and Photoshop improvising design and optimizing assets with proven results in user experience. Throughout this process I would maintain close communication with our team while providing training, wireframes, user flows, site maps and documentation for the clients. This position has been a huge asset in honing in on my entire web development process.</p>
+                          <p>Some additional aspects involved working in Sketch, Illustrator and Photoshop improvising design and optimizing assets with proven results in user experience. Throughout this process I would maintain close communication with our team while providing training, wireframes, user flows, site maps and documentation for the clients. This position has been a huge asset honing in on my entire web development process.</p>
                       </div>
                       <div class="three">
                           <div class="square"></div>
@@ -356,7 +420,7 @@ const Home = () => {
                       <div class="five">
                           <div class="square"></div>
                           <h4>Mojo Brands Media | Sep 2014 - Feb 2015</h4>
-                          <span>Web Developer & Designer</span>
+                          <span>Web Developer</span>
                           <p>This position was landed 4 months prior to graduating at Full Sail University which involved a variety of web development, design and photography. I worked closely with the marketing team and one on one with the senior developer helping produce the websites for Buzzworthy Media and The Casket Experience.</p>
                       </div>
                   </div>
@@ -369,7 +433,7 @@ const Home = () => {
                     <div class="two">
                       <div class="square"></div>
                       <h4>TSM Studio | Feb 2017 - Jan 2019</h4>
-                      <span>Web Developer & Designer | <a href="https://www.tsmstudio.com" target="_blank">www.tsmstudio.com</a></span>
+                      <span>Front-End Developer | <a href="https://www.tsmstudio.com" target="_blank">www.tsmstudio.com</a></span>
                       <p>Working one on one with clients such as Keith David, Central Florida Behavioral Health Network, Seminole County Tax Collector and Integrative Physical Medicine. My job was to manage and consult with clients for developing custom web solutions unique to each. These solutions included geo-locators, automating/integrating social feeds, and optimizing web assets. I have had the opportuni- ties for developing and designing a variety of websites using mainly Wordpress and Expression Engine. This also involved a focus on logo design, UI design and UX.</p>
                     </div>
                     <div class="four">
@@ -392,6 +456,7 @@ const Home = () => {
                 <Testimonials></Testimonials>
 
              </HomeContainer>
+      </>
     );
 };
 
