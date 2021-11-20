@@ -131,10 +131,10 @@ const Intro = styled.div `
       line-height:2;
       overflow: hidden;
       border-right: 3px solid;
-      color:#8bef4a;
+      color: var(--text-primary);
       z-index: 22222;
       position: relative;
-      text-shadow: 0 0 10px #87c76326, 0 0 25px #87c76326, 0 0 35px #87c76326, 0 0 45px #87c76326, 0 0 55px #87c76326, 0 0 65px #87c76326, 0 0 75px #87c76326;
+      text-shadow: var(--text-shadow);
     }
     span {
       font-family: 'Monofoto';
@@ -214,7 +214,7 @@ min-height:100vh;
     line-height: 0.9;
     z-index: 22222;
     position: relative;
-    text-shadow: 0 0 10px #87c76361, 0 0 25px #87c7634d, 0 0 35px #87c7634d, 0 0 45px #87c76312, 0 0 55px #87c76312, 0 0 65px #87c76312, 0 0 75px #87c76312;
+    text-shadow: var(--text-shadow);
   }
 `;
 
@@ -229,7 +229,7 @@ background-size:cover;
     line-height: 0.9;
     z-index: 22222;
     position: relative;
-    text-shadow: 0 0 10px #87c76361, 0 0 25px #87c7634d, 0 0 35px #87c7634d, 0 0 45px #87c76312, 0 0 55px #87c76312, 0 0 65px #87c76312, 0 0 75px #87c76312;
+    text-shadow: var(--text-shadow);
   }
 `;
 
@@ -320,16 +320,26 @@ const Home = () => {
     const location = useLocation();
 
     const defaultDark = window.matchMedia('(prefers-color-scheme: green)').matches;
-        const [theme, setTheme] = useLocalStorage('theme', defaultDark ? 'green' : 'light');
-
-        const switchTheme = () => {
-          const newTheme = theme === 'light' ? 'green' : 'light';
-          setTheme(newTheme);
-        }
+        const [theme, setTheme] = useLocalStorage('theme', defaultDark);
 
         const light = () => {
-          const newTheme = theme === 'light';
-          setTheme(newTheme);
+          const theme = 'light';
+          setTheme(theme);
+        }
+
+        const green = () => {
+          const theme = 'green';
+          setTheme(theme);
+        }
+
+        const blue = () => {
+          const theme = 'blue';
+          setTheme(theme);
+        }
+
+        const orange = () => {
+          const theme = 'orange';
+          setTheme(theme);
         }
 
     return ( 
@@ -337,10 +347,10 @@ const Home = () => {
 
   <ThemeMode style={{ position: `sticky`}}>
     <div class="dots">
-        <span class="dot" onClick={switchTheme}>{theme === 'light'}</span>
-        <span class="dot" onClick={switchTheme}>{theme === 'green'}</span>
-        <span class="dot"></span>
-        <span class="dot"></span>
+        <span class="dot" onClick={light}></span>
+        <span class="dot" onClick={green}>{theme === 'green'}</span>
+        <span class="dot" onClick={blue}></span>
+        <span class="dot" onClick={orange}></span>
       </div>
   </ThemeMode>
 
