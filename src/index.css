@@ -3,35 +3,35 @@
   --text-primary: #8bef4a;
   --text-secondary: #fcb017;
   --text-triary: #88d0c6;
-  --accent: purple;
+  --accent: #87c76326;
 }
 
 [data-theme='green'] {
   --background: black;
   --text-primary: #8bef4a;
   --text-secondary: grey;
-  --text-shadow: 0 0 10px #87c76326, 0 0 25px #87c76326, 0 0 35px #87c76326, 0 0 45px #87c76326, 0 0 55px #87c76326, 0 0 65px #87c76326, 0 0 75px #87c76326;
+  --accent:#87c76326;
 }
 
 [data-theme='light'] {
   --background: white;
   --text-primary: #f6f6f6;
   --text-secondary: grey;
-  --text-shadow: 0 0 10px #87c76326, 0 0 25px #87c76326, 0 0 35px #87c76326, 0 0 45px #87c76326, 0 0 55px #87c76326, 0 0 65px #87c76326, 0 0 75px #87c76326;
+  --accent:#87c76326;
 }
 
 [data-theme='blue'] {
   --background: white;
   --text-primary: #5cfffe;
   --text-secondary: grey;
-  --text-shadow: 0 0 10px #87c76326, 0 0 25px #87c76326, 0 0 35px #87c76326, 0 0 45px #87c76326, 0 0 55px #87c76326, 0 0 65px #87c76326, 0 0 75px #87c76326;
+  --accent:#87c76326;
 }
 
 [data-theme='orange'] {
   --background: white;
   --text-primary: #fcb017;
   --text-secondary: grey;
-  --text-shadow: 0 0 10px #c7a46326, 0 0 25px #c7a76326, 0 0 35px #c79f6326, 0 0 45px #c7a76326, 0 0 55px #c79f6326, 0 0 65px #c7a76326, 0 0 75px #c7a76326;
+  --accent:#87c76326;
 }
 
 html {
@@ -87,6 +87,7 @@ h1 {
     font-size: clamp(3.822rem, 6vw, 6.888rem);
     color: var(--text-primary);
     transition: all .25s;
+    text-shadow: var(--text-shadow);
 }
 
 

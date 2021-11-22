@@ -134,7 +134,7 @@ const Intro = styled.div `
       color: var(--text-primary);
       z-index: 22222;
       position: relative;
-      text-shadow: var(--text-shadow);
+      text-shadow: 0 0 10px var(--accent), 0 0 25px var(--accent), 0 0 35px var(--accent), 0 0 45px var(--accent), 0 0 55px var(--accent), 0 0 65px var(--accent), 0 0 75px var(--accent);
     }
     span {
       font-family: 'Monofoto';
@@ -147,6 +147,9 @@ const Intro = styled.div `
 `;
 
 const Brent = styled.div `
+  h1{
+    text-shadow: 0 0 10px var(--accent), 0 0 25px var(--accent), 0 0 35px var(--accent), 0 0 45px var(--accent), 0 0 55px var(--accent), 0 0 65px var(--accent), 0 0 75px var(--accent);
+  }
   .social {
     display: flex;
     margin-bottom:1rem;
@@ -214,7 +217,7 @@ min-height:100vh;
     line-height: 0.9;
     z-index: 22222;
     position: relative;
-    text-shadow: var(--text-shadow);
+    text-shadow: 0 0 10px var(--accent), 0 0 25px var(--accent), 0 0 35px var(--accent), 0 0 45px var(--accent), 0 0 55px var(--accent), 0 0 65px var(--accent), 0 0 75px var(--accent);
   }
 `;
 
@@ -229,7 +232,7 @@ background-size:cover;
     line-height: 0.9;
     z-index: 22222;
     position: relative;
-    text-shadow: var(--text-shadow);
+    text-shadow: 0 0 10px var(--accent), 0 0 25px var(--accent), 0 0 35px var(--accent), 0 0 45px var(--accent), 0 0 55px var(--accent), 0 0 65px var(--accent), 0 0 75px var(--accent);
   }
 `;
 

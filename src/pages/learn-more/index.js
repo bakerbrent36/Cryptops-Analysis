@@ -6,6 +6,7 @@ import useLocalStorage from 'use-local-storage';
 
 // Components
 import Skills from "../../components/skills";
+import Process from "../../components/process";
 
 const ThemeMode = styled.div`
   position: -webkit-sticky;
@@ -95,6 +96,7 @@ const LearnMore = () => {
       </ThemeMode>
 
       <AboutContainer data-theme={theme}>
+        <Process></Process>
         <Skills></Skills>
       </AboutContainer>
 

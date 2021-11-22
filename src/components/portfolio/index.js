@@ -38,7 +38,7 @@ const FilterItem = styled(Link) `
   display: flex;
   align-items: center;
   padding: 0.5rem 0.9rem;
-  width: 60%;
+  width: 100%;
   text-decoration:none;
 `;
 
@@ -46,7 +46,7 @@ const CategoryFilter = styled.div`
     width:25%;
     .filter{
       margin:0.4rem 0;
-      width: 80%;
+      width: 85%;
     }
     .filter.active{
       border: 2px solid #86bf55;
