@@ -26,6 +26,12 @@ const PortfolioContainer = styled.div`
       width:100%;
       border-bottom: 3px solid #8bef4a;
       margin-bottom:3rem;
+      @media(max-width:892px){
+        margin-bottom:1rem;
+      }
+    }
+    @media(max-width:892px){
+      flex-direction: column;
     }
 `;
 
@@ -44,6 +50,9 @@ const FilterItem = styled(Link) `
 
 const CategoryFilter = styled.div`
     width:25%;
+    @media(max-width:892px){
+      width: 100%;
+    }
     .filter{
       margin:0.4rem 0;
       width: 85%;
@@ -95,6 +104,9 @@ const Feed = styled.div`
     justify-content: space-between;
     height: fit-content;
     .current{
+      width:100%;
+    }
+    @media(max-width:892px){
       width:100%;
     }
 `;
@@ -159,6 +171,9 @@ const PortfolioItem = styled.div`
   :hover .item-content{
     opacity:1;
     transition:0.2s ease-in-out;
+  }
+  @media(max-width:892px){
+    width:100%;
   }
 `;
 

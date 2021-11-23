@@ -6,11 +6,13 @@ import { useAuth } from "../context/AuthContext";
 import Home from "../pages/home";
 import LearnMore from "../pages/learn-more";
 import Portfolio from "../pages/portfolio";
+import Blog from "../pages/blog";
 import SinglePortfolio from "../pages/single-portfolio";
 import MainContainer from "../containers/MainContainer";
 import Header from "../components/header";
 import Footer from "../components/footer";
 import PortfolioPage from "../pages/single-portfolio";
+import BlogPage from "../pages/single-blog";
 import Contact from "../pages/contact";
 import FourOhFour from "../pages/404";
 
@@ -46,8 +48,10 @@ const WelcomeContainer = ({ screenWidth }) => {
       <PageContainer>
         <Switch>
           <Route path="/learn-more" component={LearnMore} />
+          <Route path="/blog" component={Blog} />
           <Route path="/portfolio" component={Portfolio} />
           <Route path="/work/:portfolioId" component={PortfolioPage} />
+          <Route path="/blog/:blogId" component={BlogPage} />
           <Route path="/contact" component={Contact} />
           <Route component={Home} />
         </Switch>

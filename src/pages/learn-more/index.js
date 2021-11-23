@@ -96,8 +96,8 @@ const LearnMore = () => {
       </ThemeMode>
 
       <AboutContainer data-theme={theme}>
-        <Process></Process>
         <Skills></Skills>
+        <Process></Process>
       </AboutContainer>
 
     </>
