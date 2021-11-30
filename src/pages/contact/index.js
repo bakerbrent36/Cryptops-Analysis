@@ -14,10 +14,20 @@ import Grid from "../../assets/images/bgs/grid.png";
 
 const ContactPage = styled.div`
   width:100%;
-  margin: 8rem auto;
+  margin: 2rem auto;
   padding: 10rem 0;
   background-size:100%;
   background-position:bottom center;
+  @media(max-width:892px){
+    .ui-form{
+      flex-direction:column;
+      padding:2rem 0.5rem;
+    }
+    .required.field {
+      width: 100%;
+      margin:0.5rem 0;
+  }
+}
 `;
 
 // const show = this.style.opacity = "1";

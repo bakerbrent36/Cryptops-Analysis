@@ -190,7 +190,7 @@ const Menu = styled.div`
   z-index: 500;
   width: 100%;
   height: ${({ show }) => (show ? "100vh" : "0")};
-  background-color: #162e3d;
+  background-color: #F3E9D5;
   color: #f3e9d5;
   transition: visibility 0s, opacity 0.5s, height 0.5s;
   opacity: ${({ show }) => (show ? "1" : "0")};
@@ -340,9 +340,9 @@ const Header = () => {
           {width > 1100 && (
             <HeaderButtonsContainer>
               <Button exact={true} activeClassName='is-active' to="/"><div class="sq"></div>Home</Button>
-              <Button to="/learn-more"><div class="sq"></div>About</Button>
+              <Button to="/learn-more"><div class="sq"></div>Skills</Button>
               <Button to="/portfolio"><div class="sq"></div>Portfolio</Button>
-              <Button to="/blog"><div class="sq"></div>Blog</Button>
+              {/* <Button to="/blog"><div class="sq"></div>Blog</Button> */}
               <Button to="/contact"><div class="sq"></div>Contact</Button>
             </HeaderButtonsContainer>
           )}
@@ -371,7 +371,7 @@ const Header = () => {
               <MenuIcon
                 style={{
                   colxor:
-                    location.pathname == "/results" ? "#162E3D" : "#f3e9d5",
+                    location.pathname == "/results" ? "#F3E9D5" : "#f3e9d5",
                 }}
                 to="/results"
               >
@@ -385,7 +385,7 @@ const Header = () => {
 
               <MenuIcon
                 style={{
-                  color: location.pathname == "/one-day" ? "#162E3D" : "#f3e9d5",
+                  color: location.pathname == "/one-day" ? "#F3E9D5" : "#f3e9d5",
                 }}
                 to="/one-day"
               >
@@ -397,7 +397,7 @@ const Header = () => {
 
               <MenuIcon
                 style={{
-                  color: location.pathname == "/roster" ? "#162E3D" : "#f3e9d5",
+                  color: location.pathname == "/roster" ? "#F3E9D5" : "#f3e9d5",
                 }}
                 to="/roster"
               >
@@ -427,7 +427,7 @@ const Header = () => {
             </SecondaryNav>
           </SecondaryNavBar>
         )}
-      <div
+      {/* <div
        class="header-img"
         style={{
           width: "100%",
@@ -452,7 +452,7 @@ const Header = () => {
       }
       )`,
         }}
-      ></div>
+      ></div> */}
       <Menu show={openMenu}>
         <div
           style={{

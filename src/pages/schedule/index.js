@@ -54,7 +54,7 @@ const LowerContainer = styled.div`
   align-items: center;
   width: 100%;
   min-height: 100vh;
-  background-color: #162e3d;
+  background-color: #F3E9D5;
 `;
 
 const CardWrapper = styled.div`
@@ -136,7 +136,7 @@ const Schedule = () => {
           {monthArr.map((mon) => (
             <MonthTab
               style={{
-                backgroundColor: currentMonth == mon && "#162E3D",
+                backgroundColor: currentMonth == mon && "#F3E9D5",
               }}
               onLoad={() => setCurrentMonth(month)}
               onClick={() => setCurrentMonth(mon)}

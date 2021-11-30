@@ -3,7 +3,7 @@ import styled from "@emotion/styled";
 import { useQuery } from "react-query";
 
 const RosterContainer = styled.div`
-  background-color: #162e3d;
+  background-color: #F3E9D5;
   display: flex;
   flex-direction: column;
   align-items: center;

@@ -86,18 +86,18 @@ const LearnMore = () => {
   return (
     <>
     
-      <ThemeMode style={{ position: `sticky`}}>
+      {/* <ThemeMode style={{ position: `sticky`}}>
         <div class="dots">
             <span class="dot" onClick={switchTheme}>{theme === 'light'}</span>
             <span class="dot" onClick={switchTheme}>{theme === 'dark'}</span>
             <span class="dot"></span>
             <span class="dot"></span>
           </div>
-      </ThemeMode>
+      </ThemeMode> */}
 
       <AboutContainer data-theme={theme}>
         <Skills></Skills>
-        <Process></Process>
+        {/* <Process></Process> */}
       </AboutContainer>
 
     </>

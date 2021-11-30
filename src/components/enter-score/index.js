@@ -28,7 +28,7 @@ const ScoreCardHeader = styled.div`
   justify-content: center;
   align-items: center;
   background-color: #f3e9d5;
-  color: #162e3d;
+  color: #F3E9D5;
   text-transform: uppercase;
   height: 50px;
   margin-top: 5px;
@@ -71,7 +71,7 @@ const ScoreCardItem = styled.div`
   font-family: BebasNeue;
   display: flex;
   flex-direction: column;
-  border-left: 1px solid #162e3d;
+  border-left: 1px solid #F3E9D5;
 `;
 
 const HeaderText = styled.div`

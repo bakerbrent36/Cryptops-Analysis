@@ -5,12 +5,10 @@ import styled from "@emotion/styled";
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import { Carousel } from 'react-responsive-carousel';
 
-import Portfolio from "../../Portfolio.json";
+import Blog from "../../Blog.json";
 
-// Components
-import ContactForm from "../../components/contact-form";
 
-const PortfolioHeader = styled.div`
+const BlogHeader = styled.div`
   background-size:cover;
   background-position:center center;
   height: 80vh;
@@ -50,7 +48,7 @@ const PortfolioHeader = styled.div`
   }
 `;
 
-const PortfolioContent = styled.div `
+const BlogContent = styled.div `
   width:88%;
   margin:4rem auto;
   h1{
@@ -75,7 +73,7 @@ const PortfolioContent = styled.div `
     display: flex;
     align-items: center;
     justify-content: center;
-    color:#f6f6f6;
+    color:rgb(243, 233, 213);
     :hover{
       cursor:pointer;
       transition:0.2s ease-in-out;
@@ -123,29 +121,7 @@ const Tag = styled(Link) `
   }
 `;
 
-// const Button = styled(Link) `
-//   padding:1rem 1.2rem;
-//   border:3px solid #f6f6f6;
-//   border-radius:3px;
-//   font-family:'Classic Console';
-//   text-decoration:none;
-//   text-transform:uppercase;
-//   font-size: clamp(1rem, 4vw, 1.2rem);
-//   width: 15%;
-//   margin:3rem 0;
-//   text-align:center;
-//   display: flex;
-//   align-items: center;
-//   justify-content: center;
-//   color:#f6f6f6;
-//   :hover{
-//     cursor:pointer;
-//     transition:0.2s ease-in-out;
-//     // box-shadow: inset 0px 0px 20px #87c763a3, 0 0 10px #87c76361, 0 0 25px #87c7634d, 0 0 35px #87c7634d, 0 0 45px #87c76312, 0 0 55px #87c76312, 0 0 65px #87c76312, 0 0 75px #87c76312;
-//   }
-// `;
-
-const PortfolioItem = styled.div`
+const BlogItem = styled.div`
   width:47%;
   position:relative;
   padding: 1rem;
@@ -231,60 +207,40 @@ const Previews = styled.div`
   }
 `;
 
-const SinglePortfolioPage = ({ match }) => {
+const SingleBlogPage = ({ match }) => {
   const location = useLocation();
 
   const {
-    params: { portfolioId },
+    params: { blogId },
   } = match;
 
   const [isLoading, setIsLoading] = useState(true);
 
-  const currentItem = Portfolio.Items[portfolioId];
+  const currentItem = Blog.Blogs[blogId];
 
   const [currentCategory, setCurrentCategory] = useState(currentItem.Category);
   const [isShown, ContentShown] = useState(false);
 
-  function preview(){
+  function download(){
     return(
-      <iframe src={currentItem.Preview} title={currentItem.Name} class="iframe"></iframe>
-    )    
-  }
-
-  function liveSite(){
-    return(
-      <a href={currentItem.LiveSite } rel="noopener" target="_blank" class="button">View Site</a>
+      <a href={currentItem.Download } rel="noopener" target="_blank" class="button">Download</a>
     )    
   }
 
   return (
     <>
         <>
-          <PortfolioHeader style={{ backgroundImage: `url(${currentItem.HeaderImage})`}}>
-            <img src={currentItem.Logo} class="logo" alt=""/>
-          </PortfolioHeader>
+          <BlogHeader style={{ backgroundImage: `url(${currentItem.HeaderImage})`}}>
+            
+          </BlogHeader>
 
-          <PortfolioContent>
+          <BlogContent>
 
-            <h1>{currentItem.Name}</h1>
-            <p>{currentItem.Description}</p>
+            <h1>{currentItem.Title}</h1>
 
-            {currentItem.LiveSite && liveSite()}
+            <p>{currentItem.p1}</p>
 
-            <Previews>
-
-                <img src={currentItem.Logo} class="log" alt=""/>  
-                
-                {currentItem.Preview && preview()}
-
-                {currentItem.Slides.map((slide) => {
-                  return <a href={slide}>
-                              <img src={slide} class="slide" alt=""/>
-                          </a>
-                        ;
-                })}
-
-            </Previews>
+            {currentItem.Download && download()}
 
             <Tags>
               {currentItem.Tags.map((tag) => (
@@ -297,44 +253,10 @@ const SinglePortfolioPage = ({ match }) => {
                 </>
                 ))}
             </Tags>
-          </PortfolioContent>
-
-          <ContactForm></ContactForm>
-
-          <RelatedProjects>
-            <h2>Related Projects</h2>
-            <div class="related-wrap">
-            {Portfolio.Items.filter(Cat => 
-              Cat.Category === currentCategory).slice(0, 2).map((filteredItem, id) => (
-                <PortfolioItem 
-                  onMouseEnter={() => ContentShown(true)}
-                  onMouseLeave={() => ContentShown(false)}
-                  style={{ backgroundImage: `url(${filteredItem.FeaturedImage})`}}
-                  link={`/work/${filteredItem.Name}`}
-                  // onMouseOver={changeBackground}
-                >
-                  <Link to={`/work/${filteredItem.Id}`}>
-                  <div class="item-content" id={`${id}`}>
-                    <div><h4>{filteredItem.Name}</h4></div>
-
-                    <div><p>{filteredItem.Excerpt}</p></div>
-
-                    <div class="tags">
-                      {filteredItem.Tags.map((tag) => (
-                        <>
-                          <span>{tag.toString()}</span>
-                        </>
-                        ))}
-                    </div>
-                  </div>
-                  </Link>
-                </PortfolioItem>
-            ))}
-            </div>
-          </RelatedProjects>
+          </BlogContent>
         </>
     </>
   );
 };
 
-export default SinglePortfolioPage;
+export default SingleBlogPage;

@@ -3,6 +3,7 @@ import { Link, Redirect, Switch, BrowserRouter as Router, Route } from "react-ro
 import Main from "../pages/main";
 import Blog from "../pages/blog";
 import PortfolioPage from "../pages/portfolio";
+import BlogPage from "../pages/blog";
 import Portfolio from "../pages/portfolio";
 import Contact from "../pages/contact";
 import SinglePortfolio from "../pages/single-portfolio";
@@ -14,6 +15,7 @@ const MainContainer = () => {
         <Route path="/main" component={Main} />
         <Route path="/portfolio/:portfolioId" component={PortfolioPage} />
         <Route path="/portfolio" component={Portfolio} />
+        <Route path="/blog/:blogId" component={BlogPage} />
         <Route path="/blog" component={Blog} />
         <Route path="/contact" component={Contact} />
         <Redirect to="/main" />

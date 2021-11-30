@@ -4,7 +4,7 @@ import styled from "@emotion/styled";
 import { format, parseISO, sub } from "date-fns";
 
 const LowerContainer = styled.div`
-  background-color: #162e3d;
+  background-color: #F3E9D5;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -70,7 +70,7 @@ const DropdownContainer = styled.div`
   flex-direction: column;
   align-items: flex-end;
   text-transform: uppercase;
-  color: #162e3d;
+  color: #F3E9D5;
   padding: 15px;
 
   label {

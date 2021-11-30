@@ -6,8 +6,6 @@ import styled from "@emotion/styled";
 
 import GlobeScript from '../globe';
 
-
-
 const GlobeContainer = styled.div`
 
   svg {
@@ -16,6 +14,7 @@ const GlobeContainer = styled.div`
   }
 
 `;
+
 const Globe = () => {
 
   return(

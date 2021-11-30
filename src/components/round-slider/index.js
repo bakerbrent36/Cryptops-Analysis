@@ -23,7 +23,7 @@ const RoundContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: #162e3d;
+  background-color: #F3E9D5;
 `;
 
 const InnerContainer = styled.div`
@@ -223,7 +223,7 @@ const CourseInfoContainer = styled.div`
     border-collapse: collapse;
     width: 100%;
     text-align: center;
-    color: #162e3d;
+    color: #F3E9D5;
   }
 
   td {

@@ -118,6 +118,17 @@ const ContactContainer = styled.div`
     transition: 0.2s ease-in-out;
     box-shadow: inset 0px 0px 20px #87c763a3, 0 0 10px #87c76361, 0 0 25px #87c7634d, 0 0 35px #87c7634d, 0 0 45px #87c76312, 0 0 55px #87c76312, 0 0 65px #87c76312, 0 0 75px #87c76312;
   }
+  @media(max-width:892px){
+    .button{
+      width:100%;
+    }
+    .required.field {
+      width: 100%;
+    }
+    .required.field:nth-child(5) {
+      width: 100% !important;
+    }
+  }
 `;
 
 const ContactForm = () => {
@@ -207,7 +218,7 @@ const ContactForm = () => {
           placeholder='Message'
           required
         />
-        <Button type='submit' color='green'>
+        <Button type='submit' color='green' class="button">
           <div class="sq"></div>
           Submit
         </Button>

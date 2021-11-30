@@ -6,7 +6,7 @@ import TourResults from "../../components/tour-results";
 import PointsImage from "../../assets/images/WHT-points.png";
 
 const LowerContainer = styled.div`
-  background-color: #162e3d;
+  background-color: #F3E9D5;
   display: flex;
   flex-direction: column;
   align-items: center;

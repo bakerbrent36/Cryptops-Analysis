@@ -6,7 +6,7 @@ const Card = styled(Link)`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  background-color: #162e3d;
+  background-color: #F3E9D5;
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center center;

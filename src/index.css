@@ -48,6 +48,10 @@ body {
     line-height:1.4;
 }
 
+p{
+  font-size: clamp(0.888rem, 4vw, 1rem);
+}
+
 iframe.iframe {
   width: 892px;
   height: 41rem;
@@ -71,7 +75,9 @@ a:hover {
   cursor: pointer;
 }
 
-
+span{
+  font-size: clamp(0.888rem, 6vw, 0.9rem);
+}
 
 h1,
 h2,
@@ -83,10 +89,14 @@ h6 {
 }
 
 h1 {
-    font-size: clamp(2.222rem, 6vw, 6.888rem);
+    font-size: clamp(1.722rem, 6vw, 6.888rem);
     color: var(--text-primary);
     transition: all .25s;
     text-shadow: var(--text-shadow);
+}
+
+h4{
+  font-size: clamp(0.8rem, 4vw, 1rem);
 }
 
 
@@ -108,6 +118,7 @@ button{
 button:hover{
   cursor:pointer;
   border: 2px solid var(--text-primary);
+  box-shadow: inset 0px 0px 20px #87c763a3, 0 0 10px #87c76361, 0 0 25px #87c7634d, 0 0 35px #87c7634d, 0 0 45px #87c76312, 0 0 55px #87c76312, 0 0 65px #87c76312, 0 0 75px #87c76312;
 }
 
 .sq{
@@ -126,6 +137,42 @@ a:hover .sq{
   height:0.5rem;
   opacity:1;
   margin-right: 0.4rem;
+}
+
+a.button{
+  color:rgb(243, 233, 213) !important;
+  padding:1rem 1.2rem;
+  border:3px solid #92ec50;
+  border-radius:3px;
+  font-family:'Classic Console';
+  text-decoration:none;
+  text-transform:uppercase;
+  font-size: clamp(1rem, 4vw, 1.2rem);
+  width:42%;
+  text-align:center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+  a.button:hover{
+  cursor:pointer;
+   box-shadow: inset 0px 0px 20px #87c763a3, 0 0 10px #87c76361, 0 0 25px #87c7634d, 0 0 35px #87c7634d, 0 0 45px #87c76312, 0 0 55px #87c76312, 0 0 65px #87c76312, 0 0 75px #87c76312;
+  transition:0.2s ease-in-out;
+}
+a.button:active{
+  color: rgb(139 239 74);
+}
+a.button:focus{
+  color: rgb(139 239 74);
+}
+a.button:visited{
+  color: rgb(139 239 74);
+}
+a.button:target{
+  color: rgb(139 239 74);
+}
+a.button:focus-visible{
+  color: rgb(139 239 74);
 }
 
 button:hover .sq{
@@ -273,72 +320,6 @@ button:hover .sq{
     }
   }
 
-  @keyframes flicker {
-    0% {
-      opacity: .86139
-    }
-    5% {
-      opacity: .12793
-    }
-    10% {
-      opacity: .36759
-    }
-    15% {
-      opacity: .9766
-    }
-    20% {
-      opacity: .61364
-    }
-    25% {
-      opacity: .94477
-    }
-    30% {
-      opacity: .57811
-    }
-    35% {
-      opacity: .03416
-    }
-    40% {
-      opacity: .21835
-    }
-    45% {
-      opacity: .62054
-    }
-    50% {
-      opacity: .89452
-    }
-    55% {
-      opacity: .89997
-    }
-    60% {
-      opacity: .37872
-    }
-    65% {
-      opacity: .04929
-    }
-    70% {
-      opacity: .14477
-    }
-    75% {
-      opacity: .27512
-    }
-    80% {
-      opacity: .84701
-    }
-    85% {
-      opacity: .85952
-    }
-    90% {
-      opacity: .76553
-    }
-    95% {
-      opacity: .91372
-    }
-    100% {
-      opacity: .05536
-    }
-  }
-  
   @-webkit-keyframes steady {
     from {
       background: rgba(255, 230, 230, .1)

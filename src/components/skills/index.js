@@ -25,27 +25,35 @@ const Skills = styled.div `
       text-shadow: 0 0 10px #87c76326, 0 0 25px #87c76326, 0 0 35px #87c76326, 0 0 45px #87c76326, 0 0 55px #87c76326, 0 0 65px #87c76326, 0 0 75px #87c76326;
     }
     a{
+      color:rgb(243, 233, 213);
       width:20%;
+      @media(max-width:892px){
+        width: 85%;
+      }
+    }
+    @media(max-width:892px){
+      flex-direction:column;
+      align-items: flex-start;
     }
   }
   .resume {
     display: flex;
     justify-content: space-between;
     width: 100%;
-    .hob {
-      display: flex !important;
-      flex-direction: row !important;
-      width: 48%;
-      div:last-child {
-        margin-left: 1rem;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
+      .hob {
+        display: flex !important;
+        flex-direction: row !important;
+        width: 48%;
+        div:last-child {
+          margin-left: 1rem;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+      }
       img {
         width: 15%; 
       }
-  }
+    }
     .col {
       width: 49%;
       div{
@@ -64,6 +72,10 @@ const Skills = styled.div `
     }
     .camera-ico{
       width: 2.9rem;
+    }
+    @media(max-width:892px){
+      width:100%;
+      flex-direction:column;
     }
   }
     h3 {
@@ -91,11 +103,27 @@ const Skills = styled.div `
   .buttons {
     display:flex;
     flex-wrap:wrap;
-    margin-top: 33%;
+    margin-top: 56%;
     a{
       margin:1rem 0;
       width:42% !important;
+      color:rgb(243, 233, 213);
      }
+  }
+}
+@media(max-width:892px){
+  .resume{
+    flex-direction:column !important;
+  }
+  .col{
+    height:fit-content !important;
+  }
+  #language, #experience {
+    max-height: fit-content !important;
+    height: fit-content !important;
+  }
+  #software, #awards {
+    height: fit-content !important;
   }
 }
 `;
@@ -155,7 +183,9 @@ const location = useLocation();
         <div class="top">
 
         <h1>Skills</h1>
-        <Button to="/portfolio"><div class="sq"></div>Download Resume</Button>
+        <a href="https://s3.us-east-2.amazonaws.com/bakerbrent.com/assets/brent-baker-dev-design.pdf" rel="noopener" target="_blank" class="button">
+              <div class="sq"></div>Download Resume
+            </a>
         
         </div>
 
@@ -260,8 +290,12 @@ const location = useLocation();
             </div>
         </div>
         <div class="buttons">
-            <Button style={{width:"47%"}} to={`//s3.us-east-2.amazonaws.com/bakerbrent.com/assets/brent-baker-dev-ui-ux-9-23-20.pdf`} target="_blank"><div class="sq"></div>Download Resume</Button>
-            <Button style={{width:"47%"}} to="/portfolio"><div class="sq"></div>View Work</Button>
+            <a href="https://s3.us-east-2.amazonaws.com/bakerbrent.com/assets/brent-baker-dev-design.pdf" rel="noopener" target="_blank" class="button">
+              <div class="sq"></div>Download Resume
+            </a>
+            <a href="/portfolio" class="button">
+              <div class="sq"></div>View Work
+            </a>
         </div>
         </div>
 

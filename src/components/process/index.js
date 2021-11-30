@@ -5,7 +5,7 @@ import { useParams, Link } from "react-router-dom";
 import styled from "@emotion/styled";
 
 //Assets
-import MagGlass from "../../assets/process/mag-glass.png";
+import MagGlass from "../../assets/process/mag-glasser.png";
 import WhiteGlow from "../../assets/process/white-glow.png";
 
 const ProcessContainer = styled.div`
@@ -52,8 +52,8 @@ const StepBox = styled.div`
     }
     img.white-glow {
         position: absolute;
-        width: 60%;
-        opacity: 22%;
+        width: 48%;
+        opacity: 12%;
     }
     img {
       width: 70%;

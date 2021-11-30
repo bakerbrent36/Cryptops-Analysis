@@ -18,7 +18,7 @@ const MainContainer = styled.div`
 `;
 
 const YourResults = styled.div`
-  background-color: #162e3d;
+  background-color: #F3E9D5;
   color: white;
   display: flex;
   justify-content: center;
@@ -47,7 +47,7 @@ const PointsContainer = styled.div`
 
 const Points = styled.div`
   padding: 5px 15px;
-  border: 3px #162e3d solid;
+  border: 3px #F3E9D5 solid;
   color: #be1e2d;
   width: 75px;
   text-align: center;
@@ -56,7 +56,7 @@ const Points = styled.div`
 `;
 
 const LowerContainer = styled.div`
-  background-color: #162e3d;
+  background-color: #F3E9D5;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -81,7 +81,7 @@ const Ribbon = styled.div`
 `;
 
 const CalIconBox = styled.div`
-  background-color: #162e3d;
+  background-color: #F3E9D5;
   height: 68px;
   width: 73px;
   display: flex;

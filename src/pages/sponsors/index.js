@@ -37,7 +37,7 @@ const SponsorList = styled.div`
     text-align: center;
     text-transform: uppercase;
     font-family: BebasNeue;
-    color: #162E3D;
+    color: #F3E9D5;
     font-size:56px;
   }
   @media(max-width:892px){

@@ -25,7 +25,7 @@ const NextTourInner = styled.div`
 `;
 
 const NextTourIcon = styled.div`
-  background-color: #162e3d;
+  background-color: #F3E9D5;
   height: 68px;
   width: 73px;
   display: flex;
@@ -62,7 +62,7 @@ const NextTourListing = styled.div`
 `;
 
 const PlayButton = styled(Link)`
-  background-color: #162e3d;
+  background-color: #F3E9D5;
   display: flex;
   align-items: center;
   justify-content: center;

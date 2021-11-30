@@ -115,7 +115,7 @@ const Footer = () => {
         <NavContainer>
           <MenuIcon
             style={{
-              color: location.pathname == "/results" ? "#162E3D" : "#f3e9d5",
+              color: location.pathname == "/results" ? "#F3E9D5" : "#f3e9d5",
             }}
             to="/results"
           >
@@ -129,7 +129,7 @@ const Footer = () => {
           </MenuIcon>
           <MenuIcon
             style={{
-              color: location.pathname == "/schedule" ? "#162E3D" : "#f3e9d5",
+              color: location.pathname == "/schedule" ? "#F3E9D5" : "#f3e9d5",
             }}
             to="/schedule"
           >
@@ -141,7 +141,7 @@ const Footer = () => {
           </MenuIcon>
           <MenuIcon
             style={{
-              color: location.pathname == "/roster" ? "#162E3D" : "#f3e9d5",
+              color: location.pathname == "/roster" ? "#F3E9D5" : "#f3e9d5",
             }}
             to="/roster"
           >
@@ -155,7 +155,7 @@ const Footer = () => {
           </MenuIcon>
           <MenuIcon
             style={{
-              color: location.pathname == "/one-day" ? "#162E3D" : "#f3e9d5",
+              color: location.pathname == "/one-day" ? "#F3E9D5" : "#f3e9d5",
             }}
             to="/one-day"
           >
@@ -177,9 +177,9 @@ const Footer = () => {
         </NavContainer>
       ) : (
         <NavContainer style={{ maxWidth: "500px" }}>
-          <MenuIcon
+          {/* <MenuIcon
             style={{
-              color: location.pathname == "/client-portal" ? "#162E3D" : "#f3e9d5",
+              color: location.pathname == "/client-portal" ? "#F3E9D5" : "#f3e9d5",
             }}
             to="/client-portal"
           >
@@ -187,20 +187,20 @@ const Footer = () => {
           </MenuIcon>
           <MenuIcon
             style={{
-              color: location.pathname == "/contact" ? "#162E3D" : "#f3e9d5",
+              color: location.pathname == "/contact" ? "#F3E9D5" : "#f3e9d5",
             }}
-            to="/register"
+            to="/contact"
           >
             Contact Me
           </MenuIcon>
           <MenuIcon
             style={{
-              color: location.pathname == "/resources" ? "#162E3D" : "#f3e9d5",
+              color: location.pathname == "/resources" ? "#F3E9D5" : "#f3e9d5",
             }}
             to="/resources"
           >
             Resources
-          </MenuIcon>
+          </MenuIcon> */}
         </NavContainer>
         
       )}

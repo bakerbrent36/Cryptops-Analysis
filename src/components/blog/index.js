@@ -24,6 +24,9 @@ const BlogContainer = styled.div`
       border-bottom: 3px solid #8bef4a;
       margin-bottom:3rem;
     }
+    @media(max-width:892px){
+      margin:2rem auto;
+    }
 `;
 
 const CategoryFilter = styled.div`
@@ -80,6 +83,9 @@ const Feed = styled.div`
     display:flex;
     flex-wrap:wrap;
     justify-content: space-between;
+    @media(max-width:892px){
+      width:100%;
+    }
 `;
 
 const FilterItem = styled(Link) `
@@ -107,6 +113,22 @@ const BlogItem = styled.div`
   box-shadow: 0px -4px 3px #86bf5540;
   border-top:1px solid #92ec50;
   border-bottom:1px solid #92ec50;
+  .top-edge{
+    border-left: 2px solid #86bf55;
+    border-right: 2px solid #86bf55;
+    height:1.2rem;
+  }
+  .bottom-edge{
+    border-left: 2px solid #86bf55;
+    border-right: 2px solid #86bf55;
+    height:1.2rem;
+  }
+  .read-more {
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+    text-decoration:none;
+  }
   .item-content{
     position:relative;
     z-index: 22222;
@@ -124,8 +146,43 @@ const ItemContent = `
   width:100%;
 `;
 
-const Tag = styled.div`
-
+const ReadMore = styled(Link)`
+  color:rgb(243, 233, 213) !important;
+  padding:0.5rem 0.2rem;
+  border:3px solid #92ec50;
+  border-radius:3px;
+  font-family:'Classic Console';
+  text-decoration:none;
+  text-transform:uppercase;
+  font-size: clamp(1rem, 4vw, 1.2rem);
+  width:17%;
+  text-align:center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  :hover{
+    cursor:pointer;
+    transition:0.2s ease-in-out;
+    box-shadow: inset 0px 0px 20px #87c763a3, 0 0 10px #87c76361, 0 0 25px #87c7634d, 0 0 35px #87c7634d, 0 0 45px #87c76312, 0 0 55px #87c76312, 0 0 65px #87c76312, 0 0 75px #87c76312;
+  }
+  :active{
+    color: rgb(139 239 74);
+  }
+  :focus{
+    color: rgb(139 239 74);
+  }
+  :visited{
+    color: rgb(139 239 74);
+  }
+  :target{
+    color: rgb(139 239 74);
+  }
+  :focus-visible{
+    color: rgb(139 239 74);
+  }
+  @media(max-width:892px){
+    width:65%;
+  }
 `;
 
 function activeFilter() {
@@ -192,24 +249,34 @@ const BlogFeed = () => {
                       onMouseEnter={() => ContentShown(true)}
                       onMouseLeave={() => ContentShown(false)}
                       style={{ backgroundImage: `url(${filteredItem.FeaturedImage})`}}
-                      link={`/blog/${filteredItem.Name}`}
+                      link={`/blogs/${filteredItem.Name}`}
                     >
-                      <Link to={`/blog/${filteredItem.Id}`}>
-                      <div class="item-content" id={`${id}`}>
-                        <div><h4>{filteredItem.Title}</h4></div>
+                      <Link to={`/blogs/${filteredItem.Id}`}>
+                        <div class="item-content" id={`${id}`}>
+                          <div><h4>{filteredItem.Title}</h4></div>
 
-                        <div><p>{filteredItem.Excerpt}</p></div>
+                          <div><p>{filteredItem.Excerpt}</p></div>
 
-                        <div class="tags">
-                          {filteredItem.Tags.map((tag) => (
-                            <>
-                              <span>{tag.toString()}</span>
-                            </>
-                            ))}
+                          <div class="tags">
+                            {filteredItem.Tags.map((tag) => (
+                              <>
+                                <span>{tag.toString()}</span>
+                              </>
+                              ))}
+                          </div> 
+
                         </div>
-                      </div>
                       </Link>
 
+                      <div class="read-more"> 
+                            
+                        <ReadMore to={`/blogs/${filteredItem.Id}`}>
+                          <div class="sq"></div>
+                          Read More
+                        </ReadMore>
+
+                      </div> 
+                      
                     </BlogItem>
                 ))}
 

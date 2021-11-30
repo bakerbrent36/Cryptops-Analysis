@@ -89,6 +89,11 @@ const TestimonialsContainer = styled.div`
         text-align: left;
       }
     }
+    @media(max-width:892px){
+      .item-wrap{
+        padding: 2rem 1rem !important;
+      }
+    }
 `;
 
 

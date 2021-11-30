@@ -71,6 +71,9 @@ const ThemeMode = styled.div`
     opacity:0.7;
     transition:0.2s ease-in-out;
   }
+  @media(max-width:892px){
+    left:0.1rem;
+  }
 `;
 
 const HomeContainer = styled.div `
@@ -97,7 +100,7 @@ const Button = styled(Link) `
   :hover{
     cursor:pointer;
     transition:0.2s ease-in-out;
-    // box-shadow: inset 0px 0px 20px #87c763a3, 0 0 10px #87c76361, 0 0 25px #87c7634d, 0 0 35px #87c7634d, 0 0 45px #87c76312, 0 0 55px #87c76312, 0 0 65px #87c76312, 0 0 75px #87c76312;
+    box-shadow: inset 0px 0px 20px #87c763a3, 0 0 10px #87c76361, 0 0 25px #87c7634d, 0 0 35px #87c7634d, 0 0 45px #87c76312, 0 0 55px #87c76312, 0 0 65px #87c76312, 0 0 75px #87c76312;
   }
   :active{
     color: rgb(139 239 74);
@@ -113,6 +116,9 @@ const Button = styled(Link) `
   }
   :focus-visible{
     color: rgb(139 239 74);
+  }
+  @media(max-width:892px){
+    width:65%;
   }
 `;
 
@@ -139,7 +145,7 @@ const Intro = styled.div `
     span {
       font-family: 'Monofoto';
       font-weight: bold;
-      font-size: 7rem;
+      font-size: clamp(1.722rem, 6vw, 7rem);
       z-index: 22222;
       position: relative;
       text-shadow: 0 0 10px #87c76361, 0 0 35px #87c7634d, 0 0 55px #87c76312, 0 0 75px #87c76312;
@@ -184,20 +190,43 @@ min-height:100vh;
     .col:first-child{
       border-top:2px solid #86bf55;
       background-color:#3c512eb0;
-      padding:1.2rem 1rem;
       border-bottom: 2px solid #86bf55;
       min-height: 38rem;
+      .col-style{
+        padding:0rem 1rem;
+      }
+      .top-edge {
+        border-left: 2px solid #86bf55;
+        border-right: 2px solid #86bf55;
+        height:0.6rem;
+      }
+      .bottom-edge {
+        border-left: 2px solid #86bf55;
+        border-right: 2px solid #86bf55;
+        height:0.6rem;
+      }
       .buttons{
           display: flex;
           align-items: center;
           justify-content: space-between;
           margin-top: 32%;
+          margin-bottom: 1rem;
           position: relative;
           z-index: 22222;
       }
       p{
         width: 95%;
         margin: 1rem auto;
+      }
+      @media(max-width:892px){
+        .buttons{
+          width: 90%;
+          margin: 0 auto;
+        }
+        .buttons .button{
+          width:100%;
+          margin:0.5rem 0;
+      }
       }
     }
     .col:last-child{
@@ -219,6 +248,25 @@ min-height:100vh;
     position: relative;
     text-shadow: 0 0 10px var(--accent), 0 0 25px var(--accent), 0 0 35px var(--accent), 0 0 45px var(--accent), 0 0 55px var(--accent), 0 0 65px var(--accent), 0 0 75px var(--accent);
   }
+  @media(max-width:892px){
+    width: 93%;
+    .contain{
+      flex-direction: column-reverse;
+    }
+    .col:first-child{
+      width:100%;
+      padding:0 !important;
+      margin-top: 2rem;
+    }
+    .col:last-child{
+      width:100%;
+      height: 20rem;
+    }
+    .buttons {
+      margin-top: 10%;
+      flex-direction: column;
+    }  
+  }
 `;
 
 const Experience = styled.div `
@@ -234,12 +282,16 @@ background-size:cover;
     position: relative;
     text-shadow: 0 0 10px var(--accent), 0 0 25px var(--accent), 0 0 35px var(--accent), 0 0 45px var(--accent), 0 0 55px var(--accent), 0 0 65px var(--accent), 0 0 75px var(--accent);
   }
+  @media(max-width:892px){
+    margin-top:2rem;
+    padding-bottom:2rem;
+  }
 `;
 
 const Timeline = styled.div `
   display: flex;
   justify-content: center;
-  margin:6rem auto;
+  margin:2rem auto;
   width:89%;
   p, span{
     padding:0 0.3rem;
@@ -248,6 +300,7 @@ const Timeline = styled.div `
     background: #8bef4a;
     padding: 1rem;
     color: #577f3b;
+    margin: 1rem 0;
     font-famiy: "Classic Console";
     box-shadow: 0 0 10px #87c76361, 0 0 25px #87c7634d, 0 0 35px #87c7634d, 0 0 45px #87c76312, 0 0 55px #87c76312, 0 0 65px #87c76312, 0 0 75px #87c76312;
   }
@@ -261,7 +314,6 @@ const Timeline = styled.div `
     .one, .three, .five{
       border-top: 2px solid #86bf55;
       background-color: #3c512eb0;
-      padding: 1.2rem 1rem;
       border-bottom: 2px solid #86bf55;
       .square{
         width: 0.8rem;
@@ -294,7 +346,6 @@ const Timeline = styled.div `
     .two, .four{
       border-top: 2px solid #86bf55;
       background-color: #3c512eb0;
-      padding: 1.2rem 1rem;
       border-bottom: 2px solid #86bf55;
       margin-top: 85%;
     }
@@ -304,6 +355,46 @@ const Timeline = styled.div `
     .four {
       margin-top: 85%;
   }
+  }
+  @media(max-width:892px){
+    flex-direction:column;
+    .square{
+      display:none;
+    }
+    .time-left{
+      width: 100%;
+      .three {
+        margin-top: 10%;
+      }
+      .five {
+        margin-top: 10%;
+      }
+    }
+    .time-mid {
+      display: none;
+    }
+    .time-right{
+      width:100%;
+      .two{
+        margin-top:10%;
+      }
+      .four{
+        margin-top:10%;
+      }
+    }
+  }
+  .wrap{
+    padding:0rem 1rem;
+  }
+  .top-edge {
+    border-left: 2px solid #86bf55;
+    border-right: 2px solid #86bf55;
+    height:0.6rem;
+  }
+  .bottom-edge {
+    border-left: 2px solid #86bf55;
+    border-right: 2px solid #86bf55;
+    height:0.6rem;
   }
 `;
 
@@ -348,14 +439,14 @@ const Home = () => {
     return ( 
   <>
 
-  <ThemeMode style={{ position: `sticky`}}>
+  {/* <ThemeMode style={{ position: `sticky`}}>
     <div class="dots">
         <span class="dot" onClick={light}></span>
         <span class="dot" onClick={green}>{theme === 'green'}</span>
         <span class="dot" onClick={blue}></span>
         <span class="dot" onClick={orange}></span>
       </div>
-  </ThemeMode>
+  </ThemeMode> */}
 
     <HomeContainer data-theme={theme}>
 
@@ -380,21 +471,23 @@ const Home = () => {
                 <h1>UI/UX Developer</h1>
 
                 <div class="contain">
-
                   <div class="col">
-                    <h4>About</h4>
-                    <p>An experienced business web developer with a ferocious appetite for visual storytelling.</p>
-                    <p>As a creative, I focus on one common goal: creating personalized solutions for the partners and clients I work with. Offering a wide range of web and branding solutions, I have worked with small and large business owners of many genres. Whether it’s branding, building a web empire, or documenting and collaborating on an urban adventure. I love to inspire with creative and passionate people around the world.</p>
-                    <p>When I’m not at my desk there is a good chance you will find me outside exploring a dilapidated building or working on my car.</p>
-                    <div class="buttons">
-                      <Button style={{color:location.pathname == "/results" ? "#162E3D" : "#f3e9d5"}} to="/results">
+                  <div class="top-edge"></div>
+                    <div class="col-style">
+                      <h4>About</h4>
+                      <p>An experienced business web developer with a ferocious appetite for visual storytelling.</p>
+                      <p>As a creative, I focus on one common goal: creating personalized solutions for the partners and clients I work with. Offering a wide range of web and branding solutions, I have worked with small and large business owners of many genres. Whether it’s branding, building a web empire, or documenting and collaborating on an urban adventure. I love to inspire with creative and passionate people around the world.</p>
+                      <p>When I’m not at my desk there is a good chance you will find me outside exploring a dilapidated building or working on my car.</p>
+                      <div class="buttons">
+                        <a href="https://s3.us-east-2.amazonaws.com/bakerbrent.com/assets/brent-baker-dev-design.pdf" rel="noopener" target="_blank" class="button">
                         <div class="sq"></div>View Resume
-                      </Button>
-
-                      <Button style={{color:location.pathname == "/results" ? "#162E3D" : "#f3e9d5"}} to="/results">
-                        <div class="sq"></div>Hire me
-                      </Button>
+                        </a>
+                        <a href="/contact" rel="noopener" class="button">
+                        <div class="sq"></div>Hire Me
+                        </a>
+                      </div>
                     </div>
+                  <div class="bottom-edge"></div>
                   </div>
                   
                   <div class="col" style={{ backgroundImage: `url(${ProfileImage})`}}>
@@ -418,23 +511,35 @@ const Home = () => {
                 <Timeline>
                   <div class="time-left">
                       <div class="one">
+                      <div class="top-edge"></div>
+                      <div class="wrap">
                           <div class="square"></div>
                           <h4>BigWheel | Mar 2019 - Present</h4>
                           <span>Front-End Developer | <a href="https://www.gobigwheel.com" target="_blank">www.gobigwheel.com</a></span>
                           <p>My duties at BigWheel involved everything from WooCommerce custom theme development to regenerating keys for an EC2 instance and developing custom apps in React Js. A high standard and collaborative work environment that requires a keen eye for detail. This position consisted of everything under the sun in web devevelopment. Utilizing languages such as PHP, Javascript, SASS, CSS, HTML, and Ruby.</p>
                           <p>Some additional aspects involved working in Sketch, Illustrator and Photoshop improvising design and optimizing assets with proven results in user experience. Throughout this process I would maintain close communication with our team while providing training, wireframes, user flows, site maps and documentation for the clients. This position has been a huge asset honing in on my entire web development process.</p>
+                          </div>
+                        <div class="bottom-edge"></div>
                       </div>
                       <div class="three">
+                      <div class="top-edge"></div>
+                      <div class="wrap">
                           <div class="square"></div>
                           <h4>D+H | Mar 2016 - Jan 2017</h4>
                           <span>Graphic Artist | <a href="https://www.dh.com">www.dh.com</a></span>
                           <p>This position consisted of rebranding presentations such as the Sales Summit to branding guidelines. Creating info graphics for our products such as PhoenixEFE, UltraData and Touche. Designing logos, email banners, plus web animations for our partners and helping the team keep their presentations on brand. A great deal was put into retaining knowledge of the products, competitors and partners.</p>
+                          </div>
+                        <div class="bottom-edge"></div>
                       </div>
                       <div class="five">
+                      <div class="top-edge"></div>
+                      <div class="wrap">
                           <div class="square"></div>
                           <h4>Mojo Brands Media | Sep 2014 - Feb 2015</h4>
                           <span>Web Developer</span>
                           <p>This position was landed 4 months prior to graduating at Full Sail University which involved a variety of web development, design and photography. I worked closely with the marketing team and one on one with the senior developer helping produce the websites for Buzzworthy Media and The Casket Experience.</p>
+                      </div>
+                      <div class="bottom-edge"></div>
                       </div>
                   </div>
 
@@ -444,16 +549,24 @@ const Home = () => {
 
                   <div class="time-right">
                     <div class="two">
-                      <div class="square"></div>
-                      <h4>TSM Studio | Feb 2017 - Jan 2019</h4>
-                      <span>Front-End Developer | <a href="https://www.tsmstudio.com" target="_blank">www.tsmstudio.com</a></span>
-                      <p>Working one on one with clients such as Keith David, Central Florida Behavioral Health Network, Seminole County Tax Collector and Integrative Physical Medicine. My job was to manage and consult with clients for developing custom web solutions unique to each. These solutions included geo-locators, automating/integrating social feeds, and optimizing web assets. I have had the opportuni- ties for developing and designing a variety of websites using mainly Wordpress and Expression Engine. This also involved a focus on logo design, UI design and UX.</p>
+                    <div class="top-edge"></div>
+                      <div class="wrap">
+                        <div class="square"></div>
+                        <h4>TSM Studio | Feb 2017 - Jan 2019</h4>
+                        <span>Front-End Developer | <a href="https://www.tsmstudio.com" target="_blank">www.tsmstudio.com</a></span>
+                        <p>Working with clients such as Keith David, Central Florida Behavioral Health Network, Seminole County Tax Collector and Integrative Physical Medicine. My job was to manage and consult with clients for developing custom web solutions unique to each. These solutions included geo-locators, automating/integrating social feeds, and optimizing web assets. I have had the opportuni- ties for developing and designing a variety of websites using mainly Wordpress and Expression Engine. This also involved a focus on logo design, UI design and UX.</p>
+                      </div>
+                    <div class="bottom-edge"></div>
                     </div>
                     <div class="four">
-                      <div class="square"></div>
-                      <h4>Alabama Pain Physicians | Mar 2015 - Feb 2016</h4>
-                      <span>Web Developer & Graphic Artist | <a href="https://www.bamapain.com" target="_blank">www.bamapain.com</a></span>
-                      <p>Producing everything under the sun when it comes to branding. Providing print ready files like posters, flyers and brochures for general hospital signage and to educate patients on opiate dangers. Having worked closley with the senior designer we also developed and designed the Wordpress website <a href="https://bamapain.com" target="_blank">bamapain.com</a>.</p>
+                    <div class="top-edge"></div>
+                      <div class="wrap">
+                        <div class="square"></div>
+                        <h4>Alabama Pain Physicians | Mar 2015 - Feb 2016</h4>
+                        <span>Web Developer & Graphic Artist | <a href="https://www.bamapain.com" target="_blank">www.bamapain.com</a></span>
+                        <p>Producing everything under the sun when it comes to branding. Providing print ready files like posters, flyers and brochures for general hospital signage and to educate patients on opiate dangers. Having worked closley with the senior designer we also developed and designed the Wordpress website <a href="https://bamapain.com" target="_blank">bamapain.com</a>.</p>
+                      </div>
+                    <div class="bottom-edge"></div>
                     </div>
                   </div>
                 </Timeline>
@@ -462,9 +575,11 @@ const Home = () => {
 
                 <PortfolioFeed></PortfolioFeed>
 
-                <ContactForm></ContactForm>
+                <ContactForm>
+                  <div class="anchor" id="contact"></div>
+                </ContactForm>
 
-                <BlogFeed></BlogFeed>
+                {/* <BlogFeed></BlogFeed> */}
 
                 <Testimonials></Testimonials>
 

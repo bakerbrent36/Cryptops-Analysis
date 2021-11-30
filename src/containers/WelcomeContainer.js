@@ -51,7 +51,7 @@ const WelcomeContainer = ({ screenWidth }) => {
           <Route path="/blog" component={Blog} />
           <Route path="/portfolio" component={Portfolio} />
           <Route path="/work/:portfolioId" component={PortfolioPage} />
-          <Route path="/blog/:blogId" component={BlogPage} />
+          <Route path="/blogs/:blogId" component={BlogPage} />
           <Route path="/contact" component={Contact} />
           <Route component={Home} />
         </Switch>

@@ -13,7 +13,7 @@ import ScreenFade from "../../assets/images/bgs/screen-fade.png";
 
 const PortfolioContainer = styled.div`
     width: 89%;
-    margin: 6rem auto;
+    margin: 2rem auto;
     display: flex;
     flex-wrap:wrap;
     h1{
@@ -174,6 +174,8 @@ const PortfolioItem = styled.div`
   }
   @media(max-width:892px){
     width:100%;
+    min-height:10rem;
+    max-height:10rem;
   }
 `;
 
