@@ -1,15 +1,15 @@
 {
-  "short_name": "Workhorse Tour",
-  "name": "Workhorse Tour",
+  "short_name": "Brent Baker's Portfolio",
+  "name": "Brent Baker's Portfolio",
   "icons": [
     {
-      "src": "app-192.png",
+      "src": "baker-favico.png",
       "type": "image/png",
       "sizes": "192x192"
     }
   ],
   "start_url": ".",
   "display": "standalone",
-  "theme_color": "#000000",
-  "background_color": "#ffffff"
+  "theme_color": "#010101",
+  "background_color": "#f6f6f6"
 }

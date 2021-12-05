@@ -19,9 +19,17 @@ const ContactPage = styled.div`
   background-size:100%;
   background-position:bottom center;
   @media(max-width:892px){
+    padding: 1rem 0;
+    background-size: cover;
+    p{
+      margin-left:0;
+    }
+    form.ui-form{
+      padding:1rem !important;
+    }
     .ui-form{
       flex-direction:column;
-      padding:2rem 0.5rem;
+      padding:1rem 0.5rem;
     }
     .required.field {
       width: 100%;

@@ -1,33 +1,10 @@
 import { useState } from "react";
 import styled from "@emotion/styled";
-import WorkHorseLogo from "../../assets/images/WHlogo.png";
-import BallHeader from "../../assets/images/ball-header.jpg";
 import { useWidth } from "../../context/ScreenWidthContext";
 import { useAuth } from "../../context/AuthContext";
 import { Link, useLocation } from "react-router-dom";
 
-import WHTLogo from "../../assets/images/WHT-logo.png";
-import BeerIcon from "../../assets/icons/WHT_icon_Beer.svg";
-import GolferIcon from "../../assets/icons/WHT_icon_Golfer.svg";
-import ShirtIcon from "../../assets/icons/WHT_icon_Shirt.svg";
-import TrophyIcon from "../../assets/icons/WHT_icon_Trophy.svg";
-import CalIcon from "../../assets/icons/WHT_icon_Cal.svg";
-import TrophyBlue from "../../assets/icons/WHT_icon_Trophy-blue.svg";
-import CalBlue from "../../assets/icons/WHT_icon_Cal-blue.svg";
-import GolferBlue from "../../assets/icons/WHT_icon_Golfer-blue.svg";
-import QuestionIcon from "../../assets/icons/WHT-icon-Question.svg";
-import OneDayIcon from "../../assets/icons/WHT_Icon_OneDay.svg";
-import OneDayIconBlue from "../../assets/icons/WHT_Icon_OneDayBlue.svg";
-
-import LoginHeader from "../../assets/images/WHT-header-1-login.jpg";
-import MainHeader from "../../assets/images/WHT-header-2-main.jpg";
-import LeaderHeader from "../../assets/images/WHT-header-3-leaderboards.jpg";
-import EventHeader from "../../assets/images/WHT-header-4-events.jpg";
-import RosterHeader from "../../assets/images/WHT-header-5-roster.jpg";
-
 import useLocalStorage from 'use-local-storage';
-
-import FAQ from "../../assets/pdfs/WHT-FAQs-NEW.pdf";
 
 // Backgrounds
 import RadialFade from "../../assets/images/bgs/radial-fade.png";
@@ -349,16 +326,6 @@ const Header = () => {
         </NavBar>
       )}
 
-    {location.pathname !== "/" &&
-      location.pathname !== "/about" &&
-      location.pathname !== "/work" &&
-      location.pathname !== "/blog" &&
-       (
-        <style>
-          
-        </style>
-      )}
-
       {width > 1100 &&
         location.pathname !== "/welcome" &&
         location.pathname !== "/login" &&
@@ -368,62 +335,7 @@ const Header = () => {
         user && (
           <SecondaryNavBar>
             <SecondaryNav>
-              <MenuIcon
-                style={{
-                  colxor:
-                    location.pathname == "/results" ? "#F3E9D5" : "#f3e9d5",
-                }}
-                to="/results"
-              >
-                <img
-                  src={
-                    location.pathname == "/results" ? TrophyBlue : TrophyIcon
-                  }
-                />
-                Leaderboards
-              </MenuIcon>
-
-              <MenuIcon
-                style={{
-                  color: location.pathname == "/one-day" ? "#F3E9D5" : "#f3e9d5",
-                }}
-                to="/one-day"
-              >
-                <img
-                  src={location.pathname == "/one-day" ? OneDayIconBlue : OneDayIcon}
-                />
-                One Day
-              </MenuIcon>
-
-              <MenuIcon
-                style={{
-                  color: location.pathname == "/roster" ? "#F3E9D5" : "#f3e9d5",
-                }}
-                to="/roster"
-              >
-                <img
-                  src={location.pathname == "/roster" ? GolferBlue : GolferIcon}
-                />
-                Player Roster
-              </MenuIcon>
-
-              {/* <a
-                style={{ width: "100px" }}
-                rel="noopener noreferrer"
-                href={FAQ}
-                target="_blank"
-              >
-                <img src={QuestionIcon} />
-                FAQ
-              </a> */}
-              <a
-                rel="noopener noreferrer"
-                href="https://shop.workhorsebrewing.com"
-                target="_blank"
-              >
-                <img src={BeerIcon} />
-                Order Beer
-              </a>
+  
             </SecondaryNav>
           </SecondaryNavBar>
         )}
@@ -462,31 +374,6 @@ const Header = () => {
             flexDirection: "column",
           }}
         >
-          <MenuLink onClick={() => setOpenMenu(false)} to="/results">
-            Leaderboards
-          </MenuLink>
-          <MenuLink onClick={() => setOpenMenu(false)} to="/roster">
-            Player Roster
-          </MenuLink>
-          <MenuLink onClick={() => setOpenMenu(false)} to="/one-day">
-            One Day Events
-          </MenuLink>
-          <a
-            onClick={() => setOpenMenu(false)}
-            rel="noopener noreferrer"
-            href={FAQ}
-            target="_blank"
-          >
-            FAQ
-          </a>
-          <a
-            onClick={() => setOpenMenu(false)}
-            rel="noopener noreferrer"
-            href="https://shop.workhorsebrewing.com"
-            target="_blank"
-          >
-            Order Beer
-          </a>
           {/* <MenuLink onClick={() => setOpenMenu(false)} to="/one-day/talamore">
             Talamore Member Outing
           </MenuLink> */}

@@ -1,7 +1,5 @@
 import styled from "@emotion/styled";
 import { Link, useLocation } from "react-router-dom";
-import { useQuery } from "react-query";
-import { format, parseISO, sub } from "date-fns";
 import useLocalStorage from 'use-local-storage';
 
 import { useWidth } from "../../context/ScreenWidthContext";
@@ -9,16 +7,16 @@ import { useWidth } from "../../context/ScreenWidthContext";
 // Components
 import ContactForm from "../../components/contact-form";
 import PortfolioFeed from "../../components/portfolio";
-import BlogFeed from "../../components/blog";
+// import BlogFeed from "../../components/blog";
 import Testimonials from "../../components/testimonials";
-import Skills from "../../components/skills";
-import Globe from "../../components/globe";
+// import Skills from "../../components/skills";
+// import Globe from "../../components/globe";
 
 
 // Backgrounds
-import RadialFade from "../../assets/images/bgs/radial-fade.png";
+// import RadialFade from "../../assets/images/bgs/radial-fade.png";
 import TimelineBG from "../../assets/images/bgs/timeline-bg.jpg";
-import ContactBg from "../../assets/images/bgs/dark-cabin-contact-bg.jpg";
+// import ContactBg from "../../assets/images/bgs/dark-cabin-contact-bg.jpg";
 import Dust4 from "../../assets/images/bgs/screen-dust-4.png";
 import Grid from "../../assets/images/bgs/grid.png";
 
@@ -150,10 +148,16 @@ const Intro = styled.div `
       position: relative;
       text-shadow: 0 0 10px #87c76361, 0 0 35px #87c7634d, 0 0 55px #87c76312, 0 0 75px #87c76312;
     }
+    @media(max-width:892px){
+      h1{
+        line-height: 4;
+      }
+    }
 `;
 
 const Brent = styled.div `
   h1{
+    font-size: clamp(2.333rem, 5vw, 5.888rem);
     text-shadow: 0 0 10px var(--accent), 0 0 25px var(--accent), 0 0 35px var(--accent), 0 0 45px var(--accent), 0 0 55px var(--accent), 0 0 65px var(--accent), 0 0 75px var(--accent);
   }
   .social {
@@ -468,15 +472,15 @@ const Home = () => {
                 </div>
 
                 <h1>Brent Baker</h1>
-                <h1>UI/UX Developer</h1>
+                <h1>Full-Stack Developer</h1>
 
                 <div class="contain">
                   <div class="col">
                   <div class="top-edge"></div>
                     <div class="col-style">
                       <h4>About</h4>
-                      <p>An experienced business web developer with a ferocious appetite for visual storytelling.</p>
-                      <p>As a creative, I focus on one common goal: creating personalized solutions for the partners and clients I work with. Offering a wide range of web and branding solutions, I have worked with small and large business owners of many genres. Whether it’s branding, building a web empire, or documenting and collaborating on an urban adventure. I love to inspire with creative and passionate people around the world.</p>
+                      <p>An experienced web developer with a ferocious appetite for visual storytelling in all aspects.</p>
+                      <p>As a problem solver, I focus on one common goal: creating personalized solutions for the partners and clients I work with. Offering a wide range of web and branding solutions, I have worked with small and large business owners of many genres. Whether it’s building a web empire, full blown software development or branding. I love to inspire with creative and passionate people around the world.</p>
                       <p>When I’m not at my desk there is a good chance you will find me outside exploring a dilapidated building or working on my car.</p>
                       <div class="buttons">
                         <a href="https://s3.us-east-2.amazonaws.com/bakerbrent.com/assets/brent-baker-dev-design.pdf" rel="noopener" target="_blank" class="button">
@@ -515,8 +519,8 @@ const Home = () => {
                       <div class="wrap">
                           <div class="square"></div>
                           <h4>BigWheel | Mar 2019 - Present</h4>
-                          <span>Front-End Developer | <a href="https://www.gobigwheel.com" target="_blank">www.gobigwheel.com</a></span>
-                          <p>My duties at BigWheel involved everything from WooCommerce custom theme development to regenerating keys for an EC2 instance and developing custom apps in React Js. A high standard and collaborative work environment that requires a keen eye for detail. This position consisted of everything under the sun in web devevelopment. Utilizing languages such as PHP, Javascript, SASS, CSS, HTML, and Ruby.</p>
+                          <span>Full-Stack Developer | <a href="https://www.gobigwheel.com" target="_blank">www.gobigwheel.com</a></span>
+                          <p>My duties at BigWheel involved everything from WooCommerce custom theme development to a variety of dev ops which includes regenerating keys for an EC2 instance and developing custom apps in React Js such as <a href="/work/3">Powerslide</a> and the <a href="/work/0">Disney Quiz Engine</a> app. A high standard and collaborative work environment that requires a keen eye for detail. This position consisted of everything under the sun in web devevelopment. Utilizing languages such as Javascript, PHP, Ruby and an estentive knowledge in CSS, HTML.</p>
                           <p>Some additional aspects involved working in Sketch, Illustrator and Photoshop improvising design and optimizing assets with proven results in user experience. Throughout this process I would maintain close communication with our team while providing training, wireframes, user flows, site maps and documentation for the clients. This position has been a huge asset honing in on my entire web development process.</p>
                           </div>
                         <div class="bottom-edge"></div>
@@ -526,8 +530,8 @@ const Home = () => {
                       <div class="wrap">
                           <div class="square"></div>
                           <h4>D+H | Mar 2016 - Jan 2017</h4>
-                          <span>Graphic Artist | <a href="https://www.dh.com">www.dh.com</a></span>
-                          <p>This position consisted of rebranding presentations such as the Sales Summit to branding guidelines. Creating info graphics for our products such as PhoenixEFE, UltraData and Touche. Designing logos, email banners, plus web animations for our partners and helping the team keep their presentations on brand. A great deal was put into retaining knowledge of the products, competitors and partners.</p>
+                          <span>Web Developer | <a href="https://www.dh.com">www.dh.com</a></span>
+                          <p>This position consisted of developing apps for presenting information on our products such as PhoenixEFE, UltraData and Touche. Designing logos, email banners, plus creating countless web animations for our partners and helping the team keep their presentation on brand. A great deal was put into retaining knowledge of the products, competitors and partners by collaborating with our entire sales and creative team.</p>
                           </div>
                         <div class="bottom-edge"></div>
                       </div>
@@ -553,7 +557,7 @@ const Home = () => {
                       <div class="wrap">
                         <div class="square"></div>
                         <h4>TSM Studio | Feb 2017 - Jan 2019</h4>
-                        <span>Front-End Developer | <a href="https://www.tsmstudio.com" target="_blank">www.tsmstudio.com</a></span>
+                        <span>Web Developer | <a href="https://www.tsmstudio.com" target="_blank">www.tsmstudio.com</a></span>
                         <p>Working with clients such as Keith David, Central Florida Behavioral Health Network, Seminole County Tax Collector and Integrative Physical Medicine. My job was to manage and consult with clients for developing custom web solutions unique to each. These solutions included geo-locators, automating/integrating social feeds, and optimizing web assets. I have had the opportuni- ties for developing and designing a variety of websites using mainly Wordpress and Expression Engine. This also involved a focus on logo design, UI design and UX.</p>
                       </div>
                     <div class="bottom-edge"></div>
@@ -563,8 +567,8 @@ const Home = () => {
                       <div class="wrap">
                         <div class="square"></div>
                         <h4>Alabama Pain Physicians | Mar 2015 - Feb 2016</h4>
-                        <span>Web Developer & Graphic Artist | <a href="https://www.bamapain.com" target="_blank">www.bamapain.com</a></span>
-                        <p>Producing everything under the sun when it comes to branding. Providing print ready files like posters, flyers and brochures for general hospital signage and to educate patients on opiate dangers. Having worked closley with the senior designer we also developed and designed the Wordpress website <a href="https://bamapain.com" target="_blank">bamapain.com</a>.</p>
+                        <span>Web Developer | <a href="https://www.bamapain.com" target="_blank">www.bamapain.com</a></span>
+                        <p>Producing everything under the sun when it comes to branding and Wordpress development. Providing print ready files like posters, flyers and brochures for general hospital signage and to educate patients on opiate dangers. Having worked closley with the senior designer we also developed and designed the Wordpress website <a href="https://bamapain.com" target="_blank">bamapain.com</a>.</p>
                       </div>
                     <div class="bottom-edge"></div>
                     </div>

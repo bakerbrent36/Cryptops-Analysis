@@ -5,20 +5,6 @@ import { useLocation } from "react-router-dom";
 import { useWidth } from "../../context/ScreenWidthContext";
 import { useAuth } from "../../context/AuthContext";
 
-import BeerIcon from "../../assets/icons/WHT_icon_Beer.svg";
-import GolferIcon from "../../assets/icons/WHT_icon_Golfer.svg";
-import ShirtIcon from "../../assets/icons/WHT_icon_Shirt.svg";
-import TrophyIcon from "../../assets/icons/WHT_icon_Trophy.svg";
-import CalIcon from "../../assets/icons/WHT_icon_Cal.svg";
-import TrophyBlue from "../../assets/icons/WHT_icon_Trophy-blue.svg";
-import CalBlue from "../../assets/icons/WHT_icon_Cal-blue.svg";
-import GolferBlue from "../../assets/icons/WHT_icon_Golfer-blue.svg";
-import QuestionIcon from "../../assets/icons/WHT-icon-Question.svg";
-import OneDayIcon from "../../assets/icons/WHT_Icon_OneDay.svg";
-import OneDayIconBlue from "../../assets/icons/WHT_Icon_OneDayBlue.svg";
-
-import FAQ from "../../assets/pdfs/WHT-FAQs-NEW.pdf";
-
 const FooterContainer = styled.div`
   height: auto;
   background-color: transparent;
@@ -107,75 +93,6 @@ const Footer = () => {
 
   return (
     <FooterContainer>
-      {location.pathname !== "/welcome" &&
-      location.pathname !== "/client-portal" &&
-      location.pathname !== "/register" &&
-      location.pathname !== "/learn-more" &&
-      user ? (
-        <NavContainer>
-          <MenuIcon
-            style={{
-              color: location.pathname == "/results" ? "#F3E9D5" : "#f3e9d5",
-            }}
-            to="/results"
-          >
-            {isDesktop ? (
-              "Leaderboards"
-            ) : (
-              <img
-                src={location.pathname == "/results" ? TrophyBlue : TrophyIcon}
-              />
-            )}
-          </MenuIcon>
-          <MenuIcon
-            style={{
-              color: location.pathname == "/schedule" ? "#F3E9D5" : "#f3e9d5",
-            }}
-            to="/schedule"
-          >
-            {isDesktop ? (
-              "Event Schedule"
-            ) : (
-              <img src={location.pathname == "/schedule" ? CalBlue : CalIcon} />
-            )}
-          </MenuIcon>
-          <MenuIcon
-            style={{
-              color: location.pathname == "/roster" ? "#F3E9D5" : "#f3e9d5",
-            }}
-            to="/roster"
-          >
-            {isDesktop ? (
-              "Player Roster"
-            ) : (
-              <img
-                src={location.pathname == "/roster" ? GolferBlue : GolferIcon}
-              />
-            )}
-          </MenuIcon>
-          <MenuIcon
-            style={{
-              color: location.pathname == "/one-day" ? "#F3E9D5" : "#f3e9d5",
-            }}
-            to="/one-day"
-          >
-            {isDesktop ? (
-              "One Day"
-            ) : (
-              <img
-                src={location.pathname == "/one-day" ? OneDayIconBlue : OneDayIcon}
-              />
-            )}
-          </MenuIcon>
-          <a
-            href="https://shop.workhorsebrewing.com"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            {isDesktop ? "Order Beer" : <img src={BeerIcon} />}
-          </a>
-        </NavContainer>
-      ) : (
         <NavContainer style={{ maxWidth: "500px" }}>
           {/* <MenuIcon
             style={{
@@ -202,9 +119,6 @@ const Footer = () => {
             Resources
           </MenuIcon> */}
         </NavContainer>
-        
-      )}
-
       <SubFooter>
         <div><span>Copyright Brent Baker All Rights Reserved © 2021 & Beyond | Built With <a href="https://reactjs.org/" target="_blank">React</a></span></div>
       </SubFooter>

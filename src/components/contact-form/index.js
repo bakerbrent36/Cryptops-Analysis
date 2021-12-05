@@ -119,6 +119,9 @@ const ContactContainer = styled.div`
     box-shadow: inset 0px 0px 20px #87c763a3, 0 0 10px #87c76361, 0 0 25px #87c7634d, 0 0 35px #87c7634d, 0 0 45px #87c76312, 0 0 55px #87c76312, 0 0 65px #87c76312, 0 0 75px #87c76312;
   }
   @media(max-width:892px){
+    form.ui-form{
+      padding:1rem !important;
+    }
     .button{
       width:100%;
     }
@@ -127,6 +130,9 @@ const ContactContainer = styled.div`
     }
     .required.field:nth-child(5) {
       width: 100% !important;
+    }
+    textarea#form-textarea-control-opinion {
+      width: fit-content;
     }
   }
 `;

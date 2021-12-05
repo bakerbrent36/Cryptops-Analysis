@@ -174,8 +174,7 @@ const PortfolioItem = styled.div`
   }
   @media(max-width:892px){
     width:100%;
-    min-height:10rem;
-    max-height:10rem;
+    height: fit-content;
   }
 `;
 
