@@ -85,8 +85,8 @@ const Skills = styled.div `
       border-bottom: 2px solid #86bf55;
   }
   #language, #experience {
-    max-height: 18rem;
-    height: 18rem;
+    max-height: 25rem;
+    height: 25rem;
   }
   #software, #awards {
     height: 26rem;
@@ -183,7 +183,7 @@ const location = useLocation();
         <div class="top">
 
         <h1>Skills</h1>
-        <a href="https://s3.us-east-2.amazonaws.com/bakerbrent.com/assets/brent-baker-dev-design.pdf" rel="noopener" target="_blank" class="button">
+        <a href="https://bakerbrent.com/assets/baker-brent-full-stack.pdf" rel="noopener" target="_blank" class="button">
               <div class="sq"></div>Download Resume
             </a>
         
@@ -193,12 +193,14 @@ const location = useLocation();
 
         <div class="col">
         <div id="language">
-            <h3>Language Focus</h3>
-            <span>Javascript</span>
-            <span>HTML & CSS</span>
-            <span>JSON</span>
-            <span>PHP</span>
-            <span>SQL</span>
+            <h3>Technologies - Languages</h3>
+            <span>Javascript, HTML, CSS</span>
+            <span>React, React Native</span>
+            <span>Docker, Kubernetes</span>
+            <span>Nodejs, Material UI, Redux</span>
+            <span>MySQL, Postgres, MongoDB</span>
+            <span>PHP, Ruby</span>
+            <span>Wordpress</span>
         </div>
         <div id="software">
             <h3>Software - Tools</h3>
@@ -206,24 +208,17 @@ const location = useLocation();
             <span>Postman</span>
             <span>Docker</span>
             <span>Visual Studio Code</span>
-            <span>Github & Version Control</span>
+            <span>Git & Version Control</span>
             <span>Illustrator, Photoshop, InDesign, XD, Sketch</span>
             <span>Google Analytics, Console, Tag Manager</span>
             <span>Progressive Web Apps</span>
 
         </div>
-        <div id="framework">
-            <h3>Frameworks - Libraries - Environments</h3>
-            <span>React</span>
-            <span>Material UI</span>
-            <span>Redux</span>
-            <span>Node.js</span>
-            <span>Wordpress</span>
-        </div>
         <div id="additional">
             <h3>Additional Skills</h3>
             <span>Object Oreiented Programming</span>
-            <span>API Integrations</span>
+            <span>User Stories</span>
+            <span>API Design & Development</span>
             <span>Documentation</span>
             <span>Technical Analysis</span>
             <span>Site Maps, Wiresframes, User Flows</span>
@@ -265,7 +260,7 @@ const location = useLocation();
             </div>
         </div>
         <div id="hobbies">
-            <h3>Hobbies</h3>
+            <h3>Hobbies - Interests</h3>
             <div class="sec">
 
             <div class="hob">
@@ -290,7 +285,7 @@ const location = useLocation();
             </div>
         </div>
         <div class="buttons">
-            <a href="https://s3.us-east-2.amazonaws.com/bakerbrent.com/assets/brent-baker-dev-design.pdf" rel="noopener" target="_blank" class="button">
+            <a href="https://bakerbrent.com/assets/baker-brent-full-stack.pdf" rel="noopener" target="_blank" class="button">
               <div class="sq"></div>Download Resume
             </a>
             <a href="/portfolio" class="button">

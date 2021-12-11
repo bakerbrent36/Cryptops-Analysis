@@ -147,6 +147,10 @@ const PortfolioItem = styled.div`
     .tags span {
       margin-right: 1rem;
     }
+    p{
+      line-height:1.2;
+      text-decoration:none;
+    }
   }
   :hover{
     cursor:pointer;
@@ -175,6 +179,9 @@ const PortfolioItem = styled.div`
   @media(max-width:892px){
     width:100%;
     height: fit-content;
+    .item-content p{
+      line-height: 1.1;
+    }
   }
 `;
 
