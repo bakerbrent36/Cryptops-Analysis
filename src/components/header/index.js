@@ -64,7 +64,7 @@ const SecondaryNavBar = styled.div`
   height: 75px;
   width: 100%;
   top: 5rem;
-  color: #f3e9d5;
+  color: #8bef4a;
   display: flex;
   justify-content: center;
 `;
@@ -78,7 +78,7 @@ const SecondaryNav = styled.div`
     height: 75px;
     width: 175px;
     display: flex;
-    color: #f3e9d5;
+    color: #8bef4a;
     flex-direction: column;
     justify-content: center;
     align-items: center;
@@ -168,7 +168,7 @@ const Menu = styled.div`
   width: 100%;
   height: ${({ show }) => (show ? "100vh" : "0")};
   background-color: #000;
-  color: #f3e9d5;
+  color: #8bef4a;
   transition: visibility 0s, opacity 0.5s, height 0.5s;
   opacity: ${({ show }) => (show ? "1" : "0")};
   visibility: ${({ show }) => (show ? "visible" : "hidden")};
@@ -176,7 +176,7 @@ const Menu = styled.div`
   flex-direction: column;
 
   a {
-    color: #f3e9d5;
+    color: #8bef4a;
     text-transform: uppercase;
     text-decoration: none;
     margin-top: 5px;
