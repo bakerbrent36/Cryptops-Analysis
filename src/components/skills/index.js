@@ -194,10 +194,10 @@ const location = useLocation();
         <div class="col">
         <div id="language">
             <h3>Technologies - Languages</h3>
-            <span>Javascript, HTML, CSS</span>
             <span>React, React Native</span>
+            <span>Javascript, HTML, CSS</span>
             <span>Docker, Kubernetes</span>
-            <span>Nodejs, Material UI, Redux</span>
+            <span>Nodejs, Material UI, Redux, GraphQL</span>
             <span>MySQL, Postgres, MongoDB</span>
             <span>PHP, Ruby</span>
             <span>Wordpress</span>

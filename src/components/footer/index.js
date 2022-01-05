@@ -120,7 +120,7 @@ const Footer = () => {
           </MenuIcon> */}
         </NavContainer>
       <SubFooter>
-        <div><span>Copyright Brent Baker All Rights Reserved © 2021 & Beyond | Built With <a href="https://reactjs.org/" target="_blank">React</a></span></div>
+        <div><span>Copyright Brent Baker All Rights Reserved © 2022 & Beyond | Built With <a href="https://reactjs.org/" target="_blank">React</a></span></div>
       </SubFooter>
 
     </FooterContainer>

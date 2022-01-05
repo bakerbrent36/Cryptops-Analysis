@@ -164,10 +164,10 @@ const Menu = styled.div`
   position: fixed;
   top: 0;
   left: 0;
-  z-index: 500;
+  z-index: 9999999;
   width: 100%;
   height: ${({ show }) => (show ? "100vh" : "0")};
-  background-color: #F3E9D5;
+  background-color: #000;
   color: #f3e9d5;
   transition: visibility 0s, opacity 0.5s, height 0.5s;
   opacity: ${({ show }) => (show ? "1" : "0")};
@@ -276,7 +276,7 @@ const Header = () => {
     <HeaderContainer>
 
       {/* <HeaderLink to="/" className="logo">
-        <Logo src={WHTLogo} />
+        <Logo/>
       </HeaderLink> */}
 
       {location.pathname !== "/welcome" &&
@@ -284,7 +284,7 @@ const Header = () => {
       location.pathname !== "/register" &&
       location.pathname !== "/learn-more" &&
       location.pathname !== "/work" &&
-      user ? (
+      width < 1100 ? (
         <NavBar>
           <HamburgerContainer isRound={location.pathname.split("/")[1]}>
             <button
@@ -305,15 +305,6 @@ const Header = () => {
         </NavBar>
       ) : (
         <NavBar style={{ justifyContent: "center" }}>
-          {/* <ColorCircles>
-            <div class="dots">
-              <span class="dot"></span>
-              <span class="dot"></span>
-              <span class="dot"></span>
-              <span class="dot"></span>
-            </div>
-
-          </ColorCircles> */}
           {width > 1100 && (
             <HeaderButtonsContainer>
               <Button exact={true} activeClassName='is-active' to="/"><div class="sq"></div>Home</Button>
@@ -335,7 +326,11 @@ const Header = () => {
         user && (
           <SecondaryNavBar>
             <SecondaryNav>
-  
+              <Button exact={true} activeClassName='is-active' to="/"><div class="sq"></div>Home</Button>
+              <Button to="/learn-more"><div class="sq"></div>Skills</Button>
+              <Button to="/portfolio"><div class="sq"></div>Portfolio</Button>
+              {/* <Button to="/blog"><div class="sq"></div>Blog</Button> */}
+              <Button to="/contact"><div class="sq"></div>Contact</Button>
             </SecondaryNav>
           </SecondaryNavBar>
         )}
@@ -374,28 +369,17 @@ const Header = () => {
             flexDirection: "column",
           }}
         >
-          {/* <MenuLink onClick={() => setOpenMenu(false)} to="/one-day/talamore">
-            Talamore Member Outing
-          </MenuLink> */}
-          {/* <MenuLink onClick={() => setOpenMenu(false)} to="/one-day/radnor-valley">
-            Radnor Valley Member Outing
+          <MenuLink onClick={() => setOpenMenu(false)} to="/">
+            Home
           </MenuLink>
-          <MenuLink onClick={() => setOpenMenu(false)} to="/one-day/club">
-            1912 Club Member Outing
-          </MenuLink> */}
-          <MenuLink onClick={() => setOpenMenu(false)} to="/sponsors">
-            Sponsors
+          <MenuLink onClick={() => setOpenMenu(false)} to="/learn-more">
+            Skills
           </MenuLink>
-          <a
-            onClick={() => setOpenMenu(false)}
-            rel="noopener noreferrer"
-            href="https://www.golfgenius.com/register?league_id=7319785228384384201"
-            target="_blank"
-          >
-            Edit Registration
-          </a>
-          <MenuLink onClick={() => setOpenMenu(false)} to="/logout">
-            Logout
+          <MenuLink onClick={() => setOpenMenu(false)} to="/portfolio">
+            Portfolio
+          </MenuLink>
+          <MenuLink onClick={() => setOpenMenu(false)} to="/contact">
+            Contact
           </MenuLink>
         </div>
       </Menu>
