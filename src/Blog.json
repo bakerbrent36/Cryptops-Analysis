@@ -1,0 +1,88 @@
+{
+    "ParentCategories": ["Resources", "Tips & Tricks", "Documentation", "Dev Ops", "Lifestyle"],
+    "Blogs": [
+      {
+        "Title": "Supper In Xanadu",
+        "Icon": "",
+        "Excerpt": "A compilation of AA level ADA compliance procedures to create an accessible application or website.",
+        "p1": "This is an example of a checklist to follow through for each level A and AA specification by number. Within this spreadsheet you can itemize and note each element/functionality for an app or website.",
+        "p2": "",
+        "Category": ["Resources"],
+        "Tags": ["WCAG", "Accessibility", "ADA Compliance"],
+        "Download":"",
+        "Id":"0"
+      },
+      {
+        "Title": "Level A And AA Checklist - WCAG",
+        "Icon": "",
+        "Excerpt": "A compilation of AA level ADA compliance procedures to create an accessible application or website.",
+        "p1": "This is an example of a checklist to follow through for each level A and AA specification by number. Within this spreadsheet you can itemize and note each element/functionality for an app or website.",
+        "p2": "",
+        "Category": ["Resources"],
+        "Tags": ["WCAG", "Accessibility", "ADA Compliance"],
+        "Download":"",
+        "Id":"0"
+      },
+      {
+        "Title": "The Mental Game of Working Out",
+        "Excerpt": "In 2017, Disney launched DisneyNOW, an app that replaced its Disney Channel, Disney XD, and Disney Junior apps. With the new app, Disney is bringing together movies, TV shows, and games from its three networks. Our team designed and developed a custom flexible quiz engine for the new DisneyNOW app, allowing users to test themselves and take quizzes about the Disney movie or TV show they just watched.",
+        "Category": ["Tips & Tricks", "Documentation", "Dev Ops"],
+        "Tags": ["Custom Theme Development", "Tag 2"],
+        "Id":"1"
+      },
+      {
+        "Title": "Fluid Type",
+        "Excerpt": "In 2017, Disney launched DisneyNOW, an app that replaced its Disney Channel, Disney XD, and Disney Junior apps. With the new app, Disney is bringing together movies, TV shows, and games from its three networks. Our team designed and developed a custom flexible quiz engine for the new DisneyNOW app, allowing users to test themselves and take quizzes about the Disney movie or TV show they just watched.",
+        "Category": ["Tips & Tricks", "Documentation", "Dev Ops"],
+        "Tags": ["Custom Theme Development", "Tag 2"],
+        "Id":"2"
+      },
+      {
+        "Title": "Architecture Decision Record",
+        "Excerpt": "In 2017, Disney launched DisneyNOW, an app that replaced its Disney Channel, Disney XD, and Disney Junior apps. With the new app, Disney is bringing together movies, TV shows, and games from its three networks. Our team designed and developed a custom flexible quiz engine for the new DisneyNOW app, allowing users to test themselves and take quizzes about the Disney movie or TV show they just watched.",
+        "Category": ["Tips & Tricks", "Documentation", "Dev Ops"],
+        "Tags": ["Custom Theme Development", "Tag 2"],
+        "p1": "",
+        "p2": "",
+        "p3": "",
+        "p4": "",
+        "p5": "",
+        "Id":"3"
+      },
+      {
+        "Title": "Big Blocks: An OOP Design System",
+        "Excerpt": "In 2017, Disney launched DisneyNOW, an app that replaced its Disney Channel, Disney XD, and Disney Junior apps. With the new app, Disney is bringing together movies, TV shows, and games from its three networks. Our team designed and developed a custom flexible quiz engine for the new DisneyNOW app, allowing users to test themselves and take quizzes about the Disney movie or TV show they just watched.",
+        "Category": ["Documentation", "Dev Ops"],
+        "Tags": ["Custom Theme Development", "Tag 2"],
+        "Id":"4"
+      },
+      {
+        "Title": "The History of the GUI",
+        "Excerpt": "In 2017, Disney launched DisneyNOW, an app that replaced its Disney Channel, Disney XD, and Disney Junior apps. With the new app, Disney is bringing together movies, TV shows, and games from its three networks. Our team designed and developed a custom flexible quiz engine for the new DisneyNOW app, allowing users to test themselves and take quizzes about the Disney movie or TV show they just watched.",
+        "Category": ["Documentation", "Dev Ops"],
+        "Tags": ["Custom Theme Development", "Tag 2"],
+        "Id":"5"
+      },
+      {
+        "Title": "Sniping Vs Shotgunning",
+        "Excerpt": "In 2017, Disney launched DisneyNOW, an app that replaced its Disney Channel, Disney XD, and Disney Junior apps. With the new app, Disney is bringing together movies, TV shows, and games from its three networks. Our team designed and developed a custom flexible quiz engine for the new DisneyNOW app, allowing users to test themselves and take quizzes about the Disney movie or TV show they just watched.",
+        "Category": ["Documentation", "Dev Ops"],
+        "Tags": ["Custom Theme Development", "Tag 2"],
+        "Id":"6"
+      },
+      {
+        "Title": "A Study On Clearing Your Cache",
+        "Excerpt": "In 2017, Disney launched DisneyNOW, an app that replaced its Disney Channel, Disney XD, and Disney Junior apps. With the new app, Disney is bringing together movies, TV shows, and games from its three networks. Our team designed and developed a custom flexible quiz engine for the new DisneyNOW app, allowing users to test themselves and take quizzes about the Disney movie or TV show they just watched.",
+        "Category": ["Documentation", "Dev Ops"],
+        "Tags": ["Custom Theme Development", "Tag 2"],
+        "Id":"7"
+      },
+      {
+        "Title": "A Brief On A New Portfolio",
+        "Excerpt": "In 2017, Disney launched DisneyNOW, an app that replaced its Disney Channel, Disney XD, and Disney Junior apps. With the new app, Disney is bringing together movies, TV shows, and games from its three networks. Our team designed and developed a custom flexible quiz engine for the new DisneyNOW app, allowing users to test themselves and take quizzes about the Disney movie or TV show they just watched.",
+        "Category": ["Documentation", "Dev Ops"],
+        "Tags": ["Custom Theme Development", "Tag 2"],
+        "Id":"8"
+      }
+    ]   
+    }
