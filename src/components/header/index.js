@@ -282,8 +282,6 @@ const Header = () => {
       {location.pathname !== "/welcome" &&
       location.pathname !== "/login" &&
       location.pathname !== "/register" &&
-      location.pathname !== "/learn-more" &&
-      location.pathname !== "/work" &&
       width < 1100 ? (
         <NavBar>
           <HamburgerContainer isRound={location.pathname.split("/")[1]}>
@@ -304,14 +302,12 @@ const Header = () => {
           </HamburgerContainer>
         </NavBar>
       ) : (
+        
         <NavBar style={{ justifyContent: "center" }}>
           {width > 1100 && (
             <HeaderButtonsContainer>
               <Button exact={true} activeClassName='is-active' to="/"><div class="sq"></div>Home</Button>
-              <Button to="/learn-more"><div class="sq"></div>Skills</Button>
-              <Button to="/portfolio"><div class="sq"></div>Portfolio</Button>
-              {/* <Button to="/blog"><div class="sq"></div>Blog</Button> */}
-              <Button to="/contact"><div class="sq"></div>Contact</Button>
+              {/* <Button to="/learn-more"><div class="sq"></div>Skills</Button> */}
             </HeaderButtonsContainer>
           )}
         </NavBar>
